@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "HOVERGIRDLE",
+  "category": "ARTIFICE",
+  "parents": [
+    "HOVERHARNESS"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "volatus": 6,
+    "iter": 3,
+    "aer": 3,
+    "motus": 6
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 2,
+  "row": 7,
+  "text_pages": [
+    "tc.research_page.HOVERGIRDLE.1"
+  ],
+  "recipe_pages": [
+    "HoverGirdle"
+  ],
+  "page_order": [
+    "tc.research_page.HOVERGIRDLE.1",
+    "HoverGirdle"
+  ],
+  "icon": "thaumcraft:hover_girdle",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "volatus"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "render_type": "minecraft:translucent",
+  "ambientocclusion": false,
+  "textures": {
+    "all": "thaumcraft:blocks/warded_glass_14"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "object_aspects",
+  "entries": {
+    "thaumcraft:white_tallow_candle": {
+      "lux": 2,
+      "corpus": 1,
+      "praecantatio": 1
+    }
+  }
+}

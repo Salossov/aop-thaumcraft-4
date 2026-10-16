@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NNN",
+    "NNN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "type": "thaumcraft:copper_enabled",
+      "ingredient": {
+        "item": "thaumcraft:copper_nugget"
+      }
+    }
+  },
+  "result": {
+    "id": "minecraft:copper_ingot"
+  }
+}

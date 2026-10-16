@@ -1,0 +1,53 @@
+package thaumcraft.api.aspects;
+
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+/** Canonical TC4 aspect definitions; tags remain the original Latin identifiers. */
+public final class Aspect {
+    private static final Map<String, Aspect> REGISTRY = new LinkedHashMap<>();
+    private final String tag;
+    private final int color;
+    private final String chatColor;
+    private final int blend;
+    private final List<Aspect> components;
+
+    private Aspect(String tag, int color, String chatColor, int blend, List<Aspect> components) {
+        this.tag = tag;
+        this.color = color;
+        this.chatColor = chatColor;
+        this.blend = blend;
+        this.components = components;
+    }
+
+    public static synchronized Aspect register(String tag, int color, String chatColor, int blend, Aspect... components) {
+        if (!tag.matches("[a-z0-9_]+") || (components.length != 0 && components.length != 2)) throw new IllegalArgumentException("Invalid aspect: " + tag);
+        if (REGISTRY.containsKey(tag)) throw new IllegalArgumentException("Duplicate aspect: " + tag);
+        var aspect = new Aspect(tag, color, chatColor, blend, List.of(components));
+        REGISTRY.put(tag, aspect);
+        return aspect;
+    }
+
+    public static Aspect getAspect(String tag) { Aspects.initialize(); return REGISTRY.get(tag); }
+    public static Map<String, Aspect> all() { Aspects.initialize(); return Collections.unmodifiableMap(REGISTRY); }
+    public String getTag() { return tag; }
+    public String getName() { return tag.substring(0,1).toUpperCase(java.util.Locale.ROOT)+tag.substring(1); }
+    public int getColor() { return color; }
+    public String getChatColor() { return chatColor; }
+    public int getBlend() { return blend; }
+    public List<Aspect> getComponents() { return components; }
+    public boolean isPrimal() { return components.isEmpty(); }
+    public String texture() { return "thaumcraft:textures/aspects/" + tag + ".png"; }
+    public boolean connects(Aspect other) { return other != null && (components.contains(other) || other.components.contains(this)); }
+    public static Aspect combine(Aspect first, Aspect second) {
+        Objects.requireNonNull(first); Objects.requireNonNull(second);
+        for (var aspect : all().values()) if (!aspect.isPrimal()
+                && ((aspect.components.get(0) == first && aspect.components.get(1) == second)
+                || (aspect.components.get(0) == second && aspect.components.get(1) == first))) return aspect;
+        return null;
+    }
+    @Override public String toString() { return tag; }
+}

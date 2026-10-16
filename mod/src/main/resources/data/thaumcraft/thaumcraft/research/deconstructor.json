@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "DECONSTRUCTOR",
+  "category": "BASICS",
+  "parents": [
+    "RESEARCHER1"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "cognitio": 3,
+    "fabrico": 3,
+    "perditio": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 6,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.DECONSTRUCTOR.1",
+    "tc.research_page.DECONSTRUCTOR.2"
+  ],
+  "recipe_pages": [
+    "Deconstructor"
+  ],
+  "page_order": [
+    "tc.research_page.DECONSTRUCTOR.1",
+    "Deconstructor",
+    "tc.research_page.DECONSTRUCTOR.2"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:deconstruction_table",
+  "virtual": false,
+  "round": true,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

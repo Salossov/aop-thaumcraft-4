@@ -1,0 +1,61 @@
+{
+  "kind": "research",
+  "key": "ROD_primal_staff",
+  "category": "ELDRITCH",
+  "parents": [
+    "FOCUSPRIMAL"
+  ],
+  "hidden_parents": [
+    "ROD_silverwood_staff",
+    "ROD_bone_staff",
+    "ROD_greatwood_staff",
+    "ROD_blaze_staff",
+    "ROD_reed_staff",
+    "ROD_obsidian_staff",
+    "ROD_quartz_staff",
+    "ROD_ice_staff"
+  ],
+  "aspects": {
+    "aer": 9,
+    "terra": 9,
+    "ignis": 9,
+    "aqua": 9,
+    "ordo": 9,
+    "perditio": 9,
+    "instrumentum": 9,
+    "praecantatio": 12
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 6,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.ROD_primal_staff.1"
+  ],
+  "recipe_pages": [
+    "WandRodPrimalStaff"
+  ],
+  "page_order": [
+    "tc.research_page.ROD_primal_staff.1",
+    "WandRodPrimalStaff"
+  ],
+  "icon": "thaumcraft:primal_staff_rod",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 3,
+  "item_triggers": [
+    "thaumcraft:focus_primal"
+  ],
+  "entity_triggers": [
+    "thaumcraft:primal_orb"
+  ],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

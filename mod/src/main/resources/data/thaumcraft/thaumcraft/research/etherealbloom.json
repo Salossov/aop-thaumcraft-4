@@ -1,0 +1,48 @@
+{
+  "kind": "research",
+  "key": "ETHEREALBLOOM",
+  "category": "ALCHEMY",
+  "parents": [
+    "CRUCIBLE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "praecantatio": 1,
+    "herba": 6,
+    "sano": 3,
+    "vitium": 6
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -2,
+  "row": -3,
+  "text_pages": [
+    "tc.research_page.ETHEREALBLOOM.1",
+    "tc.research_page.ETHEREALBLOOM.2"
+  ],
+  "recipe_pages": [
+    "EtherealBloom"
+  ],
+  "page_order": [
+    "tc.research_page.ETHEREALBLOOM.1",
+    "EtherealBloom",
+    "tc.research_page.ETHEREALBLOOM.2"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:ethereal_bloom",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "vitium"
+  ],
+  "recipe_groups": {}
+}

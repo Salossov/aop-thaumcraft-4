@@ -1,0 +1,22 @@
+{
+  "type": "thaumcraft:crucible",
+  "research": "BOTTLETAINT",
+  "catalyst": {
+    "type": "neoforge:components",
+    "items": "thaumcraft:essentia_phial",
+    "components": {
+      "minecraft:custom_data": {
+        "Aspect": "vitium"
+      }
+    },
+    "strict": false
+  },
+  "result": {
+    "id": "thaumcraft:bottle_taint",
+    "count": 1
+  },
+  "aspects": {
+    "vitium": 8,
+    "praecantatio": 8
+  }
+}

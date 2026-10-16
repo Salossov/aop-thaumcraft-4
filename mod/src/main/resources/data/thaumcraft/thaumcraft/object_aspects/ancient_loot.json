@@ -1,0 +1,17 @@
+{
+  "kind": "object_aspects",
+  "entries": {
+    "thaumcraft:air_discount_ring": {
+      "praecantatio": 5
+    },
+    "thaumcraft:common_loot_bag": {
+      "lucrum": 8
+    },
+    "thaumcraft:uncommon_loot_bag": {
+      "lucrum": 16
+    },
+    "thaumcraft:rare_loot_bag": {
+      "lucrum": 32
+    }
+  }
+}

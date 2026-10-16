@@ -1,0 +1,48 @@
+{
+  "kind": "research",
+  "key": "FLUXSCRUB",
+  "category": "ARTIFICE",
+  "parents": [
+    "VISPOWER",
+    "BELLOWS",
+    "TUBES"
+  ],
+  "hidden_parents": [
+    "INFUSION"
+  ],
+  "aspects": {
+    "praecantatio": 3,
+    "vinculum": 3,
+    "aer": 3,
+    "aqua": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -8,
+  "row": -3,
+  "text_pages": [
+    "tc.research_page.FLUXSCRUB.1"
+  ],
+  "recipe_pages": [
+    "FluxScrubber"
+  ],
+  "page_order": [
+    "tc.research_page.FLUXSCRUB.1",
+    "FluxScrubber"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:flux_scrubber",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

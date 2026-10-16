@@ -1,0 +1,178 @@
+{
+  "kind": "item_tag_aspects",
+  "entries": {
+    "c:nuggets/tin": {
+      "aspects": {
+        "metallum": 1
+      },
+      "required_item_tags": [
+        "c:ingots/tin"
+      ]
+    },
+    "c:ingots/tin": {
+      "aspects": {
+        "metallum": 3,
+        "vitreus": 1
+      },
+      "required_item_tags": [
+        "c:ingots/tin"
+      ]
+    },
+    "c:dusts/tin": {
+      "aspects": {
+        "metallum": 2,
+        "perditio": 1,
+        "vitreus": 1
+      },
+      "required_item_tags": [
+        "c:ingots/tin"
+      ]
+    },
+    "c:ores/tin": {
+      "aspects": {
+        "metallum": 3,
+        "perditio": 1,
+        "vitreus": 1
+      },
+      "required_item_tags": [
+        "c:ingots/tin"
+      ]
+    },
+    "c:raw_materials/tin": {
+      "aspects": {
+        "metallum": 3,
+        "perditio": 1,
+        "vitreus": 1
+      },
+      "required_item_tags": [
+        "c:ingots/tin"
+      ]
+    },
+    "thaumcraft:native_clusters/tin": {
+      "aspects": {
+        "ordo": 1,
+        "metallum": 5,
+        "terra": 1,
+        "vitreus": 2
+      },
+      "required_item_tags": [
+        "c:ingots/tin"
+      ]
+    },
+    "c:nuggets/silver": {
+      "aspects": {
+        "metallum": 1
+      },
+      "required_item_tags": [
+        "c:ingots/silver"
+      ]
+    },
+    "c:ingots/silver": {
+      "aspects": {
+        "metallum": 3,
+        "lucrum": 1
+      },
+      "required_item_tags": [
+        "c:ingots/silver"
+      ]
+    },
+    "c:dusts/silver": {
+      "aspects": {
+        "metallum": 2,
+        "perditio": 1,
+        "lucrum": 1
+      },
+      "required_item_tags": [
+        "c:ingots/silver"
+      ]
+    },
+    "c:ores/silver": {
+      "aspects": {
+        "metallum": 3,
+        "perditio": 1,
+        "lucrum": 1
+      },
+      "required_item_tags": [
+        "c:ingots/silver"
+      ]
+    },
+    "c:raw_materials/silver": {
+      "aspects": {
+        "metallum": 3,
+        "perditio": 1,
+        "lucrum": 1
+      },
+      "required_item_tags": [
+        "c:ingots/silver"
+      ]
+    },
+    "thaumcraft:native_clusters/silver": {
+      "aspects": {
+        "ordo": 1,
+        "metallum": 5,
+        "terra": 1,
+        "lucrum": 2
+      },
+      "required_item_tags": [
+        "c:ingots/silver"
+      ]
+    },
+    "c:nuggets/lead": {
+      "aspects": {
+        "metallum": 1
+      },
+      "required_item_tags": [
+        "c:ingots/lead"
+      ]
+    },
+    "c:ingots/lead": {
+      "aspects": {
+        "metallum": 3,
+        "ordo": 1
+      },
+      "required_item_tags": [
+        "c:ingots/lead"
+      ]
+    },
+    "c:dusts/lead": {
+      "aspects": {
+        "metallum": 2,
+        "perditio": 1,
+        "ordo": 1
+      },
+      "required_item_tags": [
+        "c:ingots/lead"
+      ]
+    },
+    "c:ores/lead": {
+      "aspects": {
+        "metallum": 3,
+        "perditio": 1,
+        "ordo": 1
+      },
+      "required_item_tags": [
+        "c:ingots/lead"
+      ]
+    },
+    "c:raw_materials/lead": {
+      "aspects": {
+        "metallum": 3,
+        "perditio": 1,
+        "ordo": 1
+      },
+      "required_item_tags": [
+        "c:ingots/lead"
+      ]
+    },
+    "thaumcraft:native_clusters/lead": {
+      "aspects": {
+        "ordo": 3,
+        "metallum": 5,
+        "terra": 1
+      },
+      "required_item_tags": [
+        "c:ingots/lead"
+      ]
+    }
+  }
+}

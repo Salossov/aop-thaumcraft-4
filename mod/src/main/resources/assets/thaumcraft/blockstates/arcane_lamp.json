@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=true": {
+      "model": "thaumcraft:block/arcane_lamp"
+    },
+    "lit=false": {
+      "model": "thaumcraft:block/arcane_lamp_off"
+    }
+  }
+}

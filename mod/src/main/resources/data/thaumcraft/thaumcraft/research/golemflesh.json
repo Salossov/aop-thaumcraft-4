@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "GOLEMFLESH",
+  "category": "GOLEMANCY",
+  "parents": [
+    "GOLEMWOOD"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "spiritus": 7,
+    "motus": 7,
+    "corpus": 6,
+    "permutatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 4,
+  "row": 4,
+  "text_pages": [
+    "tc.research_page.GOLEMFLESH.1"
+  ],
+  "recipe_pages": [
+    "BlockFlesh",
+    "GolemFlesh"
+  ],
+  "page_order": [
+    "tc.research_page.GOLEMFLESH.1",
+    "BlockFlesh",
+    "GolemFlesh"
+  ],
+  "icon": "thaumcraft:flesh_golem",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 3,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

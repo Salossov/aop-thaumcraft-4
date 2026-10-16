@@ -1,0 +1,51 @@
+{
+  "kind": "research",
+  "key": "ARCANEBORE",
+  "category": "ARTIFICE",
+  "parents": [
+    "FOCUSEXCAVATION",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "perfodio": 6,
+    "motus": 3,
+    "machina": 3,
+    "instrumentum": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -3,
+  "row": 8,
+  "text_pages": [
+    "tc.research_page.ARCANEBORE.1",
+    "tc.research_page.ARCANEBORE.2",
+    "tc.research_page.ARCANEBORE.3"
+  ],
+  "recipe_pages": [
+    "ArcaneBore",
+    "ArcaneBoreBase"
+  ],
+  "page_order": [
+    "tc.research_page.ARCANEBORE.1",
+    "ArcaneBore",
+    "tc.research_page.ARCANEBORE.2",
+    "ArcaneBoreBase",
+    "tc.research_page.ARCANEBORE.3"
+  ],
+  "icon": "thaumcraft:arcane_bore",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

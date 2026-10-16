@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "BOTTLETAINT",
+  "category": "ALCHEMY",
+  "parents": [
+    "ENTROPICPROCESSING"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "vitium": 5,
+    "praecantatio": 3,
+    "perditio": 1,
+    "aqua": 1
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -8,
+  "row": 1,
+  "text_pages": [
+    "tc.research_page.BOTTLETAINT.1"
+  ],
+  "recipe_pages": [
+    "BottleTaint"
+  ],
+  "page_order": [
+    "tc.research_page.BOTTLETAINT.1",
+    "BottleTaint"
+  ],
+  "page_requirements": {},
+  "recipe_groups": {},
+  "icon": "thaumcraft:bottle_taint",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 2,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "vitium"
+  ]
+}

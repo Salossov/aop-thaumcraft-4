@@ -1,0 +1,47 @@
+{
+  "kind": "research",
+  "key": "LIQUIDDEATH",
+  "category": "ALCHEMY",
+  "parents": [
+    "ENTROPICPROCESSING"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "mortuus": 3,
+    "venenum": 3,
+    "perditio": 1,
+    "aqua": 1
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -7,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.LIQUIDDEATH.1"
+  ],
+  "recipe_pages": [
+    "LiquidDeath"
+  ],
+  "page_order": [
+    "tc.research_page.LIQUIDDEATH.1",
+    "LiquidDeath"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:liquid_death_bucket",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 3,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "mortuus",
+    "venenum"
+  ],
+  "recipe_groups": {}
+}

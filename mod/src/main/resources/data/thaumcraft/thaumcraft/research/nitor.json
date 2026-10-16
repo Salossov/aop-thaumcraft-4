@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "NITOR",
+  "category": "ALCHEMY",
+  "parents": [
+    "CRUCIBLE"
+  ],
+  "aspects": {
+    "lux": 3,
+    "ignis": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 2,
+  "row": -1,
+  "text_pages": [
+    "tc.research_page.NITOR.1"
+  ],
+  "recipe_pages": [
+    "Nitor"
+  ],
+  "icon": "thaumcraft:nitor",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.NITOR.1",
+    "Nitor"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,20 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "ENCHFABRIC",
+  "result": {
+    "id": "thaumcraft:thaumaturge_boots",
+    "count": 1
+  },
+  "vis": {
+    "terra": 3
+  },
+  "pattern": [
+    "I I",
+    "I I"
+  ],
+  "key": {
+    "I": {
+      "item": "thaumcraft:enchanted_fabric"
+    }
+  }
+}

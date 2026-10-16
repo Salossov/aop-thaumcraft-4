@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "VAMPBAT",
+  "category": "THAUMATURGY",
+  "parents": [
+    "FOCUSHELLBAT"
+  ],
+  "hidden_parents": [
+    "FOCALMANIPULATION"
+  ],
+  "aspects": {
+    "fames": 5,
+    "victus": 5,
+    "praecantatio": 5
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 4,
+  "row": -8,
+  "text_pages": [
+    "focus.upgrade.vampirebats.text"
+  ],
+  "recipe_pages": [],
+  "page_order": [
+    "focus.upgrade.vampirebats.text"
+  ],
+  "icon": "thaumcraft:textures/foci/vampirebats.png",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

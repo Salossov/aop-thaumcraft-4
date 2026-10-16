@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "TINYVISOR",
+  "category": "GOLEMANCY",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "sensus": 1,
+    "tutamen": 2,
+    "lucrum": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 6,
+  "row": 11,
+  "text_pages": [
+    "tc.research_page.TINYVISOR.1"
+  ],
+  "recipe_pages": [
+    "TinyVisor"
+  ],
+  "page_order": [
+    "tc.research_page.TINYVISOR.1",
+    "TinyVisor"
+  ],
+  "icon": "thaumcraft:golem_visor",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "tutamen"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

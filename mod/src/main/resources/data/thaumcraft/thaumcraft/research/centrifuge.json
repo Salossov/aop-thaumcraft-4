@@ -1,0 +1,50 @@
+{
+  "kind": "research",
+  "key": "CENTRIFUGE",
+  "category": "ALCHEMY",
+  "parents": [
+    "TUBEFILTER"
+  ],
+  "aspects": {
+    "perditio": 3,
+    "praecantatio": 3,
+    "permutatio": 3,
+    "fabrico": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 10,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.CENTRIFUGE.1",
+    "tc.research_page.CENTRIFUGE.2",
+    "tc.research_page.CENTRIFUGE.3"
+  ],
+  "recipe_pages": [
+    "Centrifuge",
+    "TubeBuffer"
+  ],
+  "icon": "thaumcraft:alchemical_centrifuge",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.CENTRIFUGE.1",
+    "Centrifuge",
+    "tc.research_page.CENTRIFUGE.2",
+    "tc.research_page.CENTRIFUGE.3",
+    "TubeBuffer"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

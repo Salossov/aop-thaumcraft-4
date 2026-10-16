@@ -1,0 +1,38 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "CAP_silver",
+  "result": {
+    "id": "thaumcraft:inert_silver_wand_cap",
+    "count": 1
+  },
+  "vis": {
+    "ordo": 4,
+    "ignis": 4,
+    "aer": 4
+  },
+  "pattern": [
+    "NNN",
+    "N N"
+  ],
+  "key": {
+    "N": {
+      "tag": "c:nuggets/silver"
+    }
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/silver"
+      }
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/silver"
+      }
+    }
+  ]
+}

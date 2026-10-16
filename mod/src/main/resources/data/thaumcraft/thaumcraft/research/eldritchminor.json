@@ -1,0 +1,37 @@
+{
+  "kind": "research",
+  "key": "ELDRITCHMINOR",
+  "category": "ELDRITCH",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {},
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 1,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.ELDRITCHMINOR.1"
+  ],
+  "recipe_pages": [
+    "VoidSeed"
+  ],
+  "page_order": [
+    "tc.research_page.ELDRITCHMINOR.1",
+    "VoidSeed"
+  ],
+  "icon": "thaumcraft:textures/misc/r_eldritchminor.png",
+  "virtual": false,
+  "round": true,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": true,
+  "recipe_groups": {}
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "thaumcraft:block/arcane_workbench",
+  "textures": {
+    "body": "thaumcraft:models/decontable",
+    "particle": "thaumcraft:models/decontable"
+  }
+}

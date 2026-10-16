@@ -1,0 +1,47 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "HOVERHARNESS",
+  "result": {
+    "id": "thaumcraft:hover_harness",
+    "count": 1
+  },
+  "instability": 6,
+  "aspects": {
+    "volatus": 32,
+    "potentia": 32,
+    "machina": 32,
+    "iter": 16
+  },
+  "input": {
+    "item": "minecraft:leather_chestplate"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:air_shard"
+    },
+    {
+      "item": "thaumcraft:air_shard"
+    },
+    {
+      "item": "thaumcraft:arcane_bellows"
+    },
+    {
+      "item": "thaumcraft:arcane_bellows"
+    },
+    {
+      "item": "minecraft:comparator"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ]
+}

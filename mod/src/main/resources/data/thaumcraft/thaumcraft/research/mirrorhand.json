@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "MIRRORHAND",
+  "category": "ARTIFICE",
+  "parents": [
+    "MIRROR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "instrumentum": 6,
+    "alienis": 3,
+    "vitreus": 3,
+    "iter": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 1,
+  "row": 9,
+  "text_pages": [
+    "tc.research_page.MIRRORHAND.1"
+  ],
+  "recipe_pages": [
+    "MirrorHand"
+  ],
+  "page_order": [
+    "tc.research_page.MIRRORHAND.1",
+    "MirrorHand"
+  ],
+  "icon": "thaumcraft:hand_mirror",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

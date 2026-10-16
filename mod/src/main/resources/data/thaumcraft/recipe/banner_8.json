@@ -1,0 +1,33 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "BANNERS",
+  "vis": {
+    "aqua": 5,
+    "terra": 5
+  },
+  "result": {
+    "id": "thaumcraft:thaumic_banner",
+    "count": 1,
+    "components": {
+      "minecraft:custom_data": {
+        "color": 8
+      }
+    }
+  },
+  "pattern": [
+    "WS",
+    "WS",
+    "WB"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:light_gray_wool"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    },
+    "B": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  }
+}

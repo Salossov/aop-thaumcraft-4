@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thaumcraft:items/phial"
+  },
+  "overrides": [{"predicate": {"thaumcraft:filled": 1}, "model": "thaumcraft:item/essentia_phial_filled"}]
+}

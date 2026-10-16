@@ -1,0 +1,55 @@
+{
+  "kind": "research",
+  "key": "MIRROR",
+  "category": "ARTIFICE",
+  "parents": [
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "iter": 6,
+    "alienis": 3,
+    "tenebrae": 3,
+    "vitreus": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -1,
+  "row": 8,
+  "text_pages": [
+    "tc.research_page.MIRROR.1",
+    "tc.research_page.MIRROR.2",
+    "tc.research_page.MIRROR.3"
+  ],
+  "recipe_pages": [
+    "Mirror"
+  ],
+  "page_order": [
+    "tc.research_page.MIRROR.1",
+    "tc.research_page.MIRROR.2",
+    "Mirror",
+    "tc.research_page.MIRROR.3"
+  ],
+  "icon": "thaumcraft:magic_mirror",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [
+    "minecraft:ender_pearl",
+    "minecraft:portal",
+    "minecraft:end_portal",
+    "minecraft:end_portal_frame"
+  ],
+  "entity_triggers": [
+    "minecraft:enderman"
+  ],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

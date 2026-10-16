@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "thaumcraft:eldritch_altar",
+    "thaumcraft:eldritch_obelisk",
+    "thaumcraft:eldritch_cap",
+    "thaumcraft:carved_eldritch_stone",
+    "thaumcraft:ancient_runic_stone",
+    "thaumcraft:decorated_eldritch_stone",
+    "thaumcraft:eldritch_door_stone",
+    "thaumcraft:eldritch_crab_spawner",
+    "thaumcraft:eldritch_trap",
+    "thaumcraft:eldritch_stone",
+    "thaumcraft:eldritch_rock",
+    "thaumcraft:eldritch_stone_nospawn",
+    "thaumcraft:ancient_stone",
+    "thaumcraft:eldritch_pillar",
+    "thaumcraft:eldritch_body",
+    "thaumcraft:eldritch_lock"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "kind": "research",
+  "key": "THAUMATORIUM",
+  "category": "ALCHEMY",
+  "parents": [
+    "CENTRIFUGE"
+  ],
+  "aspects": {
+    "aqua": 3,
+    "praecantatio": 6,
+    "permutatio": 3,
+    "fabrico": 3
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 10,
+  "row": -2,
+  "text_pages": [
+    "tc.research_page.THAUMATORIUM.1",
+    "tc.research_page.THAUMATORIUM.2",
+    "tc.research_page.THAUMATORIUM.3"
+  ],
+  "recipe_pages": [
+    "Thaumatorium",
+    "MnemonicMatrix"
+  ],
+  "icon": "thaumcraft:alchemical_construct",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.THAUMATORIUM.1",
+    "Thaumatorium",
+    "tc.research_page.THAUMATORIUM.2",
+    "tc.research_page.THAUMATORIUM.3",
+    "MnemonicMatrix"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

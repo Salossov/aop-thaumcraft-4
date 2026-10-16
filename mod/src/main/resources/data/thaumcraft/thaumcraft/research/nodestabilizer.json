@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "NODESTABILIZER",
+  "category": "THAUMATURGY",
+  "parents": [
+    "NODEPRESERVE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "auram": 4,
+    "ordo": 4,
+    "potentia": 4
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -7,
+  "row": -4,
+  "text_pages": [
+    "tc.research_page.NODESTABILIZER.1",
+    "tc.research_page.NODESTABILIZER.2"
+  ],
+  "recipe_pages": [
+    "NodeStabilizer"
+  ],
+  "page_order": [
+    "tc.research_page.NODESTABILIZER.1",
+    "NodeStabilizer",
+    "tc.research_page.NODESTABILIZER.2"
+  ],
+  "icon": "thaumcraft:node_stabilizer",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

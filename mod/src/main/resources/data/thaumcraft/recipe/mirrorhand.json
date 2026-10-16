@@ -1,0 +1,27 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "MIRRORHAND",
+  "result": {
+    "id": "thaumcraft:hand_mirror",
+    "count": 1
+  },
+  "instability": 5,
+  "aspects": {
+    "instrumentum": 16,
+    "iter": 16
+  },
+  "input": {
+    "item": "thaumcraft:magic_mirror"
+  },
+  "components": [
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "minecraft:compass"
+    },
+    {
+      "item": "minecraft:map"
+    }
+  ]
+}

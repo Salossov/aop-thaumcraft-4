@@ -1,0 +1,1420 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "0",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "1",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "2",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "3",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "4",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "5",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "6",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "7",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "8",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "9",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_brick_fence",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "10",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "11",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "12",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "14",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "15",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "16",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "17",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "18",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "19",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "20",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "21",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "23",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "24",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "25",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "26",
+                    "facing": "north"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "0",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "1",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "2",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "3",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "4",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "5",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "6",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "7",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "8",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "9",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "10",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "11",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "12",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "14",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "15",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_brick_fence",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "16",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "17",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "18",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "19",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "20",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "21",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "23",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "24",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "25",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "26",
+                    "facing": "south"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "0",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "1",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "2",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "3",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "4",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "5",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "6",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "7",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "8",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "9",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "10",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "11",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_brick_fence",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "12",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "14",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "15",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "16",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "17",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "18",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "19",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "20",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "21",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "23",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "24",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "25",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "26",
+                    "facing": "west"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "0",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "1",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "2",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "3",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "4",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "5",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "6",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "7",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "8",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "9",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "10",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "11",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "12",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_brick_fence",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "14",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "15",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "16",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "17",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "18",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "19",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "20",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "21",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "23",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "24",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:obsidian",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "25",
+                    "facing": "east"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:nether_bricks",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "thaumcraft:infernal_furnace",
+                  "properties": {
+                    "part": "26",
+                    "facing": "east"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    }
+  ]
+}

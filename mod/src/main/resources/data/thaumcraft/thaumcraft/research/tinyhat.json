@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "TINYHAT",
+  "category": "GOLEMANCY",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "pannus": 2,
+    "victus": 1,
+    "lucrum": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 5,
+  "row": 10,
+  "text_pages": [
+    "tc.research_page.TINYHAT.1"
+  ],
+  "recipe_pages": [
+    "TinyHat"
+  ],
+  "page_order": [
+    "tc.research_page.TINYHAT.1",
+    "TinyHat"
+  ],
+  "icon": "thaumcraft:golem_tophat",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [
+    "minecraft:wool"
+  ],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "pannus"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

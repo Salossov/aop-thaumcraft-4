@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "FOCUSPOUCH",
+  "category": "THAUMATURGY",
+  "parents": [
+    "FOCUSFIRE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "vacuos": 6,
+    "praecantatio": 3,
+    "instrumentum": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 4,
+  "row": -1,
+  "text_pages": [
+    "tc.research_page.FOCUSPOUCH.1"
+  ],
+  "recipe_pages": [
+    "FocusPouch"
+  ],
+  "page_order": [
+    "tc.research_page.FOCUSPOUCH.1",
+    "FocusPouch"
+  ],
+  "icon": "thaumcraft:focus_pouch",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

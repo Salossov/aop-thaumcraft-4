@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=true": {
+      "model": "thaumcraft:block/lamp_of_fertility"
+    },
+    "lit=false": {
+      "model": "thaumcraft:block/lamp_of_fertility_off"
+    }
+  }
+}

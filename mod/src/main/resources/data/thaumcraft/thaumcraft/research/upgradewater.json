@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "UPGRADEWATER",
+  "category": "GOLEMANCY",
+  "parents": [
+    "GOLEMBELL"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "aqua": 6,
+    "sensus": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 5,
+  "row": 1,
+  "text_pages": [
+    "tc.research_page.UPGRADEWATER.1"
+  ],
+  "recipe_pages": [
+    "UpgradeWater"
+  ],
+  "page_order": [
+    "tc.research_page.UPGRADEWATER.1",
+    "UpgradeWater"
+  ],
+  "icon": "thaumcraft:water_golem_upgrade",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

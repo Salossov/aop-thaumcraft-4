@@ -1,0 +1,145 @@
+{
+  "kind": "object_aspects",
+  "entries": {
+    "thaumcraft:greatwood_log": {
+      "arbor": 3,
+      "praecantatio": 1
+    },
+    "thaumcraft:silverwood_log": {
+      "arbor": 3,
+      "praecantatio": 1,
+      "ordo": 1
+    },
+    "thaumcraft:empty_phial": {
+      "vacuos": 1
+    },
+    "thaumcraft:essentia_phial": {},
+    "thaumcraft:essentia_crystal": {},
+    "thaumcraft:greatwood_leaves": {
+      "herba": 1
+    },
+    "thaumcraft:silverwood_leaves": {
+      "herba": 1
+    },
+    "thaumcraft:greatwood_sapling": {
+      "herba": 2,
+      "arbor": 1,
+      "praecantatio": 1
+    },
+    "thaumcraft:silverwood_sapling": {
+      "herba": 2,
+      "arbor": 1,
+      "praecantatio": 1
+    },
+    "thaumcraft:shimmerleaf": {
+      "herba": 2,
+      "permutatio": 2,
+      "praecantatio": 2
+    },
+    "thaumcraft:cinnabar_ore": {
+      "terra": 1,
+      "metallum": 2,
+      "permutatio": 2,
+      "venenum": 1
+    },
+    "thaumcraft:amber_ore": {
+      "terra": 1,
+      "vinculum": 3,
+      "vitreus": 2
+    },
+    "thaumcraft:quicksilver": {
+      "metallum": 3,
+      "venenum": 1,
+      "permutatio": 2
+    },
+    "thaumcraft:native_copper_cluster": {
+      "ordo": 1,
+      "metallum": 5,
+      "terra": 1,
+      "permutatio": 2
+    },
+    "thaumcraft:native_iron_cluster": {
+      "ordo": 1,
+      "metallum": 6,
+      "terra": 1
+    },
+    "thaumcraft:native_gold_cluster": {
+      "ordo": 1,
+      "metallum": 4,
+      "terra": 1,
+      "lucrum": 2
+    },
+    "thaumcraft:native_cinnabar_cluster": {
+      "ordo": 1,
+      "metallum": 4,
+      "terra": 1,
+      "permutatio": 4,
+      "venenum": 2
+    },
+    "thaumcraft:thaumium_nugget": {
+      "metallum": 1
+    },
+    "thaumcraft:arcane_stone": {
+      "terra": 1,
+      "praecantatio": 1
+    },
+    "thaumcraft:arcane_stone_bricks": {
+      "terra": 1,
+      "praecantatio": 1
+    },
+    "thaumcraft:amber": {
+      "vinculum": 2,
+      "vitreus": 2
+    },
+    "thaumcraft:beef_nugget": {
+      "fames": 1
+    },
+    "thaumcraft:chicken_nugget": {
+      "fames": 1
+    },
+    "thaumcraft:pork_nugget": {
+      "fames": 1
+    },
+    "thaumcraft:fish_nugget": {
+      "fames": 1
+    },
+    "thaumcraft:eldritch_eye": {
+      "alienis": 5,
+      "auram": 3,
+      "praecantatio": 3,
+      "sensus": 3,
+      "spiritus": 3
+    },
+    "thaumcraft:crimson_rites": {
+      "cognitio": 5,
+      "praecantatio": 3,
+      "alienis": 3,
+      "spiritus": 3
+    },
+    "thaumcraft:primal_pearl": {
+      "aer": 16,
+      "terra": 16,
+      "ignis": 16,
+      "aqua": 16,
+      "ordo": 16,
+      "perditio": 16
+    },
+    "minecraft:raw_iron": {
+      "metallum": 3,
+      "terra": 1
+    },
+    "minecraft:raw_gold": {
+      "metallum": 2,
+      "terra": 1,
+      "lucrum": 2
+    },
+    "minecraft:raw_copper": {
+      "metallum": 3,
+      "terra": 1,
+      "permutatio": 2
+    },
+    "thaumcraft:knowledge_fragment": {
+      "cognitio": 8
+    }
+  }
+}

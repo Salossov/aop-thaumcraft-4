@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "ENTROPICPROCESSING",
+  "category": "ALCHEMY",
+  "parents": [
+    "ALCHEMICALDUPLICATION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "praecantatio": 1,
+    "perditio": 3,
+    "fabrico": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -6,
+  "row": 1,
+  "text_pages": [
+    "tc.research_page.ENTROPICPROCESSING.1"
+  ],
+  "recipe_pages": [
+    "AltCrackedBrick",
+    "AltBonemeal"
+  ],
+  "page_order": [
+    "tc.research_page.ENTROPICPROCESSING.1",
+    "AltCrackedBrick",
+    "AltBonemeal"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:textures/misc/r_alchent.png",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

@@ -1,0 +1,43 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "WANDPEDFOC",
+  "result": {
+    "id": "thaumcraft:compound_recharge_focus",
+    "count": 1
+  },
+  "instability": 4,
+  "aspects": {
+    "ordo": 10,
+    "praecantatio": 15,
+    "permutatio": 10
+  },
+  "input": {
+    "item": "minecraft:comparator"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:earth_shard"
+    },
+    {
+      "item": "thaumcraft:vis_filter"
+    },
+    {
+      "item": "thaumcraft:earth_shard"
+    },
+    {
+      "item": "thaumcraft:vis_filter"
+    },
+    {
+      "item": "thaumcraft:earth_shard"
+    },
+    {
+      "item": "thaumcraft:vis_filter"
+    },
+    {
+      "item": "thaumcraft:earth_shard"
+    },
+    {
+      "item": "thaumcraft:vis_filter"
+    }
+  ]
+}

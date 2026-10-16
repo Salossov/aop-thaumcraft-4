@@ -1,0 +1,24 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "GOLEMBELL",
+  "result": {
+    "id": "thaumcraft:golemancers_bell",
+    "count": 1
+  },
+  "vis": {
+    "ordo": 5
+  },
+  "pattern": [
+    " QQ",
+    " QQ",
+    "S  "
+  ],
+  "key": {
+    "S": {
+      "tag": "c:rods/wooden"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    }
+  }
+}

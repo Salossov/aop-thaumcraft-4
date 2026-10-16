@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:orange_dye"
+    },
+    {
+      "item": "thaumcraft:white_tallow_candle"
+    }
+  ],
+  "result": {
+    "id": "thaumcraft:orange_tallow_candle",
+    "count": 1
+  }
+}

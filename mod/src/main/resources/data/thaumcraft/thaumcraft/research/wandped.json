@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "WANDPED",
+  "category": "THAUMATURGY",
+  "parents": [
+    "INFUSION",
+    "NODEPRESERVE",
+    "NODESTABILIZER"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "auram": 6,
+    "praecantatio": 3,
+    "permutatio": 3,
+    "potentia": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -9,
+  "row": -6,
+  "text_pages": [
+    "tc.research_page.WANDPED.1"
+  ],
+  "recipe_pages": [
+    "WandPed"
+  ],
+  "page_order": [
+    "tc.research_page.WANDPED.1",
+    "WandPed"
+  ],
+  "icon": "thaumcraft:wand_recharge_pedestal",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,83 @@
+{
+  "kind": "object_aspects",
+  "entries": {
+    "thaumcraft:runic_key": {
+      "vinculum": 4,
+      "cognitio": 4,
+      "machina": 4
+    },
+    "thaumcraft:carved_eldritch_stone": {
+      "lux": 1,
+      "terra": 1,
+      "alienis": 1
+    },
+    "thaumcraft:ancient_runic_stone": {
+      "cognitio": 2,
+      "terra": 1,
+      "alienis": 1
+    },
+    "thaumcraft:decorated_eldritch_stone": {
+      "metallum": 2,
+      "machina": 2,
+      "alienis": 1
+    },
+    "thaumcraft:eldritch_door_stone": {
+      "vacuos": 8,
+      "alienis": 8,
+      "sensus": 4
+    },
+    "thaumcraft:eldritch_crab_spawner": {
+      "vacuos": 8,
+      "alienis": 8,
+      "sensus": 4
+    },
+    "thaumcraft:eldritch_trap": {
+      "vacuos": 8,
+      "alienis": 8,
+      "sensus": 4
+    },
+    "thaumcraft:cultist_plate_helmet": {
+      "metallum": 5,
+      "alienis": 1
+    },
+    "thaumcraft:cultist_plate_chestplate": {
+      "metallum": 5,
+      "alienis": 1
+    },
+    "thaumcraft:cultist_plate_leggings": {
+      "metallum": 5,
+      "alienis": 1
+    },
+    "thaumcraft:cultist_robe_helmet": {
+      "metallum": 3,
+      "pannus": 2,
+      "alienis": 1
+    },
+    "thaumcraft:cultist_robe_chestplate": {
+      "metallum": 3,
+      "pannus": 2,
+      "alienis": 1
+    },
+    "thaumcraft:cultist_robe_leggings": {
+      "metallum": 3,
+      "pannus": 2,
+      "alienis": 1
+    },
+    "thaumcraft:cultist_leader_helmet": {
+      "metallum": 5,
+      "alienis": 2
+    },
+    "thaumcraft:cultist_leader_chestplate": {
+      "metallum": 5,
+      "alienis": 2
+    },
+    "thaumcraft:cultist_leader_leggings": {
+      "metallum": 5,
+      "alienis": 2
+    },
+    "thaumcraft:cultist_boots": {
+      "metallum": 4,
+      "alienis": 1
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "RUNICEMERGENCY",
+  "category": "ARTIFICE",
+  "parents": [
+    "RUNICARMOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "praecantatio": 3,
+    "tutamen": 3,
+    "terra": 4,
+    "vacuos": 4
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 4,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.RUNICEMERGENCY.1"
+  ],
+  "recipe_pages": [
+    "RunicAmuletEmergency"
+  ],
+  "page_order": [
+    "tc.research_page.RUNICEMERGENCY.1",
+    "RunicAmuletEmergency"
+  ],
+  "icon": "thaumcraft:runic_amulet_emergency",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

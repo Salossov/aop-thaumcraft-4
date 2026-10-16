@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "TINYFEZ",
+  "category": "GOLEMANCY",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "pannus": 2,
+    "potentia": 1,
+    "lucrum": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 8,
+  "row": 10,
+  "text_pages": [
+    "tc.research_page.TINYFEZ.1"
+  ],
+  "recipe_pages": [
+    "TinyFez"
+  ],
+  "page_order": [
+    "tc.research_page.TINYFEZ.1",
+    "TinyFez"
+  ],
+  "icon": "thaumcraft:golem_fez",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [
+    "minecraft:wool"
+  ],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "pannus"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,32 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "TRAVELTRUNK",
+  "result": {
+    "id": "thaumcraft:traveling_trunk",
+    "count": 1
+  },
+  "instability": 3,
+  "aspects": {
+    "motus": 4,
+    "spiritus": 4,
+    "iter": 4,
+    "vacuos": 16
+  },
+  "input": {
+    "item": "thaumcraft:hungry_chest"
+  },
+  "components": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "thaumcraft:arcane_bellows"
+    },
+    {
+      "item": "thaumcraft:wood_golem"
+    },
+    {
+      "item": "thaumcraft:arcane_bellows"
+    }
+  ]
+}

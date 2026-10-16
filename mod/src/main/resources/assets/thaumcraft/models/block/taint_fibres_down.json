@@ -1,0 +1,44 @@
+{
+  "render_type": "minecraft:cutout",
+  "ambientocclusion": false,
+  "textures": {
+    "fibre": "thaumcraft:blocks/taint_fibres",
+    "particle": "thaumcraft:blocks/taint_fibres"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0.08,
+        0
+      ],
+      "to": [
+        16,
+        0.08,
+        16
+      ],
+      "faces": {
+        "up": {
+          "texture": "#fibre",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "tintindex": 0
+        },
+        "down": {
+          "texture": "#fibre",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

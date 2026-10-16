@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  I",
+    " S ",
+    "I  "
+  ],
+  "key": {
+    "I": {
+      "item": "thaumcraft:iron_wand_cap"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "thaumcraft:iron_capped_wooden_wand",
+    "count": 1
+  }
+}

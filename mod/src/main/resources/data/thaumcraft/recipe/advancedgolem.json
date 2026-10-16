@@ -1,0 +1,36 @@
+{
+  "type": "thaumcraft:infusion_upgrade",
+  "research": "ADVANCEDGOLEM",
+  "result": {
+    "id": "thaumcraft:straw_golem",
+    "count": 1
+  },
+  "instability": 3,
+  "aspects": {
+    "cognitio": 8,
+    "sensus": 8,
+    "victus": 8
+  },
+  "input": {
+    "tag": "thaumcraft:golem_bodies"
+  },
+  "components": [
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "thaumcraft:warded_jar"
+    },
+    {
+      "item": "thaumcraft:zombie_brain"
+    }
+  ],
+  "field": "advanced",
+  "value": 1
+}

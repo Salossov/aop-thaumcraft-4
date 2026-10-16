@@ -1,0 +1,58 @@
+{
+  "kind": "research",
+  "key": "COREFISHING",
+  "category": "GOLEMANCY",
+  "parents": [
+    "COREHARVEST",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "aqua": 3,
+    "meto": 3,
+    "bestia": 3,
+    "fames": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -2,
+  "row": 7,
+  "text_pages": [
+    "tc.research_page.COREFISHING.1",
+    "tc.research_page.COREFISHING.2",
+    "tc.research_page.COREFISHING.3",
+    "tc.research_page.COREFISHING.4",
+    "tc.research_page.COREFISHING.5"
+  ],
+  "recipe_pages": [
+    "CoreFishing"
+  ],
+  "page_order": [
+    "tc.research_page.COREFISHING.1",
+    "CoreFishing",
+    "tc.research_page.COREFISHING.2",
+    "tc.research_page.COREFISHING.3",
+    "tc.research_page.COREFISHING.4",
+    "tc.research_page.COREFISHING.5"
+  ],
+  "icon": "thaumcraft:golem_core_fishing",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {
+    "tc.research_page.COREFISHING.2": "UPGRADEAIR",
+    "tc.research_page.COREFISHING.3": "UPGRADEFIRE",
+    "tc.research_page.COREFISHING.4": "UPGRADEORDER",
+    "tc.research_page.COREFISHING.5": "UPGRADEENTROPY"
+  },
+  "special": false,
+  "recipe_groups": {}
+}

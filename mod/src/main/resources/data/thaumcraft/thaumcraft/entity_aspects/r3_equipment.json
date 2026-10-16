@@ -1,0 +1,25 @@
+{
+  "kind": "entity_aspects",
+  "entries": {
+    "thaumcraft:primal_orb": {
+      "aer": 5,
+      "perditio": 10,
+      "praecantatio": 10,
+      "potentia": 10
+    },
+    "thaumcraft:firebat": {
+      "bestia": 2,
+      "volatus": 1,
+      "ignis": 2
+    },
+    "thaumcraft:mind_spider": {
+      "vitium": 2,
+      "ignis": 2
+    },
+    "thaumcraft:golem": {
+      "aer": 2,
+      "terra": 2,
+      "praecantatio": 2
+    }
+  }
+}

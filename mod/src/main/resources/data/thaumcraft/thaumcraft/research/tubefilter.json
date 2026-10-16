@@ -1,0 +1,50 @@
+{
+  "kind": "research",
+  "key": "TUBEFILTER",
+  "category": "ALCHEMY",
+  "parents": [
+    "TUBES"
+  ],
+  "aspects": {
+    "aqua": 3,
+    "praecantatio": 3,
+    "permutatio": 3,
+    "ordo": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 9,
+  "row": 1,
+  "text_pages": [
+    "tc.research_page.TUBEFILTER.1",
+    "tc.research_page.TUBEFILTER.2"
+  ],
+  "recipe_pages": [
+    "TubeFilter",
+    "TubeRestrict",
+    "TubeOneway"
+  ],
+  "icon": "thaumcraft:filtered_essentia_tube",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.TUBEFILTER.1",
+    "TubeFilter",
+    "tc.research_page.TUBEFILTER.2",
+    "TubeRestrict",
+    "TubeOneway"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

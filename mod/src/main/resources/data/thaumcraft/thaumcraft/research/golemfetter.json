@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "GOLEMFETTER",
+  "category": "GOLEMANCY",
+  "parents": [
+    "GOLEMSTONE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "vinculum": 3,
+    "machina": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 4,
+  "row": 8,
+  "text_pages": [
+    "tc.research_page.GOLEMFETTER.1"
+  ],
+  "recipe_pages": [
+    "GolemFetter"
+  ],
+  "page_order": [
+    "tc.research_page.GOLEMFETTER.1",
+    "GolemFetter"
+  ],
+  "icon": "thaumcraft:golem_fetter",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

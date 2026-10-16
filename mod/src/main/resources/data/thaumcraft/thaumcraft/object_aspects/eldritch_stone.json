@@ -1,0 +1,13 @@
+{
+  "kind": "object_aspects",
+  "entries": {
+    "thaumcraft:eldritch_stone": {
+      "terra": 1,
+      "alienis": 1
+    },
+    "thaumcraft:eldritch_rock": {
+      "terra": 1,
+      "alienis": 1
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "id": "thaumcraft:belt_blank",
+    "count": 1
+  },
+  "pattern": [
+    " L ",
+    "L L",
+    " I "
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    }
+  }
+}

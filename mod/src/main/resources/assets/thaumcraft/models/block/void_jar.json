@@ -1,0 +1,165 @@
+{
+  "textures": {
+    "all": "thaumcraft:blocks/jar_side_void",
+    "particle": "thaumcraft:blocks/jar_side_void",
+    "top": "thaumcraft:blocks/jar_top_void"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        12,
+        13
+      ],
+      "faces": {
+        "down": {
+          "texture": "#all"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "north": {
+          "texture": "#all"
+        },
+        "south": {
+          "texture": "#all"
+        },
+        "west": {
+          "texture": "#all"
+        },
+        "east": {
+          "texture": "#all"
+        }
+      }
+    },
+    {
+      "from": [
+        5,
+        12,
+        5
+      ],
+      "to": [
+        11,
+        14,
+        11
+      ],
+      "faces": {
+        "down": {
+          "texture": "#top"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "north": {
+          "texture": "#all",
+          "uv": [
+            5,
+            2,
+            11,
+            4
+          ]
+        },
+        "south": {
+          "texture": "#all",
+          "uv": [
+            5,
+            2,
+            11,
+            4
+          ]
+        },
+        "west": {
+          "texture": "#all",
+          "uv": [
+            5,
+            2,
+            11,
+            4
+          ]
+        },
+        "east": {
+          "texture": "#all",
+          "uv": [
+            5,
+            2,
+            11,
+            4
+          ]
+        }
+      }
+    }
+  ],
+  "render_type": "minecraft:translucent",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        3,
+        0
+      ],
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "fixed": {
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        75,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.375,
+        0.375,
+        0.375
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        45,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    }
+  }
+}

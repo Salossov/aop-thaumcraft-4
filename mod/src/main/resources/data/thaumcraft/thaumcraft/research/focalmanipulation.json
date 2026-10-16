@@ -1,0 +1,50 @@
+{
+  "kind": "research",
+  "key": "FOCALMANIPULATION",
+  "category": "THAUMATURGY",
+  "parents": [
+    "VISPOWER"
+  ],
+  "hidden_parents": [
+    "INFUSION",
+    "FOCUSFIRE"
+  ],
+  "aspects": {
+    "praecantatio": 8,
+    "instrumentum": 8,
+    "fabrico": 5,
+    "vitreus": 5,
+    "potentia": 5
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -3,
+  "row": -8,
+  "text_pages": [
+    "tc.research_page.FOCALMANIPULATION.1",
+    "tc.research_page.FOCALMANIPULATION.2"
+  ],
+  "recipe_pages": [
+    "FocalManipulator"
+  ],
+  "page_order": [
+    "tc.research_page.FOCALMANIPULATION.1",
+    "FocalManipulator",
+    "tc.research_page.FOCALMANIPULATION.2"
+  ],
+  "icon": "thaumcraft:focal_manipulator",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,553 @@
+{
+  "textures": {
+    "matrix": "thaumcraft:models/infuser",
+    "particle": "thaumcraft:blocks/arcane_stone"
+  },
+  "elements": [
+    {
+      "from": [
+        0.3999999999999999,
+        0.3999999999999999,
+        0.3999999999999999
+      ],
+      "to": [
+        7.6,
+        7.6,
+        7.6
+      ],
+      "faces": {
+        "east": {
+          "texture": "#matrix",
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ]
+        },
+        "north": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            4,
+            12,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#matrix",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ]
+        },
+        "down": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            0,
+            12,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        0.3999999999999999,
+        0.3999999999999999,
+        8.4
+      ],
+      "to": [
+        7.6,
+        7.6,
+        15.6
+      ],
+      "faces": {
+        "east": {
+          "texture": "#matrix",
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ]
+        },
+        "north": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            4,
+            12,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#matrix",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ]
+        },
+        "down": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            0,
+            12,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        0.3999999999999999,
+        8.4,
+        0.3999999999999999
+      ],
+      "to": [
+        7.6,
+        15.6,
+        7.6
+      ],
+      "faces": {
+        "east": {
+          "texture": "#matrix",
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ]
+        },
+        "north": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            4,
+            12,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#matrix",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ]
+        },
+        "down": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            0,
+            12,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        0.3999999999999999,
+        8.4,
+        8.4
+      ],
+      "to": [
+        7.6,
+        15.6,
+        15.6
+      ],
+      "faces": {
+        "east": {
+          "texture": "#matrix",
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ]
+        },
+        "north": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            4,
+            12,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#matrix",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ]
+        },
+        "down": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            0,
+            12,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        8.4,
+        0.3999999999999999,
+        0.3999999999999999
+      ],
+      "to": [
+        15.6,
+        7.6,
+        7.6
+      ],
+      "faces": {
+        "east": {
+          "texture": "#matrix",
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ]
+        },
+        "north": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            4,
+            12,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#matrix",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ]
+        },
+        "down": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            0,
+            12,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        8.4,
+        0.3999999999999999,
+        8.4
+      ],
+      "to": [
+        15.6,
+        7.6,
+        15.6
+      ],
+      "faces": {
+        "east": {
+          "texture": "#matrix",
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ]
+        },
+        "north": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            4,
+            12,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#matrix",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ]
+        },
+        "down": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            0,
+            12,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        8.4,
+        8.4,
+        0.3999999999999999
+      ],
+      "to": [
+        15.6,
+        15.6,
+        7.6
+      ],
+      "faces": {
+        "east": {
+          "texture": "#matrix",
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ]
+        },
+        "north": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            4,
+            12,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#matrix",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ]
+        },
+        "down": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            0,
+            12,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        8.4,
+        8.4,
+        8.4
+      ],
+      "to": [
+        15.6,
+        15.6,
+        15.6
+      ],
+      "faces": {
+        "east": {
+          "texture": "#matrix",
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ]
+        },
+        "north": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            4,
+            12,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#matrix",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#matrix",
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ]
+        },
+        "down": {
+          "texture": "#matrix",
+          "uv": [
+            8,
+            0,
+            12,
+            4
+          ]
+        }
+      }
+    }
+  ],
+  "parent": "minecraft:block/block"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "thaumcraft:tag_shaped",
+  "pattern": [
+    "NNN",
+    "NNN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "item": "thaumcraft:tin_nugget"
+    }
+  },
+  "result_tag": "c:ingots/tin",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/tin"
+      }
+    }
+  ]
+}

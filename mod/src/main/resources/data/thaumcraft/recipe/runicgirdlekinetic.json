@@ -1,0 +1,43 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "RUNICKINETIC",
+  "result": {
+    "id": "thaumcraft:runic_belt_kinetic",
+    "count": 1
+  },
+  "instability": 7,
+  "aspects": {
+    "tutamen": 33,
+    "praecantatio": 55,
+    "aer": 64
+  },
+  "input": {
+    "item": "thaumcraft:runic_belt"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:balanced_shard"
+    },
+    {
+      "item": "thaumcraft:air_shard"
+    },
+    {
+      "item": "thaumcraft:air_shard"
+    },
+    {
+      "type": "neoforge:components",
+      "items": "minecraft:splash_potion",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:strong_harming"
+        }
+      }
+    },
+    {
+      "item": "thaumcraft:air_shard"
+    },
+    {
+      "item": "thaumcraft:air_shard"
+    }
+  ]
+}

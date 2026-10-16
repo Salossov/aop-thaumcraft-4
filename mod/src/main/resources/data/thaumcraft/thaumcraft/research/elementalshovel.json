@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "ELEMENTALSHOVEL",
+  "category": "ARTIFICE",
+  "parents": [
+    "THAUMIUM",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "instrumentum": 3,
+    "terra": 3,
+    "fabrico": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -7,
+  "row": 6,
+  "text_pages": [
+    "tc.research_page.ELEMENTALSHOVEL.1",
+    "tc.research_page.ELEMENTALSHOVEL.2"
+  ],
+  "recipe_pages": [
+    "ElementalShovel"
+  ],
+  "page_order": [
+    "tc.research_page.ELEMENTALSHOVEL.1",
+    "ElementalShovel",
+    "tc.research_page.ELEMENTALSHOVEL.2"
+  ],
+  "icon": "thaumcraft:elemental_shovel",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

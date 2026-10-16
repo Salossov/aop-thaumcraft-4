@@ -1,0 +1,36 @@
+{
+  "kind": "research",
+  "key": "ENTEROUTER",
+  "category": "ELDRITCH",
+  "parents": [
+    "OCULUS"
+  ],
+  "hidden_parents": [],
+  "aspects": {},
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -3,
+  "row": 4,
+  "text_pages": [
+    "tc.research_page.ENTEROUTER.1"
+  ],
+  "recipe_pages": [],
+  "page_order": [
+    "tc.research_page.ENTEROUTER.1"
+  ],
+  "icon": "thaumcraft:textures/misc/r_outer.png",
+  "virtual": false,
+  "round": true,
+  "stub": true,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

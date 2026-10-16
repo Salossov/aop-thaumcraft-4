@@ -1,0 +1,24 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "UPGRADEORDER",
+  "result": {
+    "id": "thaumcraft:order_golem_upgrade",
+    "count": 1
+  },
+  "vis": {
+    "ordo": 10
+  },
+  "pattern": [
+    "NNN",
+    "NCN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:gold_nugget"
+    },
+    "C": {
+      "item": "thaumcraft:order_shard"
+    }
+  }
+}

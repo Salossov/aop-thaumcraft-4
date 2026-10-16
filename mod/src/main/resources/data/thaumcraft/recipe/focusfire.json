@@ -1,0 +1,28 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "FOCUSFIRE",
+  "result": {
+    "id": "thaumcraft:focus_fire",
+    "count": 1
+  },
+  "vis": {
+    "ignis": 20,
+    "perditio": 10
+  },
+  "pattern": [
+    "CQC",
+    "Q#Q",
+    "CQC"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:fire_charge"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "C": {
+      "item": "thaumcraft:fire_shard"
+    }
+  }
+}

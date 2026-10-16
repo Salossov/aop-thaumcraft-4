@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "GOLEMIRON",
+  "category": "GOLEMANCY",
+  "parents": [
+    "GOLEMSTONE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "spiritus": 9,
+    "motus": 9,
+    "metallum": 3,
+    "permutatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 0,
+  "row": 10,
+  "text_pages": [
+    "tc.research_page.GOLEMIRON.1"
+  ],
+  "recipe_pages": [
+    "GolemIron"
+  ],
+  "page_order": [
+    "tc.research_page.GOLEMIRON.1",
+    "GolemIron"
+  ],
+  "icon": "thaumcraft:iron_golem",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

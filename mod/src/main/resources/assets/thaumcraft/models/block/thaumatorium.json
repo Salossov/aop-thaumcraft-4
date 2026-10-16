@@ -1,0 +1,9 @@
+{
+  "loader": "neoforge:obj",
+  "model": "thaumcraft:models/block/thaumatorium.obj",
+  "flip_v": true,
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumcraft:blocks/alchemyblock"
+  }
+}

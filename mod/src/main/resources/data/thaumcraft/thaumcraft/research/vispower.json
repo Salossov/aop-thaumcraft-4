@@ -1,0 +1,53 @@
+{
+  "kind": "research",
+  "key": "VISPOWER",
+  "category": "THAUMATURGY",
+  "parents": [
+    "NODESTABILIZER"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "auram": 3,
+    "machina": 3,
+    "potentia": 6
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -5,
+  "row": -6,
+  "text_pages": [
+    "tc.research_page.VISPOWER.1",
+    "tc.research_page.VISPOWER.2",
+    "tc.research_page.VISPOWER.3",
+    "tc.research_page.VISPOWER.4",
+    "tc.research_page.VISPOWER.5"
+  ],
+  "recipe_pages": [
+    "NodeTransducer",
+    "NodeRelay"
+  ],
+  "page_order": [
+    "tc.research_page.VISPOWER.1",
+    "NodeTransducer",
+    "tc.research_page.VISPOWER.2",
+    "tc.research_page.VISPOWER.3",
+    "NodeRelay",
+    "tc.research_page.VISPOWER.4",
+    "tc.research_page.VISPOWER.5"
+  ],
+  "icon": "thaumcraft:node_transducer",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": true,
+  "recipe_groups": {}
+}

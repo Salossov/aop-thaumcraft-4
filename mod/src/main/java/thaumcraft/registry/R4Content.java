@@ -1,0 +1,86 @@
+package thaumcraft.registry;
+
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.*;
+import net.minecraft.world.item.*;
+import thaumcraft.fluids.*;
+
+/** TC4's cleansing and dissolving liquids, with their original consumables. */
+public final class R4Content {
+    private static final DeferredRegister.Blocks BLOCKS=DeferredRegister.createBlocks("thaumcraft");
+    private static final DeferredRegister.Items ITEMS=DeferredRegister.createItems("thaumcraft");
+    public static final DeferredBlock<thaumcraft.blocks.ObsidianTotemBlock> OBSIDIAN_TOTEM=BLOCKS.register("obsidian_totem",()->new thaumcraft.blocks.ObsidianTotemBlock(false)),OBSIDIAN_TOTEM_NODE=BLOCKS.register("obsidian_totem_node",()->new thaumcraft.blocks.ObsidianTotemBlock(true));
+    static{ITEMS.registerSimpleBlockItem(OBSIDIAN_TOTEM);ITEMS.registerSimpleBlockItem(OBSIDIAN_TOTEM_NODE);}
+    private static final DeferredRegister<net.minecraft.world.level.block.entity.BlockEntityType<?>> TILES=DeferredRegister.create(net.minecraft.core.registries.Registries.BLOCK_ENTITY_TYPE,"thaumcraft");
+    private static final DeferredRegister<net.minecraft.world.inventory.MenuType<?>> MENUS=DeferredRegister.create(net.minecraft.core.registries.Registries.MENU,"thaumcraft");
+    public static final DeferredBlock<thaumcraft.blocks.ArcaneDoorBlock> ARCANE_DOOR=BLOCKS.register("arcane_door",thaumcraft.blocks.ArcaneDoorBlock::new);
+    public static final DeferredItem<thaumcraft.items.ArcaneDoorItem> ARCANE_DOOR_ITEM=ITEMS.register("arcane_door",thaumcraft.items.ArcaneDoorItem::new);
+    public static final DeferredBlock<thaumcraft.blocks.WardedGlassBlock> WARDED_GLASS=BLOCKS.register("warded_glass",thaumcraft.blocks.WardedGlassBlock::new);
+    public static final DeferredItem<BlockItem> WARDED_GLASS_ITEM=ITEMS.registerSimpleBlockItem(WARDED_GLASS);
+    public static final DeferredBlock<thaumcraft.blocks.ArcanePressurePlateBlock> ARCANE_PLATE=BLOCKS.register("arcane_pressure_plate",thaumcraft.blocks.ArcanePressurePlateBlock::new);
+    public static final DeferredItem<BlockItem> ARCANE_PLATE_ITEM=ITEMS.registerSimpleBlockItem(ARCANE_PLATE);
+    public static final DeferredItem<thaumcraft.items.ArcaneKeyItem> IRON_KEY=ITEMS.register("iron_key",()->new thaumcraft.items.ArcaneKeyItem(false));
+    public static final DeferredItem<thaumcraft.items.ArcaneKeyItem> GOLD_KEY=ITEMS.register("gold_key",()->new thaumcraft.items.ArcaneKeyItem(true));
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.blocks.OwnedBlockEntity>> OWNED_ENTITY=TILES.register("owned_block",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.blocks.OwnedBlockEntity::new,ARCANE_DOOR.get(),WARDED_GLASS.get(),ARCANE_PLATE.get()).build(null));
+    public static final DeferredBlock<thaumcraft.blocks.ThaumicBannerBlock> BANNER=BLOCKS.register("thaumic_banner",thaumcraft.blocks.ThaumicBannerBlock::new);
+    public static final DeferredItem<thaumcraft.items.ThaumicBannerItem> BANNER_ITEM=ITEMS.register("thaumic_banner",thaumcraft.items.ThaumicBannerItem::new);
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.blocks.ThaumicBannerBlockEntity>> BANNER_ENTITY=TILES.register("thaumic_banner",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.blocks.ThaumicBannerBlockEntity::new,BANNER.get()).build(null));
+    public static final DeferredBlock<thaumcraft.blocks.ArcaneEarBlock> ARCANE_EAR=BLOCKS.register("arcane_ear",thaumcraft.blocks.ArcaneEarBlock::new);
+    public static final DeferredBlock<thaumcraft.blocks.LevitatorBlock> LEVITATOR=BLOCKS.register("levitator",thaumcraft.blocks.LevitatorBlock::new);
+    public static final DeferredBlock<net.minecraft.world.level.block.Block> ADVANCED_CONSTRUCT=BLOCKS.registerSimpleBlock("advanced_alchemical_construct",net.minecraft.world.level.block.state.BlockBehaviour.Properties.of().strength(3,17).sound(net.minecraft.world.level.block.SoundType.METAL));
+    public static final DeferredItem<BlockItem> ADVANCED_CONSTRUCT_ITEM=ITEMS.registerSimpleBlockItem(ADVANCED_CONSTRUCT);
+    public static final DeferredBlock<thaumcraft.production.AdvancedAlchemyBlock> ADVANCED_FURNACE=BLOCKS.register("advanced_alchemy_furnace",thaumcraft.production.AdvancedAlchemyBlock::new);
+    public static final DeferredItem<BlockItem> ADVANCED_FURNACE_ITEM=ITEMS.registerSimpleBlockItem(ADVANCED_FURNACE);
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.production.AdvancedAlchemyBlockEntity>> ADVANCED_FURNACE_ENTITY=TILES.register("advanced_alchemy_furnace",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.production.AdvancedAlchemyBlockEntity::new,ADVANCED_FURNACE.get()).build(null));
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.production.AdvancedAlchemyNozzleBlockEntity>> ADVANCED_NOZZLE_ENTITY=TILES.register("advanced_alchemy_nozzle",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.production.AdvancedAlchemyNozzleBlockEntity::new,ADVANCED_FURNACE.get()).build(null));
+    public static final DeferredBlock<thaumcraft.production.ArcaneSpaBlock> ARCANE_SPA=BLOCKS.register("arcane_spa",thaumcraft.production.ArcaneSpaBlock::new);
+    public static final DeferredItem<BlockItem> SPA_ITEM=ITEMS.registerSimpleBlockItem(ARCANE_SPA);
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.production.ArcaneSpaBlockEntity>> SPA_ENTITY=TILES.register("arcane_spa",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.production.ArcaneSpaBlockEntity::new,ARCANE_SPA.get()).build(null));
+    public static final DeferredHolder<net.minecraft.world.inventory.MenuType<?>,net.minecraft.world.inventory.MenuType<thaumcraft.menu.ArcaneSpaMenu>> SPA_MENU=MENUS.register("arcane_spa",()->net.neoforged.neoforge.common.extensions.IMenuTypeExtension.create(thaumcraft.menu.ArcaneSpaMenu::new));
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.blocks.ArcaneEarBlockEntity>> EAR_ENTITY=TILES.register("arcane_ear",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.blocks.ArcaneEarBlockEntity::new,ARCANE_EAR.get()).build(null));
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.blocks.LevitatorBlockEntity>> LEVITATOR_ENTITY=TILES.register("levitator",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.blocks.LevitatorBlockEntity::new,LEVITATOR.get()).build(null));
+    public static final DeferredItem<thaumcraft.items.TripleMeatTreatItem> TRIPLE_MEAT_TREAT=ITEMS.register("triple_meat_treat",thaumcraft.items.TripleMeatTreatItem::new);
+    public static final DeferredBlock<thaumcraft.blocks.CinderpearlBlock> CINDERPEARL=BLOCKS.register("cinderpearl",()->new thaumcraft.blocks.CinderpearlBlock());
+    public static final DeferredItem<BlockItem> CINDERPEARL_ITEM=ITEMS.registerSimpleBlockItem(CINDERPEARL);
+    public static final DeferredBlock<thaumcraft.blocks.MagicalWoodBlock.Stairs> GREATWOOD_STAIRS=BLOCKS.register("greatwood_stairs",()->new thaumcraft.blocks.MagicalWoodBlock.Stairs(R3Content.GREATWOOD_PLANKS.get().defaultBlockState()));
+    public static final DeferredBlock<thaumcraft.blocks.MagicalWoodBlock.Stairs> SILVERWOOD_STAIRS=BLOCKS.register("silverwood_stairs",()->new thaumcraft.blocks.MagicalWoodBlock.Stairs(R3Content.SILVERWOOD_PLANKS.get().defaultBlockState()));
+    public static final DeferredBlock<thaumcraft.blocks.MagicalWoodBlock.Slab> GREATWOOD_SLAB=BLOCKS.register("greatwood_slab",thaumcraft.blocks.MagicalWoodBlock.Slab::new);
+    public static final DeferredBlock<thaumcraft.blocks.MagicalWoodBlock.Slab> SILVERWOOD_SLAB=BLOCKS.register("silverwood_slab",thaumcraft.blocks.MagicalWoodBlock.Slab::new);
+    public static final DeferredBlock<net.minecraft.world.level.block.StairBlock> ARCANE_STONE_STAIRS=BLOCKS.register("arcane_stone_stairs",()->new net.minecraft.world.level.block.StairBlock(R3Content.ARCANE_STONE_BRICKS.get().defaultBlockState(),net.minecraft.world.level.block.state.BlockBehaviour.Properties.of().strength(4,20)));
+    public static final DeferredBlock<net.minecraft.world.level.block.HalfTransparentBlock> AMBER_BRICKS=BLOCKS.register("amber_bricks",()->new net.minecraft.world.level.block.HalfTransparentBlock(net.minecraft.world.level.block.state.BlockBehaviour.Properties.of().strength(1.5f,5).noOcclusion()));
+    public static final DeferredBlock<net.minecraft.world.level.block.Block> OBSIDIAN_TILE=BLOCKS.registerSimpleBlock("obsidian_tile",net.minecraft.world.level.block.state.BlockBehaviour.Properties.of().strength(30,999));
+    public static final DeferredBlock<thaumcraft.blocks.PavingStoneBlock> PAVING_TRAVEL=BLOCKS.register("paving_stone_travel",()->new thaumcraft.blocks.PavingStoneBlock(false));
+    public static final DeferredBlock<thaumcraft.blocks.PavingStoneBlock> PAVING_WARDING=BLOCKS.register("paving_stone_warding",()->new thaumcraft.blocks.PavingStoneBlock(true));
+    public static final DeferredBlock<thaumcraft.blocks.WardingBarrierBlock> WARDING_BARRIER=BLOCKS.register("warding_barrier",thaumcraft.blocks.WardingBarrierBlock::new);
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.blocks.WardingStoneBlockEntity>> WARDING_ENTITY=TILES.register("paving_stone_warding",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.blocks.WardingStoneBlockEntity::new,PAVING_WARDING.get()).build(null));
+    public static final java.util.List<DeferredBlock<thaumcraft.blocks.TallowCandleBlock>> CANDLES=new java.util.ArrayList<>();
+    static {
+        for(var block:java.util.List.of(GREATWOOD_STAIRS,SILVERWOOD_STAIRS,GREATWOOD_SLAB,SILVERWOOD_SLAB,ARCANE_STONE_STAIRS,AMBER_BRICKS,OBSIDIAN_TILE,PAVING_TRAVEL,PAVING_WARDING,ARCANE_EAR,LEVITATOR))ITEMS.registerSimpleBlockItem(block);
+        var colors=java.util.List.of("white","orange","magenta","light_blue","yellow","lime","pink","gray","light_gray","cyan","purple","blue","brown","green","red","black");
+        for(int i=0;i<colors.size();i++){final int metadata=i;var block=BLOCKS.register(colors.get(i)+"_tallow_candle",()->new thaumcraft.blocks.TallowCandleBlock(metadata));CANDLES.add(block);ITEMS.registerSimpleBlockItem(block);}
+    }
+    public static final DeferredBlock<thaumcraft.blocks.EtherealBloomBlock> ETHEREAL_BLOOM=BLOCKS.register("ethereal_bloom",()->new thaumcraft.blocks.EtherealBloomBlock());
+    public static final DeferredItem<BlockItem> BLOOM_ITEM=ITEMS.registerSimpleBlockItem(ETHEREAL_BLOOM);
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.blocks.EtherealBloomBlockEntity>> BLOOM_ENTITY=TILES.register("ethereal_bloom",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.blocks.EtherealBloomBlockEntity::new,ETHEREAL_BLOOM.get()).build(null));
+    public static final DeferredBlock<PurifyingLiquidBlock> PURIFYING_FLUID=BLOCKS.register("purifying_fluid",PurifyingLiquidBlock::new);
+    public static final DeferredBlock<LiquidDeathBlock> LIQUID_DEATH=BLOCKS.register("liquid_death",LiquidDeathBlock::new);
+    public static final DeferredItem<BucketItem> PURE_BUCKET=ITEMS.register("purifying_fluid_bucket",()->new BucketItem(R4Fluids.PURE.get(),new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<thaumcraft.items.LiquidDeathBucketItem> DEATH_BUCKET=ITEMS.register("liquid_death_bucket",thaumcraft.items.LiquidDeathBucketItem::new);
+    public static final DeferredItem<thaumcraft.items.BathSaltsItem> BATH_SALTS=ITEMS.register("bath_salts",thaumcraft.items.BathSaltsItem::new);
+    public static final DeferredItem<thaumcraft.items.SanitySoapItem> SANITY_SOAP=ITEMS.register("sanity_soap",thaumcraft.items.SanitySoapItem::new);
+    public static final DeferredBlock<thaumcraft.production.FluxScrubberBlock> FLUX_SCRUBBER=BLOCKS.register("flux_scrubber",thaumcraft.production.FluxScrubberBlock::new);
+    public static final DeferredItem<BlockItem> SCRUBBER_ITEM=ITEMS.registerSimpleBlockItem(FLUX_SCRUBBER);
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.production.FluxScrubberBlockEntity>> SCRUBBER_ENTITY=TILES.register("flux_scrubber",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.production.FluxScrubberBlockEntity::new,FLUX_SCRUBBER.get()).build(null));
+    public static final DeferredBlock<thaumcraft.production.DeconstructionTableBlock> DECONSTRUCTOR=BLOCKS.register("deconstruction_table",thaumcraft.production.DeconstructionTableBlock::new);
+    public static final DeferredItem<BlockItem> DECONSTRUCTOR_ITEM=ITEMS.registerSimpleBlockItem(DECONSTRUCTOR);
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.production.DeconstructionTableBlockEntity>> DECONSTRUCTOR_ENTITY=TILES.register("deconstruction_table",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.production.DeconstructionTableBlockEntity::new,DECONSTRUCTOR.get()).build(null));
+    public static final DeferredHolder<net.minecraft.world.inventory.MenuType<?>,net.minecraft.world.inventory.MenuType<thaumcraft.menu.DeconstructionMenu>> DECONSTRUCTOR_MENU=MENUS.register("deconstruction_table",()->net.neoforged.neoforge.common.extensions.IMenuTypeExtension.create(thaumcraft.menu.DeconstructionMenu::new));
+    public static final DeferredBlock<thaumcraft.production.ItemGrateBlock> ITEM_GRATE=BLOCKS.register("item_grate",thaumcraft.production.ItemGrateBlock::new);
+    public static final DeferredItem<BlockItem> GRATE_ITEM=ITEMS.registerSimpleBlockItem(ITEM_GRATE);
+    public static final DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>,net.minecraft.world.level.block.entity.BlockEntityType<thaumcraft.production.ItemGrateBlockEntity>> GRATE_ENTITY=TILES.register("item_grate",()->net.minecraft.world.level.block.entity.BlockEntityType.Builder.of(thaumcraft.production.ItemGrateBlockEntity::new,ITEM_GRATE.get()).build(null));
+    public static void register(IEventBus bus){BLOCKS.register(bus);ITEMS.register(bus);TILES.register(bus);MENUS.register(bus);bus.addListener(R4Content::capabilities);}
+    private static void capabilities(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent event){event.registerBlockEntity(thaumcraft.api.aspects.EssentiaCapabilities.TRANSPORT,ADVANCED_NOZZLE_ENTITY.get(),(tile,side)->tile);event.registerBlockEntity(thaumcraft.api.aspects.EssentiaCapabilities.CONTAINER,ADVANCED_NOZZLE_ENTITY.get(),(tile,side)->tile);event.registerBlockEntity(thaumcraft.api.aspects.EssentiaCapabilities.SOURCE,ADVANCED_NOZZLE_ENTITY.get(),(tile,side)->tile);event.registerBlockEntity(net.neoforged.neoforge.capabilities.Capabilities.FluidHandler.BLOCK,SPA_ENTITY.get(),(tile,side)->side==net.minecraft.core.Direction.UP?null:tile.tank);event.registerBlockEntity(net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.BLOCK,SPA_ENTITY.get(),(tile,side)->side==net.minecraft.core.Direction.UP?null:side==null?new net.neoforged.neoforge.items.wrapper.InvWrapper(tile):new net.neoforged.neoforge.items.wrapper.SidedInvWrapper(tile,side));event.registerBlockEntity(thaumcraft.api.aspects.EssentiaCapabilities.TRANSPORT,SCRUBBER_ENTITY.get(),(tile,side)->tile);event.registerBlockEntity(net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.BLOCK,DECONSTRUCTOR_ENTITY.get(),(tile,side)->side==null?new net.neoforged.neoforge.items.wrapper.InvWrapper(tile):new net.neoforged.neoforge.items.wrapper.SidedInvWrapper(tile,side));event.registerBlockEntity(net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.BLOCK,GRATE_ENTITY.get(),(tile,side)->side==net.minecraft.core.Direction.UP?tile.input:null);}
+    public static void creative(CreativeModeTab.Output output){ITEMS.getEntries().forEach(i->{if(i.get()!=BANNER_ITEM.get()&&i!=ADVANCED_FURNACE_ITEM&&!i.getId().getPath().equals("purifying_fluid")&&!i.getId().getPath().equals("liquid_death"))output.accept(i.get());});for(int color=0;color<16;color++)output.accept(thaumcraft.items.ThaumicBannerItem.stack(color,null));}
+    static {ITEMS.registerSimpleBlockItem(PURIFYING_FLUID);ITEMS.registerSimpleBlockItem(LIQUID_DEATH);}
+    private R4Content(){}
+}

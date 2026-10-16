@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "TALLOW",
+  "category": "ALCHEMY",
+  "parents": [
+    "CRUCIBLE"
+  ],
+  "aspects": {
+    "corpus": 3,
+    "praecantatio": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -2,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.TALLOW.1"
+  ],
+  "recipe_pages": [
+    "Tallow"
+  ],
+  "icon": "thaumcraft:tallow",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.TALLOW.1",
+    "Tallow"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

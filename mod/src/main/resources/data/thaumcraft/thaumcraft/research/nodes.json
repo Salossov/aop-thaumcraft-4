@@ -1,0 +1,38 @@
+{
+  "kind": "research",
+  "key": "NODES",
+  "category": "BASICS",
+  "parents": [],
+  "aspects": {},
+  "complexity": 1,
+  "auto_unlock": true,
+  "concealed": false,
+  "column": -2,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.NODES.1",
+    "tc.research_page.NODES.2",
+    "tc.research_page.NODES.3"
+  ],
+  "recipe_pages": [],
+  "icon": "thaumcraft:textures/misc/r_nodes.png",
+  "virtual": false,
+  "round": true,
+  "stub": true,
+  "page_order": [
+    "tc.research_page.NODES.1",
+    "tc.research_page.NODES.2",
+    "tc.research_page.NODES.3"
+  ],
+  "hidden_parents": [],
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

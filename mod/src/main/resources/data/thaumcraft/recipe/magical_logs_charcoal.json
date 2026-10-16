@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "thaumcraft:magical_logs"
+  },
+  "result": {
+    "id": "minecraft:charcoal",
+    "count": 1
+  },
+  "experience": 0.5,
+  "cookingtime": 200
+}

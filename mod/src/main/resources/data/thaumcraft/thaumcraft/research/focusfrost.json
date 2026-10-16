@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "FOCUSFROST",
+  "category": "THAUMATURGY",
+  "parents": [
+    "FOCUSFIRE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "aqua": 3,
+    "praecantatio": 3,
+    "gelum": 6
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 1,
+  "row": -5,
+  "text_pages": [
+    "tc.research_page.FOCUSFROST.1"
+  ],
+  "recipe_pages": [
+    "FocusFrost"
+  ],
+  "page_order": [
+    "tc.research_page.FOCUSFROST.1",
+    "FocusFrost"
+  ],
+  "icon": "thaumcraft:focus_frost",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,27 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "CAP_thaumium",
+  "result": {
+    "id": "thaumcraft:thaumium_wand_cap",
+    "count": 1
+  },
+  "instability": 5,
+  "aspects": {
+    "potentia": 12,
+    "auram": 6
+  },
+  "input": {
+    "item": "thaumcraft:inert_thaumium_wand_cap"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:salis_mundus"
+    },
+    {
+      "item": "thaumcraft:salis_mundus"
+    },
+    {
+      "item": "thaumcraft:salis_mundus"
+    }
+  ]
+}

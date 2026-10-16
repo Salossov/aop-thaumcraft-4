@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "GOGGLES",
+  "category": "ARTIFICE",
+  "parents": [
+    "THAUMOMETER"
+  ],
+  "aspects": {
+    "sensus": 3,
+    "auram": 3,
+    "praecantatio": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 4,
+  "row": 1,
+  "text_pages": [
+    "tc.research_page.GOGGLES.1"
+  ],
+  "recipe_pages": [
+    "Goggles"
+  ],
+  "icon": "thaumcraft:goggles_of_revealing",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "page_order": [
+    "tc.research_page.GOGGLES.1",
+    "Goggles"
+  ],
+  "hidden_parents": [],
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,14 @@
+{
+  "type": "thaumcraft:crucible",
+  "research": "THAUMIUM",
+  "catalyst": {
+    "item": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "thaumcraft:thaumium_ingot",
+    "count": 1
+  },
+  "aspects": {
+    "praecantatio": 4
+  }
+}

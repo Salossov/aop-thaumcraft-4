@@ -1,0 +1,14 @@
+{
+  "type": "thaumcraft:crucible",
+  "research": "ENTROPICPROCESSING",
+  "result": {
+    "id": "minecraft:bone_meal",
+    "count": 4
+  },
+  "catalyst": {
+    "item": "minecraft:bone"
+  },
+  "aspects": {
+    "perditio": 1
+  }
+}

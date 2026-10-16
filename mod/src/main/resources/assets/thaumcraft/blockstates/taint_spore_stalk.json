@@ -1,0 +1,68 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "down": "true"
+      },
+      "apply": {
+        "model": "thaumcraft:block/taint_fibres_down"
+      }
+    },
+    {
+      "when": {
+        "up": "true"
+      },
+      "apply": {
+        "model": "thaumcraft:block/taint_fibres_up"
+      }
+    },
+    {
+      "when": {
+        "north": "true"
+      },
+      "apply": {
+        "model": "thaumcraft:block/taint_fibres_north"
+      }
+    },
+    {
+      "when": {
+        "south": "true"
+      },
+      "apply": {
+        "model": "thaumcraft:block/taint_fibres_south"
+      }
+    },
+    {
+      "when": {
+        "west": "true"
+      },
+      "apply": {
+        "model": "thaumcraft:block/taint_fibres_west"
+      }
+    },
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "thaumcraft:block/taint_fibres_east"
+      }
+    },
+    {
+      "when": {
+        "occupied": "false"
+      },
+      "apply": {
+        "model": "thaumcraft:block/taint_spore_false"
+      }
+    },
+    {
+      "when": {
+        "occupied": "true"
+      },
+      "apply": {
+        "model": "thaumcraft:block/taint_spore_true"
+      }
+    }
+  ]
+}

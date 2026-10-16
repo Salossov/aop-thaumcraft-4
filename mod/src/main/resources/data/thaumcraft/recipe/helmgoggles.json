@@ -1,0 +1,27 @@
+{
+  "type": "thaumcraft:infusion_upgrade",
+  "research": "HELMGOGGLES",
+  "result": {
+    "id": "thaumcraft:thaumium_fortress_helmet",
+    "count": 1
+  },
+  "instability": 5,
+  "aspects": {
+    "sensus": 32,
+    "auram": 16,
+    "tutamen": 16
+  },
+  "input": {
+    "item": "thaumcraft:thaumium_fortress_helmet"
+  },
+  "components": [
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "item": "thaumcraft:goggles_of_revealing"
+    }
+  ],
+  "field": "goggles",
+  "value": 1
+}

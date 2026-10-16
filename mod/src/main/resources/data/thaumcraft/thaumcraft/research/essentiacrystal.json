@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "ESSENTIACRYSTAL",
+  "category": "ALCHEMY",
+  "parents": [
+    "TUBES"
+  ],
+  "aspects": {
+    "aqua": 5,
+    "vitreus": 5,
+    "permutatio": 3,
+    "praecantatio": 5
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 8,
+  "row": -2,
+  "text_pages": [
+    "tc.research_page.ESSENTIACRYSTAL.1"
+  ],
+  "recipe_pages": [
+    "EssentiaCrystalizer"
+  ],
+  "icon": "thaumcraft:essentia_crystallizer",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.ESSENTIACRYSTAL.1",
+    "EssentiaCrystalizer"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

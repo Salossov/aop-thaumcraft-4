@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "id": "thaumcraft:void_pickaxe",
+    "count": 1
+  },
+  "pattern": [
+    "III",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "I": {
+      "tag": "c:ingots/void"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  }
+}

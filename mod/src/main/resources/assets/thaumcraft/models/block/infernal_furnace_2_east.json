@@ -1,0 +1,85 @@
+{
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "north": "thaumcraft:blocks/furnace18",
+    "south": "thaumcraft:blocks/furnace7",
+    "west": "thaumcraft:blocks/furnace7",
+    "east": "thaumcraft:blocks/furnace23",
+    "up": "thaumcraft:blocks/furnace2",
+    "down": "thaumcraft:blocks/furnace2",
+    "particle": "thaumcraft:blocks/furnace7"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#north",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#south",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#west",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#east",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#up",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "up"
+        },
+        "down": {
+          "texture": "#down",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      }
+    }
+  ]
+}

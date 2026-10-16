@@ -1,0 +1,47 @@
+{
+  "kind": "research",
+  "key": "CORELIQUID",
+  "category": "GOLEMANCY",
+  "parents": [
+    "COREFILL"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "aqua": 3,
+    "permutatio": 3,
+    "iter": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -7,
+  "row": 4,
+  "text_pages": [
+    "tc.research_page.CORELIQUID.1",
+    "tc.research_page.CORELIQUID.2"
+  ],
+  "recipe_pages": [
+    "CoreLiquid"
+  ],
+  "page_order": [
+    "tc.research_page.CORELIQUID.1",
+    "CoreLiquid",
+    "tc.research_page.CORELIQUID.2"
+  ],
+  "icon": "thaumcraft:golem_core_liquid",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {
+    "tc.research_page.CORELIQUID.2": "UPGRADEENTROPY"
+  },
+  "special": false,
+  "recipe_groups": {}
+}

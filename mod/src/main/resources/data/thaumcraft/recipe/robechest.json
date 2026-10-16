@@ -1,0 +1,21 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "ENCHFABRIC",
+  "result": {
+    "id": "thaumcraft:thaumaturge_chestplate",
+    "count": 1
+  },
+  "vis": {
+    "aer": 5
+  },
+  "pattern": [
+    "I I",
+    "III",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "thaumcraft:enchanted_fabric"
+    }
+  }
+}

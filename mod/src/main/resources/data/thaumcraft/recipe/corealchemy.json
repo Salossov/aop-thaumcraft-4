@@ -1,0 +1,49 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "COREALCHEMY",
+  "result": {
+    "id": "thaumcraft:golem_core_alchemy",
+    "count": 1
+  },
+  "instability": 2,
+  "aspects": {
+    "praecantatio": 15,
+    "aqua": 15,
+    "motus": 15
+  },
+  "input": {
+    "item": "thaumcraft:golem_core_liquid"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:warded_jar"
+    },
+    {
+      "type": "neoforge:components",
+      "items": "minecraft:potion",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:water"
+        }
+      }
+    },
+    {
+      "type": "neoforge:components",
+      "items": "minecraft:potion",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:water"
+        }
+      }
+    },
+    {
+      "type": "neoforge:components",
+      "items": "minecraft:potion",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:water"
+        }
+      }
+    }
+  ]
+}

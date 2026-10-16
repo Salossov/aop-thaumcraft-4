@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "OUTERREV",
+  "category": "ELDRITCH",
+  "parents": [
+    "ENTEROUTER"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "alienis": 4,
+    "cognitio": 4
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -5,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.OUTERREV.1"
+  ],
+  "recipe_pages": [],
+  "page_order": [
+    "tc.research_page.OUTERREV.1"
+  ],
+  "icon": "thaumcraft:textures/misc/r_outerrev.png",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [
+    "thaumcraft:ancient_runic_stone",
+    "thaumcraft:eldritch_trap"
+  ],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": true,
+  "recipe_groups": {}
+}

@@ -1,0 +1,6 @@
+newmtl part0
+map_Kd thaumcraft:models/vis_relay
+newmtl part1
+map_Kd thaumcraft:models/vis_relay
+newmtl part2
+map_Kd thaumcraft:models/vis_relay

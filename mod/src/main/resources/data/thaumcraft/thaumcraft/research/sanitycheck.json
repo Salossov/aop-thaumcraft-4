@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "SANITYCHECK",
+  "category": "ELDRITCH",
+  "parents": [
+    "ELDRITCHMINOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "cognitio": 5,
+    "alienis": 3,
+    "sensus": 5
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 2,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.SANITYCHECK.1"
+  ],
+  "recipe_pages": [
+    "SanityCheck"
+  ],
+  "page_order": [
+    "tc.research_page.SANITYCHECK.1",
+    "SanityCheck"
+  ],
+  "icon": "thaumcraft:sanity_checker",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

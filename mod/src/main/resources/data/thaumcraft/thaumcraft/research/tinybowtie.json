@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "TINYBOWTIE",
+  "category": "GOLEMANCY",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "pannus": 2,
+    "iter": 1,
+    "lucrum": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 7,
+  "row": 10,
+  "text_pages": [
+    "tc.research_page.TINYBOWTIE.1"
+  ],
+  "recipe_pages": [
+    "TinyBowtie"
+  ],
+  "page_order": [
+    "tc.research_page.TINYBOWTIE.1",
+    "TinyBowtie"
+  ],
+  "icon": "thaumcraft:golem_bowtie",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [
+    "minecraft:wool"
+  ],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "pannus"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

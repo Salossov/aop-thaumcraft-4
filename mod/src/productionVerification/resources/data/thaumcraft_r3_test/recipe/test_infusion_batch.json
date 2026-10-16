@@ -1,0 +1,20 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "INFUSION",
+  "input": {
+    "item": "minecraft:gold_ingot"
+  },
+  "components": [
+    {
+      "item": "minecraft:quartz"
+    }
+  ],
+  "result": {
+    "id": "minecraft:diamond",
+    "count": 4
+  },
+  "aspects": {
+    "ignis": 1
+  },
+  "instability": 0
+}

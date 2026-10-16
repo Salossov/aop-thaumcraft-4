@@ -1,0 +1,24 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "PRIMALARROW",
+  "vis": {
+    "ignis": 8
+  },
+  "result": {
+    "id": "thaumcraft:fire_primal_arrow",
+    "count": 8
+  },
+  "pattern": [
+    "AAA",
+    "ASA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:arrow"
+    },
+    "S": {
+      "item": "thaumcraft:fire_shard"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "BELLOWS",
+  "result": {
+    "id": "thaumcraft:arcane_bellows",
+    "count": 1
+  },
+  "vis": {
+    "aer": 10,
+    "ordo": 5
+  },
+  "pattern": [
+    "WW ",
+    "LCI",
+    "WW "
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:planks"
+    },
+    "C": {
+      "item": "thaumcraft:air_shard"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "ROD_obsidian",
+  "category": "THAUMATURGY",
+  "parents": [
+    "ROD_greatwood",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "instrumentum": 3,
+    "terra": 6,
+    "ignis": 3,
+    "praecantatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -8,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.ROD_obsidian.1"
+  ],
+  "recipe_pages": [
+    "WandRodObsidian"
+  ],
+  "page_order": [
+    "tc.research_page.ROD_obsidian.1",
+    "WandRodObsidian"
+  ],
+  "icon": "thaumcraft:obsidian_wand_rod",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

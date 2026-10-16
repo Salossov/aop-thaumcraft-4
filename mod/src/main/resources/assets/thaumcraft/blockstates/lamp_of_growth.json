@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=true": {
+      "model": "thaumcraft:block/lamp_of_growth"
+    },
+    "lit=false": {
+      "model": "thaumcraft:block/lamp_of_growth_off"
+    }
+  }
+}

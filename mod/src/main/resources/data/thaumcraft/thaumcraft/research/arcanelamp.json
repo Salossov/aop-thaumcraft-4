@@ -1,0 +1,47 @@
+{
+  "kind": "research",
+  "key": "ARCANELAMP",
+  "category": "ARTIFICE",
+  "parents": [
+    "NITOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "lux": 3,
+    "sensus": 3,
+    "tenebrae": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -3,
+  "row": 1,
+  "text_pages": [
+    "tc.research_page.ARCANELAMP.1",
+    "tc.research_page.ARCANELAMP.2"
+  ],
+  "recipe_pages": [
+    "ArcaneLamp"
+  ],
+  "page_order": [
+    "tc.research_page.ARCANELAMP.1",
+    "ArcaneLamp",
+    "tc.research_page.ARCANELAMP.2"
+  ],
+  "icon": "thaumcraft:arcane_lamp",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {
+    "tc.research_page.ARCANELAMP.2": "ARCANEBORE"
+  },
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "ROD_bone",
+  "category": "THAUMATURGY",
+  "parents": [
+    "ROD_greatwood",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "instrumentum": 3,
+    "perditio": 6,
+    "exanimis": 3,
+    "praecantatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -3,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.ROD_bone.1"
+  ],
+  "recipe_pages": [
+    "WandRodBone"
+  ],
+  "page_order": [
+    "tc.research_page.ROD_bone.1",
+    "WandRodBone"
+  ],
+  "icon": "thaumcraft:bone_wand_rod",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 1,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

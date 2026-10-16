@@ -1,0 +1,99 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:directory",
+      "source": "blocks",
+      "prefix": "blocks/"
+    },
+    {
+      "type": "minecraft:directory",
+      "source": "items",
+      "prefix": "items/"
+    },
+    {
+      "type": "minecraft:directory",
+      "source": "models",
+      "prefix": "models/"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/table",
+      "sprite": "thaumcraft:models/table"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/worktable",
+      "sprite": "thaumcraft:models/worktable"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/restable",
+      "sprite": "thaumcraft:models/restable"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/wand_rod_wood",
+      "sprite": "thaumcraft:models/wand_rod_wood"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/wand_cap_iron",
+      "sprite": "thaumcraft:models/wand_cap_iron"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/scanner",
+      "sprite": "thaumcraft:models/scanner"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/scanscreen",
+      "sprite": "thaumcraft:models/scanscreen"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/alembic",
+      "sprite": "thaumcraft:models/alembic"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/reservoir",
+      "sprite": "thaumcraft:models/reservoir"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/crystalizer",
+      "sprite": "thaumcraft:models/crystalizer"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/thaumatorium",
+      "sprite": "thaumcraft:models/thaumatorium"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/infuser",
+      "sprite": "thaumcraft:models/infuser"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/bellows",
+      "sprite": "thaumcraft:models/bellows"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/pillar",
+      "sprite": "thaumcraft:models/pillar"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:misc/parchment",
+      "sprite": "thaumcraft:misc/parchment"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:misc/tunnel",
+      "sprite": "thaumcraft:misc/tunnel"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "thaumcraft:arcane_shapeless",
+  "research": "TUBEFILTER",
+  "result": {
+    "id": "thaumcraft:restricted_essentia_tube",
+    "count": 1
+  },
+  "vis": {
+    "aqua": 5,
+    "terra": 16
+  },
+  "ingredients": [
+    {
+      "item": "thaumcraft:essentia_tube"
+    },
+    {
+      "item": "minecraft:stone"
+    }
+  ]
+}

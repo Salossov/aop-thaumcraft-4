@@ -1,0 +1,47 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "ROD_primal_staff",
+  "result": {
+    "id": "thaumcraft:primal_staff_rod",
+    "count": 1
+  },
+  "instability": 8,
+  "aspects": {
+    "aer": 32,
+    "ignis": 32,
+    "aqua": 32,
+    "terra": 32,
+    "ordo": 32,
+    "perditio": 32,
+    "praecantatio": 64
+  },
+  "input": {
+    "item": "thaumcraft:silverwood_wand_rod"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:primal_charm"
+    },
+    {
+      "item": "thaumcraft:obsidian_wand_rod"
+    },
+    {
+      "item": "thaumcraft:ice_wand_rod"
+    },
+    {
+      "item": "thaumcraft:quartz_wand_rod"
+    },
+    {
+      "item": "thaumcraft:primal_charm"
+    },
+    {
+      "item": "thaumcraft:reed_wand_rod"
+    },
+    {
+      "item": "thaumcraft:blaze_wand_rod"
+    },
+    {
+      "item": "thaumcraft:bone_wand_rod"
+    }
+  ]
+}

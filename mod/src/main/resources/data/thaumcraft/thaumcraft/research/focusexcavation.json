@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "FOCUSEXCAVATION",
+  "category": "THAUMATURGY",
+  "parents": [
+    "FOCUSFIRE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "terra": 3,
+    "perditio": 3,
+    "praecantatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 0,
+  "row": -3,
+  "text_pages": [
+    "tc.research_page.FOCUSEXCAVATION.1"
+  ],
+  "recipe_pages": [
+    "FocusExcavation"
+  ],
+  "page_order": [
+    "tc.research_page.FOCUSEXCAVATION.1",
+    "FocusExcavation"
+  ],
+  "icon": "thaumcraft:focus_excavation",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

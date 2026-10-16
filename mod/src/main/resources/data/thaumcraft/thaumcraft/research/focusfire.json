@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "FOCUSFIRE",
+  "category": "THAUMATURGY",
+  "parents": [
+    "BASICTHAUMATURGY"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "ignis": 3,
+    "praecantatio": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 2,
+  "row": -2,
+  "text_pages": [
+    "tc.research_page.FOCUSFIRE.1",
+    "tc.research_page.FOCUSFIRE.2"
+  ],
+  "recipe_pages": [
+    "FocusFire"
+  ],
+  "page_order": [
+    "tc.research_page.FOCUSFIRE.1",
+    "tc.research_page.FOCUSFIRE.2",
+    "FocusFire"
+  ],
+  "icon": "thaumcraft:focus_fire",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

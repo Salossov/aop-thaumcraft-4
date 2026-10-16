@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "FOCUSTRADE",
+  "category": "THAUMATURGY",
+  "parents": [
+    "FOCUSFIRE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "terra": 3,
+    "permutatio": 6,
+    "praecantatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 4,
+  "row": -3,
+  "text_pages": [
+    "tc.research_page.FOCUSTRADE.1"
+  ],
+  "recipe_pages": [
+    "FocusTrade"
+  ],
+  "page_order": [
+    "tc.research_page.FOCUSTRADE.1",
+    "FocusTrade"
+  ],
+  "icon": "thaumcraft:focus_trade",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

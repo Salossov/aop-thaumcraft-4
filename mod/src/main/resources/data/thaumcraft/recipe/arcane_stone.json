@@ -1,0 +1,45 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "ARCANESTONE",
+  "pattern": [
+    "SSS",
+    "SCS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone"
+    },
+    "C": [
+      {
+        "item": "thaumcraft:air_shard"
+      },
+      {
+        "item": "thaumcraft:fire_shard"
+      },
+      {
+        "item": "thaumcraft:water_shard"
+      },
+      {
+        "item": "thaumcraft:earth_shard"
+      },
+      {
+        "item": "thaumcraft:order_shard"
+      },
+      {
+        "item": "thaumcraft:entropy_shard"
+      },
+      {
+        "item": "thaumcraft:balanced_shard"
+      }
+    ]
+  },
+  "result": {
+    "id": "thaumcraft:arcane_stone",
+    "count": 9
+  },
+  "vis": {
+    "terra": 1,
+    "ignis": 1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "ROD_obsidian_staff",
+  "result": {
+    "id": "thaumcraft:obsidian_staff_rod",
+    "count": 1
+  },
+  "vis": {
+    "ordo": 14
+  },
+  "pattern": [
+    "  S",
+    " G ",
+    "G  "
+  ],
+  "key": {
+    "S": {
+      "item": "thaumcraft:primal_charm"
+    },
+    "G": {
+      "item": "thaumcraft:obsidian_wand_rod"
+    }
+  }
+}

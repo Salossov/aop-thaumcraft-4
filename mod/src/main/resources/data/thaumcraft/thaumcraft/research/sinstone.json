@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "SINSTONE",
+  "category": "ARTIFICE",
+  "parents": [
+    "GOGGLES"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "sensus": 3,
+    "tenebrae": 3,
+    "alienis": 3,
+    "auram": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 6,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.SINSTONE.1"
+  ],
+  "recipe_pages": [
+    "SinStone"
+  ],
+  "page_order": [
+    "tc.research_page.SINSTONE.1",
+    "SinStone"
+  ],
+  "icon": "thaumcraft:sinister_stone",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 2,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "UPGRADEORDER",
+  "category": "GOLEMANCY",
+  "parents": [
+    "GOLEMBELL"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "ordo": 6,
+    "cognitio": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 6,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.UPGRADEORDER.1"
+  ],
+  "recipe_pages": [
+    "UpgradeOrder"
+  ],
+  "page_order": [
+    "tc.research_page.UPGRADEORDER.1",
+    "UpgradeOrder"
+  ],
+  "icon": "thaumcraft:order_golem_upgrade",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "CAP_copper",
+  "category": "THAUMATURGY",
+  "parents": [
+    "BASICTHAUMATURGY"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "metallum": 3,
+    "permutatio": 3,
+    "instrumentum": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 2,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.CAP_copper.1"
+  ],
+  "recipe_pages": [
+    "WandCapCopper"
+  ],
+  "page_order": [
+    "tc.research_page.CAP_copper.1",
+    "WandCapCopper"
+  ],
+  "icon": "thaumcraft:copper_wand_cap",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,237 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "thaumcraft:blocks/lifterside",
+    "side": "thaumcraft:blocks/lifterside",
+    "top": "thaumcraft:blocks/liftertop",
+    "bottom": "thaumcraft:blocks/arcaneearbottom",
+    "glow": "thaumcraft:blocks/animatedglow"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#bottom",
+          "cullface": "down"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top",
+          "cullface": "up"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side",
+          "cullface": "north"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side",
+          "cullface": "south"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side",
+          "cullface": "west"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side",
+          "cullface": "east"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        15.84,
+        0
+      ],
+      "to": [
+        16,
+        15.84,
+        16
+      ],
+      "shade": false,
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#glow",
+          "cullface": "up",
+          "neoforge_data": {
+            "color": "ff00a000",
+            "ambient_occlusion": false,
+            "block_light": 11
+          }
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        0,
+        0.16
+      ],
+      "to": [
+        16,
+        16,
+        0.16
+      ],
+      "shade": false,
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#glow",
+          "cullface": "north",
+          "neoforge_data": {
+            "color": "ffdd11ff",
+            "ambient_occlusion": false,
+            "block_light": 11
+          }
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        0,
+        15.84
+      ],
+      "to": [
+        16,
+        16,
+        15.84
+      ],
+      "shade": false,
+      "faces": {
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#glow",
+          "cullface": "south",
+          "neoforge_data": {
+            "color": "ffdd11ff",
+            "ambient_occlusion": false,
+            "block_light": 11
+          }
+        }
+      }
+    },
+    {
+      "from": [
+        0.16,
+        0,
+        0
+      ],
+      "to": [
+        0.16,
+        16,
+        16
+      ],
+      "shade": false,
+      "faces": {
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#glow",
+          "cullface": "west",
+          "neoforge_data": {
+            "color": "ffdd11ff",
+            "ambient_occlusion": false,
+            "block_light": 11
+          }
+        }
+      }
+    },
+    {
+      "from": [
+        15.84,
+        0,
+        0
+      ],
+      "to": [
+        15.84,
+        16,
+        16
+      ],
+      "shade": false,
+      "faces": {
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#glow",
+          "cullface": "east",
+          "neoforge_data": {
+            "color": "ffdd11ff",
+            "ambient_occlusion": false,
+            "block_light": 11
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "kind": "research",
+  "key": "ELDRITCHMAJOR",
+  "category": "ELDRITCH",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {},
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -1,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.ELDRITCHMAJOR.1",
+    "tc.research_page.ELDRITCHMAJOR.2"
+  ],
+  "recipe_pages": [],
+  "page_order": [
+    "tc.research_page.ELDRITCHMAJOR.1",
+    "tc.research_page.ELDRITCHMAJOR.2"
+  ],
+  "icon": "thaumcraft:textures/misc/r_eldritchmajor.png",
+  "virtual": false,
+  "round": true,
+  "stub": true,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": true,
+  "recipe_groups": {}
+}

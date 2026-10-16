@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "FOCUSPORTABLEHOLE",
+  "category": "THAUMATURGY",
+  "parents": [
+    "FOCUSTRADE",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "iter": 3,
+    "perditio": 3,
+    "alienis": 6,
+    "aer": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 7,
+  "row": -2,
+  "text_pages": [
+    "tc.research_page.FOCUSPORTABLEHOLE.1"
+  ],
+  "recipe_pages": [
+    "FocusPortableHole"
+  ],
+  "page_order": [
+    "tc.research_page.FOCUSPORTABLEHOLE.1",
+    "FocusPortableHole"
+  ],
+  "icon": "thaumcraft:focus_portable_hole",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

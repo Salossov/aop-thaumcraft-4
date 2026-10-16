@@ -1,0 +1,8 @@
+{
+  "feature": "thaumcraft:material_ores",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

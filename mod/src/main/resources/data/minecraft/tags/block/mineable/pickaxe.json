@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "thaumcraft:air_infused_stone",
+    "thaumcraft:fire_infused_stone",
+    "thaumcraft:water_infused_stone",
+    "thaumcraft:earth_infused_stone",
+    "thaumcraft:order_infused_stone",
+    "thaumcraft:entropy_infused_stone",
+    "thaumcraft:cinnabar_ore",
+    "thaumcraft:amber_ore",
+    "thaumcraft:arcane_stone",
+    "thaumcraft:arcane_stone_bricks",
+    "thaumcraft:arcane_pedestal",
+    "thaumcraft:infusion_matrix",
+    "thaumcraft:infusion_pillar",
+    "thaumcraft:alchemical_construct",
+    "thaumcraft:eldritch_stone",
+    "thaumcraft:eldritch_rock",
+    "thaumcraft:eldritch_stone_nospawn",
+    "thaumcraft:ancient_stone",
+    "thaumcraft:eldritch_pillar",
+    "thaumcraft:eldritch_stone_stairs",
+    "thaumcraft:eldritch_stone_slab"
+  ]
+}

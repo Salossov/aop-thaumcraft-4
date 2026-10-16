@@ -1,0 +1,24 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "WARDEDARCANA",
+  "vis": {
+    "aqua": 5,
+    "ordo": 5
+  },
+  "result": {
+    "id": "thaumcraft:iron_key",
+    "count": 2
+  },
+  "pattern": [
+    "NNI",
+    "N  "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "N": {
+      "tag": "c:nuggets/iron"
+    }
+  }
+}

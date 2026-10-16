@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "SCEPTRE",
+  "category": "THAUMATURGY",
+  "parents": [
+    "ROD_silverwood"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "instrumentum": 6,
+    "fabrico": 6,
+    "arbor": 6,
+    "praecantatio": 9
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 0,
+  "row": 4,
+  "text_pages": [
+    "tc.research_page.SCEPTRE.1"
+  ],
+  "recipe_pages": [
+    "sceptre_assembly"
+  ],
+  "page_order": [
+    "tc.research_page.SCEPTRE.1",
+    "sceptre_assembly"
+  ],
+  "icon": "thaumcraft:iron_capped_wooden_wand",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

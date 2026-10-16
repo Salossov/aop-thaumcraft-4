@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "facing=north,slave=false": {
+      "model": "thaumcraft:block/arcane_workbench",
+      "y": 0
+    },
+    "facing=north,slave=true": {
+      "model": "thaumcraft:block/arcane_workbench",
+      "y": 0
+    },
+    "facing=east,slave=false": {
+      "model": "thaumcraft:block/arcane_workbench",
+      "y": 90
+    },
+    "facing=east,slave=true": {
+      "model": "thaumcraft:block/arcane_workbench",
+      "y": 90
+    },
+    "facing=south,slave=false": {
+      "model": "thaumcraft:block/arcane_workbench",
+      "y": 0
+    },
+    "facing=south,slave=true": {
+      "model": "thaumcraft:block/arcane_workbench",
+      "y": 0
+    },
+    "facing=west,slave=false": {
+      "model": "thaumcraft:block/arcane_workbench",
+      "y": 90
+    },
+    "facing=west,slave=true": {
+      "model": "thaumcraft:block/arcane_workbench",
+      "y": 90
+    }
+  }
+}

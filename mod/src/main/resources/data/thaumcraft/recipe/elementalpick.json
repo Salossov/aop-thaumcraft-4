@@ -1,0 +1,31 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "ELEMENTALPICK",
+  "result": {
+    "id": "thaumcraft:elemental_pickaxe",
+    "count": 1
+  },
+  "instability": 1,
+  "aspects": {
+    "ignis": 8,
+    "perfodio": 8,
+    "sensus": 8
+  },
+  "input": {
+    "item": "thaumcraft:thaumium_pickaxe"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:fire_shard"
+    },
+    {
+      "item": "thaumcraft:fire_shard"
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "thaumcraft:greatwood_log"
+    }
+  ]
+}

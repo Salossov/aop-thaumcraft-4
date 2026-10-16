@@ -1,0 +1,37 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "RUNICARMOR",
+  "result": {
+    "id": "thaumcraft:runic_amulet",
+    "count": 1
+  },
+  "instability": 4,
+  "aspects": {
+    "tutamen": 20,
+    "praecantatio": 35,
+    "potentia": 35
+  },
+  "input": {
+    "item": "thaumcraft:amulet_blank"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:primal_charm"
+    },
+    {
+      "item": "thaumcraft:amber"
+    },
+    {
+      "item": "thaumcraft:enchanted_fabric"
+    },
+    {
+      "item": "thaumcraft:nitor"
+    },
+    {
+      "item": "thaumcraft:nitor"
+    },
+    {
+      "item": "thaumcraft:scribing_tools"
+    }
+  ]
+}

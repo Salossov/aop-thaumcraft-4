@@ -1,0 +1,41 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "PRIMALCRUSHER",
+  "result": {
+    "id": "thaumcraft:primal_crusher",
+    "count": 1
+  },
+  "instability": 6,
+  "aspects": {
+    "perfodio": 24,
+    "instrumentum": 24,
+    "perditio": 16,
+    "vacuos": 16,
+    "telum": 16,
+    "alienis": 16,
+    "lucrum": 16
+  },
+  "input": {
+    "item": "thaumcraft:primal_pearl"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:primal_charm"
+    },
+    {
+      "item": "thaumcraft:void_pickaxe"
+    },
+    {
+      "item": "thaumcraft:void_shovel"
+    },
+    {
+      "item": "thaumcraft:primal_charm"
+    },
+    {
+      "item": "thaumcraft:elemental_pickaxe"
+    },
+    {
+      "item": "thaumcraft:elemental_shovel"
+    }
+  ]
+}

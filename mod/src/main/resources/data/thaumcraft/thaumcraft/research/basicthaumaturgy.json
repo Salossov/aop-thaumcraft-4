@@ -1,0 +1,41 @@
+{
+  "kind": "research",
+  "key": "BASICTHAUMATURGY",
+  "category": "THAUMATURGY",
+  "parents": [],
+  "aspects": {},
+  "complexity": 1,
+  "auto_unlock": true,
+  "concealed": false,
+  "column": 0,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.BASICTHAUMATURGY.1",
+    "tc.research_page.BASICTHAUMATURGY.2"
+  ],
+  "recipe_pages": [
+    "WandCapIron",
+    "WandBasic"
+  ],
+  "icon": "thaumcraft:iron_capped_wooden_wand",
+  "virtual": false,
+  "round": true,
+  "stub": true,
+  "page_order": [
+    "tc.research_page.BASICTHAUMATURGY.1",
+    "tc.research_page.BASICTHAUMATURGY.2",
+    "WandCapIron",
+    "WandBasic"
+  ],
+  "hidden_parents": [],
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "TINYHAMMER",
+  "category": "GOLEMANCY",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "metallum": 1,
+    "telum": 2,
+    "lucrum": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 8,
+  "row": 11,
+  "text_pages": [
+    "tc.research_page.TINYHAMMER.1"
+  ],
+  "recipe_pages": [
+    "TinyHammer"
+  ],
+  "page_order": [
+    "tc.research_page.TINYHAMMER.1",
+    "TinyHammer"
+  ],
+  "icon": "thaumcraft:golem_mace",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "telum"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

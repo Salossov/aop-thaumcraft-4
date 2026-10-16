@@ -1,0 +1,40 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+
+[[mixins]]
+config="thaumcraft.mixins.json"
+
+[[mods]]
+modId="thaumcraft"
+version="${version}"
+displayName="AOP: Thaumcraft 4"
+description='''Another One Port of Thaumcraft 4.2.3.5 to 1.21.1. Research, aura nodes and arcane crafting; further gameplay systems are being ported.'''
+
+[[dependencies.thaumcraft]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.thaumcraft]]
+modId="neoforge"
+type="required"
+versionRange="[${neoVersion},21.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.thaumcraft]]
+modId="terrablender"
+type="optional"
+versionRange="[4.1.0.8,4.2)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.thaumcraft]]
+modId="curios"
+type="required"
+versionRange="[${curiosVersion},10)"
+ordering="AFTER"
+side="BOTH"

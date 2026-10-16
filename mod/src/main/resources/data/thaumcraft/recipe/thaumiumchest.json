@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "id": "thaumcraft:thaumium_chestplate",
+    "count": 1
+  },
+  "pattern": [
+    "I I",
+    "III",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "tag": "c:ingots/thaumium"
+    }
+  }
+}

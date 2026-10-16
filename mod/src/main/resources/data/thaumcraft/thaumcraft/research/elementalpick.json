@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "ELEMENTALPICK",
+  "category": "ARTIFICE",
+  "parents": [
+    "THAUMIUM",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "instrumentum": 3,
+    "ignis": 3,
+    "sensus": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -7,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.ELEMENTALPICK.1",
+    "tc.research_page.ELEMENTALPICK.2"
+  ],
+  "recipe_pages": [
+    "ElementalPick"
+  ],
+  "page_order": [
+    "tc.research_page.ELEMENTALPICK.1",
+    "ElementalPick",
+    "tc.research_page.ELEMENTALPICK.2"
+  ],
+  "icon": "thaumcraft:elemental_pickaxe",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

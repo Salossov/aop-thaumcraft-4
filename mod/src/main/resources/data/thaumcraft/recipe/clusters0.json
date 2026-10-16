@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "result": {
+    "id": "thaumcraft:air_crystal_cluster",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "thaumcraft:air_shard"
+    },
+    {
+      "item": "thaumcraft:air_shard"
+    },
+    {
+      "item": "thaumcraft:air_shard"
+    },
+    {
+      "item": "thaumcraft:air_shard"
+    },
+    {
+      "item": "thaumcraft:air_shard"
+    },
+    {
+      "item": "thaumcraft:air_shard"
+    }
+  ]
+}

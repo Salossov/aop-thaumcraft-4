@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "T"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_bars"
+    },
+    "T": {
+      "item": "minecraft:oak_trapdoor"
+    }
+  },
+  "result": {
+    "id": "thaumcraft:item_grate",
+    "count": 1
+  }
+}

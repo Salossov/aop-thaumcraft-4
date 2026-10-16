@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "CORELUMBER",
+  "category": "GOLEMANCY",
+  "parents": [
+    "COREHARVEST",
+    "ELEMENTALAXE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "arbor": 6,
+    "meto": 3,
+    "instrumentum": 3,
+    "potentia": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -1,
+  "row": 7,
+  "text_pages": [
+    "tc.research_page.CORELUMBER.1"
+  ],
+  "recipe_pages": [
+    "CoreLumber"
+  ],
+  "page_order": [
+    "tc.research_page.CORELUMBER.1",
+    "CoreLumber"
+  ],
+  "icon": "thaumcraft:golem_core_lumber",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

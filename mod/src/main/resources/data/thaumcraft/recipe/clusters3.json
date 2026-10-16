@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "result": {
+    "id": "thaumcraft:earth_crystal_cluster",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "thaumcraft:earth_shard"
+    },
+    {
+      "item": "thaumcraft:earth_shard"
+    },
+    {
+      "item": "thaumcraft:earth_shard"
+    },
+    {
+      "item": "thaumcraft:earth_shard"
+    },
+    {
+      "item": "thaumcraft:earth_shard"
+    },
+    {
+      "item": "thaumcraft:earth_shard"
+    }
+  ]
+}

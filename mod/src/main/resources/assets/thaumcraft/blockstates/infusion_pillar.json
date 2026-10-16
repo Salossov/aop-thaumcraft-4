@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "half=lower,orientation=2": {
+      "model": "thaumcraft:block/infusion_pillar",
+      "y": 0
+    },
+    "half=lower,orientation=3": {
+      "model": "thaumcraft:block/infusion_pillar",
+      "y": 270
+    },
+    "half=lower,orientation=4": {
+      "model": "thaumcraft:block/infusion_pillar",
+      "y": 90
+    },
+    "half=lower,orientation=5": {
+      "model": "thaumcraft:block/infusion_pillar",
+      "y": 180
+    },
+    "half=upper,orientation=2": {
+      "model": "thaumcraft:block/empty",
+      "y": 0
+    },
+    "half=upper,orientation=3": {
+      "model": "thaumcraft:block/empty",
+      "y": 270
+    },
+    "half=upper,orientation=4": {
+      "model": "thaumcraft:block/empty",
+      "y": 90
+    },
+    "half=upper,orientation=5": {
+      "model": "thaumcraft:block/empty",
+      "y": 180
+    }
+  }
+}

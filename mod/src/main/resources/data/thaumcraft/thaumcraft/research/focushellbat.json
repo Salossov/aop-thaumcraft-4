@@ -1,0 +1,49 @@
+{
+  "kind": "research",
+  "key": "FOCUSHELLBAT",
+  "category": "THAUMATURGY",
+  "parents": [],
+  "hidden_parents": [
+    "FOCUSFIRE",
+    "INFUSION"
+  ],
+  "aspects": {
+    "iter": 3,
+    "bestia": 6,
+    "ignis": 3,
+    "praecantatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 3,
+  "row": -7,
+  "text_pages": [
+    "tc.research_page.FOCUSHELLBAT.1"
+  ],
+  "recipe_pages": [
+    "FocusHellbat"
+  ],
+  "page_order": [
+    "tc.research_page.FOCUSHELLBAT.1",
+    "FocusHellbat"
+  ],
+  "icon": "thaumcraft:focus_hellbat",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 2,
+  "item_triggers": [],
+  "entity_triggers": [
+    "thaumcraft:firebat"
+  ],
+  "aspect_triggers": [
+    "ignis"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

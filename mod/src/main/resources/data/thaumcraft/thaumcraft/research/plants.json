@@ -1,0 +1,49 @@
+{
+  "kind": "research",
+  "key": "PLANTS",
+  "category": "BASICS",
+  "parents": [],
+  "aspects": {},
+  "complexity": 1,
+  "auto_unlock": true,
+  "concealed": false,
+  "column": -2,
+  "row": -4,
+  "text_pages": [
+    "tc.research_page.PLANTS.1",
+    "tc.research_page.PLANTS.2",
+    "tc.research_page.PLANTS.3",
+    "tc.research_page.PLANTS.4",
+    "tc.research_page.PLANTS.5",
+    "tc.research_page.PLANTS.6"
+  ],
+  "recipe_pages": [
+    "PlankGreatwood",
+    "PlankSilverwood"
+  ],
+  "icon": "thaumcraft:textures/blocks/shimmerleaf.png",
+  "virtual": false,
+  "round": true,
+  "stub": true,
+  "page_order": [
+    "tc.research_page.PLANTS.1",
+    "PlankGreatwood",
+    "tc.research_page.PLANTS.2",
+    "PlankSilverwood",
+    "tc.research_page.PLANTS.3",
+    "tc.research_page.PLANTS.4",
+    "tc.research_page.PLANTS.5",
+    "tc.research_page.PLANTS.6"
+  ],
+  "hidden_parents": [],
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "GOLEMWOOD",
+  "category": "GOLEMANCY",
+  "parents": [
+    "GOLEMSTRAW"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "spiritus": 4,
+    "motus": 4,
+    "arbor": 3,
+    "permutatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 2,
+  "row": 4,
+  "text_pages": [
+    "tc.research_page.GOLEMWOOD.1"
+  ],
+  "recipe_pages": [
+    "GolemWood"
+  ],
+  "page_order": [
+    "tc.research_page.GOLEMWOOD.1",
+    "GolemWood"
+  ],
+  "icon": "thaumcraft:wood_golem",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

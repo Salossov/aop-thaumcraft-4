@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "result": {
+    "id": "thaumcraft:order_crystal_cluster",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "thaumcraft:order_shard"
+    },
+    {
+      "item": "thaumcraft:order_shard"
+    },
+    {
+      "item": "thaumcraft:order_shard"
+    },
+    {
+      "item": "thaumcraft:order_shard"
+    },
+    {
+      "item": "thaumcraft:order_shard"
+    },
+    {
+      "item": "thaumcraft:order_shard"
+    }
+  ]
+}

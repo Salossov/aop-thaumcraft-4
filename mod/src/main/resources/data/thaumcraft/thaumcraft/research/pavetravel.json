@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "PAVETRAVEL",
+  "category": "ARTIFICE",
+  "parents": [
+    "ARCANESTONE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "iter": 3,
+    "terra": 3,
+    "volatus": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 4,
+  "row": -4,
+  "text_pages": [
+    "tc.research_page.PAVETRAVEL.1"
+  ],
+  "recipe_pages": [
+    "PaveTravel"
+  ],
+  "page_order": [
+    "tc.research_page.PAVETRAVEL.1",
+    "PaveTravel"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:paving_stone_travel",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

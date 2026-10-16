@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "thaumcraft:thaumaturge_chestplate",
+    "thaumcraft:thaumaturge_leggings",
+    "thaumcraft:thaumaturge_boots"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "open=true": {
+      "model": "thaumcraft:block/item_grate"
+    },
+    "open=false": {
+      "model": "thaumcraft:block/item_grate_closed"
+    }
+  }
+}

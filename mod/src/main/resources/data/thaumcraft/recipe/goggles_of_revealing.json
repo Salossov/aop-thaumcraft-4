@@ -1,0 +1,32 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "GOGGLES",
+  "pattern": [
+    "LGL",
+    "L L",
+    "TGT"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "T": {
+      "item": "thaumcraft:thaumometer"
+    }
+  },
+  "result": {
+    "id": "thaumcraft:goggles_of_revealing",
+    "count": 1
+  },
+  "vis": {
+    "aer": 5,
+    "ignis": 5,
+    "aqua": 5,
+    "terra": 5,
+    "ordo": 3,
+    "perditio": 3
+  }
+}

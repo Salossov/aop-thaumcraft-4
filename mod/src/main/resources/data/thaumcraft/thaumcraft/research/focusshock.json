@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "FOCUSSHOCK",
+  "category": "THAUMATURGY",
+  "parents": [
+    "FOCUSFIRE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "aer": 3,
+    "potentia": 6,
+    "praecantatio": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 3,
+  "row": -5,
+  "text_pages": [
+    "tc.research_page.FOCUSSHOCK.1"
+  ],
+  "recipe_pages": [
+    "FocusShock"
+  ],
+  "page_order": [
+    "tc.research_page.FOCUSSHOCK.1",
+    "FocusShock"
+  ],
+  "icon": "thaumcraft:focus_shock",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,437 @@
+{
+  "kind": "entity_variant_aspects",
+  "entries": {
+    "thaumcraft:wisp": [
+      {
+        "field": "Type",
+        "value": "aer",
+        "aspects": {
+          "aer": 3,
+          "praecantatio": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "terra",
+        "aspects": {
+          "terra": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "ignis",
+        "aspects": {
+          "ignis": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "aqua",
+        "aspects": {
+          "aqua": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "ordo",
+        "aspects": {
+          "ordo": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "perditio",
+        "aspects": {
+          "perditio": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "vacuos",
+        "aspects": {
+          "vacuos": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "lux",
+        "aspects": {
+          "lux": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "tempestas",
+        "aspects": {
+          "tempestas": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "motus",
+        "aspects": {
+          "motus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "gelum",
+        "aspects": {
+          "gelum": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "vitreus",
+        "aspects": {
+          "vitreus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "victus",
+        "aspects": {
+          "victus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "venenum",
+        "aspects": {
+          "venenum": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "potentia",
+        "aspects": {
+          "potentia": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "permutatio",
+        "aspects": {
+          "permutatio": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "metallum",
+        "aspects": {
+          "metallum": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "mortuus",
+        "aspects": {
+          "mortuus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "volatus",
+        "aspects": {
+          "volatus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "tenebrae",
+        "aspects": {
+          "tenebrae": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "spiritus",
+        "aspects": {
+          "spiritus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "sano",
+        "aspects": {
+          "sano": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "iter",
+        "aspects": {
+          "iter": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "alienis",
+        "aspects": {
+          "alienis": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "praecantatio",
+        "aspects": {
+          "praecantatio": 3,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "auram",
+        "aspects": {
+          "auram": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "vitium",
+        "aspects": {
+          "vitium": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "limus",
+        "aspects": {
+          "limus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "herba",
+        "aspects": {
+          "herba": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "arbor",
+        "aspects": {
+          "arbor": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "bestia",
+        "aspects": {
+          "bestia": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "corpus",
+        "aspects": {
+          "corpus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "exanimis",
+        "aspects": {
+          "exanimis": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "cognitio",
+        "aspects": {
+          "cognitio": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "sensus",
+        "aspects": {
+          "sensus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "humanus",
+        "aspects": {
+          "humanus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "messis",
+        "aspects": {
+          "messis": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "perfodio",
+        "aspects": {
+          "perfodio": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "instrumentum",
+        "aspects": {
+          "instrumentum": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "meto",
+        "aspects": {
+          "meto": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "telum",
+        "aspects": {
+          "telum": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "tutamen",
+        "aspects": {
+          "tutamen": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "fames",
+        "aspects": {
+          "fames": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "lucrum",
+        "aspects": {
+          "lucrum": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "fabrico",
+        "aspects": {
+          "fabrico": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "pannus",
+        "aspects": {
+          "pannus": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "machina",
+        "aspects": {
+          "machina": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      },
+      {
+        "field": "Type",
+        "value": "vinculum",
+        "aspects": {
+          "vinculum": 2,
+          "praecantatio": 1,
+          "aer": 1
+        }
+      }
+    ]
+  }
+}

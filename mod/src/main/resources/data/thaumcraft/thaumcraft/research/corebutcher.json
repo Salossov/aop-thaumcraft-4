@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "COREBUTCHER",
+  "category": "GOLEMANCY",
+  "parents": [
+    "COREGUARD",
+    "COREHARVEST"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "telum": 3,
+    "bestia": 3,
+    "sensus": 3,
+    "meto": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -3,
+  "row": 7,
+  "text_pages": [
+    "tc.research_page.COREBUTCHER.1"
+  ],
+  "recipe_pages": [
+    "CoreButcher"
+  ],
+  "page_order": [
+    "tc.research_page.COREBUTCHER.1",
+    "CoreButcher"
+  ],
+  "icon": "thaumcraft:golem_core_butcher",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 1,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

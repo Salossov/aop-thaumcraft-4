@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "TINYGLASSES",
+  "category": "GOLEMANCY",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "pannus": 2,
+    "sensus": 1,
+    "lucrum": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 6,
+  "row": 10,
+  "text_pages": [
+    "tc.research_page.TINYGLASSES.1"
+  ],
+  "recipe_pages": [
+    "TinyGlasses"
+  ],
+  "page_order": [
+    "tc.research_page.TINYGLASSES.1",
+    "TinyGlasses"
+  ],
+  "icon": "thaumcraft:golem_glasses",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [
+    "minecraft:wool"
+  ],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "pannus"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

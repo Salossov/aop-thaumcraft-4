@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "TRANSIRON",
+  "category": "ALCHEMY",
+  "parents": [
+    "THAUMIUM"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "metallum": 3,
+    "permutatio": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 0,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.TRANSIRON.1"
+  ],
+  "recipe_pages": [
+    "TransIron"
+  ],
+  "page_order": [
+    "tc.research_page.TRANSIRON.1",
+    "TransIron"
+  ],
+  "icon": "minecraft:iron_nugget",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

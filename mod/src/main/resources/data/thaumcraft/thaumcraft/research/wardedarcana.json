@@ -1,0 +1,58 @@
+{
+  "kind": "research",
+  "key": "WARDEDARCANA",
+  "category": "ARTIFICE",
+  "parents": [
+    "THAUMIUM"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "instrumentum": 6,
+    "cognitio": 3,
+    "machina": 3,
+    "tutamen": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -5,
+  "row": -4,
+  "text_pages": [
+    "tc.research_page.WARDEDARCANA.1",
+    "tc.research_page.WARDEDARCANA.2",
+    "tc.research_page.WARDEDARCANA.3",
+    "tc.research_page.WARDEDARCANA.4"
+  ],
+  "recipe_pages": [
+    "ArcaneDoor",
+    "IronKey",
+    "GoldKey",
+    "ArcanePressurePlate",
+    "WardedGlass"
+  ],
+  "page_order": [
+    "tc.research_page.WARDEDARCANA.1",
+    "ArcaneDoor",
+    "tc.research_page.WARDEDARCANA.2",
+    "IronKey",
+    "GoldKey",
+    "tc.research_page.WARDEDARCANA.3",
+    "ArcanePressurePlate",
+    "tc.research_page.WARDEDARCANA.4",
+    "WardedGlass"
+  ],
+  "page_requirements": {},
+  "recipe_groups": {},
+  "icon": "thaumcraft:arcane_door",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": []
+}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "type": "neoforge:components",
+      "items": "thaumcraft:jar_label",
+      "strict": true,
+      "components": {}
+    },
+    {
+      "type": "neoforge:components",
+      "items": "thaumcraft:essentia_phial",
+      "strict": true,
+      "components": {
+        "minecraft:custom_data": {
+          "Aspect": "spiritus"
+        }
+      }
+    }
+  ],
+  "result": {
+    "id": "thaumcraft:jar_label",
+    "count": 1,
+    "components": {
+      "minecraft:custom_data": {
+        "Aspect": "spiritus"
+      }
+    }
+  }
+}

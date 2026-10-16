@@ -1,0 +1,349 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "bellows": "thaumcraft:models/bellows",
+    "particle": "thaumcraft:blocks/planks_greatwood"
+  },
+  "elements": [
+    {
+      "from": [
+        2,
+        2.1,
+        2
+      ],
+      "to": [
+        14,
+        4.1,
+        14
+      ],
+      "faces": {
+        "west": {
+          "texture": "#bellows",
+          "uv": [
+            0,
+            3,
+            1.5,
+            3.5
+          ]
+        },
+        "north": {
+          "texture": "#bellows",
+          "uv": [
+            1.5,
+            3,
+            3,
+            3.5
+          ]
+        },
+        "east": {
+          "texture": "#bellows",
+          "uv": [
+            3,
+            3,
+            4.5,
+            3.5
+          ]
+        },
+        "south": {
+          "texture": "#bellows",
+          "uv": [
+            4.5,
+            3,
+            6,
+            3.5
+          ]
+        },
+        "up": {
+          "texture": "#bellows",
+          "uv": [
+            1.5,
+            0,
+            3,
+            3
+          ]
+        },
+        "down": {
+          "texture": "#bellows",
+          "uv": [
+            3,
+            0,
+            4.5,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        2,
+        11.9,
+        2
+      ],
+      "to": [
+        14,
+        13.9,
+        14
+      ],
+      "faces": {
+        "west": {
+          "texture": "#bellows",
+          "uv": [
+            0,
+            3,
+            1.5,
+            3.5
+          ]
+        },
+        "north": {
+          "texture": "#bellows",
+          "uv": [
+            1.5,
+            3,
+            3,
+            3.5
+          ]
+        },
+        "east": {
+          "texture": "#bellows",
+          "uv": [
+            3,
+            3,
+            4.5,
+            3.5
+          ]
+        },
+        "south": {
+          "texture": "#bellows",
+          "uv": [
+            4.5,
+            3,
+            6,
+            3.5
+          ]
+        },
+        "up": {
+          "texture": "#bellows",
+          "uv": [
+            1.5,
+            0,
+            3,
+            3
+          ]
+        },
+        "down": {
+          "texture": "#bellows",
+          "uv": [
+            3,
+            0,
+            4.5,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        2,
+        7,
+        2
+      ],
+      "to": [
+        14,
+        9,
+        14
+      ],
+      "faces": {
+        "west": {
+          "texture": "#bellows",
+          "uv": [
+            0,
+            3,
+            1.5,
+            3.5
+          ]
+        },
+        "north": {
+          "texture": "#bellows",
+          "uv": [
+            1.5,
+            3,
+            3,
+            3.5
+          ]
+        },
+        "east": {
+          "texture": "#bellows",
+          "uv": [
+            3,
+            3,
+            4.5,
+            3.5
+          ]
+        },
+        "south": {
+          "texture": "#bellows",
+          "uv": [
+            4.5,
+            3,
+            6,
+            3.5
+          ]
+        },
+        "up": {
+          "texture": "#bellows",
+          "uv": [
+            1.5,
+            0,
+            3,
+            3
+          ]
+        },
+        "down": {
+          "texture": "#bellows",
+          "uv": [
+            3,
+            0,
+            4.5,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        3,
+        3.39,
+        3
+      ],
+      "to": [
+        13,
+        12.99,
+        13
+      ],
+      "faces": {
+        "west": {
+          "texture": "#bellows",
+          "uv": [
+            6,
+            5,
+            8.5,
+            11
+          ]
+        },
+        "north": {
+          "texture": "#bellows",
+          "uv": [
+            8.5,
+            5,
+            11,
+            11
+          ]
+        },
+        "east": {
+          "texture": "#bellows",
+          "uv": [
+            11,
+            5,
+            13.5,
+            11
+          ]
+        },
+        "south": {
+          "texture": "#bellows",
+          "uv": [
+            13.5,
+            5,
+            16,
+            11
+          ]
+        },
+        "up": {
+          "texture": "#bellows",
+          "uv": [
+            8.5,
+            0,
+            11,
+            5
+          ]
+        },
+        "down": {
+          "texture": "#bellows",
+          "uv": [
+            11,
+            0,
+            13.5,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        6,
+        6,
+        14
+      ],
+      "to": [
+        10,
+        10,
+        16
+      ],
+      "faces": {
+        "west": {
+          "texture": "#bellows",
+          "uv": [
+            0,
+            9.5,
+            0.25,
+            10.5
+          ]
+        },
+        "north": {
+          "texture": "#bellows",
+          "uv": [
+            0.25,
+            9.5,
+            0.75,
+            10.5
+          ]
+        },
+        "east": {
+          "texture": "#bellows",
+          "uv": [
+            0.75,
+            9.5,
+            1,
+            10.5
+          ]
+        },
+        "south": {
+          "texture": "#bellows",
+          "uv": [
+            1,
+            9.5,
+            1.5,
+            10.5
+          ]
+        },
+        "up": {
+          "texture": "#bellows",
+          "uv": [
+            0.25,
+            9,
+            0.75,
+            9.5
+          ]
+        },
+        "down": {
+          "texture": "#bellows",
+          "uv": [
+            0.75,
+            9,
+            1.25,
+            9.5
+          ]
+        }
+      }
+    }
+  ]
+}

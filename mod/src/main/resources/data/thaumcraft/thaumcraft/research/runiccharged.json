@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "RUNICCHARGED",
+  "category": "ARTIFICE",
+  "parents": [
+    "RUNICARMOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "praecantatio": 3,
+    "tutamen": 3,
+    "potentia": 6
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 2,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.RUNICCHARGED.1"
+  ],
+  "recipe_pages": [
+    "RunicRingCharged"
+  ],
+  "page_order": [
+    "tc.research_page.RUNICCHARGED.1",
+    "RunicRingCharged"
+  ],
+  "icon": "thaumcraft:runic_ring_charged",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

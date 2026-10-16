@@ -1,0 +1,15 @@
+{
+  "type": "thaumcraft:crucible",
+  "research": "COREEMPTY",
+  "result": {
+    "id": "thaumcraft:golem_core_empty",
+    "count": 1
+  },
+  "catalyst": {
+    "item": "thaumcraft:golem_core_blank"
+  },
+  "aspects": {
+    "lucrum": 5,
+    "vacuos": 5
+  }
+}

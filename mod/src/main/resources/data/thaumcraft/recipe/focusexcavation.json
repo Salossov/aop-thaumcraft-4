@@ -1,0 +1,29 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "FOCUSEXCAVATION",
+  "result": {
+    "id": "thaumcraft:focus_excavation",
+    "count": 1
+  },
+  "vis": {
+    "terra": 20,
+    "perditio": 5,
+    "ordo": 5
+  },
+  "pattern": [
+    "CQC",
+    "Q#Q",
+    "CQC"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:gems/emerald"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "C": {
+      "item": "thaumcraft:earth_shard"
+    }
+  }
+}

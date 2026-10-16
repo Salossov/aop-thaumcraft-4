@@ -1,0 +1,7 @@
+newmtl scanner
+Kd 1 1 1
+map_Kd thaumcraft:models/scanner
+newmtl screen
+Kd 1 1 1
+Ka 1 1 1
+map_Kd thaumcraft:models/scanscreen

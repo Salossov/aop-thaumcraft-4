@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "id": "thaumcraft:void_axe",
+    "count": 1
+  },
+  "pattern": [
+    "II",
+    "SI",
+    "S "
+  ],
+  "key": {
+    "I": {
+      "tag": "c:ingots/void"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  }
+}

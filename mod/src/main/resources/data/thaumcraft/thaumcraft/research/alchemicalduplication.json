@@ -1,0 +1,51 @@
+{
+  "kind": "research",
+  "key": "ALCHEMICALDUPLICATION",
+  "category": "ALCHEMY",
+  "parents": [
+    "TALLOW"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "praecantatio": 3,
+    "lucrum": 3,
+    "fabrico": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -4,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.ALCHEMICALDUPLICATION.1"
+  ],
+  "recipe_pages": [
+    "AltGunpowder",
+    "AltSlime",
+    "AltClay",
+    "AltGlowstone",
+    "AltInk"
+  ],
+  "page_order": [
+    "tc.research_page.ALCHEMICALDUPLICATION.1",
+    "AltGunpowder",
+    "AltSlime",
+    "AltClay",
+    "AltGlowstone",
+    "AltInk"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:textures/misc/r_alchmult.png",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

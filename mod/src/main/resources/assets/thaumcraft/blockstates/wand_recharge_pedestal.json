@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "thaumcraft:block/wand_recharge_pedestal"
+    },
+    "facing=down": {
+      "model": "thaumcraft:block/wand_recharge_pedestal"
+    },
+    "facing=north": {
+      "model": "thaumcraft:block/wand_recharge_pedestal"
+    },
+    "facing=south": {
+      "model": "thaumcraft:block/wand_recharge_pedestal"
+    },
+    "facing=east": {
+      "model": "thaumcraft:block/wand_recharge_pedestal"
+    },
+    "facing=west": {
+      "model": "thaumcraft:block/wand_recharge_pedestal"
+    }
+  }
+}

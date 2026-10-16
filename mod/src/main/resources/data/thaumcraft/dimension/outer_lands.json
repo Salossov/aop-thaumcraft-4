@@ -1,0 +1,7 @@
+{
+  "type": "thaumcraft:outer_lands",
+  "generator": {
+    "type": "thaumcraft:outer_lands",
+    "biome": "thaumcraft:eldritch"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "kind": "research",
+  "key": "COREHARVEST",
+  "category": "GOLEMANCY",
+  "parents": [
+    "COREGATHER"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "meto": 6,
+    "messis": 3,
+    "iter": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -2,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.COREHARVEST.1",
+    "tc.research_page.COREHARVEST.2"
+  ],
+  "recipe_pages": [
+    "CoreHarvest"
+  ],
+  "page_order": [
+    "tc.research_page.COREHARVEST.1",
+    "CoreHarvest",
+    "tc.research_page.COREHARVEST.2"
+  ],
+  "icon": "thaumcraft:golem_core_harvest",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {
+    "tc.research_page.COREHARVEST.2": "UPGRADEORDER"
+  },
+  "special": false,
+  "recipe_groups": {}
+}

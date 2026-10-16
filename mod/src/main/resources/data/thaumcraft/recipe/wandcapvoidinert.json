@@ -1,0 +1,23 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "CAP_void",
+  "result": {
+    "id": "thaumcraft:inert_void_wand_cap",
+    "count": 1
+  },
+  "vis": {
+    "perditio": 27,
+    "ordo": 27,
+    "ignis": 18,
+    "aer": 18
+  },
+  "pattern": [
+    "NNN",
+    "N N"
+  ],
+  "key": {
+    "N": {
+      "tag": "c:nuggets/void"
+    }
+  }
+}

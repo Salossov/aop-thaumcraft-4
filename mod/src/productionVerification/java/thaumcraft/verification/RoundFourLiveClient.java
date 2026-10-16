@@ -1,0 +1,56 @@
+package thaumcraft.verification;
+
+import java.nio.file.*;
+import java.util.*;
+import com.google.gson.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.*;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.*;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.*;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.model.data.ModelData;
+
+/** Native UI and world acceptance scene; never packaged in the mod. */
+@EventBusSubscriber(modid="thaumcraft_r3_test",value=Dist.CLIENT)
+public final class RoundFourLiveClient {
+    private static boolean textReference;private static int ticks;private static CreativeModeInventoryScreen screen;private static final List<String> checks=new ArrayList<>();
+    private static void check(boolean pass,String message){if(!pass)throw new AssertionError(message);checks.add(message);}
+    private static java.lang.reflect.Field field(Class<?> type,String name)throws Exception{var result=type.getDeclaredField(name);result.setAccessible(true);return result;}
+    private static void refresh()throws Exception{var method=CreativeModeInventoryScreen.class.getDeclaredMethod("refreshSearchResults");method.setAccessible(true);method.invoke(screen);}
+    private static int left()throws Exception{return field(AbstractContainerScreen.class,"leftPos").getInt(screen);}
+    private static int top()throws Exception{return field(AbstractContainerScreen.class,"topPos").getInt(screen);}
+    private static void scroll(int index)throws Exception{int rows=Math.max(1,(screen.getMenu().items.size()+8)/9-5);float value=Math.min(1,index/9/(float)rows);field(CreativeModeInventoryScreen.class,"scrollOffs").setFloat(screen,value);screen.getMenu().scrollTo(value);}
+    private static int index(java.util.function.Predicate<ItemStack> predicate){for(int i=0;i<screen.getMenu().items.size();i++)if(predicate.test(screen.getMenu().items.get(i)))return i;throw new AssertionError("missing scene item");}
+    private static void capture(Minecraft mc,String name)throws Exception{try(var image=net.minecraft.client.Screenshot.takeScreenshot(mc.getMainRenderTarget())){image.writeToFile(Path.of(System.getProperty("thaumcraft.r3.root"),"analysis/r3/evidence/"+name+".png"));}check(org.lwjgl.opengl.GL11.glGetError()==0,"native capture has no GL errors: "+name);}
+    @SubscribeEvent public static void tick(ClientTickEvent.Post event)throws Exception{
+        if(!"round-four-live".equals(System.getProperty("thaumcraft.r3.phase")))return;var mc=Minecraft.getInstance();if(mc.player==null||mc.level==null||mc.getOverlay()!=null||!mc.gameMode.hasInfiniteItems())return;
+        try{
+            if(++ticks==20){mc.getToasts().clear();org.lwjgl.glfw.GLFW.glfwRestoreWindow(mc.getWindow().getWindow());org.lwjgl.glfw.GLFW.glfwSetWindowSize(mc.getWindow().getWindow(),1050,700);mc.resizeDisplay();var tab=BuiltInRegistries.CREATIVE_MODE_TAB.get(ResourceLocation.parse("thaumcraft:thaumcraft"));field(CreativeModeInventoryScreen.class,"selectedTab").set(null,tab);screen=new CreativeModeInventoryScreen(mc.player,mc.level.enabledFeatures(),true){@Override public void render(GuiGraphics g,int x,int y,float partial){super.render(g,x,y,partial);if(textReference){g.pose().pushPose();g.pose().translate(0,0,500);g.drawString(font,Component.translatable("thaumcraft.creative.section.1"),10,10,0xffffe0a0,false);g.pose().popPose();}}};mc.setScreen(screen);long expected=tab.getDisplayItems().stream().filter(s->s.getItem() instanceof thaumcraft.items.CastingWandItem).map(thaumcraft.items.WandVis::capacity).distinct().count();check(screen.getMenu().items.stream().filter(s->s.getItem() instanceof thaumcraft.items.CastingWandItem).count()==expected,"default grouping matches every distinct implement capacity");var button=(Button)field(CreativeModeInventoryScreen.class,"tcGroupButton").get(screen);check(button.getWidth()==28&&button.getX()<left()&&button.getTooltip()!=null,"left grouping tab exposes its current-mode tooltip");var sections=(thaumcraft.client.CreativeSections)field(CreativeModeInventoryScreen.class,"tcSections").get(screen);check(sections.headers().size()==8,"creative layout shows all eight approved sections");for(int row:sections.headers().keySet())check(screen.getMenu().items.subList(row*9,row*9+9).stream().allMatch(ItemStack::isEmpty),"section header uses only client placeholders: "+row);}
+            if(ticks==30){scroll(index(s->s.is(BuiltInRegistries.ITEM.get(ResourceLocation.parse("thaumcraft:essentia_tube")))));var anchor=screen.getMenu().slots.stream().limit(45).map(slot->slot.getItem()).filter(s->!s.isEmpty()).findFirst().orElseThrow().copy();var button=(Button)field(CreativeModeInventoryScreen.class,"tcGroupButton").get(screen);for(int i=0;i<5;i++){button.onPress();check(screen.getMenu().slots.stream().limit(45).anyMatch(slot->ItemStack.isSameItemSameComponents(slot.getItem(),anchor)),"group-mode switch retains the visible anchor: "+i);check(field(CreativeModeInventoryScreen.class,"scrollOffs").getFloat(screen)>0,"group-mode switch never resets an established scroll to zero: "+i);}
+                var box=(EditBox)field(CreativeModeInventoryScreen.class,"searchBox").get(screen);box.setValue("zzzz-no-match");refresh();check(screen.getMenu().items.isEmpty(),"search has no phantom banners or padding when nothing matches");box.setValue("");refresh();var wand=new ItemStack(thaumcraft.registry.R2Content.WAND.get());var normal=new ArrayList<Component>();wand.getItem().appendHoverText(wand,Item.TooltipContext.of(mc.level),normal,TooltipFlag.NORMAL);check(normal.stream().noneMatch(c->c.getString().startsWith("Cap:")||c.getString().startsWith("Rod:")),"material details are hidden without Shift");var shifted=new ArrayList<Component>();wand.getItem().appendHoverText(wand,Item.TooltipContext.of(mc.level),shifted,new TooltipFlag(){public boolean isAdvanced(){return false;}public boolean isCreative(){return true;}public boolean hasShiftDown(){return true;}});check(shifted.stream().anyMatch(c->c.getString().equals("Cap: Iron"))&&shifted.stream().anyMatch(c->c.getString().equals("Rod: Wooden")),"Shift explains cap and rod instead of unlabelled material words");scroll(Math.max(0,index(s->s.getItem() instanceof thaumcraft.items.CastingWandItem)-9));}
+            if(ticks==40){double scale=mc.getWindow().getGuiScale();org.lwjgl.glfw.GLFW.glfwSetCursorPos(mc.getWindow().getWindow(),(left()-14)*scale,(top()+20)*scale);}
+            if(ticks==45){capture(mc,"round-four-creative");}
+            if(ticks==46){textReference=true;}if(ticks==48){capture(mc,"round-four-header-glyphs");Files.writeString(Path.of(System.getProperty("thaumcraft.r3.root"),"analysis/r3/evidence/round-four-header-position.json"),new Gson().toJson(Map.of("x",left()+screen.getMenu().slots.get(0).x+4,"y",top()+screen.getMenu().slots.get(0).y-1+(18-mc.font.lineHeight)/2,"scale",mc.getWindow().getGuiScale(),"width",mc.font.width(Component.translatable("thaumcraft.creative.section.1")),"height",mc.font.lineHeight)));textReference=false;}if(ticks==50){mc.getToasts().clear();mc.setScreen(new Models());}
+            if(ticks==65){capture(mc,"round-four-models");mc.setScreen(null);}
+            if(ticks==85){check(mc.player.getY()>113&&mc.player.getAbilities().flying,"acceptance camera stays above the model scene");mc.player.getInventory().setItem(0,new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse("thaumcraft:directional_essentia_tube"))));mc.player.getInventory().selected=0;
+                for(int i=0;i<RoundFourScene.PIPES.length;i++){var pos=RoundFourScene.pipe(i);var state=mc.level.getBlockState(pos);check(BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath().equals(RoundFourScene.PIPES[i]),"native client receives placed tube: "+RoundFourScene.PIPES[i]+" at player "+mc.player.position()+" actual "+state);var model=mc.getBlockRenderer().getBlockModel(state);var data=model.getModelData(mc.level,pos,state,ModelData.EMPTY);check(model!=mc.getModelManager().getMissingModel()&&model.getQuads(state,null,RandomSource.create(),data,null).size()>6,"placed tube bakes visible connected arms: "+RoundFourScene.PIPES[i]);}
+                check(mc.level.getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class,new net.minecraft.world.phys.AABB(599,108,619,622,114,624)).size()>=16,"native world contains dropped tube, device, mirror and implement examples");capture(mc,"round-four-world");mc.player.connection.sendCommand("tp @s 608 114 625 180 20");}
+            if(ticks==105){check(mc.player.getY()>113,"dropped-model camera stays above the scene");capture(mc,"round-four-dropped");var result=new LinkedHashMap<String,Object>();result.put("passed",true);result.put("checks",checks);result.put("count",checks.size());Files.writeString(Path.of(System.getProperty("thaumcraft.r3.root"),"analysis/r3/evidence/round-four-live-client.json"),new GsonBuilder().setPrettyPrinting().create().toJson(result));mc.stop();}
+        }catch(Throwable failure){failure.printStackTrace();var result=new LinkedHashMap<String,Object>();result.put("passed",false);result.put("error",failure.toString());result.put("checks",checks);Files.writeString(Path.of(System.getProperty("thaumcraft.r3.root"),"analysis/r3/evidence/round-four-live-client.json"),new GsonBuilder().setPrettyPrinting().create().toJson(result));mc.stop();}
+    }
+    private static final class Models extends Screen {
+        private final List<ItemStack> samples=new ArrayList<>();
+        Models(){super(Component.literal("Inventory 3D acceptance"));for(var id:RoundFourScene.PIPES)samples.add(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse("thaumcraft:"+id))));for(var id:RoundFourScene.DEVICES)samples.add(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse("thaumcraft:"+id))));samples.add(new ItemStack(thaumcraft.registry.R2Content.WAND.get()));var staff=new ItemStack(thaumcraft.registry.R3Equipment.STAFF.get());staff.set(thaumcraft.registry.WandComponents.PARTS.get(),new thaumcraft.api.wands.WandParts("greatwood_staff","gold"));samples.add(staff);samples.add(new ItemStack(thaumcraft.registry.R3Equipment.SCEPTRE.get()));}
+        @Override public void render(GuiGraphics g,int mouseX,int mouseY,float partial){g.fill(0,0,width,height,0xff758496);g.drawString(font,"Inventory: tubes, placed-device meshes, mirrors and implements",10,8,0xffffffff,false);for(int i=0;i<samples.size();i++){int x=12+i%8*62,y=35+i/8*90;g.pose().pushPose();g.pose().translate(x,y,0);g.pose().scale(3,3,3);g.renderItem(samples.get(i),0,0);g.pose().popPose();var name=BuiltInRegistries.ITEM.getKey(samples.get(i).getItem()).getPath().replace('_',' ');int line=0;for(var part:font.split(Component.literal(name),60))g.drawString(font,part,x,y+51+line++*9,0xffffffff,false);}g.flush();}
+    }
+}

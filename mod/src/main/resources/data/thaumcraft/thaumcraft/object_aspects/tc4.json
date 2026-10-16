@@ -1,0 +1,1169 @@
+{
+  "kind": "object_aspects",
+  "entries": {
+    "minecraft:stone": {
+      "terra": 2
+    },
+    "minecraft:cobblestone": {
+      "terra": 1,
+      "perditio": 1
+    },
+    "minecraft:oak_log": {
+      "arbor": 4
+    },
+    "minecraft:spruce_log": {
+      "arbor": 4
+    },
+    "minecraft:birch_log": {
+      "arbor": 4
+    },
+    "minecraft:jungle_log": {
+      "arbor": 4
+    },
+    "minecraft:acacia_log": {
+      "arbor": 4
+    },
+    "minecraft:dark_oak_log": {
+      "arbor": 4
+    },
+    "minecraft:oak_planks": {
+      "arbor": 1
+    },
+    "minecraft:spruce_planks": {
+      "arbor": 1
+    },
+    "minecraft:birch_planks": {
+      "arbor": 1
+    },
+    "minecraft:jungle_planks": {
+      "arbor": 1
+    },
+    "minecraft:acacia_planks": {
+      "arbor": 1
+    },
+    "minecraft:dark_oak_planks": {
+      "arbor": 1
+    },
+    "minecraft:oak_slab": {
+      "arbor": 1
+    },
+    "minecraft:spruce_slab": {
+      "arbor": 1
+    },
+    "minecraft:birch_slab": {
+      "arbor": 1
+    },
+    "minecraft:jungle_slab": {
+      "arbor": 1
+    },
+    "minecraft:acacia_slab": {
+      "arbor": 1
+    },
+    "minecraft:dark_oak_slab": {
+      "arbor": 1
+    },
+    "minecraft:oak_stairs": {
+      "arbor": 1
+    },
+    "minecraft:spruce_stairs": {
+      "arbor": 1
+    },
+    "minecraft:birch_stairs": {
+      "arbor": 1
+    },
+    "minecraft:jungle_stairs": {
+      "arbor": 1
+    },
+    "minecraft:acacia_stairs": {
+      "arbor": 1
+    },
+    "minecraft:dark_oak_stairs": {
+      "arbor": 1
+    },
+    "minecraft:stick": {
+      "arbor": 1
+    },
+    "minecraft:oak_sapling": {
+      "arbor": 1,
+      "herba": 2
+    },
+    "minecraft:spruce_sapling": {
+      "arbor": 1,
+      "herba": 2
+    },
+    "minecraft:birch_sapling": {
+      "arbor": 1,
+      "herba": 2
+    },
+    "minecraft:jungle_sapling": {
+      "arbor": 1,
+      "herba": 2
+    },
+    "minecraft:acacia_sapling": {
+      "arbor": 1,
+      "herba": 2
+    },
+    "minecraft:dark_oak_sapling": {
+      "arbor": 1,
+      "herba": 2
+    },
+    "minecraft:oak_leaves": {
+      "herba": 1
+    },
+    "minecraft:spruce_leaves": {
+      "herba": 1
+    },
+    "minecraft:birch_leaves": {
+      "herba": 1
+    },
+    "minecraft:jungle_leaves": {
+      "herba": 1
+    },
+    "minecraft:acacia_leaves": {
+      "herba": 1
+    },
+    "minecraft:dark_oak_leaves": {
+      "herba": 1
+    },
+    "minecraft:lapis_ore": {
+      "terra": 1,
+      "sensus": 3
+    },
+    "minecraft:diamond_ore": {
+      "terra": 1,
+      "lucrum": 3,
+      "vitreus": 3
+    },
+    "minecraft:diamond": {
+      "vitreus": 4,
+      "lucrum": 4
+    },
+    "minecraft:redstone_ore": {
+      "terra": 1,
+      "potentia": 2,
+      "machina": 2
+    },
+    "minecraft:lit_redstone_ore": {
+      "terra": 1,
+      "potentia": 3,
+      "machina": 2
+    },
+    "minecraft:emerald_ore": {
+      "terra": 1,
+      "lucrum": 4,
+      "vitreus": 3
+    },
+    "minecraft:emerald": {
+      "vitreus": 4,
+      "lucrum": 5
+    },
+    "minecraft:nether_quartz_ore": {
+      "terra": 1,
+      "vitreus": 3
+    },
+    "minecraft:quartz": {
+      "vitreus": 1,
+      "potentia": 1
+    },
+    "minecraft:gold_nugget": {
+      "metallum": 1
+    },
+    "minecraft:iron_nugget": {
+      "metallum": 1
+    },
+    "minecraft:iron_ore": {
+      "terra": 1,
+      "metallum": 3
+    },
+    "minecraft:iron_ingot": {
+      "metallum": 4
+    },
+    "minecraft:gold_ore": {
+      "terra": 1,
+      "metallum": 2,
+      "lucrum": 1
+    },
+    "minecraft:gold_ingot": {
+      "metallum": 3,
+      "lucrum": 2
+    },
+    "minecraft:coal_ore": {
+      "terra": 1,
+      "potentia": 2,
+      "ignis": 1
+    },
+    "minecraft:coal": {
+      "potentia": 2,
+      "ignis": 2
+    },
+    "minecraft:charcoal": {
+      "potentia": 2,
+      "ignis": 2
+    },
+    "minecraft:redstone": {
+      "potentia": 2,
+      "machina": 1
+    },
+    "minecraft:glowstone_dust": {
+      "sensus": 1,
+      "lux": 2
+    },
+    "minecraft:glowstone": {
+      "sensus": 3,
+      "lux": 10
+    },
+    "minecraft:copper_ingot": {
+      "metallum": 3,
+      "permutatio": 1
+    },
+    "minecraft:copper_ore": {
+      "metallum": 2,
+      "terra": 1,
+      "permutatio": 1
+    },
+    "minecraft:bedrock": {
+      "vacuos": 16,
+      "perditio": 16,
+      "terra": 16,
+      "tenebrae": 16
+    },
+    "minecraft:dirt": {
+      "terra": 2
+    },
+    "minecraft:coarse_dirt": {
+      "terra": 2
+    },
+    "minecraft:podzol": {
+      "terra": 1,
+      "herba": 1
+    },
+    "minecraft:farmland": {
+      "terra": 1,
+      "meto": 2
+    },
+    "minecraft:sand": {
+      "terra": 1,
+      "perditio": 1
+    },
+    "minecraft:red_sand": {
+      "terra": 1,
+      "perditio": 1
+    },
+    "minecraft:grass_block": {
+      "terra": 1,
+      "herba": 1
+    },
+    "minecraft:clay_ball": {
+      "aqua": 1,
+      "terra": 1
+    },
+    "minecraft:end_stone": {
+      "terra": 1,
+      "tenebrae": 1
+    },
+    "minecraft:gravel": {
+      "terra": 2
+    },
+    "minecraft:mycelium": {
+      "terra": 1,
+      "herba": 1
+    },
+    "minecraft:clay": {
+      "terra": 3,
+      "aqua": 3
+    },
+    "minecraft:terracotta": {
+      "terra": 4,
+      "ignis": 1
+    },
+    "minecraft:white_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:orange_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:magenta_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:light_blue_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:yellow_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:lime_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:pink_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:gray_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:light_gray_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:cyan_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:purple_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:blue_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:brown_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:green_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:red_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:black_terracotta": {
+      "terra": 3,
+      "ignis": 1,
+      "sensus": 1
+    },
+    "minecraft:brick": {
+      "terra": 1,
+      "ignis": 1
+    },
+    "minecraft:nether_brick": {
+      "ignis": 1
+    },
+    "minecraft:soul_sand": {
+      "terra": 1,
+      "vinculum": 1,
+      "spiritus": 1
+    },
+    "minecraft:netherrack": {
+      "terra": 2,
+      "ignis": 1
+    },
+    "minecraft:nether_bricks": {
+      "terra": 2,
+      "ignis": 1
+    },
+    "minecraft:glass": {
+      "vitreus": 1
+    },
+    "minecraft:white_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:orange_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:magenta_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:light_blue_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:yellow_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:lime_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:pink_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:gray_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:light_gray_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:cyan_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:purple_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:blue_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:brown_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:green_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:red_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:black_stained_glass": {
+      "vitreus": 1
+    },
+    "minecraft:mossy_cobblestone": {
+      "terra": 1,
+      "herba": 1,
+      "praecantatio": 1
+    },
+    "minecraft:obsidian": {
+      "terra": 2,
+      "ignis": 2,
+      "tenebrae": 1
+    },
+    "minecraft:infested_stone": {
+      "terra": 2,
+      "bestia": 1,
+      "vinculum": 1
+    },
+    "minecraft:infested_cobblestone": {
+      "terra": 2,
+      "bestia": 1,
+      "vinculum": 1
+    },
+    "minecraft:infested_stone_bricks": {
+      "terra": 2,
+      "bestia": 1,
+      "vinculum": 1
+    },
+    "minecraft:infested_mossy_stone_bricks": {
+      "terra": 2,
+      "bestia": 1,
+      "vinculum": 1
+    },
+    "minecraft:infested_cracked_stone_bricks": {
+      "terra": 2,
+      "bestia": 1,
+      "vinculum": 1
+    },
+    "minecraft:infested_chiseled_stone_bricks": {
+      "terra": 2,
+      "bestia": 1,
+      "vinculum": 1
+    },
+    "minecraft:stone_bricks": {
+      "terra": 2
+    },
+    "minecraft:mossy_stone_bricks": {
+      "terra": 2
+    },
+    "minecraft:cracked_stone_bricks": {
+      "terra": 2
+    },
+    "minecraft:chiseled_stone_bricks": {
+      "terra": 2
+    },
+    "minecraft:dead_bush": {
+      "herba": 1,
+      "perditio": 1
+    },
+    "minecraft:short_grass": {
+      "herba": 1,
+      "aer": 1
+    },
+    "minecraft:fern": {
+      "herba": 1,
+      "aer": 1
+    },
+    "minecraft:sunflower": {
+      "herba": 1,
+      "aer": 1
+    },
+    "minecraft:lilac": {
+      "herba": 1,
+      "aer": 1
+    },
+    "minecraft:tall_grass": {
+      "herba": 1,
+      "aer": 1
+    },
+    "minecraft:large_fern": {
+      "herba": 1,
+      "aer": 1
+    },
+    "minecraft:rose_bush": {
+      "herba": 1,
+      "aer": 1
+    },
+    "minecraft:peony": {
+      "herba": 1,
+      "aer": 1
+    },
+    "minecraft:lily_pad": {
+      "herba": 2,
+      "aqua": 1
+    },
+    "minecraft:vine": {
+      "herba": 1
+    },
+    "minecraft:wheat_seeds": {
+      "herba": 1
+    },
+    "minecraft:melon_seeds": {
+      "herba": 1
+    },
+    "minecraft:pumpkin_seeds": {
+      "herba": 1
+    },
+    "minecraft:melon_slice": {
+      "fames": 1
+    },
+    "minecraft:nether_wart": {
+      "herba": 1,
+      "praecantatio": 1
+    },
+    "minecraft:poppy": {
+      "herba": 1,
+      "victus": 1,
+      "sensus": 1
+    },
+    "minecraft:blue_orchid": {
+      "herba": 1,
+      "victus": 1,
+      "sensus": 1
+    },
+    "minecraft:allium": {
+      "herba": 1,
+      "victus": 1,
+      "sensus": 1
+    },
+    "minecraft:azure_bluet": {
+      "herba": 1,
+      "victus": 1,
+      "sensus": 1
+    },
+    "minecraft:red_tulip": {
+      "herba": 1,
+      "victus": 1,
+      "sensus": 1
+    },
+    "minecraft:orange_tulip": {
+      "herba": 1,
+      "victus": 1,
+      "sensus": 1
+    },
+    "minecraft:white_tulip": {
+      "herba": 1,
+      "victus": 1,
+      "sensus": 1
+    },
+    "minecraft:pink_tulip": {
+      "herba": 1,
+      "victus": 1,
+      "sensus": 1
+    },
+    "minecraft:oxeye_daisy": {
+      "herba": 1,
+      "victus": 1,
+      "sensus": 1
+    },
+    "minecraft:dandelion": {
+      "herba": 1,
+      "victus": 1,
+      "sensus": 1
+    },
+    "minecraft:cactus": {
+      "herba": 3,
+      "aqua": 1,
+      "perditio": 1
+    },
+    "minecraft:brown_mushroom": {
+      "herba": 1,
+      "tenebrae": 1,
+      "terra": 1
+    },
+    "minecraft:red_mushroom": {
+      "herba": 1,
+      "tenebrae": 1,
+      "ignis": 1
+    },
+    "minecraft:brown_mushroom_block": {
+      "herba": 2,
+      "tenebrae": 1,
+      "terra": 1
+    },
+    "minecraft:red_mushroom_block": {
+      "herba": 2,
+      "tenebrae": 1,
+      "ignis": 1
+    },
+    "minecraft:sugar_cane": {
+      "herba": 1,
+      "aqua": 1,
+      "aer": 1
+    },
+    "minecraft:wheat": {
+      "messis": 2,
+      "fames": 1
+    },
+    "minecraft:apple": {
+      "messis": 2,
+      "fames": 1
+    },
+    "minecraft:carrot": {
+      "messis": 1,
+      "fames": 1,
+      "sensus": 1
+    },
+    "minecraft:potato": {
+      "messis": 1,
+      "fames": 1,
+      "terra": 1
+    },
+    "minecraft:baked_potato": {
+      "messis": 1,
+      "fames": 2
+    },
+    "minecraft:poisonous_potato": {
+      "messis": 1,
+      "venenum": 2
+    },
+    "minecraft:pumpkin": {
+      "messis": 2
+    },
+    "minecraft:name_tag": {
+      "cognitio": 2,
+      "bestia": 2
+    },
+    "minecraft:iron_horse_armor": {
+      "tutamen": 2,
+      "bestia": 2
+    },
+    "minecraft:golden_horse_armor": {
+      "tutamen": 4,
+      "bestia": 2
+    },
+    "minecraft:diamond_horse_armor": {
+      "tutamen": 6,
+      "bestia": 2
+    },
+    "minecraft:fire": {
+      "ignis": 4
+    },
+    "minecraft:water": {
+      "aqua": 4
+    },
+    "minecraft:lava": {
+      "ignis": 3,
+      "terra": 1
+    },
+    "minecraft:ice": {
+      "gelum": 4
+    },
+    "minecraft:packed_ice": {
+      "gelum": 3,
+      "terra": 1
+    },
+    "minecraft:snowball": {
+      "gelum": 1
+    },
+    "minecraft:cookie": {
+      "fames": 1
+    },
+    "minecraft:torch": {
+      "lux": 1
+    },
+    "minecraft:cobweb": {
+      "vinculum": 2,
+      "pannus": 1
+    },
+    "minecraft:flint": {
+      "terra": 1,
+      "instrumentum": 1
+    },
+    "minecraft:string": {
+      "bestia": 1,
+      "pannus": 1
+    },
+    "minecraft:slime_ball": {
+      "limus": 2
+    },
+    "minecraft:leather": {
+      "pannus": 2,
+      "bestia": 1,
+      "tutamen": 1
+    },
+    "minecraft:rotten_flesh": {
+      "humanus": 1,
+      "corpus": 2
+    },
+    "minecraft:feather": {
+      "volatus": 2,
+      "aer": 1
+    },
+    "minecraft:bone": {
+      "mortuus": 2,
+      "corpus": 1
+    },
+    "minecraft:egg": {
+      "limus": 1,
+      "victus": 1,
+      "bestia": 1
+    },
+    "minecraft:spider_eye": {
+      "sensus": 2,
+      "bestia": 2,
+      "venenum": 2
+    },
+    "minecraft:gunpowder": {
+      "ignis": 4,
+      "perditio": 4
+    },
+    "minecraft:white_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:orange_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:magenta_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:light_blue_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:yellow_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:lime_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:pink_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:gray_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:light_gray_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:cyan_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:purple_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:blue_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:brown_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:green_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:red_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:black_wool": {
+      "pannus": 4,
+      "fabrico": 1
+    },
+    "minecraft:cod": {
+      "corpus": 3,
+      "victus": 1,
+      "aqua": 1
+    },
+    "minecraft:salmon": {
+      "corpus": 3,
+      "victus": 1,
+      "aqua": 1
+    },
+    "minecraft:tropical_fish": {
+      "corpus": 3,
+      "victus": 1,
+      "aqua": 1
+    },
+    "minecraft:pufferfish": {
+      "corpus": 3,
+      "victus": 1,
+      "aqua": 1
+    },
+    "minecraft:cooked_cod": {
+      "fabrico": 1,
+      "corpus": 4,
+      "fames": 3
+    },
+    "minecraft:cooked_salmon": {
+      "fabrico": 1,
+      "corpus": 4,
+      "fames": 3
+    },
+    "minecraft:chicken": {
+      "corpus": 3,
+      "victus": 2,
+      "bestia": 1
+    },
+    "minecraft:cooked_chicken": {
+      "fabrico": 1,
+      "corpus": 4,
+      "fames": 3
+    },
+    "minecraft:porkchop": {
+      "corpus": 3,
+      "victus": 1,
+      "bestia": 1
+    },
+    "minecraft:cooked_porkchop": {
+      "fabrico": 1,
+      "corpus": 3,
+      "fames": 3
+    },
+    "minecraft:beef": {
+      "corpus": 4,
+      "victus": 2,
+      "bestia": 1
+    },
+    "minecraft:cooked_beef": {
+      "fabrico": 1,
+      "corpus": 4,
+      "fames": 4
+    },
+    "minecraft:blaze_rod": {
+      "ignis": 4,
+      "praecantatio": 2
+    },
+    "minecraft:saddle": {
+      "bestia": 2,
+      "pannus": 3,
+      "iter": 3
+    },
+    "minecraft:ender_pearl": {
+      "alienis": 4,
+      "praecantatio": 2,
+      "iter": 4
+    },
+    "minecraft:ghast_tear": {
+      "aqua": 1,
+      "exanimis": 4,
+      "spiritus": 4
+    },
+    "minecraft:skeleton_skull": {
+      "mortuus": 4,
+      "spiritus": 4,
+      "exanimis": 4
+    },
+    "minecraft:wither_skeleton_skull": {
+      "mortuus": 4,
+      "spiritus": 4,
+      "exanimis": 4,
+      "venenum": 4
+    },
+    "minecraft:zombie_head": {
+      "mortuus": 4,
+      "spiritus": 4,
+      "corpus": 4
+    },
+    "minecraft:player_head": {
+      "mortuus": 4,
+      "spiritus": 4,
+      "humanus": 4
+    },
+    "minecraft:creeper_head": {
+      "mortuus": 4,
+      "spiritus": 4,
+      "perditio": 2,
+      "ignis": 2
+    },
+    "minecraft:music_disc_11": {
+      "sensus": 4,
+      "aer": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_13": {
+      "sensus": 4,
+      "aer": 4,
+      "aqua": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_cat": {
+      "sensus": 4,
+      "aer": 4,
+      "bestia": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_chirp": {
+      "sensus": 4,
+      "aer": 4,
+      "terra": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_far": {
+      "sensus": 4,
+      "aer": 4,
+      "alienis": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_mall": {
+      "sensus": 4,
+      "aer": 4,
+      "humanus": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_mellohi": {
+      "sensus": 4,
+      "aer": 4,
+      "fabrico": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_stal": {
+      "sensus": 4,
+      "aer": 4,
+      "tenebrae": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_strad": {
+      "sensus": 4,
+      "aer": 4,
+      "machina": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_ward": {
+      "sensus": 4,
+      "aer": 4,
+      "praecantatio": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_blocks": {
+      "sensus": 4,
+      "aer": 4,
+      "instrumentum": 4,
+      "lucrum": 4
+    },
+    "minecraft:music_disc_wait": {
+      "sensus": 4,
+      "aer": 4,
+      "vinculum": 4,
+      "lucrum": 4
+    },
+    "minecraft:nether_star": {
+      "alienis": 8,
+      "praecantatio": 8,
+      "ordo": 8,
+      "lux": 8
+    },
+    "minecraft:chainmail_helmet": {
+      "metallum": 8
+    },
+    "minecraft:chainmail_chestplate": {
+      "metallum": 12
+    },
+    "minecraft:chainmail_leggings": {
+      "metallum": 11
+    },
+    "minecraft:chainmail_boots": {
+      "metallum": 7
+    },
+    "minecraft:dragon_egg": {
+      "alienis": 8,
+      "bestia": 8,
+      "praecantatio": 8
+    },
+    "minecraft:nether_portal": {
+      "ignis": 4,
+      "iter": 4
+    },
+    "minecraft:end_portal": {
+      "alienis": 4,
+      "iter": 4
+    },
+    "minecraft:end_portal_frame": {
+      "alienis": 4,
+      "machina": 4,
+      "iter": 4
+    },
+    "minecraft:spawner": {
+      "bestia": 4,
+      "iter": 4,
+      "exanimis": 4,
+      "praecantatio": 4
+    },
+    "minecraft:bucket": {
+      "metallum": 8,
+      "vacuos": 1
+    },
+    "minecraft:cake": {
+      "aqua": 4,
+      "fames": 4,
+      "victus": 4
+    },
+    "minecraft:crafting_table": {
+      "fabrico": 4
+    },
+    "minecraft:anvil": {
+      "metallum": 64,
+      "fabrico": 2,
+      "instrumentum": 2
+    },
+    "minecraft:chipped_anvil": {
+      "metallum": 64,
+      "fabrico": 2,
+      "instrumentum": 2
+    },
+    "minecraft:damaged_anvil": {
+      "metallum": 64,
+      "fabrico": 2,
+      "instrumentum": 2
+    },
+    "minecraft:tripwire_hook": {
+      "sensus": 1,
+      "machina": 1,
+      "vinculum": 1
+    },
+    "thaumcraft:air_infused_stone": {
+      "terra": 1,
+      "aer": 3,
+      "vitreus": 2
+    },
+    "thaumcraft:fire_infused_stone": {
+      "terra": 1,
+      "ignis": 3,
+      "vitreus": 2
+    },
+    "thaumcraft:water_infused_stone": {
+      "terra": 1,
+      "aqua": 3,
+      "vitreus": 2
+    },
+    "thaumcraft:earth_infused_stone": {
+      "terra": 4,
+      "vitreus": 2
+    },
+    "thaumcraft:order_infused_stone": {
+      "terra": 1,
+      "ordo": 3,
+      "vitreus": 2
+    },
+    "thaumcraft:entropy_infused_stone": {
+      "terra": 1,
+      "perditio": 3,
+      "vitreus": 2
+    },
+    "thaumcraft:fibrous_taint": {
+      "arbor": 1,
+      "vitium": 3
+    },
+    "thaumcraft:tainted_soil": {
+      "terra": 1,
+      "vitium": 3
+    },
+    "thaumcraft:taint_fibres": {
+      "victus": 1,
+      "vitium": 2
+    },
+    "thaumcraft:taint_growth": {
+      "herba": 1,
+      "vitium": 1
+    },
+    "thaumcraft:taint_tendrils": {
+      "herba": 1,
+      "vitium": 1
+    },
+    "thaumcraft:taint_spore_stalk": {
+      "bestia": 1,
+      "herba": 1,
+      "vitium": 2
+    },
+    "thaumcraft:zombie_brain": {
+      "corpus": 2,
+      "cognitio": 4,
+      "exanimis": 2
+    },
+    "thaumcraft:amber": {
+      "vinculum": 2,
+      "vitreus": 2
+    },
+    "thaumcraft:taint_goo": {
+      "vitium": 3,
+      "limus": 1
+    },
+    "thaumcraft:taint_tendril": {
+      "vitium": 2,
+      "lucrum": 1,
+      "fames": 1
+    },
+    "thaumcraft:coin": {
+      "lucrum": 1
+    },
+    "thaumcraft:air_shard": {
+      "praecantatio": 1,
+      "aer": 2,
+      "vitreus": 1
+    },
+    "thaumcraft:fire_shard": {
+      "praecantatio": 1,
+      "ignis": 2,
+      "vitreus": 1
+    },
+    "thaumcraft:water_shard": {
+      "praecantatio": 1,
+      "aqua": 2,
+      "vitreus": 1
+    },
+    "thaumcraft:earth_shard": {
+      "praecantatio": 1,
+      "terra": 2,
+      "vitreus": 1
+    },
+    "thaumcraft:order_shard": {
+      "praecantatio": 1,
+      "ordo": 2,
+      "vitreus": 1
+    },
+    "thaumcraft:entropy_shard": {
+      "praecantatio": 1,
+      "perditio": 2,
+      "vitreus": 1
+    },
+    "thaumcraft:wisp_essence": {
+      "auram": 2
+    },
+    "thaumcraft:eldritch_eye": {
+      "alienis": 5,
+      "auram": 3,
+      "praecantatio": 3,
+      "sensus": 3,
+      "spiritus": 3
+    }
+  }
+}

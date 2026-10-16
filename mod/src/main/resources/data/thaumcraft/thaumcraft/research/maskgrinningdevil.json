@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "MASKGRINNINGDEVIL",
+  "category": "ARTIFICE",
+  "parents": [
+    "ARMORFORTRESS"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "sano": 5,
+    "cognitio": 5,
+    "tutamen": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -10,
+  "row": 8,
+  "text_pages": [
+    "tc.research_page.MASKGRINNINGDEVIL.1"
+  ],
+  "recipe_pages": [
+    "MaskGrinningDevil"
+  ],
+  "page_order": [
+    "tc.research_page.MASKGRINNINGDEVIL.1",
+    "MaskGrinningDevil"
+  ],
+  "icon": "thaumcraft:textures/misc/r_mask0.png",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "research",
+  "key": "CAP_void",
+  "category": "ELDRITCH",
+  "parents": [
+    "CAP_thaumium",
+    "VOIDMETAL"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "vacuos": 5,
+    "alienis": 5,
+    "instrumentum": 3,
+    "praecantatio": 3,
+    "auram": 3
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 5,
+  "row": -1,
+  "text_pages": [
+    "tc.research_page.CAP_void.1"
+  ],
+  "recipe_pages": [
+    "WandCapVoidInert",
+    "WandCapVoid"
+  ],
+  "page_order": [
+    "tc.research_page.CAP_void.1",
+    "WandCapVoidInert",
+    "WandCapVoid"
+  ],
+  "icon": "thaumcraft:void_wand_cap",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 1,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

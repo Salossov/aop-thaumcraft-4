@@ -1,0 +1,140 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:cutout",
+  "ambientocclusion": false,
+  "textures": {
+    "core": "thaumcraft:blocks/pipe_buffer",
+    "shaft": "thaumcraft:blocks/pipe_1",
+    "particle": "thaumcraft:blocks/pipe_buffer"
+  },
+  "elements": [
+    {
+      "from": [
+        7,
+        7,
+        0
+      ],
+      "to": [
+        9,
+        9,
+        6.5
+      ],
+      "shade": true,
+      "faces": {
+        "down": {
+          "texture": "#shaft"
+        },
+        "up": {
+          "texture": "#shaft"
+        },
+        "north": {
+          "texture": "#shaft"
+        },
+        "south": {
+          "texture": "#shaft"
+        },
+        "west": {
+          "texture": "#shaft"
+        },
+        "east": {
+          "texture": "#shaft"
+        }
+      }
+    },
+    {
+      "from": [
+        6.5,
+        6.5,
+        0
+      ],
+      "to": [
+        9.5,
+        9.5,
+        2
+      ],
+      "shade": true,
+      "faces": {
+        "down": {
+          "texture": "#core"
+        },
+        "up": {
+          "texture": "#core"
+        },
+        "north": {
+          "texture": "#core"
+        },
+        "south": {
+          "texture": "#core"
+        },
+        "west": {
+          "texture": "#core"
+        },
+        "east": {
+          "texture": "#core"
+        }
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        3,
+        0
+      ],
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "fixed": {
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        75,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.375,
+        0.375,
+        0.375
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        45,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    }
+  }
+}

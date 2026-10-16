@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "BELLOWS",
+  "category": "ARTIFICE",
+  "parents": [
+    "INFERNALFURNACE"
+  ],
+  "aspects": {
+    "aer": 6,
+    "machina": 3,
+    "motus": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -6,
+  "row": -2,
+  "text_pages": [
+    "tc.research_page.BELLOWS.1",
+    "tc.research_page.BELLOWS.2"
+  ],
+  "recipe_pages": [
+    "Bellows"
+  ],
+  "icon": "thaumcraft:arcane_bellows",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.BELLOWS.1",
+    "Bellows",
+    "tc.research_page.BELLOWS.2"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

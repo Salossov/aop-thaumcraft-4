@@ -1,0 +1,50 @@
+{
+  "kind": "research",
+  "key": "CAP_silver",
+  "category": "THAUMATURGY",
+  "parents": [
+    "CAP_gold",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "metallum": 3,
+    "lucrum": 3,
+    "instrumentum": 3,
+    "auram": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 5,
+  "row": 1,
+  "text_pages": [
+    "tc.research_page.CAP_silver.1"
+  ],
+  "recipe_pages": [
+    "WandCapSilverInert",
+    "WandCapSilver"
+  ],
+  "page_order": [
+    "tc.research_page.CAP_silver.1",
+    "WandCapSilverInert",
+    "WandCapSilver"
+  ],
+  "icon": "thaumcraft:silver_wand_cap",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {},
+  "required_item_tags": [
+    "c:ingots/silver"
+  ]
+}

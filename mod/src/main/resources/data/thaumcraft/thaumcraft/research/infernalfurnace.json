@@ -1,0 +1,47 @@
+{
+  "kind": "research",
+  "key": "INFERNALFURNACE",
+  "category": "ARTIFICE",
+  "parents": [
+    "NITOR",
+    "ALUMENTUM"
+  ],
+  "aspects": {
+    "ignis": 6,
+    "metallum": 3,
+    "fabrico": 3,
+    "auram": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -4,
+  "row": -1,
+  "text_pages": [
+    "tc.research_page.INFERNALFURNACE.1",
+    "tc.research_page.INFERNALFURNACE.2"
+  ],
+  "recipe_pages": [
+    "InfernalFurnace"
+  ],
+  "icon": "thaumcraft:textures/misc/r_infernalfurnace.png",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.INFERNALFURNACE.1",
+    "InfernalFurnace",
+    "tc.research_page.INFERNALFURNACE.2"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 2,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

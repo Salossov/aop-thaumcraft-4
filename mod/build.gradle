@@ -1,0 +1,341 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev'
+}
+
+base { archivesName = "thaumcraft-${minecraft_version}" }
+
+// Development-only integration harness. Never packaged in the gameplay JAR.
+sourceSets {
+    productionVerification {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+    verification {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+    smoke {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+configurations.productionVerificationImplementation.extendsFrom configurations.implementation
+configurations.productionVerificationCompileOnly.extendsFrom configurations.compileOnly
+configurations.productionVerificationRuntimeOnly.extendsFrom configurations.runtimeOnly
+configurations.smokeImplementation.extendsFrom configurations.implementation
+configurations.smokeCompileOnly.extendsFrom configurations.compileOnly
+configurations.smokeRuntimeOnly.extendsFrom configurations.runtimeOnly
+configurations.verificationImplementation.extendsFrom configurations.implementation
+configurations.verificationCompileOnly.extendsFrom configurations.compileOnly
+configurations.verificationRuntimeOnly.extendsFrom configurations.runtimeOnly
+
+repositories {
+    exclusiveContent {
+        forRepositories(
+            maven { url = rootProject.uri('.cache/maven') },
+            maven { url = rootProject.uri('../.cache/maven') },
+            maven { url = 'https://maven.minecraftforge.net/' }
+        )
+        filter { includeGroup 'com.github.glitchfiend' }
+    }
+    exclusiveContent {
+        forRepository { maven { url = 'https://maven.theillusivec4.top/' } }
+        filter { includeGroup 'top.theillusivec4.curios' }
+    }
+}
+
+dependencies {
+    compileOnly project(':api')
+    compileOnly 'com.github.glitchfiend:TerraBlender-neoforge:1.21.1-4.1.0.8'
+    if (providers.gradleProperty('withTerraBlender').getOrElse('false').toBoolean()) {
+        runtimeOnly 'com.github.glitchfiend:TerraBlender-neoforge:1.21.1-4.1.0.8'
+    }
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+}
+
+neoForge {
+    version = project.neo_version
+    addModdingDependenciesTo sourceSets.productionVerification
+    addModdingDependenciesTo sourceSets.smoke
+    addModdingDependenciesTo sourceSets.verification
+    runs {
+        r3ManualWorldServer {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/manual-audit-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'manual-golems-aura-tools'
+        }
+        r3FarmFollowupServer {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/farm-followup-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'golem-round2'
+        }
+        r3GolemRuntimeServer {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/golem-runtime-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'golem-runtime'
+        }
+        r3Round3LiveServer {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/round3-live-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'round3-live'
+        }
+        r3Round3LiveClient {
+            systemProperty 'thaumcraft.round3.followup', providers.gradleProperty('round3Followup').getOrElse('false')
+            systemProperty 'thaumcraft.round3.start', providers.gradleProperty('round3Start').getOrElse('0')
+            systemProperty 'thaumcraft.round3.end', providers.gradleProperty('round3End').getOrElse('13')
+            client()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/round3-live-client')
+            programArguments.addAll('--quickPlayMultiplayer','127.0.0.1:25590','--width','960','--height','720')
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'round3-live'
+            systemProperty 'fml.earlyprogresswindow', 'false'
+        }
+        r3GolemDebugServer {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/golem-debug-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'golem-debug-live'
+            systemProperty 'thaumcraft.debug.output', providers.gradleProperty('golemDebugOutput').getOrElse('analysis/golem-debug-2026-10-15/live')
+        }
+        r3GolemDebugClient {
+            systemProperty 'thaumcraft.debug.start', providers.gradleProperty('golemDebugStart').getOrElse('0')
+            systemProperty 'thaumcraft.debug.end', providers.gradleProperty('golemDebugEnd').getOrElse('17')
+            client()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/golem-debug-client')
+            programArguments.addAll('--quickPlayMultiplayer','127.0.0.1:25592','--width','960','--height','720')
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'golem-debug-live'
+            systemProperty 'thaumcraft.debug.output', providers.gradleProperty('golemDebugOutput').getOrElse('analysis/golem-debug-2026-10-15/live')
+            systemProperty 'fml.earlyprogresswindow', 'false'
+        }
+        r3Round4LiveServer {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/round4-live-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'round4-live'
+        }
+        r3Round4LiveClient {
+            systemProperty 'thaumcraft.round4.followup', providers.gradleProperty('round4Followup').getOrElse('false')
+            systemProperty 'thaumcraft.round4.start', providers.gradleProperty('round4Start').getOrElse('0')
+            systemProperty 'thaumcraft.round4.end', providers.gradleProperty('round4End').getOrElse('13')
+            client()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/round4-live-client')
+            programArguments.addAll('--quickPlayMultiplayer','127.0.0.1:25591','--width','960','--height','720')
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'round4-live'
+            systemProperty 'fml.earlyprogresswindow', 'false'
+        }
+        mechanicsLiveServer {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/mechanics-live-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'mechanics-live'
+        }
+        mechanicsLiveClient {
+            systemProperty 'thaumcraft.mechanics.start', providers.gradleProperty('mechanicsStart').getOrElse('0')
+            client()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/mechanics-live-client')
+            programArgument '--quickPlayMultiplayer'
+            programArgument '127.0.0.1:25585'
+            programArgument '--width'
+            programArgument '960'
+            programArgument '--height'
+            programArgument '720'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'mechanics-live'
+            systemProperty 'fml.earlyprogresswindow', 'false'
+        }
+        modelAuditServer {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/model-audit-port-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'model-audit-live'
+        }
+        modelAuditClient {
+            systemProperty 'thaumcraft.modelAudit.output', providers.gradleProperty('modelAuditOutput').getOrElse('port')
+            client()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/model-audit-port-client')
+            programArgument '--quickPlayMultiplayer'
+            programArgument '127.0.0.1:25584'
+            programArgument '--width'
+            programArgument '960'
+            programArgument '--height'
+            programArgument '720'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'model-audit-live'
+            systemProperty 'fml.earlyprogresswindow', 'false'
+        }
+        r3FixesServer {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/reported-fixes-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', providers.gradleProperty('r3Phase').getOrElse('reported-fixes')
+        }
+        r3FixesClient {
+            client()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/reported-fixes-client')
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', providers.gradleProperty('r3Phase').getOrElse('reported-fixes-client')
+            systemProperty 'fml.earlyprogresswindow', 'false'
+            if (providers.gradleProperty('r3Phase').getOrElse('') in ['round-three-live', 'round-four-live', 'focus-selection-live','research-ui-live','interface-followup-live']) {
+                programArgument '--quickPlayMultiplayer'
+                programArgument '127.0.0.1:25583'
+            }
+        }
+        r3Metals {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/optional-metals')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', providers.gradleProperty('comparisonPhase').getOrElse('optional-metals')
+        }
+        r3Comparison {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/comparison-port')
+            programArgument '--nogui'
+            if (providers.gradleProperty('comparisonWorld').isPresent()) {
+                programArgument '--world'
+                programArgument providers.gradleProperty('comparisonWorld').get()
+            }
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', providers.gradleProperty('comparisonPhase').getOrElse('comparison')
+            systemProperty 'thaumcraft.qa.terrablender', providers.gradleProperty('withTerraBlender').getOrElse('false')
+            systemProperty 'thaumcraft.qa.routeReplay', providers.gradleProperty('routeReplay').getOrElse('0')
+        }
+        r3Server {
+            server()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/r3-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', providers.gradleProperty('r3Phase').getOrElse('production')
+        }
+        r3Client {
+            client()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/r3-client')
+            programArgument '--username'
+            programArgument 'R3Dev'
+            programArgument '--quickPlaySingleplayer'
+            programArgument 'New World'
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', providers.gradleProperty('r3Phase').getOrElse('visual')
+            systemProperty 'fml.earlyprogresswindow', 'false'
+        }
+        r2Server {
+            server()
+            sourceSet = sourceSets.verification
+            gameDirectory = rootProject.file('runs/r2-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r2.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r2.phase', providers.gradleProperty('r2Phase').getOrElse('seed')
+        }
+        r2Client {
+            client()
+            sourceSet = sourceSets.verification
+            gameDirectory = rootProject.file('runs/client')
+            programArgument '--username'
+            programArgument providers.gradleProperty('r2User').getOrElse('R2TC4Visual')
+            systemProperty 'thaumcraft.r2.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r2.phase', providers.gradleProperty('r2Phase').getOrElse('client_sp')
+            systemProperty 'fml.earlyprogresswindow', 'false'
+        }
+        client {
+            client()
+            gameDirectory = rootProject.file('runs/client')
+            systemProperty 'fml.earlyprogresswindow', 'false'
+        }
+        server {
+            server()
+            gameDirectory = rootProject.file('runs/server')
+            programArgument '--nogui'
+        }
+        smokeClient {
+            client()
+            sourceSet = sourceSets.smoke
+            gameDirectory = rootProject.file('runs/client')
+            systemProperty 'thaumcraft.r1.client', providers.gradleProperty('smokeMode').getOrElse('singleplayer')
+            systemProperty 'thaumcraft.r1.phase', providers.gradleProperty('smokePhase').getOrElse('seed')
+        }
+        smokeServer {
+            server()
+            sourceSet = sourceSets.smoke
+            gameDirectory = rootProject.file('runs/server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.r1.phase', providers.gradleProperty('smokePhase').getOrElse('seed')
+        }
+        configureEach {
+            systemProperty 'thaumcraft.mechanics.output', providers.gradleProperty('mechanicsOutput').getOrElse('analysis/golems-aura-tools-audit/live')
+            systemProperty 'user.home', rootProject.file('.cache/java-home').absolutePath
+            systemProperty 'thaumcraft.r1.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r1.copper', providers.gradleProperty('smokeCopper').getOrElse('true')
+            logLevel = org.slf4j.event.Level.INFO
+        }
+    }
+    mods {
+        thaumcraft {
+            sourceSet sourceSets.main
+            sourceSet project(':api').sourceSets.main
+        }
+        thaumcraft_r3_test {
+            sourceSet sourceSets.productionVerification
+        }
+        thaumcraft_r1_test {
+            sourceSet sourceSets.smoke
+        }
+        thaumcraft_r2_test {
+            sourceSet sourceSets.verification
+        }
+    }
+}
+
+neoForge.runs.configureEach {
+    loadedMods = (name.startsWith('r3') || name.startsWith('modelAudit') || name.startsWith('mechanicsLive')) ? [neoForge.mods.thaumcraft, neoForge.mods.thaumcraft_r3_test] : name.startsWith('smoke') ? [neoForge.mods.thaumcraft, neoForge.mods.thaumcraft_r1_test] : name.startsWith('r2') ? [neoForge.mods.thaumcraft, neoForge.mods.thaumcraft_r2_test] : [neoForge.mods.thaumcraft]
+}
+
+tasks.named('jar', Jar) {
+    from project(':api').sourceSets.main.output
+    from(rootProject.files('NOTICE.md', 'TEMPLATE_LICENSE.txt')) { into 'META-INF' }
+    manifest.attributes('Automatic-Module-Name': 'thaumcraft')
+}
+tasks.named('sourcesJar', Jar) { from project(':api').sourceSets.main.allSource }
+
+def generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    inputs.properties(version: project.version, neoVersion: neo_version, curiosVersion: curios_version)
+    expand(version: project.version, neoVersion: neo_version, curiosVersion: curios_version)
+    from 'src/main/templates'
+    into layout.buildDirectory.dir('generated/modMetadata')
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata

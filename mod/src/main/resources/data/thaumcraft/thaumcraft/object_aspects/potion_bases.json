@@ -1,0 +1,101 @@
+{
+  "kind": "potion_aspect_bases",
+  "entries": {
+    "minecraft:water": {
+      "aqua": 1
+    },
+    "minecraft:mundane": {
+      "aqua": 1
+    },
+    "minecraft:thick": {
+      "aqua": 1
+    },
+    "minecraft:awkward": {
+      "aqua": 1
+    },
+    "minecraft:night_vision": {
+      "aqua": 1
+    },
+    "minecraft:long_night_vision": {
+      "aqua": 1
+    },
+    "minecraft:invisibility": {
+      "aqua": 1
+    },
+    "minecraft:long_invisibility": {
+      "aqua": 1
+    },
+    "minecraft:swiftness": {
+      "aqua": 1
+    },
+    "minecraft:long_swiftness": {
+      "aqua": 1
+    },
+    "minecraft:slowness": {
+      "aqua": 1
+    },
+    "minecraft:long_slowness": {
+      "aqua": 1
+    },
+    "minecraft:strength": {
+      "aqua": 1
+    },
+    "minecraft:long_strength": {
+      "aqua": 1
+    },
+    "minecraft:regeneration": {
+      "aqua": 1
+    },
+    "minecraft:long_regeneration": {
+      "aqua": 1
+    },
+    "minecraft:poison": {
+      "aqua": 1
+    },
+    "minecraft:long_poison": {
+      "aqua": 1
+    },
+    "minecraft:weakness": {
+      "aqua": 1
+    },
+    "minecraft:long_weakness": {
+      "aqua": 1
+    },
+    "minecraft:water_breathing": {
+      "aqua": 1
+    },
+    "minecraft:long_water_breathing": {
+      "aqua": 1
+    },
+    "minecraft:fire_resistance": {
+      "aqua": 1
+    },
+    "minecraft:long_fire_resistance": {
+      "aqua": 1
+    },
+    "minecraft:strong_swiftness": {
+      "aqua": 1
+    },
+    "minecraft:strong_strength": {
+      "aqua": 1
+    },
+    "minecraft:strong_regeneration": {
+      "aqua": 1
+    },
+    "minecraft:strong_poison": {
+      "aqua": 1
+    },
+    "minecraft:strong_healing": {
+      "aqua": 1
+    },
+    "minecraft:strong_harming": {
+      "aqua": 1
+    },
+    "minecraft:healing": {
+      "aqua": 1
+    },
+    "minecraft:harming": {
+      "aqua": 1
+    }
+  }
+}

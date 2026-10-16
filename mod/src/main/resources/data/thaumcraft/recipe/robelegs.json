@@ -1,0 +1,21 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "ENCHFABRIC",
+  "result": {
+    "id": "thaumcraft:thaumaturge_leggings",
+    "count": 1
+  },
+  "vis": {
+    "aqua": 5
+  },
+  "pattern": [
+    "III",
+    "I I",
+    "I I"
+  ],
+  "key": {
+    "I": {
+      "item": "thaumcraft:enchanted_fabric"
+    }
+  }
+}

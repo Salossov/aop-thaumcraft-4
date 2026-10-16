@@ -1,0 +1,48 @@
+{
+  "kind": "research",
+  "key": "GOLEMTHAUMIUM",
+  "category": "GOLEMANCY",
+  "parents": [
+    "GOLEMIRON",
+    "THAUMIUM"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "spiritus": 10,
+    "motus": 10,
+    "metallum": 3,
+    "praecantatio": 3,
+    "permutatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 2,
+  "row": 10,
+  "text_pages": [
+    "tc.research_page.GOLEMTHAUMIUM.1"
+  ],
+  "recipe_pages": [
+    "BlockThaumium",
+    "GolemThaumium"
+  ],
+  "page_order": [
+    "tc.research_page.GOLEMTHAUMIUM.1",
+    "BlockThaumium",
+    "GolemThaumium"
+  ],
+  "icon": "thaumcraft:thaumium_golem",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

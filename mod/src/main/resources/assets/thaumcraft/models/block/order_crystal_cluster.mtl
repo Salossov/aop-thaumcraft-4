@@ -1,0 +1,18 @@
+newmtl part0
+map_Kd thaumcraft:models/crystal
+Kd 0.9333333333333333 0.8 1
+newmtl part1
+map_Kd thaumcraft:models/crystal
+Kd 0.9333333333333333 0.8 1
+newmtl part2
+map_Kd thaumcraft:models/crystal
+Kd 0.9333333333333333 0.8 1
+newmtl part3
+map_Kd thaumcraft:models/crystal
+Kd 0.9333333333333333 0.8 1
+newmtl part4
+map_Kd thaumcraft:models/crystal
+Kd 0.9333333333333333 0.8 1
+newmtl part5
+map_Kd thaumcraft:models/crystal
+Kd 0.9333333333333333 0.8 1

@@ -1,0 +1,36 @@
+{
+  "has_precipitation": true,
+  "temperature": 0.5,
+  "downfall": 0.5,
+  "effects": {
+    "fog_color": 12638463,
+    "water_fog_color": 329011,
+    "water_color": 13373832,
+    "sky_color": 8144127,
+    "grass_color": 7160201,
+    "foliage_color": 8154503
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "thaumcraft:taintacle",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
+    "water_creature": []
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": []
+}

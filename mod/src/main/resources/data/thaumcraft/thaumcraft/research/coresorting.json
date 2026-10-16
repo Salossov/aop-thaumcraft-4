@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "CORESORTING",
+  "category": "GOLEMANCY",
+  "parents": [
+    "COREEMPTY",
+    "COREFILL",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "vacuos": 3,
+    "permutatio": 3,
+    "lucrum": 3,
+    "fames": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -7,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.CORESORTING.1"
+  ],
+  "recipe_pages": [
+    "CoreSorting"
+  ],
+  "page_order": [
+    "tc.research_page.CORESORTING.1",
+    "CoreSorting"
+  ],
+  "icon": "thaumcraft:golem_core_sorting",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "BOOTSTRAVELLER",
+  "category": "ARTIFICE",
+  "parents": [
+    "ENCHFABRIC",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "iter": 3,
+    "terra": 3,
+    "volatus": 3,
+    "aqua": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -1,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.BOOTSTRAVELLER.1"
+  ],
+  "recipe_pages": [
+    "BootsTraveller"
+  ],
+  "page_order": [
+    "tc.research_page.BOOTSTRAVELLER.1",
+    "BootsTraveller"
+  ],
+  "icon": "thaumcraft:boots_of_the_traveller",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

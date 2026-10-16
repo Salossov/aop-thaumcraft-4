@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "id": "thaumcraft:ring_blank",
+    "count": 1
+  },
+  "pattern": [
+    " N ",
+    "N N",
+    " N "
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:gold_nugget"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "JARVOID",
+  "result": {
+    "id": "thaumcraft:void_jar",
+    "count": 1
+  },
+  "vis": {
+    "aqua": 5,
+    "perditio": 15
+  },
+  "pattern": [
+    "O",
+    "J",
+    "P"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "P": {
+      "item": "minecraft:blaze_powder"
+    },
+    "J": {
+      "item": "thaumcraft:warded_jar"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "kind": "research",
+  "key": "COREALCHEMY",
+  "category": "GOLEMANCY",
+  "parents": [
+    "CORELIQUID",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "aqua": 3,
+    "iter": 3,
+    "praecantatio": 3,
+    "potentia": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -9,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.COREALCHEMY.1",
+    "tc.research_page.COREALCHEMY.2"
+  ],
+  "recipe_pages": [
+    "CoreAlchemy"
+  ],
+  "page_order": [
+    "tc.research_page.COREALCHEMY.1",
+    "CoreAlchemy",
+    "tc.research_page.COREALCHEMY.2"
+  ],
+  "icon": "thaumcraft:golem_core_alchemy",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

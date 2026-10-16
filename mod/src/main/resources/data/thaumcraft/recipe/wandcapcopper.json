@@ -1,0 +1,25 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "CAP_copper",
+  "result": {
+    "id": "thaumcraft:copper_wand_cap",
+    "count": 1
+  },
+  "vis": {
+    "ordo": 2,
+    "ignis": 2,
+    "aer": 2
+  },
+  "pattern": [
+    "NNN",
+    "N N"
+  ],
+  "key": {
+    "N": {
+      "type": "thaumcraft:copper_enabled",
+      "ingredient": {
+        "tag": "c:nuggets/copper"
+      }
+    }
+  }
+}

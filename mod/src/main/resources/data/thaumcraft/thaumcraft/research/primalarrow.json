@@ -1,0 +1,65 @@
+{
+  "kind": "research",
+  "key": "PRIMALARROW",
+  "category": "ARTIFICE",
+  "parents": [
+    "BONEBOW"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "telum": 3,
+    "aer": 3,
+    "ignis": 3,
+    "aqua": 3,
+    "terra": 3,
+    "ordo": 3,
+    "perditio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -9,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.PRIMALARROW.1",
+    "tc.research_page.PRIMALARROW.2",
+    "tc.research_page.PRIMALARROW.3"
+  ],
+  "recipe_pages": [
+    "PrimalArrow_0",
+    "PrimalArrow_1",
+    "PrimalArrow_2",
+    "PrimalArrow_3",
+    "PrimalArrow_4",
+    "PrimalArrow_5"
+  ],
+  "page_order": [
+    "tc.research_page.PRIMALARROW.1",
+    "PrimalArrows",
+    "tc.research_page.PRIMALARROW.2",
+    "tc.research_page.PRIMALARROW.3"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:air_primal_arrow",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {
+    "PrimalArrows": [
+      "PrimalArrow_0",
+      "PrimalArrow_1",
+      "PrimalArrow_2",
+      "PrimalArrow_3",
+      "PrimalArrow_4",
+      "PrimalArrow_5"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "SANESOAP",
+  "category": "ALCHEMY",
+  "parents": [
+    "BATHSALTS"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "cognitio": 5,
+    "ordo": 5,
+    "sano": 5,
+    "alienis": 5
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -3,
+  "row": -6,
+  "text_pages": [
+    "tc.research_page.SANESOAP.1"
+  ],
+  "recipe_pages": [
+    "SaneSoap"
+  ],
+  "page_order": [
+    "tc.research_page.SANESOAP.1",
+    "SaneSoap"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:sanity_soap",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

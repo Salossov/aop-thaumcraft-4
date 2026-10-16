@@ -1,0 +1,41 @@
+{
+  "kind": "research",
+  "key": "RESEARCHER2",
+  "category": "BASICS",
+  "parents": [
+    "RESEARCHER1"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "cognitio": 6,
+    "ordo": 3,
+    "sensus": 3,
+    "praecantatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 3,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.RESEARCHER2.1"
+  ],
+  "recipe_pages": [],
+  "page_order": [
+    "tc.research_page.RESEARCHER2.1"
+  ],
+  "icon": "thaumcraft:textures/misc/r_researcher2.png",
+  "virtual": false,
+  "round": true,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 1,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": true,
+  "recipe_groups": {}
+}

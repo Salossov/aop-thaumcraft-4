@@ -1,0 +1,51 @@
+{
+  "kind": "research",
+  "key": "COREUSE",
+  "category": "GOLEMANCY",
+  "parents": [
+    "COREEMPTY",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "instrumentum": 3,
+    "permutatio": 3,
+    "machina": 3,
+    "humanus": 3
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -7,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.COREUSE.1",
+    "tc.research_page.COREUSE.2",
+    "tc.research_page.COREUSE.3"
+  ],
+  "recipe_pages": [
+    "CoreUse"
+  ],
+  "page_order": [
+    "tc.research_page.COREUSE.1",
+    "tc.research_page.COREUSE.2",
+    "CoreUse",
+    "tc.research_page.COREUSE.3"
+  ],
+  "icon": "thaumcraft:golem_core_use",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {
+    "tc.research_page.COREUSE.3": "UPGRADEAIR"
+  },
+  "special": false,
+  "recipe_groups": {}
+}

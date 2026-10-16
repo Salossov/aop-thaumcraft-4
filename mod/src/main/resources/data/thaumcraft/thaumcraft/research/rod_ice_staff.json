@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "ROD_ice_staff",
+  "category": "THAUMATURGY",
+  "parents": [
+    "ROD_ice"
+  ],
+  "hidden_parents": [
+    "ROD_greatwood_staff"
+  ],
+  "aspects": {
+    "instrumentum": 3,
+    "gelum": 6,
+    "aqua": 3,
+    "praecantatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -8,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.ROD_ice_staff.1"
+  ],
+  "recipe_pages": [
+    "WandRodIceStaff"
+  ],
+  "page_order": [
+    "tc.research_page.ROD_ice_staff.1",
+    "WandRodIceStaff"
+  ],
+  "icon": "thaumcraft:ice_staff_rod",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

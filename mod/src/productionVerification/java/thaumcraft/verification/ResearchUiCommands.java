@@ -1,0 +1,8 @@
+package thaumcraft.verification;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
+@EventBusSubscriber(modid="thaumcraft_r3_test")
+public final class ResearchUiCommands {
+    @SubscribeEvent public static void register(RegisterCommandsEvent event){if(!java.util.Set.of("research-ui-live","interface-followup-live").contains(System.getProperty("thaumcraft.r3.phase")))return;event.getDispatcher().register(net.minecraft.commands.Commands.literal("r3research").requires(s->s.hasPermission(4)).then(net.minecraft.commands.Commands.literal("supplies").executes(c->{ResearchUiScene.supplies(c.getSource().getPlayerOrException());return 1;})).then(net.minecraft.commands.Commands.literal("table").executes(c->{ResearchUiScene.openTable(c.getSource().getPlayerOrException());return 1;})).then(net.minecraft.commands.Commands.literal("complete").executes(c->{var p=c.getSource().getPlayerOrException();var table=ResearchUiScene.table(p);var note=thaumcraft.items.ResearchNotes.read(table.getItem(1));note.grid.put(new thaumcraft.api.research.ResearchNote.Hex(-1,0),new thaumcraft.api.research.ResearchNote.Entry("lux",2));note.grid.put(new thaumcraft.api.research.ResearchNote.Hex(0,0),new thaumcraft.api.research.ResearchNote.Entry("aer",2));note.grid.put(new thaumcraft.api.research.ResearchNote.Hex(1,0),new thaumcraft.api.research.ResearchNote.Entry("lux",2));note.checkComplete(thaumcraft.knowledge.KnowledgeService.get(p).aspectPools().keySet());thaumcraft.items.ResearchNotes.write(table.getItem(1),note);table.changedAndSync();return 1;})));}
+}

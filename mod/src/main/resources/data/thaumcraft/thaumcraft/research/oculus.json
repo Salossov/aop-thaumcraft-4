@@ -1,0 +1,48 @@
+{
+  "kind": "research",
+  "key": "OCULUS",
+  "category": "ELDRITCH",
+  "parents": [
+    "CRIMSON",
+    "ELDRITCHMAJOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "cognitio": 3,
+    "tenebrae": 3,
+    "permutatio": 3,
+    "iter": 6,
+    "alienis": 6
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -2,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.OCULUS.1",
+    "tc.research_page.OCULUS.2"
+  ],
+  "recipe_pages": [
+    "EldritchEye"
+  ],
+  "page_order": [
+    "tc.research_page.OCULUS.1",
+    "EldritchEye",
+    "tc.research_page.OCULUS.2"
+  ],
+  "icon": "thaumcraft:eldritch_eye",
+  "virtual": false,
+  "round": true,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 6,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": true,
+  "recipe_groups": {}
+}

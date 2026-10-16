@@ -1,0 +1,10 @@
+{
+  "type": "thaumcraft:infernal_bonus",
+  "ingredient": {
+    "item": "minecraft:porkchop"
+  },
+  "result": {
+    "id": "thaumcraft:pork_nugget"
+  },
+  "base_count": 1
+}

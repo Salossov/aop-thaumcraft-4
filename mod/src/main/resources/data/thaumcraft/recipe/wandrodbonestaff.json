@@ -1,0 +1,24 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "ROD_bone_staff",
+  "result": {
+    "id": "thaumcraft:bone_staff_rod",
+    "count": 1
+  },
+  "vis": {
+    "ordo": 14
+  },
+  "pattern": [
+    "  S",
+    " G ",
+    "G  "
+  ],
+  "key": {
+    "S": {
+      "item": "thaumcraft:primal_charm"
+    },
+    "G": {
+      "item": "thaumcraft:bone_wand_rod"
+    }
+  }
+}

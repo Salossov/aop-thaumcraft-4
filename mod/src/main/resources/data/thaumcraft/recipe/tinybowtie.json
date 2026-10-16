@@ -1,0 +1,24 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "TINYBOWTIE",
+  "result": {
+    "id": "thaumcraft:golem_bowtie",
+    "count": 1
+  },
+  "vis": {
+    "aer": 4,
+    "ordo": 4
+  },
+  "pattern": [
+    "CSC",
+    "C C"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:black_wool"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  }
+}

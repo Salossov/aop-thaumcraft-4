@@ -1,0 +1,48 @@
+{
+  "kind": "research",
+  "key": "ESSENTIARESERVOIR",
+  "category": "ELDRITCH",
+  "parents": [
+    "VOIDMETAL",
+    "CENTRIFUGE",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "aqua": 5,
+    "vacuos": 8,
+    "permutatio": 3,
+    "praecantatio": 5
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 4,
+  "row": -3,
+  "text_pages": [
+    "tc.research_page.ESSENTIARESERVOIR.1",
+    "tc.research_page.ESSENTIARESERVOIR.2"
+  ],
+  "recipe_pages": [
+    "EssentiaReservoir"
+  ],
+  "page_order": [
+    "tc.research_page.ESSENTIARESERVOIR.1",
+    "EssentiaReservoir",
+    "tc.research_page.ESSENTIARESERVOIR.2"
+  ],
+  "icon": "thaumcraft:essentia_reservoir",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

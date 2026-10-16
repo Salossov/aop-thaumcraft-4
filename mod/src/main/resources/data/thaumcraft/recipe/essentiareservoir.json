@@ -1,0 +1,38 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "ESSENTIARESERVOIR",
+  "result": {
+    "id": "thaumcraft:essentia_reservoir",
+    "count": 1
+  },
+  "instability": 6,
+  "aspects": {
+    "aqua": 8,
+    "vacuos": 8,
+    "praecantatio": 8,
+    "permutatio": 8
+  },
+  "input": {
+    "item": "thaumcraft:essentia_buffer"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:void_ingot"
+    },
+    {
+      "item": "thaumcraft:warded_jar"
+    },
+    {
+      "item": "thaumcraft:warded_jar"
+    },
+    {
+      "item": "thaumcraft:void_ingot"
+    },
+    {
+      "item": "thaumcraft:warded_jar"
+    },
+    {
+      "item": "thaumcraft:warded_jar"
+    }
+  ]
+}

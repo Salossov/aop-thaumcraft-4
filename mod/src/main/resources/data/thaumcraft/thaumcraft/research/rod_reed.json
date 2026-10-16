@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "ROD_reed",
+  "category": "THAUMATURGY",
+  "parents": [
+    "ROD_greatwood",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "instrumentum": 3,
+    "aer": 6,
+    "herba": 3,
+    "praecantatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -5,
+  "row": -1,
+  "text_pages": [
+    "tc.research_page.ROD_reed.1"
+  ],
+  "recipe_pages": [
+    "WandRodReed"
+  ],
+  "page_order": [
+    "tc.research_page.ROD_reed.1",
+    "WandRodReed"
+  ],
+  "icon": "thaumcraft:reed_wand_rod",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

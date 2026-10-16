@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "WANDPEDFOC",
+  "category": "THAUMATURGY",
+  "parents": [
+    "WANDPED"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "auram": 6,
+    "praecantatio": 6,
+    "permutatio": 6,
+    "potentia": 3,
+    "instrumentum": 3
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -10,
+  "row": -7,
+  "text_pages": [
+    "tc.research_page.WANDPEDFOC.1"
+  ],
+  "recipe_pages": [
+    "WandPedFocus"
+  ],
+  "page_order": [
+    "tc.research_page.WANDPEDFOC.1",
+    "WandPedFocus"
+  ],
+  "icon": "thaumcraft:compound_recharge_focus",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

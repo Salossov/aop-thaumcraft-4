@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "UPGRADEAIR",
+  "category": "GOLEMANCY",
+  "parents": [
+    "GOLEMBELL"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "aer": 6,
+    "motus": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 7,
+  "row": -3,
+  "text_pages": [
+    "tc.research_page.UPGRADEAIR.1"
+  ],
+  "recipe_pages": [
+    "UpgradeAir"
+  ],
+  "page_order": [
+    "tc.research_page.UPGRADEAIR.1",
+    "UpgradeAir"
+  ],
+  "icon": "thaumcraft:air_golem_upgrade",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

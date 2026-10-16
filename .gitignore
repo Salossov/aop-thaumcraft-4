@@ -1,0 +1,16 @@
+.gradle/
+.cache/
+.tools/
+**/build/
+runs/
+*.log
+analysis/
+exports/
+logs/
+**/__pycache__/
+.idea/
+.vscode/
+*.iml
+.env
+.env.*
+dist/

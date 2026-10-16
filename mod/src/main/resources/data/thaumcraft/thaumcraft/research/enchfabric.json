@@ -1,0 +1,48 @@
+{
+  "kind": "research",
+  "key": "ENCHFABRIC",
+  "category": "ARTIFICE",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "pannus": 3,
+    "praecantatio": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 0,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.ENCHFABRIC.1",
+    "tc.research_page.ENCHFABRIC.2"
+  ],
+  "recipe_pages": [
+    "EnchantedFabric",
+    "RobeChest",
+    "RobeLegs",
+    "RobeBoots"
+  ],
+  "page_order": [
+    "tc.research_page.ENCHFABRIC.1",
+    "EnchantedFabric",
+    "tc.research_page.ENCHFABRIC.2",
+    "RobeChest",
+    "RobeLegs",
+    "RobeBoots"
+  ],
+  "icon": "thaumcraft:enchanted_fabric",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

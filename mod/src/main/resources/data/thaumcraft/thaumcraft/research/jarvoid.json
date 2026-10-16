@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "JARVOID",
+  "category": "ALCHEMY",
+  "parents": [
+    "JARLABEL"
+  ],
+  "aspects": {
+    "aqua": 3,
+    "perditio": 3,
+    "vacuos": 6
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 5,
+  "row": -5,
+  "text_pages": [
+    "tc.research_page.JARVOID.1"
+  ],
+  "recipe_pages": [
+    "JarVoid"
+  ],
+  "icon": "thaumcraft:void_jar",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.JARVOID.1",
+    "JarVoid"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

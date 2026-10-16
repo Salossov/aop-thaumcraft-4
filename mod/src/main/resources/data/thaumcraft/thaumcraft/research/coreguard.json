@@ -1,0 +1,47 @@
+{
+  "kind": "research",
+  "key": "COREGUARD",
+  "category": "GOLEMANCY",
+  "parents": [
+    "COREGATHER"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "telum": 3,
+    "vinculum": 3,
+    "sensus": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -4,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.COREGUARD.1",
+    "tc.research_page.COREGUARD.2"
+  ],
+  "recipe_pages": [
+    "CoreGuard"
+  ],
+  "page_order": [
+    "tc.research_page.COREGUARD.1",
+    "CoreGuard",
+    "tc.research_page.COREGUARD.2"
+  ],
+  "icon": "thaumcraft:golem_core_guard",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {
+    "tc.research_page.COREGUARD.2": "UPGRADEORDER"
+  },
+  "special": false,
+  "recipe_groups": {}
+}

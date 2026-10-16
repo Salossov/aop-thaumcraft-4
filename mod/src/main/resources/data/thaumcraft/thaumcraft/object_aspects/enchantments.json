@@ -1,0 +1,77 @@
+{
+  "kind": "enchantment_aspect_minimums",
+  "entries": {
+    "minecraft:aqua_affinity": {
+      "aqua": 1
+    },
+    "minecraft:bane_of_arthropods": {
+      "bestia": 1
+    },
+    "minecraft:blast_protection": {
+      "tutamen": 1
+    },
+    "minecraft:efficiency": {
+      "instrumentum": 1
+    },
+    "minecraft:feather_falling": {
+      "volatus": 1
+    },
+    "minecraft:fire_aspect": {
+      "ignis": 1
+    },
+    "minecraft:fire_protection": {
+      "tutamen": 1
+    },
+    "minecraft:flame": {
+      "ignis": 1
+    },
+    "minecraft:fortune": {
+      "lucrum": 1
+    },
+    "minecraft:infinity": {
+      "fabrico": 1
+    },
+    "minecraft:knockback": {
+      "aer": 1
+    },
+    "minecraft:looting": {
+      "lucrum": 1
+    },
+    "minecraft:power": {
+      "telum": 1
+    },
+    "minecraft:projectile_protection": {
+      "tutamen": 1
+    },
+    "minecraft:protection": {
+      "tutamen": 1
+    },
+    "minecraft:punch": {
+      "aer": 1
+    },
+    "minecraft:respiration": {
+      "aer": 1
+    },
+    "minecraft:sharpness": {
+      "telum": 1
+    },
+    "minecraft:silk_touch": {
+      "permutatio": 1
+    },
+    "minecraft:thorns": {
+      "telum": 1
+    },
+    "minecraft:smite": {
+      "perditio": 1
+    },
+    "minecraft:unbreaking": {
+      "terra": 1
+    },
+    "minecraft:luck_of_the_sea": {
+      "lucrum": 1
+    },
+    "minecraft:lure": {
+      "bestia": 1
+    }
+  }
+}

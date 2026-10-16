@@ -1,0 +1,35 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "NODESTABILIZER",
+  "result": {
+    "id": "thaumcraft:node_stabilizer",
+    "count": 1
+  },
+  "vis": {
+    "aqua": 32,
+    "terra": 32,
+    "ordo": 32
+  },
+  "pattern": [
+    " G ",
+    "QPQ",
+    "SNS"
+  ],
+  "key": {
+    "S": {
+      "item": "thaumcraft:arcane_stone_bricks"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "Q": {
+      "item": "minecraft:quartz_block"
+    },
+    "N": {
+      "item": "thaumcraft:nitor"
+    }
+  }
+}

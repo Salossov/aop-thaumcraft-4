@@ -1,0 +1,22 @@
+{
+  "type": "thaumcraft:crucible",
+  "research": "PUREIRON",
+  "result": {
+    "id": "thaumcraft:native_iron_cluster"
+  },
+  "catalyst": [
+    {
+      "tag": "c:ores/iron"
+    },
+    {
+      "type": "thaumcraft:raw_ore_enabled",
+      "ingredient": {
+        "tag": "c:raw_materials/iron"
+      }
+    }
+  ],
+  "aspects": {
+    "metallum": 1,
+    "ordo": 1
+  }
+}

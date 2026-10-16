@@ -1,0 +1,25 @@
+{
+  "description": {
+    "translate": "enchantment.thaumcraft.repair"
+  },
+  "supported_items": "#thaumcraft:repairable",
+  "primary_items": "#thaumcraft:repairable",
+  "weight": 2,
+  "max_level": 2,
+  "min_cost": {
+    "base": 20,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 51,
+    "per_level_above_first": 10
+  },
+  "anvil_cost": 4,
+  "slots": [
+    "any"
+  ],
+  "exclusive_set": [
+    "minecraft:unbreaking"
+  ],
+  "effects": {}
+}

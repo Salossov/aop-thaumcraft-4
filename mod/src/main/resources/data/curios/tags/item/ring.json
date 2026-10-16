@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "thaumcraft:runic_ring_minor",
+    "thaumcraft:runic_ring",
+    "thaumcraft:runic_ring_charged",
+    "thaumcraft:runic_ring_healing",
+    "thaumcraft:air_discount_ring",
+    "thaumcraft:earth_discount_ring",
+    "thaumcraft:fire_discount_ring",
+    "thaumcraft:water_discount_ring",
+    "thaumcraft:order_discount_ring",
+    "thaumcraft:entropy_discount_ring"
+  ]
+}

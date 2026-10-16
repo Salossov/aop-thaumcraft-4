@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "TRANSLEAD",
+  "category": "ALCHEMY",
+  "parents": [
+    "TRANSIRON"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "metallum": 3,
+    "permutatio": 2,
+    "ordo": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 0,
+  "row": 9,
+  "text_pages": [
+    "tc.research_page.TRANSLEAD.1"
+  ],
+  "recipe_pages": [
+    "TransLead"
+  ],
+  "page_order": [
+    "tc.research_page.TRANSLEAD.1",
+    "TransLead"
+  ],
+  "page_requirements": {},
+  "recipe_groups": {},
+  "icon": "thaumcraft:lead_nugget",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "required_item_tags": [
+    "c:ingots/lead"
+  ]
+}

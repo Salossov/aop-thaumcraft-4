@@ -1,0 +1,10 @@
+{
+  "type": "thaumcraft:infernal_bonus",
+  "ingredient": {
+    "item": "minecraft:chicken"
+  },
+  "result": {
+    "id": "thaumcraft:chicken_nugget"
+  },
+  "base_count": 1
+}

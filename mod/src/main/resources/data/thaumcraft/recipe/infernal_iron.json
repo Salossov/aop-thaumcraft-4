@@ -1,0 +1,21 @@
+{
+  "type": "thaumcraft:infernal_bonus",
+  "ingredient": [
+    {
+      "item": "thaumcraft:native_iron_cluster"
+    },
+    {
+      "tag": "c:ores/iron"
+    },
+    {
+      "type": "thaumcraft:raw_ore_enabled",
+      "ingredient": {
+        "tag": "c:raw_materials/iron"
+      }
+    }
+  ],
+  "result": {
+    "id": "minecraft:iron_nugget"
+  },
+  "base_count": 0
+}

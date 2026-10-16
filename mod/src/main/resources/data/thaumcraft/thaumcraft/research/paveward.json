@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "PAVEWARD",
+  "category": "ARTIFICE",
+  "parents": [
+    "ARCANESTONE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "motus": 3,
+    "vinculum": 3,
+    "bestia": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 6,
+  "row": -4,
+  "text_pages": [
+    "tc.research_page.PAVEWARD.1",
+    "tc.research_page.PAVEWARD.2"
+  ],
+  "recipe_pages": [
+    "PaveWard"
+  ],
+  "page_order": [
+    "tc.research_page.PAVEWARD.1",
+    "PaveWard",
+    "tc.research_page.PAVEWARD.2"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:paving_stone_warding",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "thaumcraft:block/levitator_off"
+    },
+    "powered=true": {
+      "model": "thaumcraft:block/levitator_on"
+    }
+  }
+}

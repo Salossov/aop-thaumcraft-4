@@ -1,0 +1,51 @@
+{
+  "kind": "research",
+  "key": "GOLEMSTRAW",
+  "category": "GOLEMANCY",
+  "parents": [
+    "HUNGRYCHEST"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "spiritus": 3,
+    "motus": 3,
+    "messis": 3,
+    "permutatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 0,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.GOLEMSTRAW.1",
+    "tc.research_page.GOLEMSTRAW.2",
+    "tc.research_page.GOLEMSTRAW.3"
+  ],
+  "recipe_pages": [
+    "GolemStraw"
+  ],
+  "page_order": [
+    "tc.research_page.GOLEMSTRAW.1",
+    "tc.research_page.GOLEMSTRAW.2",
+    "GolemStraw",
+    "tc.research_page.GOLEMSTRAW.3"
+  ],
+  "icon": "thaumcraft:straw_golem",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [
+    "COREGATHER",
+    "GOLEMBELL"
+  ],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

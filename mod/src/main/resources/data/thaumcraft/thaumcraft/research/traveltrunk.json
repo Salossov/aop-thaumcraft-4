@@ -1,0 +1,66 @@
+{
+  "kind": "research",
+  "key": "TRAVELTRUNK",
+  "category": "GOLEMANCY",
+  "parents": [
+    "INFUSION",
+    "GOLEMWOOD"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "spiritus": 3,
+    "iter": 3,
+    "arbor": 3,
+    "vacuos": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 0,
+  "row": 4,
+  "text_pages": [
+    "tc.research_page.TRAVELTRUNK.1",
+    "tc.research_page.TRAVELTRUNK.2",
+    "tc.research_page.TRAVELTRUNK.UAI",
+    "tc.research_page.TRAVELTRUNK.UEA",
+    "tc.research_page.TRAVELTRUNK.UFI",
+    "tc.research_page.TRAVELTRUNK.UWA",
+    "tc.research_page.TRAVELTRUNK.UOR",
+    "tc.research_page.TRAVELTRUNK.UEN"
+  ],
+  "recipe_pages": [
+    "TravelTrunk"
+  ],
+  "page_order": [
+    "tc.research_page.TRAVELTRUNK.1",
+    "TravelTrunk",
+    "tc.research_page.TRAVELTRUNK.2",
+    "tc.research_page.TRAVELTRUNK.UAI",
+    "tc.research_page.TRAVELTRUNK.UEA",
+    "tc.research_page.TRAVELTRUNK.UFI",
+    "tc.research_page.TRAVELTRUNK.UWA",
+    "tc.research_page.TRAVELTRUNK.UOR",
+    "tc.research_page.TRAVELTRUNK.UEN"
+  ],
+  "icon": "thaumcraft:traveling_trunk",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {
+    "tc.research_page.TRAVELTRUNK.UAI": "UPGRADEAIR",
+    "tc.research_page.TRAVELTRUNK.UEA": "UPGRADEEARTH",
+    "tc.research_page.TRAVELTRUNK.UFI": "UPGRADEFIRE",
+    "tc.research_page.TRAVELTRUNK.UWA": "UPGRADEWATER",
+    "tc.research_page.TRAVELTRUNK.UOR": "UPGRADEORDER",
+    "tc.research_page.TRAVELTRUNK.UEN": "UPGRADEENTROPY"
+  },
+  "special": false,
+  "recipe_groups": {}
+}

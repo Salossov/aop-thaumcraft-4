@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "MASKANGRYGHOST",
+  "category": "ARTIFICE",
+  "parents": [
+    "ARMORFORTRESS"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "perditio": 5,
+    "mortuus": 5,
+    "tutamen": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -10,
+  "row": 9,
+  "text_pages": [
+    "tc.research_page.MASKANGRYGHOST.1"
+  ],
+  "recipe_pages": [
+    "MaskAngryGhost"
+  ],
+  "page_order": [
+    "tc.research_page.MASKANGRYGHOST.1",
+    "MaskAngryGhost"
+  ],
+  "icon": "thaumcraft:textures/misc/r_mask1.png",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 1,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

@@ -1,0 +1,24 @@
+{
+  "type": "thaumcraft:infernal_bonus",
+  "ingredient": {
+    "type": "thaumcraft:copper_enabled",
+    "ingredient": [
+      {
+        "item": "thaumcraft:native_copper_cluster"
+      },
+      {
+        "tag": "c:ores/copper"
+      },
+      {
+        "type": "thaumcraft:raw_ore_enabled",
+        "ingredient": {
+          "tag": "c:raw_materials/copper"
+        }
+      }
+    ]
+  },
+  "result": {
+    "id": "thaumcraft:copper_nugget"
+  },
+  "base_count": 0
+}

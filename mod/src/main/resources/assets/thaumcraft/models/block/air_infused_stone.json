@@ -1,0 +1,95 @@
+{
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "stone": "thaumcraft:blocks/infusedorestone",
+    "crystals": "thaumcraft:blocks/infusedore",
+    "particle": "thaumcraft:blocks/infusedorestone"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#stone",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#stone",
+          "cullface": "up"
+        },
+        "north": {
+          "texture": "#stone",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#stone",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#stone",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#stone",
+          "cullface": "east"
+        }
+      }
+    },
+    {
+      "from": [
+        -0.002,
+        -0.002,
+        -0.002
+      ],
+      "to": [
+        16.002,
+        16.002,
+        16.002
+      ],
+      "faces": {
+        "down": {
+          "texture": "#crystals",
+          "tintindex": 0,
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#crystals",
+          "tintindex": 0,
+          "cullface": "up"
+        },
+        "north": {
+          "texture": "#crystals",
+          "tintindex": 0,
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#crystals",
+          "tintindex": 0,
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#crystals",
+          "tintindex": 0,
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#crystals",
+          "tintindex": 0,
+          "cullface": "east"
+        }
+      },
+      "light_emission": 15,
+      "shade": false
+    }
+  ],
+  "parent": "minecraft:block/block"
+}

@@ -1,0 +1,31 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "WANDPED",
+  "result": {
+    "id": "thaumcraft:wand_recharge_pedestal",
+    "count": 1
+  },
+  "instability": 3,
+  "aspects": {
+    "auram": 10,
+    "praecantatio": 15,
+    "permutatio": 15
+  },
+  "input": {
+    "item": "thaumcraft:arcane_pedestal"
+  },
+  "components": [
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "thaumcraft:primal_charm"
+    },
+    {
+      "item": "minecraft:diamond"
+    }
+  ]
+}

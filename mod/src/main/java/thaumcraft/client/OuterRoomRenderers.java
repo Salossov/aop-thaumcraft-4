@@ -1,0 +1,44 @@
+package thaumcraft.client;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.blockentity.*;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import thaumcraft.blocks.*;
+import thaumcraft.registry.R5Content;
+
+@EventBusSubscriber(modid="thaumcraft",bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+public final class OuterRoomRenderers {
+    @SubscribeEvent public static void manaPods(EntityRenderersEvent.RegisterRenderers event){event.registerBlockEntityRenderer(R5Content.MANA_POD_ENTITY.get(),ManaPodRenderer::new);}
+    @SubscribeEvent public static void pechScreens(net.neoforged.neoforge.client.event.RegisterMenuScreensEvent event){event.register(R5Content.PECH_MENU.get(),PechScreen::new);}
+    @SubscribeEvent public static void crimsonRenderers(EntityRenderersEvent.RegisterRenderers event){event.registerEntityRenderer(thaumcraft.entities.R5Entities.CULTIST_LEADER.get(),CultistRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.CULTIST_KNIGHT.get(),CultistRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.CULTIST_CLERIC.get(),CultistRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.PECH.get(),PechRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.PECH_BLAST.get(),context->new net.minecraft.client.renderer.entity.EntityRenderer<thaumcraft.entities.PechBlast>(context){@Override public ResourceLocation getTextureLocation(thaumcraft.entities.PechBlast entity){return texture("misc/particles");}});}
+    @SubscribeEvent public static void beanColors(net.neoforged.neoforge.client.event.RegisterColorHandlersEvent.Item event){event.register((stack,tint)->0xff000000|thaumcraft.items.ManaBeanItem.color(stack,System.currentTimeMillis()),R5Content.MANA_BEAN.get());}
+    @SubscribeEvent public static void champions(FMLClientSetupEvent event){event.enqueueWork(()->{ChampionClientEffects.install();PechBlastEffects.install();VishroomEffects.install();EldritchLockBlockEntity.clientEffects=tile->{var r=tile.getLevel().random;var p=tile.getBlockPos();GolemClientEffects.spark(new Vec3(p.getX()+r.nextFloat(),p.getY()+r.nextFloat(),p.getZ()+r.nextFloat()),.5f,.65f+r.nextFloat()*.1f,1,1,.8f);};});}
+    @SubscribeEvent public static void encounterRenderers(EntityRenderersEvent.RegisterRenderers event){event.registerEntityRenderer(thaumcraft.entities.R5Entities.CULTIST_PORTAL.get(),CultistPortalRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.TAINTACLE_GIANT.get(),GiantTaintacleRenderer::new);}
+    private static ResourceLocation texture(String path){return ResourceLocation.parse("thaumcraft:textures/"+path+".png");}
+    static void orient(PoseStack pose,Direction facing){pose.translate(.5,.5,.5);switch(facing){case DOWN->pose.mulPose(Axis.XP.rotationDegrees(90));case UP->pose.mulPose(Axis.XP.rotationDegrees(-90));case NORTH->pose.mulPose(Axis.YP.rotationDegrees(180));case WEST->pose.mulPose(Axis.YP.rotationDegrees(-90));case EAST->pose.mulPose(Axis.YP.rotationDegrees(90));default->{}}}
+    public static final class Crystal implements BlockEntityRenderer<AncientCrystalBlockEntity> {
+        public Crystal(BlockEntityRendererProvider.Context context){}
+        @Override public void render(AncientCrystalBlockEntity tile,float partial,PoseStack pose,MultiBufferSource buffers,int light,int overlay){drawCrystal(tile.getBlockState().getValue(AncientCrystalBlock.FACING),tile.getLevel()==null?0:tile.hashCode()%4,pose,buffers,light,overlay);}
+    }
+    static void drawCrystal(Direction face,int rotation,PoseStack pose,MultiBufferSource buffers,int light,int overlay){pose.pushPose();orient(pose,face);pose.translate(0,0,-.5);pose.mulPose(Axis.ZP.rotationDegrees(90*rotation));var mesh=OriginalObjMesh.get("vcrystal");mesh.render("Base",pose,buffers,texture("blocks/crust"),light,overlay,-1,false);var player=Minecraft.getInstance().player;int pulse=(int)(210*(Math.sin((player==null?0:player.tickCount)/6f)*.075+.925));boolean original=thaumcraft.config.ThaumcraftClientConfig.ORIGINAL_ANCIENT_CRYSTALS.get();mesh.render("Crystal",pose,buffers,original?RenderType.entityTranslucentEmissive(texture("models/vcrystal")):RenderType.entityTranslucent(texture("models/vcrystal")),original?LightTexture.pack(13,0):pulse,overlay,original?0xffffffff:0xb2ffffff);pose.popPose();}
+    public static final class Vent implements BlockEntityRenderer<EldritchCrabSpawnerBlockEntity> {
+        public Vent(BlockEntityRendererProvider.Context context){}
+        @Override public void render(EldritchCrabSpawnerBlockEntity tile,float partial,PoseStack pose,MultiBufferSource buffers,int light,int overlay){pose.pushPose();orient(pose,tile.getBlockState().getValue(EldritchCrabSpawnerBlock.FACING));OriginalObjMesh.get("crabvent").renderAll(pose,buffers,texture("models/crabvent"),light,overlay,-1,false);pose.popPose();}
+    }
+    private static void ventParticles(EldritchCrabSpawnerBlockEntity tile){var random=tile.getLevel().random;var face=tile.getBlockState().getValue(EldritchCrabSpawnerBlock.FACING);float x=.15f-random.nextFloat()*.3f,z=.15f-random.nextFloat()*.3f,y=.15f-random.nextFloat()*.3f,vx=.1f-random.nextFloat()*.2f,vz=.1f-random.nextFloat()*.2f,vy=.1f-random.nextFloat()*.2f;var centre=Vec3.atCenterOf(tile.getBlockPos());LegacyParticles.vent(centre.add(x+face.getStepX()/2.1f,y+face.getStepY()/2.1f,z+face.getStepZ()/2.1f),new Vec3(face.getStepX()/3f+vx,face.getStepY()/3f+vy,face.getStepZ()/3f+vz),0x9988aa,2);}
+    @SubscribeEvent public static void setup(FMLClientSetupEvent event){event.enqueueWork(()->{EldritchCrabSpawnerBlockEntity.vent=OuterRoomRenderers::ventParticles;EldritchObeliskBlockEntity.wisp=LegacyParticles::obeliskWisp;thaumcraft.entities.GolemOrb.clientImpact=GolemClientEffects::impact;thaumcraft.entities.EldritchGolem.clientEffects=GolemClientEffects::tick;thaumcraft.entities.EldritchWarden.clientEffects=WardenClientEffects::tick;EldritchFieldBlock.clientEffects=WardenClientEffects::field;});}
+    @SubscribeEvent public static void renderers(EntityRenderersEvent.RegisterRenderers event){event.registerBlockEntityRenderer(R5Content.LOCK_ENTITY.get(),EldritchLockRenderer::new);event.registerBlockEntityRenderer(R5Content.PORTAL_ENTITY.get(),EldritchPortalRenderer::new);event.registerBlockEntityRenderer(R5Content.ANCIENT_CRYSTAL_ENTITY.get(),Crystal::new);event.registerBlockEntityRenderer(R5Content.CRAB_SPAWNER_ENTITY.get(),Vent::new);event.registerBlockEntityRenderer(R5Content.OBELISK_ENTITY.get(),EldritchObeliskRenderer::new);event.registerBlockEntityRenderer(R5Content.CAP_ENTITY.get(),EldritchObeliskRenderer.Cap::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.PERMANENT_ITEM.get(),net.minecraft.client.renderer.entity.ItemEntityRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.SPECIAL_ITEM.get(),net.minecraft.client.renderer.entity.ItemEntityRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.FOLLOWING_ITEM.get(),net.minecraft.client.renderer.entity.ItemEntityRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.GRATE_ITEM.get(),net.minecraft.client.renderer.entity.ItemEntityRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.ELDRITCH_WARDEN.get(),EldritchWardenRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.ELDRITCH_GOLEM.get(),EldritchGolemRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.GOLEM_ORB.get(),GolemOrbRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.CRAB.get(),EldritchCrabRenderer::new);event.registerEntityRenderer(thaumcraft.entities.R5Entities.INHABITED_ZOMBIE.get(),context->new net.minecraft.client.renderer.entity.ZombieRenderer(context){@Override public ResourceLocation getTextureLocation(net.minecraft.world.entity.monster.Zombie zombie){return texture("models/czombie");}});}
+    @SubscribeEvent public static void extensions(RegisterClientExtensionsEvent event){event.registerItem(new ArmorClientExtensions(),R5Content.CULTIST_ARMOR.values().stream().map(java.util.function.Supplier::get).toArray(net.minecraft.world.item.Item[]::new));event.registerItem(new AncientCrystalItemRenderer.Extension(),R5Content.ANCIENT_CRYSTAL_ITEM.get());}
+    private OuterRoomRenderers(){}
+}

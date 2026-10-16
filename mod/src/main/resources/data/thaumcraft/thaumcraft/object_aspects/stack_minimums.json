@@ -1,0 +1,151 @@
+{
+  "kind": "stack_aspect_minimums",
+  "entries": {
+    "minecraft:bow": {
+      "telum": 3,
+      "volatus": 1
+    },
+    "minecraft:shears": {
+      "messis": 3
+    },
+    "minecraft:enchanted_book": {},
+    "thaumcraft:goggles_of_revealing": {
+      "tutamen": 1
+    },
+    "minecraft:wooden_sword": {
+      "telum": 5
+    },
+    "minecraft:wooden_pickaxe": {
+      "perfodio": 1
+    },
+    "minecraft:wooden_axe": {
+      "instrumentum": 1
+    },
+    "minecraft:wooden_shovel": {
+      "instrumentum": 1
+    },
+    "minecraft:wooden_hoe": {
+      "messis": 1
+    },
+    "minecraft:stone_sword": {
+      "telum": 6
+    },
+    "minecraft:stone_pickaxe": {
+      "perfodio": 2
+    },
+    "minecraft:stone_axe": {
+      "instrumentum": 2
+    },
+    "minecraft:stone_shovel": {
+      "instrumentum": 2
+    },
+    "minecraft:stone_hoe": {
+      "messis": 2
+    },
+    "minecraft:golden_sword": {
+      "telum": 5
+    },
+    "minecraft:golden_pickaxe": {
+      "perfodio": 1
+    },
+    "minecraft:golden_axe": {
+      "instrumentum": 1
+    },
+    "minecraft:golden_shovel": {
+      "instrumentum": 1
+    },
+    "minecraft:golden_hoe": {
+      "messis": 1
+    },
+    "minecraft:iron_sword": {
+      "telum": 7
+    },
+    "minecraft:iron_pickaxe": {
+      "perfodio": 3
+    },
+    "minecraft:iron_axe": {
+      "instrumentum": 3
+    },
+    "minecraft:iron_shovel": {
+      "instrumentum": 3
+    },
+    "minecraft:iron_hoe": {
+      "messis": 3
+    },
+    "minecraft:diamond_sword": {
+      "telum": 8
+    },
+    "minecraft:diamond_pickaxe": {
+      "perfodio": 4
+    },
+    "minecraft:diamond_axe": {
+      "instrumentum": 4
+    },
+    "minecraft:diamond_shovel": {
+      "instrumentum": 4
+    },
+    "minecraft:diamond_hoe": {
+      "messis": 4
+    },
+    "minecraft:leather_helmet": {
+      "tutamen": 1
+    },
+    "minecraft:leather_chestplate": {
+      "tutamen": 3
+    },
+    "minecraft:leather_leggings": {
+      "tutamen": 2
+    },
+    "minecraft:leather_boots": {
+      "tutamen": 1
+    },
+    "minecraft:chainmail_helmet": {
+      "tutamen": 2
+    },
+    "minecraft:chainmail_chestplate": {
+      "tutamen": 5
+    },
+    "minecraft:chainmail_leggings": {
+      "tutamen": 4
+    },
+    "minecraft:chainmail_boots": {
+      "tutamen": 1
+    },
+    "minecraft:iron_helmet": {
+      "tutamen": 2
+    },
+    "minecraft:iron_chestplate": {
+      "tutamen": 6
+    },
+    "minecraft:iron_leggings": {
+      "tutamen": 5
+    },
+    "minecraft:iron_boots": {
+      "tutamen": 2
+    },
+    "minecraft:golden_helmet": {
+      "tutamen": 2
+    },
+    "minecraft:golden_chestplate": {
+      "tutamen": 5
+    },
+    "minecraft:golden_leggings": {
+      "tutamen": 3
+    },
+    "minecraft:golden_boots": {
+      "tutamen": 1
+    },
+    "minecraft:diamond_helmet": {
+      "tutamen": 3
+    },
+    "minecraft:diamond_chestplate": {
+      "tutamen": 8
+    },
+    "minecraft:diamond_leggings": {
+      "tutamen": 6
+    },
+    "minecraft:diamond_boots": {
+      "tutamen": 3
+    }
+  }
+}

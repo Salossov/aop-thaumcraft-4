@@ -1,0 +1,47 @@
+{
+  "kind": "research",
+  "key": "FOCUSPRIMAL",
+  "category": "ELDRITCH",
+  "parents": [
+    "ELDRITCHMINOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "aer": 6,
+    "aqua": 6,
+    "ignis": 6,
+    "terra": 6,
+    "ordo": 6,
+    "perditio": 6,
+    "praecantatio": 6
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 4,
+  "row": 1,
+  "text_pages": [
+    "tc.research_page.FOCUSPRIMAL.1"
+  ],
+  "recipe_pages": [
+    "FocusPrimal"
+  ],
+  "page_order": [
+    "tc.research_page.FOCUSPRIMAL.1",
+    "FocusPrimal"
+  ],
+  "icon": "thaumcraft:focus_primal",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 2,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

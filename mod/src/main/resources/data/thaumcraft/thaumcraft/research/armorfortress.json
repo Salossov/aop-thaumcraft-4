@@ -1,0 +1,52 @@
+{
+  "kind": "research",
+  "key": "ARMORFORTRESS",
+  "category": "ARTIFICE",
+  "parents": [
+    "THAUMIUM",
+    "INFUSIONENCHANTMENT"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "metallum": 3,
+    "tutamen": 5,
+    "fabrico": 5
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -8,
+  "row": 9,
+  "text_pages": [
+    "tc.research_page.ARMORFORTRESS.1",
+    "tc.research_page.ARMORFORTRESS.2"
+  ],
+  "recipe_pages": [
+    "ThaumiumFortressHelm",
+    "ThaumiumFortressChest",
+    "ThaumiumFortressLegs"
+  ],
+  "page_order": [
+    "tc.research_page.ARMORFORTRESS.1",
+    "tc.research_page.ARMORFORTRESS.2",
+    "ThaumiumFortressHelm",
+    "ThaumiumFortressChest",
+    "ThaumiumFortressLegs"
+  ],
+  "icon": "thaumcraft:thaumium_fortress_helmet",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "tutamen"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

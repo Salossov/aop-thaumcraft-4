@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "TINYARMOR",
+  "category": "GOLEMANCY",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "metallum": 1,
+    "tutamen": 2,
+    "lucrum": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 7,
+  "row": 11,
+  "text_pages": [
+    "tc.research_page.TINYARMOR.1"
+  ],
+  "recipe_pages": [
+    "TinyArmor"
+  ],
+  "page_order": [
+    "tc.research_page.TINYARMOR.1",
+    "TinyArmor"
+  ],
+  "icon": "thaumcraft:golem_armor",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "tutamen"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

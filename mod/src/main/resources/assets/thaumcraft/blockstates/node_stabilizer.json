@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "thaumcraft:block/node_stabilizer"
+    },
+    "facing=down": {
+      "model": "thaumcraft:block/node_stabilizer"
+    },
+    "facing=north": {
+      "model": "thaumcraft:block/node_stabilizer"
+    },
+    "facing=south": {
+      "model": "thaumcraft:block/node_stabilizer"
+    },
+    "facing=east": {
+      "model": "thaumcraft:block/node_stabilizer"
+    },
+    "facing=west": {
+      "model": "thaumcraft:block/node_stabilizer"
+    }
+  }
+}

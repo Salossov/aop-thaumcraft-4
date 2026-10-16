@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "ROD_silverwood_staff",
+  "category": "THAUMATURGY",
+  "parents": [
+    "ROD_silverwood"
+  ],
+  "hidden_parents": [
+    "ROD_greatwood_staff"
+  ],
+  "aspects": {
+    "instrumentum": 6,
+    "arbor": 6,
+    "praecantatio": 9
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -1,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.ROD_silverwood_staff.1"
+  ],
+  "recipe_pages": [
+    "WandRodSilverwoodStaff"
+  ],
+  "page_order": [
+    "tc.research_page.ROD_silverwood_staff.1",
+    "WandRodSilverwoodStaff"
+  ],
+  "icon": "thaumcraft:silverwood_staff_rod",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

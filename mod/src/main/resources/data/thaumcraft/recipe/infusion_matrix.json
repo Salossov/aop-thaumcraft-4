@@ -1,0 +1,47 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "INFUSION",
+  "pattern": [
+    "SBS",
+    "BEB",
+    "SBS"
+  ],
+  "key": {
+    "S": {
+      "item": "thaumcraft:arcane_stone"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+    "B": [
+      {
+        "item": "thaumcraft:air_shard"
+      },
+      {
+        "item": "thaumcraft:fire_shard"
+      },
+      {
+        "item": "thaumcraft:water_shard"
+      },
+      {
+        "item": "thaumcraft:earth_shard"
+      },
+      {
+        "item": "thaumcraft:order_shard"
+      },
+      {
+        "item": "thaumcraft:entropy_shard"
+      },
+      {
+        "item": "thaumcraft:balanced_shard"
+      }
+    ]
+  },
+  "result": {
+    "id": "thaumcraft:infusion_matrix",
+    "count": 1
+  },
+  "vis": {
+    "ordo": 40
+  }
+}

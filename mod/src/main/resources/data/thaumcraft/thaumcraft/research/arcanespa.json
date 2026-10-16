@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "ARCANESPA",
+  "category": "ALCHEMY",
+  "parents": [
+    "BATHSALTS"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "aqua": 3,
+    "machina": 3,
+    "ordo": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -6,
+  "row": -5,
+  "text_pages": [
+    "tc.research_page.ARCANESPA.1"
+  ],
+  "recipe_pages": [
+    "ArcaneSpa"
+  ],
+  "page_order": [
+    "tc.research_page.ARCANESPA.1",
+    "ArcaneSpa"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:arcane_spa",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

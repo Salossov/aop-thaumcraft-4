@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "VISAMULET",
+  "category": "THAUMATURGY",
+  "parents": [
+    "WANDPED"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "auram": 3,
+    "praecantatio": 6,
+    "potentia": 3,
+    "vacuos": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -9,
+  "row": -8,
+  "text_pages": [
+    "tc.research_page.VISAMULET.1",
+    "tc.research_page.VISAMULET.2"
+  ],
+  "recipe_pages": [
+    "VisAmulet"
+  ],
+  "page_order": [
+    "tc.research_page.VISAMULET.1",
+    "VisAmulet",
+    "tc.research_page.VISAMULET.2"
+  ],
+  "icon": "thaumcraft:vis_amulet",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

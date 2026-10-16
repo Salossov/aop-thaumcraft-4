@@ -1,0 +1,225 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "thaumcraft:blocks/lifterside",
+    "side": "thaumcraft:blocks/lifterside",
+    "top": "thaumcraft:blocks/liftertop",
+    "bottom": "thaumcraft:blocks/arcaneearbottom",
+    "glow": "thaumcraft:blocks/animatedglow"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#bottom"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side"
+        }
+      }
+    },
+    {
+      "from": [
+        0.16,
+        14.4,
+        0.16
+      ],
+      "to": [
+        15.84,
+        15.84,
+        15.84
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0.16,
+            0.16000000000000014,
+            15.84,
+            15.84
+          ],
+          "texture": "#glow"
+        },
+        "up": {
+          "uv": [
+            0.16,
+            0.16,
+            15.84,
+            15.84
+          ],
+          "texture": "#glow"
+        },
+        "north": {
+          "uv": [
+            0.16000000000000014,
+            0.16000000000000014,
+            15.84,
+            1.5999999999999996
+          ],
+          "texture": "#glow"
+        },
+        "south": {
+          "uv": [
+            0.16,
+            0.16000000000000014,
+            15.84,
+            1.5999999999999996
+          ],
+          "texture": "#glow"
+        },
+        "west": {
+          "uv": [
+            0.16,
+            0.16000000000000014,
+            15.84,
+            1.5999999999999996
+          ],
+          "texture": "#glow"
+        },
+        "east": {
+          "uv": [
+            0.16000000000000014,
+            0.16000000000000014,
+            15.84,
+            1.5999999999999996
+          ],
+          "texture": "#glow"
+        }
+      },
+      "neoforge_data": {
+        "color": "ff00a000",
+        "ambient_occlusion": false
+      }
+    },
+    {
+      "from": [
+        0.16,
+        1.6,
+        0.16
+      ],
+      "to": [
+        15.84,
+        14.4,
+        15.84
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0.16,
+            0.16000000000000014,
+            15.84,
+            15.84
+          ],
+          "texture": "#glow"
+        },
+        "up": {
+          "uv": [
+            0.16,
+            0.16,
+            15.84,
+            15.84
+          ],
+          "texture": "#glow"
+        },
+        "north": {
+          "uv": [
+            0.16000000000000014,
+            1.5999999999999996,
+            15.84,
+            14.4
+          ],
+          "texture": "#glow"
+        },
+        "south": {
+          "uv": [
+            0.16,
+            1.5999999999999996,
+            15.84,
+            14.4
+          ],
+          "texture": "#glow"
+        },
+        "west": {
+          "uv": [
+            0.16,
+            1.5999999999999996,
+            15.84,
+            14.4
+          ],
+          "texture": "#glow"
+        },
+        "east": {
+          "uv": [
+            0.16000000000000014,
+            1.5999999999999996,
+            15.84,
+            14.4
+          ],
+          "texture": "#glow"
+        }
+      },
+      "neoforge_data": {
+        "color": "ffeeccff",
+        "ambient_occlusion": false
+      }
+    }
+  ]
+}

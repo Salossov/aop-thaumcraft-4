@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "result": {
+    "id": "thaumcraft:fire_crystal_cluster",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "thaumcraft:fire_shard"
+    },
+    {
+      "item": "thaumcraft:fire_shard"
+    },
+    {
+      "item": "thaumcraft:fire_shard"
+    },
+    {
+      "item": "thaumcraft:fire_shard"
+    },
+    {
+      "item": "thaumcraft:fire_shard"
+    },
+    {
+      "item": "thaumcraft:fire_shard"
+    }
+  ]
+}

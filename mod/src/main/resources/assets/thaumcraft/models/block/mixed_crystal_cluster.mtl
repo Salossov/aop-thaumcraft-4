@@ -1,0 +1,18 @@
+newmtl part0
+map_Kd thaumcraft:models/crystal
+Kd 0.9333333333333333 0.8 1
+newmtl part1
+map_Kd thaumcraft:models/crystal
+Kd 1 1 0.49411764705882355
+newmtl part2
+map_Kd thaumcraft:models/crystal
+Kd 1 0.23921568627450981 0.00392156862745098
+newmtl part3
+map_Kd thaumcraft:models/crystal
+Kd 0 0.5647058823529412 1
+newmtl part4
+map_Kd thaumcraft:models/crystal
+Kd 0 0.6274509803921569 0
+newmtl part5
+map_Kd thaumcraft:models/crystal
+Kd 0.3333333333333333 0.3333333333333333 0.4666666666666667

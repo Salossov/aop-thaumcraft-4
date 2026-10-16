@@ -1,0 +1,41 @@
+{
+  "kind": "research",
+  "key": "NODETAPPER1",
+  "category": "BASICS",
+  "parents": [
+    "NODES"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "auram": 3,
+    "praecantatio": 3,
+    "motus": 3,
+    "permutatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -4,
+  "row": 1,
+  "text_pages": [
+    "tc.research_page.NODETAPPER1.1"
+  ],
+  "recipe_pages": [],
+  "page_order": [
+    "tc.research_page.NODETAPPER1.1"
+  ],
+  "icon": "thaumcraft:textures/misc/r_nodetap1.png",
+  "virtual": false,
+  "round": true,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

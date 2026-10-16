@@ -1,0 +1,32 @@
+{
+  "type": "thaumcraft:crucible",
+  "research": "PURELEAD",
+  "result": {
+    "id": "thaumcraft:native_lead_cluster",
+    "count": 1
+  },
+  "catalyst": [
+    {
+      "tag": "c:ores/lead"
+    },
+    {
+      "type": "thaumcraft:raw_ore_enabled",
+      "ingredient": {
+        "tag": "c:raw_materials/lead"
+      }
+    }
+  ],
+  "aspects": {
+    "metallum": 1,
+    "ordo": 1
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/lead"
+      }
+    }
+  ]
+}

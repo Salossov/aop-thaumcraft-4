@@ -1,0 +1,14 @@
+{
+  "type": "thaumcraft:crucible",
+  "research": "TRANSIRON",
+  "result": {
+    "id": "minecraft:iron_nugget",
+    "count": 3
+  },
+  "catalyst": {
+    "item": "minecraft:iron_nugget"
+  },
+  "aspects": {
+    "metallum": 2
+  }
+}

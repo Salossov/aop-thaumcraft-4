@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "thaumcraft.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BiomeManagerMixin",
+    "OwnedBlockHardnessMixin",
+    "FurnaceCookingAccessor",
+    "LootTableAccessor",
+    "LootPoolAccessor",
+    "ItemAgeAccessor",
+    "LivingEntityRecentHitAccessor",
+    "LivingAttackTickerAccessor",
+    "NaturalBiomePresetMixin",
+    "EldritchVoidStateMixin",
+    "PavingStoneStateMixin"
+    ,"FloatingCounterAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "ResearchOverlayLayerMixin",
+    "ThaumometerEquipMixin",
+    "CreativeWandScreenMixin"
+  ]
+}

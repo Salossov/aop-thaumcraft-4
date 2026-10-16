@@ -1,0 +1,9 @@
+{
+  "loader": "neoforge:obj",
+  "model": "thaumcraft:models/block/pillar.obj",
+  "flip_v": true,
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumcraft:blocks/arcane_stone"
+  }
+}

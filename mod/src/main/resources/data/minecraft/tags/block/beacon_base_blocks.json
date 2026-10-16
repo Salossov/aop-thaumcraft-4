@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "thaumcraft:eldritch_stone",
+    "thaumcraft:eldritch_rock",
+    "thaumcraft:eldritch_stone_nospawn",
+    "thaumcraft:ancient_stone",
+    "thaumcraft:eldritch_pillar",
+    "thaumcraft:paving_stone_travel",
+    "thaumcraft:paving_stone_warding",
+    "thaumcraft:obsidian_tile",
+    "thaumcraft:obsidian_totem",
+    "thaumcraft:obsidian_totem_node",
+    "thaumcraft:thaumium_block",
+    "thaumcraft:tallow_block",
+    "thaumcraft:arcane_stone",
+    "thaumcraft:arcane_stone_bricks"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "type": "thaumcraft:infernal_bonus",
+  "ingredient": [
+    {
+      "item": "thaumcraft:native_silver_cluster"
+    },
+    {
+      "tag": "c:ores/silver"
+    },
+    {
+      "type": "thaumcraft:raw_ore_enabled",
+      "ingredient": {
+        "tag": "c:raw_materials/silver"
+      }
+    }
+  ],
+  "result": {
+    "id": "thaumcraft:silver_nugget"
+  },
+  "base_count": 0,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/silver"
+      }
+    }
+  ]
+}

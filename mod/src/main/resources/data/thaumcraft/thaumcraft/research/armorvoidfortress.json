@@ -1,0 +1,51 @@
+{
+  "kind": "research",
+  "key": "ARMORVOIDFORTRESS",
+  "category": "ELDRITCH",
+  "parents": [
+    "VOIDMETAL",
+    "ENCHFABRIC",
+    "ELDRITCHMAJOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "tutamen": 5,
+    "alienis": 3,
+    "pannus": 3,
+    "tenebrae": 3,
+    "vacuos": 5
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 0,
+  "row": -3,
+  "text_pages": [
+    "tc.research_page.ARMORVOIDFORTRESS.1"
+  ],
+  "recipe_pages": [
+    "VoidRobeHelm",
+    "VoidRobeChest",
+    "VoidRobeLegs"
+  ],
+  "page_order": [
+    "tc.research_page.ARMORVOIDFORTRESS.1",
+    "VoidRobeHelm",
+    "VoidRobeChest",
+    "VoidRobeLegs"
+  ],
+  "icon": "thaumcraft:void_robe_helmet",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

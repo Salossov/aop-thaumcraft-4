@@ -1,0 +1,23 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "TINYGLASSES",
+  "result": {
+    "id": "thaumcraft:golem_glasses",
+    "count": 1
+  },
+  "vis": {
+    "aer": 4,
+    "aqua": 4
+  },
+  "pattern": [
+    "GIG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  }
+}

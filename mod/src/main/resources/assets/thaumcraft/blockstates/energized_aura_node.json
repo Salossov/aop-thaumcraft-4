@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "thaumcraft:block/empty"
+    },
+    "facing=down": {
+      "model": "thaumcraft:block/empty"
+    },
+    "facing=north": {
+      "model": "thaumcraft:block/empty"
+    },
+    "facing=south": {
+      "model": "thaumcraft:block/empty"
+    },
+    "facing=east": {
+      "model": "thaumcraft:block/empty"
+    },
+    "facing=west": {
+      "model": "thaumcraft:block/empty"
+    }
+  }
+}

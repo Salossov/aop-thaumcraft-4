@@ -1,0 +1,53 @@
+{
+  "kind": "research",
+  "key": "TUBES",
+  "category": "ALCHEMY",
+  "parents": [
+    "DISTILESSENTIA"
+  ],
+  "aspects": {
+    "aqua": 3,
+    "praecantatio": 3,
+    "permutatio": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 7,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.TUBES.1",
+    "tc.research_page.TUBES.2",
+    "tc.research_page.TUBES.3",
+    "tc.research_page.TUBES.4"
+  ],
+  "recipe_pages": [
+    "Tube",
+    "TubeValve",
+    "Resonator"
+  ],
+  "icon": "thaumcraft:essentia_tube",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.TUBES.1",
+    "Tube",
+    "tc.research_page.TUBES.2",
+    "TubeValve",
+    "tc.research_page.TUBES.3",
+    "Resonator",
+    "tc.research_page.TUBES.4"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

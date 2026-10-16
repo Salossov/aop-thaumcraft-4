@@ -1,0 +1,77 @@
+{
+  "kind": "research",
+  "key": "BANNERS",
+  "category": "ARTIFICE",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "sensus": 3,
+    "pannus": 3,
+    "praecantatio": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 4,
+  "row": 8,
+  "text_pages": [
+    "tc.research_page.BANNERS.1"
+  ],
+  "recipe_pages": [
+    "Banner_0",
+    "Banner_1",
+    "Banner_2",
+    "Banner_3",
+    "Banner_4",
+    "Banner_5",
+    "Banner_6",
+    "Banner_7",
+    "Banner_8",
+    "Banner_9",
+    "Banner_10",
+    "Banner_11",
+    "Banner_12",
+    "Banner_13",
+    "Banner_14",
+    "Banner_15"
+  ],
+  "page_order": [
+    "tc.research_page.BANNERS.1",
+    "Banners"
+  ],
+  "page_requirements": {},
+  "recipe_groups": {
+    "Banners": [
+      "Banner_0",
+      "Banner_1",
+      "Banner_2",
+      "Banner_3",
+      "Banner_4",
+      "Banner_5",
+      "Banner_6",
+      "Banner_7",
+      "Banner_8",
+      "Banner_9",
+      "Banner_10",
+      "Banner_11",
+      "Banner_12",
+      "Banner_13",
+      "Banner_14",
+      "Banner_15"
+    ]
+  },
+  "icon": "thaumcraft:thaumic_banner",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [
+    "thaumcraft:thaumic_banner"
+  ],
+  "entity_triggers": [],
+  "aspect_triggers": []
+}

@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "half=lower,facing=north": {
+      "model": "thaumcraft:block/thaumatorium",
+      "y": 270
+    },
+    "half=lower,facing=south": {
+      "model": "thaumcraft:block/thaumatorium",
+      "y": 90
+    },
+    "half=lower,facing=west": {
+      "model": "thaumcraft:block/thaumatorium",
+      "y": 0
+    },
+    "half=lower,facing=east": {
+      "model": "thaumcraft:block/thaumatorium",
+      "y": 180
+    },
+    "half=lower,facing=up": {
+      "model": "thaumcraft:block/thaumatorium",
+      "y": 0
+    },
+    "half=lower,facing=down": {
+      "model": "thaumcraft:block/thaumatorium",
+      "y": 0
+    },
+    "half=upper,facing=north": {
+      "model": "thaumcraft:block/empty",
+      "y": 270
+    },
+    "half=upper,facing=south": {
+      "model": "thaumcraft:block/empty",
+      "y": 90
+    },
+    "half=upper,facing=west": {
+      "model": "thaumcraft:block/empty",
+      "y": 0
+    },
+    "half=upper,facing=east": {
+      "model": "thaumcraft:block/empty",
+      "y": 180
+    },
+    "half=upper,facing=up": {
+      "model": "thaumcraft:block/empty",
+      "y": 0
+    },
+    "half=upper,facing=down": {
+      "model": "thaumcraft:block/empty",
+      "y": 0
+    }
+  }
+}

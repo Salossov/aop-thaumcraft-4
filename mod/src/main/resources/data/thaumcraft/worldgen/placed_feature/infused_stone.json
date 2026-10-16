@@ -1,0 +1,8 @@
+{
+  "feature": "thaumcraft:infused_stone",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

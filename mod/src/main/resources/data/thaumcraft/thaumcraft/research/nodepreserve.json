@@ -1,0 +1,40 @@
+{
+  "kind": "research",
+  "key": "NODEPRESERVE",
+  "category": "BASICS",
+  "parents": [
+    "NODETAPPER1"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "auram": 3,
+    "lucrum": 3,
+    "sensus": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -6,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.NODEPRESERVE"
+  ],
+  "recipe_pages": [],
+  "page_order": [
+    "tc.research_page.NODEPRESERVE"
+  ],
+  "icon": "thaumcraft:textures/misc/r_nodepreserve.png",
+  "virtual": false,
+  "round": true,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

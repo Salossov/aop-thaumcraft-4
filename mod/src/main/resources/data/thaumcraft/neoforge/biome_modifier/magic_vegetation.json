@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#thaumcraft:natural_population",
+  "features": "thaumcraft:magic_vegetation",
+  "step": "vegetal_decoration"
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "RESEARCHDUPE",
+  "category": "BASICS",
+  "parents": [
+    "RESEARCHER2"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "cognitio": 6,
+    "permutatio": 3,
+    "sensus": 3,
+    "lucrum": 3,
+    "fabrico": 3
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 4,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.RESEARCHDUPE.1"
+  ],
+  "recipe_pages": [],
+  "page_order": [
+    "tc.research_page.RESEARCHDUPE.1"
+  ],
+  "icon": "thaumcraft:textures/misc/r_resdupe.png",
+  "virtual": false,
+  "round": true,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

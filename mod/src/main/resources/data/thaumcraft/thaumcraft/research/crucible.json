@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "CRUCIBLE",
+  "category": "ALCHEMY",
+  "parents": [],
+  "aspects": {},
+  "complexity": 1,
+  "auto_unlock": true,
+  "concealed": false,
+  "column": 0,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.CRUCIBLE.1",
+    "tc.research_page.CRUCIBLE.2",
+    "tc.research_page.CRUCIBLE.3",
+    "tc.research_page.CRUCIBLE.4",
+    "tc.research_page.CRUCIBLE.5"
+  ],
+  "recipe_pages": [
+    "Crucible"
+  ],
+  "icon": "thaumcraft:crucible",
+  "virtual": false,
+  "round": false,
+  "stub": true,
+  "page_order": [
+    "tc.research_page.CRUCIBLE.1",
+    "tc.research_page.CRUCIBLE.2",
+    "tc.research_page.CRUCIBLE.3",
+    "Crucible",
+    "tc.research_page.CRUCIBLE.4",
+    "tc.research_page.CRUCIBLE.5"
+  ],
+  "hidden_parents": [],
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

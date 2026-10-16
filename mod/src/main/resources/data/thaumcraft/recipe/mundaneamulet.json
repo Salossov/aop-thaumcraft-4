@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "id": "thaumcraft:amulet_blank",
+    "count": 1
+  },
+  "pattern": [
+    " S ",
+    "S S",
+    " I "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    }
+  }
+}

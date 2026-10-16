@@ -1,0 +1,48 @@
+{
+  "kind": "research",
+  "key": "CAP_thaumium",
+  "category": "THAUMATURGY",
+  "parents": [
+    "CAP_gold",
+    "THAUMIUM",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "metallum": 6,
+    "praecantatio": 6,
+    "instrumentum": 3,
+    "auram": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 5,
+  "row": 4,
+  "text_pages": [
+    "tc.research_page.CAP_thaumium.1"
+  ],
+  "recipe_pages": [
+    "WandCapThaumiumInert",
+    "WandCapThaumium"
+  ],
+  "page_order": [
+    "tc.research_page.CAP_thaumium.1",
+    "WandCapThaumiumInert",
+    "WandCapThaumium"
+  ],
+  "icon": "thaumcraft:thaumium_wand_cap",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

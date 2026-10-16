@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "BONEBOW",
+  "category": "ARTIFICE",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "telum": 3,
+    "aer": 3,
+    "motus": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -7,
+  "row": 1,
+  "text_pages": [
+    "tc.research_page.BONEBOW.1"
+  ],
+  "recipe_pages": [
+    "BoneBow"
+  ],
+  "page_order": [
+    "tc.research_page.BONEBOW.1",
+    "BoneBow"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:bone_bow",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [
+    "minecraft:bow",
+    "minecraft:bone"
+  ],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

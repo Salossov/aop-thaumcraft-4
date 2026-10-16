@@ -1,0 +1,23 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "DISTILESSENTIA",
+  "result": {
+    "id": "thaumcraft:vis_filter",
+    "count": 2
+  },
+  "vis": {
+    "ordo": 5,
+    "aqua": 5
+  },
+  "pattern": [
+    "GWG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "W": {
+      "item": "thaumcraft:silverwood_planks"
+    }
+  }
+}

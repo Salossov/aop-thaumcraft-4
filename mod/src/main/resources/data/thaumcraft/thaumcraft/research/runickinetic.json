@@ -1,0 +1,45 @@
+{
+  "kind": "research",
+  "key": "RUNICKINETIC",
+  "category": "ARTIFICE",
+  "parents": [
+    "RUNICARMOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "praecantatio": 3,
+    "tutamen": 3,
+    "aer": 6
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 2,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.RUNICKINETIC.1"
+  ],
+  "recipe_pages": [
+    "RunicGirdleKinetic",
+    "RunicGirdleKinetic_2"
+  ],
+  "page_order": [
+    "tc.research_page.RUNICKINETIC.1",
+    "RunicGirdleKinetic",
+    "RunicGirdleKinetic_2"
+  ],
+  "icon": "thaumcraft:runic_belt_kinetic",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

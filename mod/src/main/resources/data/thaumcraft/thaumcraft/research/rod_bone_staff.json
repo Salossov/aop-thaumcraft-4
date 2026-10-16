@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "ROD_bone_staff",
+  "category": "THAUMATURGY",
+  "parents": [
+    "ROD_bone"
+  ],
+  "hidden_parents": [
+    "ROD_greatwood_staff"
+  ],
+  "aspects": {
+    "instrumentum": 3,
+    "perditio": 6,
+    "exanimis": 3,
+    "praecantatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -2,
+  "row": -1,
+  "text_pages": [
+    "tc.research_page.ROD_bone_staff.1"
+  ],
+  "recipe_pages": [
+    "WandRodBoneStaff"
+  ],
+  "page_order": [
+    "tc.research_page.ROD_bone_staff.1",
+    "WandRodBoneStaff"
+  ],
+  "icon": "thaumcraft:bone_staff_rod",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 1,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

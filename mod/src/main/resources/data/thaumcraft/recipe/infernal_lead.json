@@ -1,0 +1,30 @@
+{
+  "type": "thaumcraft:infernal_bonus",
+  "ingredient": [
+    {
+      "item": "thaumcraft:native_lead_cluster"
+    },
+    {
+      "tag": "c:ores/lead"
+    },
+    {
+      "type": "thaumcraft:raw_ore_enabled",
+      "ingredient": {
+        "tag": "c:raw_materials/lead"
+      }
+    }
+  ],
+  "result": {
+    "id": "thaumcraft:lead_nugget"
+  },
+  "base_count": 0,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/lead"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "research",
+  "key": "BATHSALTS",
+  "category": "ALCHEMY",
+  "parents": [],
+  "hidden_parents": [],
+  "aspects": {
+    "cognitio": 3,
+    "auram": 3,
+    "ordo": 3,
+    "sano": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -4,
+  "row": -4,
+  "text_pages": [
+    "tc.research_page.BATHSALTS.1"
+  ],
+  "recipe_pages": [
+    "BathSalts"
+  ],
+  "page_order": [
+    "tc.research_page.BATHSALTS.1",
+    "BathSalts"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:bath_salts",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

@@ -1,0 +1,82 @@
+{
+  "kind": "potion_aspect_effects",
+  "entries": {
+    "minecraft:blindness": {
+      "tenebrae": 3,
+      "praecantatio": 2
+    },
+    "minecraft:nausea": {
+      "alienis": 3,
+      "praecantatio": 2
+    },
+    "minecraft:strength": {
+      "telum": 3,
+      "praecantatio": 2
+    },
+    "minecraft:mining_fatigue": {
+      "vinculum": 3,
+      "praecantatio": 2
+    },
+    "minecraft:haste": {
+      "instrumentum": 3,
+      "praecantatio": 2
+    },
+    "minecraft:fire_resistance": {
+      "tutamen": 1,
+      "ignis": 2,
+      "praecantatio": 2
+    },
+    "minecraft:instant_damage": {
+      "mortuus": 3,
+      "praecantatio": 2
+    },
+    "minecraft:instant_health": {
+      "sano": 3,
+      "praecantatio": 2
+    },
+    "minecraft:hunger": {
+      "mortuus": 3,
+      "praecantatio": 2
+    },
+    "minecraft:invisibility": {
+      "sensus": 3,
+      "praecantatio": 2
+    },
+    "minecraft:jump_boost": {
+      "volatus": 3,
+      "praecantatio": 2
+    },
+    "minecraft:slowness": {
+      "vinculum": 3,
+      "praecantatio": 2
+    },
+    "minecraft:speed": {
+      "motus": 3,
+      "praecantatio": 2
+    },
+    "minecraft:night_vision": {
+      "sensus": 3,
+      "praecantatio": 2
+    },
+    "minecraft:poison": {
+      "venenum": 3,
+      "praecantatio": 2
+    },
+    "minecraft:regeneration": {
+      "sano": 3,
+      "praecantatio": 2
+    },
+    "minecraft:resistance": {
+      "tutamen": 3,
+      "praecantatio": 2
+    },
+    "minecraft:water_breathing": {
+      "aer": 3,
+      "praecantatio": 2
+    },
+    "minecraft:weakness": {
+      "mortuus": 3,
+      "praecantatio": 2
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "variants": {
+    "style=0,phase=0": {
+      "model": "thaumcraft:block/obsidian_totem_0_0"
+    },
+    "style=0,phase=1": {
+      "model": "thaumcraft:block/obsidian_totem_0_1"
+    },
+    "style=0,phase=2": {
+      "model": "thaumcraft:block/obsidian_totem_0_2"
+    },
+    "style=0,phase=3": {
+      "model": "thaumcraft:block/obsidian_totem_0_3"
+    },
+    "style=0,phase=4": {
+      "model": "thaumcraft:block/obsidian_totem_0_4"
+    },
+    "style=0,phase=5": {
+      "model": "thaumcraft:block/obsidian_totem_0_5"
+    },
+    "style=0,phase=6": {
+      "model": "thaumcraft:block/obsidian_totem_0_6"
+    },
+    "style=0,phase=7": {
+      "model": "thaumcraft:block/obsidian_totem_0_7"
+    },
+    "style=0,phase=8": {
+      "model": "thaumcraft:block/obsidian_totem_0_8"
+    },
+    "style=0,phase=9": {
+      "model": "thaumcraft:block/obsidian_totem_0_9"
+    },
+    "style=0,phase=10": {
+      "model": "thaumcraft:block/obsidian_totem_0_10"
+    },
+    "style=0,phase=11": {
+      "model": "thaumcraft:block/obsidian_totem_0_11"
+    },
+    "style=0,phase=12": {
+      "model": "thaumcraft:block/obsidian_totem_0_12"
+    },
+    "style=0,phase=13": {
+      "model": "thaumcraft:block/obsidian_totem_0_13"
+    },
+    "style=0,phase=14": {
+      "model": "thaumcraft:block/obsidian_totem_0_14"
+    },
+    "style=0,phase=15": {
+      "model": "thaumcraft:block/obsidian_totem_0_15"
+    },
+    "style=0,phase=16": {
+      "model": "thaumcraft:block/obsidian_totem_0_16"
+    },
+    "style=0,phase=17": {
+      "model": "thaumcraft:block/obsidian_totem_0_17"
+    },
+    "style=0,phase=18": {
+      "model": "thaumcraft:block/obsidian_totem_0_18"
+    },
+    "style=1,phase=0": {
+      "model": "thaumcraft:block/obsidian_totem_1_0"
+    },
+    "style=1,phase=1": {
+      "model": "thaumcraft:block/obsidian_totem_1_1"
+    },
+    "style=1,phase=2": {
+      "model": "thaumcraft:block/obsidian_totem_1_2"
+    },
+    "style=1,phase=3": {
+      "model": "thaumcraft:block/obsidian_totem_1_3"
+    },
+    "style=1,phase=4": {
+      "model": "thaumcraft:block/obsidian_totem_1_4"
+    },
+    "style=1,phase=5": {
+      "model": "thaumcraft:block/obsidian_totem_1_5"
+    },
+    "style=1,phase=6": {
+      "model": "thaumcraft:block/obsidian_totem_1_6"
+    },
+    "style=1,phase=7": {
+      "model": "thaumcraft:block/obsidian_totem_1_7"
+    },
+    "style=1,phase=8": {
+      "model": "thaumcraft:block/obsidian_totem_1_8"
+    },
+    "style=1,phase=9": {
+      "model": "thaumcraft:block/obsidian_totem_1_9"
+    },
+    "style=1,phase=10": {
+      "model": "thaumcraft:block/obsidian_totem_1_10"
+    },
+    "style=1,phase=11": {
+      "model": "thaumcraft:block/obsidian_totem_1_11"
+    },
+    "style=1,phase=12": {
+      "model": "thaumcraft:block/obsidian_totem_1_12"
+    },
+    "style=1,phase=13": {
+      "model": "thaumcraft:block/obsidian_totem_1_13"
+    },
+    "style=1,phase=14": {
+      "model": "thaumcraft:block/obsidian_totem_1_14"
+    },
+    "style=1,phase=15": {
+      "model": "thaumcraft:block/obsidian_totem_1_15"
+    },
+    "style=1,phase=16": {
+      "model": "thaumcraft:block/obsidian_totem_1_16"
+    },
+    "style=1,phase=17": {
+      "model": "thaumcraft:block/obsidian_totem_1_17"
+    },
+    "style=1,phase=18": {
+      "model": "thaumcraft:block/obsidian_totem_1_18"
+    },
+    "style=2,phase=0": {
+      "model": "thaumcraft:block/obsidian_totem_2_0"
+    },
+    "style=2,phase=1": {
+      "model": "thaumcraft:block/obsidian_totem_2_1"
+    },
+    "style=2,phase=2": {
+      "model": "thaumcraft:block/obsidian_totem_2_2"
+    },
+    "style=2,phase=3": {
+      "model": "thaumcraft:block/obsidian_totem_2_3"
+    },
+    "style=2,phase=4": {
+      "model": "thaumcraft:block/obsidian_totem_2_4"
+    },
+    "style=2,phase=5": {
+      "model": "thaumcraft:block/obsidian_totem_2_5"
+    },
+    "style=2,phase=6": {
+      "model": "thaumcraft:block/obsidian_totem_2_6"
+    },
+    "style=2,phase=7": {
+      "model": "thaumcraft:block/obsidian_totem_2_7"
+    },
+    "style=2,phase=8": {
+      "model": "thaumcraft:block/obsidian_totem_2_8"
+    },
+    "style=2,phase=9": {
+      "model": "thaumcraft:block/obsidian_totem_2_9"
+    },
+    "style=2,phase=10": {
+      "model": "thaumcraft:block/obsidian_totem_2_10"
+    },
+    "style=2,phase=11": {
+      "model": "thaumcraft:block/obsidian_totem_2_11"
+    },
+    "style=2,phase=12": {
+      "model": "thaumcraft:block/obsidian_totem_2_12"
+    },
+    "style=2,phase=13": {
+      "model": "thaumcraft:block/obsidian_totem_2_13"
+    },
+    "style=2,phase=14": {
+      "model": "thaumcraft:block/obsidian_totem_2_14"
+    },
+    "style=2,phase=15": {
+      "model": "thaumcraft:block/obsidian_totem_2_15"
+    },
+    "style=2,phase=16": {
+      "model": "thaumcraft:block/obsidian_totem_2_16"
+    },
+    "style=2,phase=17": {
+      "model": "thaumcraft:block/obsidian_totem_2_17"
+    },
+    "style=2,phase=18": {
+      "model": "thaumcraft:block/obsidian_totem_2_18"
+    }
+  }
+}

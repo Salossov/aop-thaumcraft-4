@@ -1,0 +1,40 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "ARMORVOIDFORTRESS",
+  "result": {
+    "id": "thaumcraft:void_robe_leggings",
+    "count": 1
+  },
+  "instability": 6,
+  "aspects": {
+    "metallum": 20,
+    "tutamen": 20,
+    "pannus": 20,
+    "praecantatio": 16,
+    "alienis": 16,
+    "vacuos": 20
+  },
+  "input": {
+    "item": "thaumcraft:void_leggings"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:thaumaturge_leggings"
+    },
+    {
+      "item": "thaumcraft:void_ingot"
+    },
+    {
+      "item": "thaumcraft:thaumium_ingot"
+    },
+    {
+      "item": "thaumcraft:salis_mundus"
+    },
+    {
+      "item": "thaumcraft:enchanted_fabric"
+    },
+    {
+      "item": "minecraft:leather"
+    }
+  ]
+}

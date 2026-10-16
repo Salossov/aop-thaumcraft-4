@@ -1,0 +1,30 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "WARDEDARCANA",
+  "vis": {
+    "aqua": 5,
+    "ordo": 10,
+    "terra": 5,
+    "ignis": 5
+  },
+  "result": {
+    "id": "thaumcraft:warded_glass",
+    "count": 8
+  },
+  "pattern": [
+    "GGG",
+    "WBW",
+    "GGG"
+  ],
+  "key": {
+    "B": {
+      "item": "thaumcraft:zombie_brain"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "W": {
+      "item": "thaumcraft:greatwood_planks"
+    }
+  }
+}

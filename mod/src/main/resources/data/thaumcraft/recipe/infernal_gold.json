@@ -1,0 +1,21 @@
+{
+  "type": "thaumcraft:infernal_bonus",
+  "ingredient": [
+    {
+      "item": "thaumcraft:native_gold_cluster"
+    },
+    {
+      "tag": "c:ores/gold"
+    },
+    {
+      "type": "thaumcraft:raw_ore_enabled",
+      "ingredient": {
+        "tag": "c:raw_materials/gold"
+      }
+    }
+  ],
+  "result": {
+    "id": "minecraft:gold_nugget"
+  },
+  "base_count": 0
+}

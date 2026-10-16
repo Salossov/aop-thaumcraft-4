@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "RUNICHEALING",
+  "category": "ARTIFICE",
+  "parents": [
+    "RUNICARMOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "praecantatio": 3,
+    "tutamen": 3,
+    "sano": 4,
+    "aqua": 4
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 4,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.RUNICHEALING.1"
+  ],
+  "recipe_pages": [
+    "RunicRingHealing"
+  ],
+  "page_order": [
+    "tc.research_page.RUNICHEALING.1",
+    "RunicRingHealing"
+  ],
+  "icon": "thaumcraft:runic_ring_healing",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

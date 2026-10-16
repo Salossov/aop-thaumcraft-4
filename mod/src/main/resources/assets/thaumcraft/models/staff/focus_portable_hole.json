@@ -1,0 +1,154 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "head": "thaumcraft:models/wand",
+    "particle": "thaumcraft:models/wand",
+    "depth": "thaumcraft:items/focus_portablehole_depth"
+  },
+  "elements": [
+    {
+      "from": [
+        6.68,
+        20.66,
+        6.68
+      ],
+      "to": [
+        9.32,
+        23.3,
+        9.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#depth"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#depth"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#depth"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#depth"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#depth"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#depth"
+        }
+      },
+      "shade": false
+    },
+    {
+      "from": [
+        6.425,
+        20.56,
+        6.425
+      ],
+      "to": [
+        9.575,
+        23.875,
+        9.575
+      ],
+      "faces": {
+        "west": {
+          "uv": [
+            0,
+            3,
+            1.5,
+            6
+          ],
+          "texture": "#head",
+          "tintindex": 0
+        },
+        "south": {
+          "uv": [
+            1.5,
+            3,
+            3,
+            6
+          ],
+          "texture": "#head",
+          "tintindex": 0
+        },
+        "east": {
+          "uv": [
+            3,
+            3,
+            4.5,
+            6
+          ],
+          "texture": "#head",
+          "tintindex": 0
+        },
+        "north": {
+          "uv": [
+            4.5,
+            3,
+            6,
+            6
+          ],
+          "texture": "#head",
+          "tintindex": 0
+        },
+        "up": {
+          "uv": [
+            1.5,
+            0,
+            3,
+            3
+          ],
+          "texture": "#head",
+          "tintindex": 0
+        },
+        "down": {
+          "uv": [
+            3,
+            0,
+            4.5,
+            3
+          ],
+          "texture": "#head",
+          "tintindex": 0
+        }
+      },
+      "shade": false
+    }
+  ]
+}

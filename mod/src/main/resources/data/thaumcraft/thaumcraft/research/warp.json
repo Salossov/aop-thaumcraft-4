@@ -1,0 +1,38 @@
+{
+  "kind": "research",
+  "key": "WARP",
+  "category": "BASICS",
+  "parents": [],
+  "aspects": {},
+  "complexity": 1,
+  "auto_unlock": true,
+  "concealed": false,
+  "column": 0,
+  "row": 2,
+  "text_pages": [
+    "tc.research_page.WARP.1",
+    "tc.research_page.WARP.2",
+    "tc.research_page.WARP.3"
+  ],
+  "recipe_pages": [],
+  "icon": "thaumcraft:textures/misc/r_warp.png",
+  "virtual": false,
+  "round": true,
+  "stub": true,
+  "page_order": [
+    "tc.research_page.WARP.1",
+    "tc.research_page.WARP.2",
+    "tc.research_page.WARP.3"
+  ],
+  "hidden_parents": [],
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

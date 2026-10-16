@@ -1,0 +1,50 @@
+{
+  "kind": "research",
+  "key": "ADVALCHEMYFURNACE",
+  "category": "ELDRITCH",
+  "parents": [
+    "PRIMPEARL",
+    "DISTILESSENTIA",
+    "VISPOWER"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "auram": 1,
+    "praecantatio": 1,
+    "ordo": 1,
+    "perditio": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -2,
+  "row": 6,
+  "text_pages": [
+    "tc.research_page.ADVALCHEMYFURNACE.1",
+    "tc.research_page.ADVALCHEMYFURNACE.2"
+  ],
+  "recipe_pages": [
+    "AdvAlchemyConstruct",
+    "AdvAlchemyFurnace"
+  ],
+  "page_order": [
+    "tc.research_page.ADVALCHEMYFURNACE.1",
+    "AdvAlchemyConstruct",
+    "tc.research_page.ADVALCHEMYFURNACE.2",
+    "AdvAlchemyFurnace"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:advanced_alchemical_construct",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

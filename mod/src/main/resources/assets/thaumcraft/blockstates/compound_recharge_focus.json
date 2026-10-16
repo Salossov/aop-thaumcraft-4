@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "thaumcraft:block/compound_recharge_focus"
+    },
+    "facing=down": {
+      "model": "thaumcraft:block/compound_recharge_focus"
+    },
+    "facing=north": {
+      "model": "thaumcraft:block/compound_recharge_focus"
+    },
+    "facing=south": {
+      "model": "thaumcraft:block/compound_recharge_focus"
+    },
+    "facing=east": {
+      "model": "thaumcraft:block/compound_recharge_focus"
+    },
+    "facing=west": {
+      "model": "thaumcraft:block/compound_recharge_focus"
+    }
+  }
+}

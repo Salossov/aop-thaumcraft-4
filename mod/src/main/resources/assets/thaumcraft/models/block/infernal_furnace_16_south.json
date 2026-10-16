@@ -1,0 +1,145 @@
+{
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "north": "thaumcraft:blocks/furnace6",
+    "south": "thaumcraft:blocks/furnace10",
+    "west": "thaumcraft:blocks/furnace6",
+    "east": "thaumcraft:blocks/furnace6",
+    "up": "thaumcraft:blocks/furnace19",
+    "down": "thaumcraft:blocks/furnace19",
+    "particle": "thaumcraft:blocks/furnace7",
+    "front": "thaumcraft:blocks/furnace13",
+    "inner": "thaumcraft:blocks/furnace15",
+    "bars": "minecraft:block/iron_bars"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        8
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#north",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#front",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#west",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#east",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "east"
+        },
+        "up": {
+          "texture": "#up",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "up"
+        },
+        "down": {
+          "texture": "#down",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "down"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        0,
+        3.2
+      ],
+      "to": [
+        16,
+        16,
+        3.2
+      ],
+      "faces": {
+        "north": {
+          "texture": "#inner",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        0,
+        1.6
+      ],
+      "to": [
+        16,
+        24,
+        1.6
+      ],
+      "faces": {
+        "north": {
+          "texture": "#bars",
+          "uv": [
+            0,
+            0,
+            16,
+            24
+          ]
+        },
+        "south": {
+          "texture": "#bars",
+          "uv": [
+            0,
+            0,
+            16,
+            24
+          ]
+        }
+      }
+    }
+  ]
+}

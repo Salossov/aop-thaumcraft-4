@@ -1,0 +1,68 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis0"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis1"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis2"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis3"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis4"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis5"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis6"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis7"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis8"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis9"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis10"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis11"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis12"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis13"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis14"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:models/hemis15"
+    }
+  ]
+}

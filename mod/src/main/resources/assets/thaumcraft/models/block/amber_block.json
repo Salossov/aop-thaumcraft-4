@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "thaumcraft:blocks/amberblock",
+    "end": "thaumcraft:blocks/amberblock_top"
+  },
+  "render_type": "minecraft:translucent"
+}

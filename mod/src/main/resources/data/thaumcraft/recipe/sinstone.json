@@ -1,0 +1,32 @@
+{
+  "type": "thaumcraft:infusion",
+  "research": "SINSTONE",
+  "result": {
+    "id": "thaumcraft:sinister_stone",
+    "count": 1
+  },
+  "instability": 5,
+  "aspects": {
+    "sensus": 8,
+    "tenebrae": 8,
+    "alienis": 8,
+    "auram": 8
+  },
+  "input": {
+    "item": "minecraft:flint"
+  },
+  "components": [
+    {
+      "item": "thaumcraft:nitor"
+    },
+    {
+      "item": "thaumcraft:order_shard"
+    },
+    {
+      "item": "thaumcraft:knowledge_fragment"
+    },
+    {
+      "item": "thaumcraft:entropy_shard"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "research",
+  "key": "PRIMNODE",
+  "category": "ELDRITCH",
+  "parents": [
+    "PRIMPEARL"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "auram": 1,
+    "praecantatio": 1,
+    "ordo": 1,
+    "perditio": 1
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": 0,
+  "row": 6,
+  "text_pages": [
+    "tc.research_page.PRIMNODE.1"
+  ],
+  "recipe_pages": [],
+  "page_order": [
+    "tc.research_page.PRIMNODE.1"
+  ],
+  "icon": "thaumcraft:textures/misc/r_nodes_2.png",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 1,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

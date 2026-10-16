@@ -1,0 +1,27 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "PAVETRAVEL",
+  "vis": {
+    "terra": 10,
+    "aer": 10
+  },
+  "result": {
+    "id": "thaumcraft:paving_stone_travel",
+    "count": 4
+  },
+  "pattern": [
+    "SAS",
+    "SBS"
+  ],
+  "key": {
+    "S": {
+      "item": "thaumcraft:arcane_stone_bricks"
+    },
+    "A": {
+      "item": "thaumcraft:air_shard"
+    },
+    "B": {
+      "item": "thaumcraft:earth_shard"
+    }
+  }
+}

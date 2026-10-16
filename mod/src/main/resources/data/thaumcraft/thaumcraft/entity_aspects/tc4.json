@@ -1,0 +1,262 @@
+{
+  "kind": "entity_aspects",
+  "entries": {
+    "minecraft:zombie": {
+      "exanimis": 2,
+      "humanus": 1,
+      "terra": 1
+    },
+    "minecraft:giant": {
+      "exanimis": 4,
+      "humanus": 3,
+      "terra": 3
+    },
+    "minecraft:skeleton": {
+      "exanimis": 3,
+      "humanus": 1,
+      "terra": 1
+    },
+    "minecraft:wither_skeleton": {
+      "exanimis": 4,
+      "humanus": 1,
+      "ignis": 2
+    },
+    "minecraft:creeper": {
+      "herba": 2,
+      "ignis": 2
+    },
+    "minecraft:horse": {
+      "bestia": 4,
+      "terra": 1,
+      "aer": 1
+    },
+    "minecraft:pig": {
+      "bestia": 2,
+      "terra": 2
+    },
+    "minecraft:experience_orb": {
+      "cognitio": 5
+    },
+    "minecraft:sheep": {
+      "bestia": 2,
+      "terra": 2
+    },
+    "minecraft:cow": {
+      "bestia": 3,
+      "terra": 3
+    },
+    "minecraft:mooshroom": {
+      "bestia": 3,
+      "herba": 1,
+      "terra": 2
+    },
+    "minecraft:snow_golem": {
+      "gelum": 3,
+      "aqua": 1
+    },
+    "minecraft:ocelot": {
+      "bestia": 3,
+      "perditio": 3
+    },
+    "minecraft:chicken": {
+      "bestia": 2,
+      "volatus": 2,
+      "aer": 1
+    },
+    "minecraft:squid": {
+      "bestia": 2,
+      "aqua": 2
+    },
+    "minecraft:wolf": {
+      "bestia": 3,
+      "terra": 3
+    },
+    "minecraft:bat": {
+      "bestia": 1,
+      "volatus": 1,
+      "aer": 1
+    },
+    "minecraft:boat": {
+      "machina": 2,
+      "aqua": 2
+    },
+    "minecraft:spider": {
+      "bestia": 3,
+      "perditio": 2
+    },
+    "minecraft:slime": {
+      "limus": 2,
+      "aqua": 2
+    },
+    "minecraft:ghast": {
+      "exanimis": 3,
+      "ignis": 2
+    },
+    "minecraft:zombified_piglin": {
+      "exanimis": 4,
+      "ignis": 2
+    },
+    "minecraft:enderman": {
+      "alienis": 4,
+      "iter": 2,
+      "aer": 2
+    },
+    "minecraft:cave_spider": {
+      "bestia": 2,
+      "venenum": 2,
+      "terra": 1
+    },
+    "minecraft:silverfish": {
+      "bestia": 1,
+      "terra": 1
+    },
+    "minecraft:blaze": {
+      "alienis": 4,
+      "ignis": 1
+    },
+    "minecraft:magma_cube": {
+      "limus": 3,
+      "ignis": 2
+    },
+    "minecraft:ender_dragon": {
+      "alienis": 20,
+      "bestia": 20,
+      "perditio": 20
+    },
+    "minecraft:wither": {
+      "exanimis": 20,
+      "perditio": 20,
+      "ignis": 15
+    },
+    "minecraft:witch": {
+      "humanus": 3,
+      "praecantatio": 2,
+      "ignis": 1
+    },
+    "minecraft:villager": {
+      "humanus": 3,
+      "aer": 2
+    },
+    "minecraft:iron_golem": {
+      "metallum": 4,
+      "terra": 3
+    },
+    "minecraft:minecart": {
+      "machina": 3,
+      "aer": 2
+    },
+    "minecraft:chest_minecart": {
+      "machina": 3,
+      "aer": 1,
+      "vacuos": 1
+    },
+    "minecraft:furnace_minecart": {
+      "machina": 3,
+      "aer": 1,
+      "ignis": 1
+    },
+    "minecraft:tnt_minecart": {
+      "machina": 3,
+      "aer": 1,
+      "ignis": 1
+    },
+    "minecraft:hopper_minecart": {
+      "machina": 3,
+      "aer": 1,
+      "permutatio": 1
+    },
+    "minecraft:spawner_minecart": {
+      "machina": 3,
+      "aer": 1,
+      "praecantatio": 1
+    },
+    "minecraft:end_crystal": {
+      "alienis": 3,
+      "praecantatio": 3,
+      "sano": 3
+    },
+    "minecraft:item_frame": {
+      "sensus": 3,
+      "pannus": 1
+    },
+    "minecraft:painting": {
+      "sensus": 5,
+      "pannus": 3
+    },
+    "thaumcraft:thaumic_slime": {
+      "limus": 2,
+      "praecantatio": 1,
+      "aqua": 1
+    },
+    "thaumcraft:brainy_zombie": {
+      "exanimis": 3,
+      "humanus": 1,
+      "cognitio": 1,
+      "terra": 1
+    },
+    "thaumcraft:giant_brainy_zombie": {
+      "exanimis": 4,
+      "humanus": 2,
+      "cognitio": 1,
+      "terra": 2
+    },
+    "thaumcraft:taintacle": {
+      "vitium": 3,
+      "aqua": 2
+    },
+    "thaumcraft:taintacle_small": {
+      "vitium": 1,
+      "aqua": 1
+    },
+    "thaumcraft:taint_spider": {
+      "vitium": 1,
+      "terra": 1
+    },
+    "thaumcraft:taint_spore": {
+      "vitium": 2,
+      "aer": 2
+    },
+    "thaumcraft:taint_spore_swarmer": {
+      "vitium": 2,
+      "aer": 2
+    },
+    "thaumcraft:taint_swarm": {
+      "vitium": 3,
+      "aer": 3
+    },
+    "thaumcraft:taint_pig": {
+      "vitium": 2,
+      "terra": 2
+    },
+    "thaumcraft:taint_sheep": {
+      "vitium": 2,
+      "terra": 2
+    },
+    "thaumcraft:taint_cow": {
+      "vitium": 3,
+      "terra": 3
+    },
+    "thaumcraft:taint_chicken": {
+      "vitium": 2,
+      "volatus": 2,
+      "aer": 1
+    },
+    "thaumcraft:taint_villager": {
+      "vitium": 3,
+      "aer": 2
+    },
+    "thaumcraft:taint_creeper": {
+      "vitium": 2,
+      "ignis": 2
+    },
+    "thaumcraft:eldritch_guardian": {
+      "alienis": 4,
+      "mortuus": 2,
+      "exanimis": 4
+    },
+    "thaumcraft:eldritch_orb": {
+      "alienis": 2,
+      "mortuus": 2
+    }
+  }
+}

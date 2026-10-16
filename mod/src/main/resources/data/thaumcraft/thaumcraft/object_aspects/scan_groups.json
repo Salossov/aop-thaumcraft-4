@@ -1,0 +1,8 @@
+{
+  "kind": "scan_groups",
+  "entries": {
+    "minecraft:anvil": "minecraft:anvil",
+    "minecraft:chipped_anvil": "minecraft:anvil",
+    "minecraft:damaged_anvil": "minecraft:anvil"
+  }
+}

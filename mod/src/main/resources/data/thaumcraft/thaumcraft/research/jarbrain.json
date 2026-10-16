@@ -1,0 +1,49 @@
+{
+  "kind": "research",
+  "key": "JARBRAIN",
+  "category": "ARTIFICE",
+  "parents": [
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "fames": 3,
+    "cognitio": 3,
+    "exanimis": 3,
+    "lucrum": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -5,
+  "row": 9,
+  "text_pages": [
+    "tc.research_page.JARBRAIN.1"
+  ],
+  "recipe_pages": [
+    "JarBrain"
+  ],
+  "page_order": [
+    "tc.research_page.JARBRAIN.1",
+    "JarBrain"
+  ],
+  "icon": "thaumcraft:brain_in_a_jar",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 3,
+  "item_triggers": [
+    "thaumcraft:quicksilver"
+  ],
+  "entity_triggers": [
+    "thaumcraft:brainy_zombie",
+    "thaumcraft:giant_brainy_zombie"
+  ],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

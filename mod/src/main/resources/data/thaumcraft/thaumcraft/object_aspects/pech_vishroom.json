@@ -1,0 +1,7 @@
+{
+  "kind": "object_aspects",
+  "entries": {
+    "thaumcraft:vishroom": { "herba": 2, "venenum": 1, "praecantatio": 2 },
+    "thaumcraft:focus_pech": { "praecantatio": 5, "venenum": 5, "perditio": 5, "alienis": 5, "telum": 5 }
+  }
+}

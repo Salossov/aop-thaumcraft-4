@@ -1,0 +1,234 @@
+{
+  "entries": [
+    {
+      "item": "minecraft:saddle",
+      "min": 1,
+      "max": 1,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:iron_ingot",
+      "min": 1,
+      "max": 4,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:bread",
+      "min": 1,
+      "max": 1,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:wheat",
+      "min": 1,
+      "max": 4,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:gunpowder",
+      "min": 1,
+      "max": 4,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:string",
+      "min": 1,
+      "max": 4,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:bucket",
+      "min": 1,
+      "max": 1,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:golden_apple",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "minecraft:redstone",
+      "min": 1,
+      "max": 4,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:music_disc_13",
+      "min": 1,
+      "max": 1,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:music_disc_cat",
+      "min": 1,
+      "max": 1,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:name_tag",
+      "min": 1,
+      "max": 1,
+      "weight": 10
+    },
+    {
+      "item": "minecraft:golden_horse_armor",
+      "min": 1,
+      "max": 1,
+      "weight": 2
+    },
+    {
+      "item": "minecraft:iron_horse_armor",
+      "min": 1,
+      "max": 1,
+      "weight": 5
+    },
+    {
+      "item": "minecraft:diamond_horse_armor",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:common_loot_bag",
+      "min": 1,
+      "max": 3,
+      "weight": 5
+    },
+    {
+      "item": "thaumcraft:thaumium_ingot",
+      "min": 1,
+      "max": 3,
+      "weight": 5
+    },
+    {
+      "item": "thaumcraft:amber",
+      "min": 1,
+      "max": 3,
+      "weight": 5
+    },
+    {
+      "item": "thaumcraft:uncommon_loot_bag",
+      "min": 1,
+      "max": 2,
+      "weight": 4
+    },
+    {
+      "item": "thaumcraft:amulet_blank",
+      "min": 1,
+      "max": 2,
+      "weight": 4
+    },
+    {
+      "item": "thaumcraft:ring_blank",
+      "min": 1,
+      "max": 2,
+      "weight": 4
+    },
+    {
+      "item": "thaumcraft:belt_blank",
+      "min": 1,
+      "max": 2,
+      "weight": 4
+    },
+    {
+      "item": "thaumcraft:knowledge_fragment",
+      "min": 1,
+      "max": 2,
+      "weight": 4
+    },
+    {
+      "item": "thaumcraft:rare_loot_bag",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:thaumonomicon",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:thaumium_sword",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:thaumium_pickaxe",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:thaumium_axe",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:thaumium_hoe",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:runic_ring_minor",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:air_discount_ring",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:earth_discount_ring",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:fire_discount_ring",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:water_discount_ring",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:order_discount_ring",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:entropy_discount_ring",
+      "min": 1,
+      "max": 1,
+      "weight": 1
+    },
+    {
+      "item": "thaumcraft:vis_amulet_lesser",
+      "min": 1,
+      "max": 1,
+      "weight": 1,
+      "charged": true
+    },
+    {
+      "item": "minecraft:enchanted_book",
+      "min": 1,
+      "max": 1,
+      "weight": 1,
+      "enchanted": true
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "research",
+  "key": "INFUSION",
+  "category": "ARTIFICE",
+  "parents": [
+    "DISTILESSENTIA"
+  ],
+  "aspects": {
+    "praecantatio": 6,
+    "machina": 3,
+    "fabrico": 6
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -4,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.INFUSION.1",
+    "tc.research_page.INFUSION.2",
+    "tc.research_page.INFUSION.3",
+    "tc.research_page.INFUSION.4",
+    "tc.research_page.INFUSION.5"
+  ],
+  "recipe_pages": [
+    "InfusionMatrix",
+    "ArcanePedestal",
+    "InfusionAltar"
+  ],
+  "icon": "thaumcraft:infusion_matrix",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.INFUSION.1",
+    "InfusionMatrix",
+    "ArcanePedestal",
+    "tc.research_page.INFUSION.2",
+    "InfusionAltar",
+    "tc.research_page.INFUSION.3",
+    "tc.research_page.INFUSION.4",
+    "tc.research_page.INFUSION.5"
+  ],
+  "hidden_parents": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

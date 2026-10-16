@@ -1,0 +1,28 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "DISTILESSENTIA",
+  "result": {
+    "id": "thaumcraft:alchemy_furnace",
+    "count": 1
+  },
+  "vis": {
+    "ignis": 5,
+    "aqua": 5
+  },
+  "pattern": [
+    "SCS",
+    "SFS",
+    "SSS"
+  ],
+  "key": {
+    "C": {
+      "item": "thaumcraft:crucible"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "S": {
+      "item": "thaumcraft:arcane_stone"
+    }
+  }
+}

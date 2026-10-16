@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "NODEJAR",
+  "category": "BASICS",
+  "parents": [
+    "NODEPRESERVE"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "auram": 6,
+    "lucrum": 3,
+    "permutatio": 3,
+    "motus": 3
+  },
+  "complexity": 3,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -7,
+  "row": 4,
+  "text_pages": [
+    "tc.research_page.NODEJAR.1",
+    "tc.research_page.NODEJAR.2"
+  ],
+  "recipe_pages": [
+    "NodeJar"
+  ],
+  "page_order": [
+    "tc.research_page.NODEJAR.1",
+    "NodeJar",
+    "tc.research_page.NODEJAR.2"
+  ],
+  "icon": "thaumcraft:node_jar",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

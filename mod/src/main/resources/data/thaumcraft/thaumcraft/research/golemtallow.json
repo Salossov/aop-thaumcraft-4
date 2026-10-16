@@ -1,0 +1,48 @@
+{
+  "kind": "research",
+  "key": "GOLEMTALLOW",
+  "category": "GOLEMANCY",
+  "parents": [
+    "GOLEMCLAY",
+    "TALLOW"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "spiritus": 3,
+    "motus": 3,
+    "corpus": 3,
+    "praecantatio": 3,
+    "permutatio": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 4,
+  "row": 6,
+  "text_pages": [
+    "tc.research_page.GOLEMTALLOW.1"
+  ],
+  "recipe_pages": [
+    "BlockTallow",
+    "GolemTallow"
+  ],
+  "page_order": [
+    "tc.research_page.GOLEMTALLOW.1",
+    "BlockTallow",
+    "GolemTallow"
+  ],
+  "icon": "thaumcraft:tallow_golem",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

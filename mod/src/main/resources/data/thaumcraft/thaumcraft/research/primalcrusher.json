@@ -1,0 +1,53 @@
+{
+  "kind": "research",
+  "key": "PRIMALCRUSHER",
+  "category": "ELDRITCH",
+  "parents": [
+    "PRIMPEARL"
+  ],
+  "hidden_parents": [
+    "VOIDMETAL",
+    "ELEMENTALPICK",
+    "ELEMENTALSHOVEL"
+  ],
+  "aspects": {
+    "perfodio": 6,
+    "instrumentum": 6,
+    "perditio": 6,
+    "vacuos": 6,
+    "telum": 6,
+    "alienis": 6,
+    "lucrum": 6
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 2,
+  "row": 5,
+  "text_pages": [
+    "tc.research_page.PRIMALCRUSHER.1",
+    "tc.research_page.PRIMALCRUSHER.2"
+  ],
+  "recipe_pages": [
+    "PrimalCrusher"
+  ],
+  "page_order": [
+    "tc.research_page.PRIMALCRUSHER.1",
+    "PrimalCrusher",
+    "tc.research_page.PRIMALCRUSHER.2"
+  ],
+  "icon": "thaumcraft:primal_crusher",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

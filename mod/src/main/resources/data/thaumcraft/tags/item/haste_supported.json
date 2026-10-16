@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#minecraft:enchantable/foot_armor",
+      "required": false
+    },
+    {
+      "id": "thaumcraft:hover_harness",
+      "required": false
+    }
+  ]
+}

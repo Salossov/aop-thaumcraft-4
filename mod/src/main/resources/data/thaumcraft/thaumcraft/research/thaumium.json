@@ -1,0 +1,44 @@
+{
+  "kind": "research",
+  "key": "THAUMIUM",
+  "category": "ALCHEMY",
+  "parents": [
+    "CRUCIBLE"
+  ],
+  "aspects": {
+    "metallum": 3,
+    "praecantatio": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -1,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.THAUMIUM.1"
+  ],
+  "recipe_pages": [
+    "Thaumium"
+  ],
+  "icon": "thaumcraft:thaumium_ingot",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "page_order": [
+    "tc.research_page.THAUMIUM.1",
+    "Thaumium"
+  ],
+  "hidden_parents": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "metallum"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

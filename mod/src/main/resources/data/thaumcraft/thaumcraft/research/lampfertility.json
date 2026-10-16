@@ -1,0 +1,47 @@
+{
+  "kind": "research",
+  "key": "LAMPFERTILITY",
+  "category": "ARTIFICE",
+  "parents": [
+    "ARCANELAMP",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "bestia": 6,
+    "victus": 6,
+    "lux": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -2,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.LAMPFERTILITY.1"
+  ],
+  "recipe_pages": [
+    "LampFertility"
+  ],
+  "page_order": [
+    "tc.research_page.LAMPFERTILITY.1",
+    "LampFertility"
+  ],
+  "icon": "thaumcraft:lamp_of_fertility",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "lux",
+    "victus"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

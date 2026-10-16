@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "thaumcraft:air_primal_arrow",
+    "thaumcraft:fire_primal_arrow",
+    "thaumcraft:water_primal_arrow",
+    "thaumcraft:earth_primal_arrow",
+    "thaumcraft:order_primal_arrow",
+    "thaumcraft:entropy_primal_arrow"
+  ]
+}

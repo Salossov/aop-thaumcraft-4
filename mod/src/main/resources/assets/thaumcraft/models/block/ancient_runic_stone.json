@@ -1,0 +1,78 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "all": "thaumcraft:blocks/es_i_2",
+    "particle": "thaumcraft:blocks/es_i_2"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "shade": false,
+      "faces": {
+        "down": {
+          "texture": "#all",
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ]
+        },
+        "up": {
+          "texture": "#all",
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ]
+        },
+        "north": {
+          "texture": "#all",
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ]
+        },
+        "south": {
+          "texture": "#all",
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ]
+        },
+        "west": {
+          "texture": "#all",
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ]
+        },
+        "east": {
+          "texture": "#all",
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ]
+        }
+      }
+    }
+  ]
+}

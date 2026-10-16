@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "LEVITATOR",
+  "category": "ARTIFICE",
+  "parents": [
+    "NITOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "motus": 3,
+    "volatus": 3,
+    "aer": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -3,
+  "row": -3,
+  "text_pages": [
+    "tc.research_page.LEVITATOR.1"
+  ],
+  "recipe_pages": [
+    "Levitator"
+  ],
+  "page_order": [
+    "tc.research_page.LEVITATOR.1",
+    "Levitator"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:levitator",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

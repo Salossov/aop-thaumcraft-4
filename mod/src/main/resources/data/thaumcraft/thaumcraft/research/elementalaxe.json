@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "ELEMENTALAXE",
+  "category": "ARTIFICE",
+  "parents": [
+    "THAUMIUM",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "instrumentum": 3,
+    "aqua": 3,
+    "motus": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -7,
+  "row": 4,
+  "text_pages": [
+    "tc.research_page.ELEMENTALAXE.1",
+    "tc.research_page.ELEMENTALAXE.2"
+  ],
+  "recipe_pages": [
+    "ElementalAxe"
+  ],
+  "page_order": [
+    "tc.research_page.ELEMENTALAXE.1",
+    "ElementalAxe",
+    "tc.research_page.ELEMENTALAXE.2"
+  ],
+  "icon": "thaumcraft:elemental_axe",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

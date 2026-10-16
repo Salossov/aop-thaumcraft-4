@@ -1,0 +1,47 @@
+{
+  "kind": "research",
+  "key": "ALCHEMICALMANUFACTURE",
+  "category": "ALCHEMY",
+  "parents": [
+    "ALCHEMICALDUPLICATION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "praecantatio": 3,
+    "permutatio": 3,
+    "fabrico": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": -5,
+  "row": -2,
+  "text_pages": [
+    "tc.research_page.ALCHEMICALMANUFACTURE.1"
+  ],
+  "recipe_pages": [
+    "AltWeb",
+    "AltMossyCobble",
+    "AltIce"
+  ],
+  "page_order": [
+    "tc.research_page.ALCHEMICALMANUFACTURE.1",
+    "AltWeb",
+    "AltMossyCobble",
+    "AltIce"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:textures/misc/r_alchman.png",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": true,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

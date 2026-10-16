@@ -1,0 +1,24 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "DISTILESSENTIA",
+  "result": {
+    "id": "thaumcraft:warded_jar",
+    "count": 1
+  },
+  "vis": {
+    "aqua": 1
+  },
+  "pattern": [
+    "GWG",
+    "G G",
+    "GGG"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "research",
+  "key": "RUNICAUGMENTATION",
+  "category": "ARTIFICE",
+  "parents": [
+    "RUNICARMOR"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "praecantatio": 3,
+    "tutamen": 3,
+    "permutatio": 4,
+    "lucrum": 4
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 6,
+  "row": 4,
+  "text_pages": [
+    "tc.research_page.RUNICAUGMENTATION.1",
+    "tc.research_page.RUNICAUGMENTATION.2"
+  ],
+  "recipe_pages": [
+    "runic_hardening"
+  ],
+  "page_order": [
+    "tc.research_page.RUNICAUGMENTATION.1",
+    "runic_hardening",
+    "tc.research_page.RUNICAUGMENTATION.2"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:textures/misc/r_runicupg.png",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

@@ -1,0 +1,1449 @@
+{
+  "source_sha256": "284bbe96484ea604efb78535a9757138df5a8ae312df45e4e7da23bf3f16d243",
+  "atlas": [
+    128,
+    64
+  ],
+  "parts": [
+    {
+      "name": "Cloak1",
+      "uv": [
+        0,
+        47
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -5.0,
+            1.5,
+            4.0,
+            10.0,
+            12.0,
+            1.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.1396263,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "Cloak3",
+      "uv": [
+        0,
+        37
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -5.0,
+            17.5,
+            -0.8,
+            10.0,
+            4.0,
+            1.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.4465716,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "Cloak2",
+      "uv": [
+        0,
+        59
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -5.0,
+            13.5,
+            1.7,
+            10.0,
+            4.0,
+            1.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.3069452,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "CloakCL",
+      "uv": [
+        0,
+        43
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            3.0,
+            0.5,
+            2.0,
+            2.0,
+            1.0,
+            3.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.1396263,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "CloakCR",
+      "uv": [
+        0,
+        43
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -5.0,
+            0.5,
+            2.0,
+            2.0,
+            1.0,
+            3.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.1396263,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "Head",
+      "uv": [
+        47,
+        12
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -3.5,
+            -6.0,
+            -2.5,
+            7.0,
+            7.0,
+            5.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        4.5,
+        -3.8
+      ],
+      "rotation": [
+        -0.1047198,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "Head2",
+      "uv": [
+        26,
+        16
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -2.0,
+            -2.0,
+            -2.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -5.0
+      ],
+      "rotation": [
+        -0.1047198,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "CollarL",
+      "uv": [
+        75,
+        50
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            3.5,
+            -0.5,
+            -7.0,
+            1.0,
+            4.0,
+            10.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.837758,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "CollarR",
+      "uv": [
+        67,
+        50
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -4.5,
+            -0.5,
+            -7.0,
+            1.0,
+            4.0,
+            10.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.837758,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "CollarB",
+      "uv": [
+        77,
+        59
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -3.5,
+            -0.5,
+            2.0,
+            7.0,
+            4.0,
+            1.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.837758,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "CollarF",
+      "uv": [
+        77,
+        59
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -3.5,
+            -0.5,
+            -7.0,
+            7.0,
+            4.0,
+            1.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.837758,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "CollarBlack",
+      "uv": [
+        22,
+        0
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -3.5,
+            0.0,
+            -6.0,
+            7.0,
+            1.0,
+            8.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.837758,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "Frontcloth0",
+      "uv": [
+        114,
+        52
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -3.0,
+            3.2,
+            -3.5,
+            6.0,
+            10.0,
+            1.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.1745329,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        114.0,
+        64.0
+      ]
+    },
+    {
+      "name": "Frontcloth1",
+      "uv": [
+        114,
+        39
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -1.0,
+            1.5,
+            -3.5,
+            6.0,
+            6.0,
+            1.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        -2.0,
+        12.0,
+        0.0
+      ],
+      "rotation": [
+        -0.1047198,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        114.0,
+        64.0
+      ]
+    },
+    {
+      "name": "Frontcloth2",
+      "uv": [
+        114,
+        47
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -1.0,
+            8.5,
+            -1.5,
+            6.0,
+            3.0,
+            1.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        -2.0,
+        11.0,
+        0.0
+      ],
+      "rotation": [
+        -0.3316126,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        114.0,
+        64.0
+      ]
+    },
+    {
+      "name": "Torso",
+      "uv": [
+        34,
+        45
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            -5.0,
+            2.5,
+            -3.0,
+            10.0,
+            10.0,
+            6.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0.0,
+        0.0,
+        -2.5
+      ],
+      "rotation": [
+        0.1745329,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "ArmR",
+      "uv": [
+        78,
+        32
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -3.5,
+            1.5,
+            -2.0,
+            4.0,
+            13.0,
+            5.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        -5.0,
+        3.0,
+        -2.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.1047198
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "ShoulderR1",
+      "uv": [
+        0,
+        23
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -3.3,
+            4.0,
+            -2.5,
+            1.0,
+            2.0,
+            6.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.186824
+      ],
+      "parent": "ArmR",
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "ShoulderR",
+      "uv": [
+        0,
+        0
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -4.3,
+            -1.0,
+            -3.0,
+            4.0,
+            5.0,
+            7.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.186824
+      ],
+      "parent": "ArmR",
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "ShoulderR2",
+      "uv": [
+        0,
+        12
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -2.3,
+            4.0,
+            -3.0,
+            2.0,
+            3.0,
+            7.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.186824
+      ],
+      "parent": "ArmR",
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "ShoulderR0",
+      "uv": [
+        56,
+        31
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -4.5,
+            -1.5,
+            -2.5,
+            5.0,
+            6.0,
+            6.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "ArmR",
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "ArmL",
+      "uv": [
+        78,
+        32
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            -0.5,
+            1.5,
+            -2.0,
+            4.0,
+            13.0,
+            5.0
+          ],
+          "mirror": true,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        5.0,
+        3.0,
+        -2.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -0.1047198
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "ShoulderL1",
+      "uv": [
+        0,
+        23
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            2.3,
+            4.0,
+            -2.5,
+            1.0,
+            2.0,
+            6.0
+          ],
+          "mirror": true,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -1.186824
+      ],
+      "parent": "ArmL",
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "ShoulderL0",
+      "uv": [
+        56,
+        31
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            -0.5,
+            -1.5,
+            -2.5,
+            5.0,
+            6.0,
+            6.0
+          ],
+          "mirror": true,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "ArmL",
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "ShoulderL",
+      "uv": [
+        0,
+        0
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            0.3,
+            -1.0,
+            -3.0,
+            4.0,
+            5.0,
+            7.0
+          ],
+          "mirror": true,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -1.186824
+      ],
+      "parent": "ArmL",
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "ShoulderL2",
+      "uv": [
+        0,
+        12
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            0.3,
+            4.0,
+            -3.0,
+            2.0,
+            3.0,
+            7.0
+          ],
+          "mirror": true,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -1.186824
+      ],
+      "parent": "ArmL",
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "BackpanelR1",
+      "uv": [
+        96,
+        7
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            0.0,
+            2.5,
+            -2.5,
+            2.0,
+            2.0,
+            5.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        -2.0,
+        12.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.1396263
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "WaistR1",
+      "uv": [
+        96,
+        14
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -3.0,
+            -0.5,
+            -2.5,
+            5.0,
+            3.0,
+            5.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        -2.0,
+        12.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.1396263
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "WaistR2",
+      "uv": [
+        116,
+        13
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -3.0,
+            2.5,
+            -2.5,
+            1.0,
+            4.0,
+            5.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        -2.0,
+        12.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.1396263
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "WaistR3",
+      "uv": [
+        114,
+        5
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            -2.0,
+            2.5,
+            -2.5,
+            2.0,
+            3.0,
+            5.0
+          ],
+          "mirror": true,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        -2.0,
+        12.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.1396263
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "LegR",
+      "uv": [
+        79,
+        19
+      ],
+      "mirror": false,
+      "boxes": [
+        {
+          "bounds": [
+            -2.5,
+            2.5,
+            -2.0,
+            4.0,
+            9.0,
+            4.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        -2.0,
+        12.5,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "WaistL1",
+      "uv": [
+        96,
+        14
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            -2.0,
+            -0.5,
+            -2.5,
+            5.0,
+            3.0,
+            5.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        2.0,
+        12.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -0.1396263
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "WaistL2",
+      "uv": [
+        116,
+        13
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            2.0,
+            2.5,
+            -2.5,
+            1.0,
+            4.0,
+            5.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        2.0,
+        12.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -0.1396263
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "WaistL3",
+      "uv": [
+        114,
+        5
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            0.0,
+            2.5,
+            -2.5,
+            2.0,
+            3.0,
+            5.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        2.0,
+        12.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -0.1396263
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "BackpanelL1",
+      "uv": [
+        96,
+        7
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            -2.0,
+            2.5,
+            -2.5,
+            2.0,
+            2.0,
+            5.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        2.0,
+        12.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -0.1396263
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    },
+    {
+      "name": "LegL",
+      "uv": [
+        79,
+        19
+      ],
+      "mirror": true,
+      "boxes": [
+        {
+          "bounds": [
+            -1.5,
+            2.5,
+            -2.0,
+            4.0,
+            9.0,
+            4.0
+          ],
+          "mirror": false,
+          "atlas": [
+            128,
+            64
+          ]
+        }
+      ],
+      "pivot": [
+        2.0,
+        12.5,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "atlas": [
+        128.0,
+        64.0
+      ]
+    }
+  ]
+}

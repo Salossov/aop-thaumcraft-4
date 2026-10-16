@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "thaumcraft:block/node_transducer"
+    },
+    "facing=down": {
+      "model": "thaumcraft:block/node_transducer"
+    },
+    "facing=north": {
+      "model": "thaumcraft:block/node_transducer"
+    },
+    "facing=south": {
+      "model": "thaumcraft:block/node_transducer"
+    },
+    "facing=east": {
+      "model": "thaumcraft:block/node_transducer"
+    },
+    "facing=west": {
+      "model": "thaumcraft:block/node_transducer"
+    }
+  }
+}

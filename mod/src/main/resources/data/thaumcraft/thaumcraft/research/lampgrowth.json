@@ -1,0 +1,48 @@
+{
+  "kind": "research",
+  "key": "LAMPGROWTH",
+  "category": "ARTIFICE",
+  "parents": [
+    "ARCANELAMP",
+    "INFUSION"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "lux": 3,
+    "herba": 6,
+    "victus": 3,
+    "messis": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": false,
+  "column": -4,
+  "row": 3,
+  "text_pages": [
+    "tc.research_page.LAMPGROWTH.1"
+  ],
+  "recipe_pages": [
+    "LampGrowth"
+  ],
+  "page_order": [
+    "tc.research_page.LAMPGROWTH.1",
+    "LampGrowth"
+  ],
+  "icon": "thaumcraft:lamp_of_growth",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": true,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [
+    "lux",
+    "messis"
+  ],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}

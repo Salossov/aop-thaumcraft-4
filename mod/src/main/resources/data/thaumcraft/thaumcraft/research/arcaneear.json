@@ -1,0 +1,43 @@
+{
+  "kind": "research",
+  "key": "ARCANEEAR",
+  "category": "ARTIFICE",
+  "parents": [
+    "GOGGLES"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "sensus": 3,
+    "potentia": 3,
+    "aer": 3
+  },
+  "complexity": 1,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 6,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.ARCANEEAR.1"
+  ],
+  "recipe_pages": [
+    "ArcaneEar"
+  ],
+  "page_order": [
+    "tc.research_page.ARCANEEAR.1",
+    "ArcaneEar"
+  ],
+  "page_requirements": {},
+  "icon": "thaumcraft:arcane_ear",
+  "virtual": false,
+  "round": false,
+  "special": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 0,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "recipe_groups": {}
+}

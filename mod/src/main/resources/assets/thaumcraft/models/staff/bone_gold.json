@@ -1,0 +1,339 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "rod": "thaumcraft:models/wand_rod_bone",
+    "cap": "thaumcraft:models/wand_cap_gold",
+    "particle": "thaumcraft:models/wand_rod_bone"
+  },
+  "elements": [
+    {
+      "from": [
+        7,
+        -11,
+        7
+      ],
+      "to": [
+        9,
+        27,
+        9
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            2,
+            5,
+            3,
+            14
+          ],
+          "texture": "#rod",
+          "rotation": 0
+        },
+        "west": {
+          "uv": [
+            0,
+            5,
+            1,
+            14
+          ],
+          "texture": "#rod",
+          "rotation": 0
+        },
+        "south": {
+          "uv": [
+            1,
+            5,
+            2,
+            14
+          ],
+          "texture": "#rod",
+          "rotation": 0
+        },
+        "north": {
+          "uv": [
+            3,
+            5,
+            4,
+            14
+          ],
+          "texture": "#rod",
+          "rotation": 0
+        },
+        "up": {
+          "uv": [
+            1,
+            4,
+            2,
+            5
+          ],
+          "texture": "#rod",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            2,
+            4,
+            3,
+            5
+          ],
+          "texture": "#rod",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "from": [
+        6.8,
+        27,
+        6.8
+      ],
+      "to": [
+        9.2,
+        29,
+        9.2
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            2,
+            1,
+            3,
+            2
+          ],
+          "texture": "#cap",
+          "rotation": 0
+        },
+        "west": {
+          "uv": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "texture": "#cap",
+          "rotation": 0
+        },
+        "south": {
+          "uv": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "texture": "#cap",
+          "rotation": 0
+        },
+        "north": {
+          "uv": [
+            3,
+            1,
+            4,
+            2
+          ],
+          "texture": "#cap",
+          "rotation": 0
+        },
+        "up": {
+          "uv": [
+            1,
+            0,
+            2,
+            1
+          ],
+          "texture": "#cap",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": "#cap",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "from": [
+        6.8,
+        -13,
+        6.8
+      ],
+      "to": [
+        9.2,
+        -11,
+        9.2
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            2,
+            1,
+            3,
+            2
+          ],
+          "texture": "#cap",
+          "rotation": 0
+        },
+        "west": {
+          "uv": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "texture": "#cap",
+          "rotation": 0
+        },
+        "south": {
+          "uv": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "texture": "#cap",
+          "rotation": 0
+        },
+        "north": {
+          "uv": [
+            3,
+            1,
+            4,
+            2
+          ],
+          "texture": "#cap",
+          "rotation": 0
+        },
+        "up": {
+          "uv": [
+            1,
+            0,
+            2,
+            1
+          ],
+          "texture": "#cap",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": "#cap",
+          "rotation": 180
+        }
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        -45,
+        66
+      ],
+      "scale": [
+        0.6,
+        0.42,
+        0.6
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        3,
+        0
+      ],
+      "scale": [
+        0.28,
+        0.28,
+        0.28
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        0.8,
+        0
+      ],
+      "scale": [
+        0.55,
+        0.55,
+        0.55
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        0.8,
+        0
+      ],
+      "scale": [
+        0.55,
+        0.55,
+        0.55
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        3,
+        1
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        3,
+        1
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    }
+  },
+  "gui_light": "side"
+}

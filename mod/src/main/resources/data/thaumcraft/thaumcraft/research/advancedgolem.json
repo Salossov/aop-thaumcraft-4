@@ -1,0 +1,50 @@
+{
+  "kind": "research",
+  "key": "ADVANCEDGOLEM",
+  "category": "GOLEMANCY",
+  "parents": [
+    "INFUSION",
+    "UPGRADEAIR",
+    "UPGRADEEARTH",
+    "UPGRADEFIRE",
+    "UPGRADEWATER",
+    "UPGRADEORDER",
+    "UPGRADEENTROPY"
+  ],
+  "hidden_parents": [],
+  "aspects": {
+    "victus": 3,
+    "potentia": 3,
+    "cognitio": 6,
+    "sensus": 3
+  },
+  "complexity": 2,
+  "auto_unlock": false,
+  "concealed": true,
+  "column": 8,
+  "row": 0,
+  "text_pages": [
+    "tc.research_page.ADVANCEDGOLEM.1"
+  ],
+  "recipe_pages": [
+    "AdvancedGolem"
+  ],
+  "page_order": [
+    "tc.research_page.ADVANCEDGOLEM.1",
+    "AdvancedGolem"
+  ],
+  "icon": "thaumcraft:straw_golem",
+  "virtual": false,
+  "round": false,
+  "stub": false,
+  "secondary": false,
+  "siblings": [],
+  "hidden": false,
+  "warp": 5,
+  "item_triggers": [],
+  "entity_triggers": [],
+  "aspect_triggers": [],
+  "page_requirements": {},
+  "special": false,
+  "recipe_groups": {}
+}
