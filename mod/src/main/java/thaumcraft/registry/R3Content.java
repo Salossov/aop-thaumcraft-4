@@ -170,7 +170,7 @@ public final class R3Content {
     public static final DeferredItem<Item> QUICKSILVER_DROP = ITEMS.registerSimpleItem("quicksilver_drop");
     public static final DeferredItem<Item> VIS_FILTER = ITEMS.registerSimpleItem("vis_filter");
     public static final DeferredItem<thaumcraft.items.EssentiaResonatorItem> RESONATOR = ITEMS.register("essentia_resonator", thaumcraft.items.EssentiaResonatorItem::new);
-    public static final DeferredItem<Item> JAR_LABEL = ITEMS.registerSimpleItem("jar_label");
+    public static final DeferredItem<thaumcraft.items.JarLabelItem> JAR_LABEL = ITEMS.register("jar_label", thaumcraft.items.JarLabelItem::new);
     public static final DeferredItem<Item> EMPTY_PHIAL = ITEMS.registerSimpleItem("empty_phial");
     public static final DeferredItem<Item> ESSENTIA_PHIAL = ITEMS.register("essentia_phial", () -> new thaumcraft.items.EssentiaItem(8));
     public static final DeferredItem<Item> ESSENTIA_CRYSTAL = ITEMS.register("essentia_crystal", () -> new thaumcraft.items.EssentiaItem(1));
