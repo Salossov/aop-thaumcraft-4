@@ -1,0 +1,19 @@
+{
+  "category.thaumcraft_example.workshop": "Addon workshop",
+  "aspect.thaumcraft_example.resonantia": "Resonance",
+  "page.thaumcraft_example.intro": "This tab, research and mixed page come from an independent addon. Text flows and wraps in page coordinates.",
+  "page.thaumcraft_example.flow": "The relay stores up to 64 essentia and 10 vis (1000 centivis). Connect it to a loaded energized-node network. Right-click to inspect it. Unloading a chunk removes it from the network and retains its saved contents.",
+  "page.thaumcraft_example.meter": "Custom Java page: data is validated on both sides; rendering and interactions use only the client API.",
+  "page.thaumcraft_example.back": "Back to introduction",
+  "page.thaumcraft_example.device_tip": "Example essentia/vis relay",
+  "message.thaumcraft_example.device": "Stored: %s centivis, %s essentia",
+  "message.thaumcraft_example.focus_end": "Focus application finished",
+  "item.thaumcraft_example.focus": "Resonance focus",
+  "item.thaumcraft_example.rod": "Resonant rod",
+  "item.thaumcraft_example.cap": "Resonant cap",
+  "block.thaumcraft_example.device": "Resonance relay",
+  "research.name.thaumcraft_example:introduction": "Addon introduction",
+  "focus.upgrade.thaumcraft_example:pulse.name": "Pulse",
+  "focus.upgrade.thaumcraft_example:pulse.text": "Example addon upgrade",
+  "tc.research_name.thaumcraft_example:introduction": "Addon introduction"
+}

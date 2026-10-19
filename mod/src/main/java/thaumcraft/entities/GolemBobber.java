@@ -24,7 +24,23 @@ public final class GolemBobber extends Entity implements IEntityWithComplexSpawn
         this(R3Entities.GOLEM_BOBBER.get(),level);entityData.set(FISHER,fisher.getId());setPos(fisher.position().add(0,fisher.getBbHeight()*.65,0));
         double x=water.getX()+.5-fisher.getX(),y=water.getY()+1-fisher.getY(),z=water.getZ()+.5-fisher.getZ();
         double length=(float)Math.sqrt(x*x+y*y+z*z);
-        setDeltaMovement(x*.1,y*.1+(double)(float)Math.sqrt(length)*.08,z*.1);
+        var velocity=new Vec3(x*.1,y*.1+(double)(float)Math.sqrt(length)*.08,z*.1);
+        // A nearby pond below a raised work block can make the old arc strike that block's lip.
+        // Keep clear casts unchanged; loft an obstructed cast without changing its horizontal target.
+        if(!clearLaunch(velocity))for(int lift=1;lift<=6;lift++){
+            var raised=velocity.add(0,lift*.08,0);if(clearLaunch(raised)){velocity=raised;break;}
+        }
+        setDeltaMovement(velocity);
+    }
+    private boolean clearLaunch(Vec3 velocity){
+        var from=position();
+        for(int step=0;step<16;step++){
+            if(level().getFluidState(BlockPos.containing(from)).is(FluidTags.WATER))return true;
+            var to=from.add(velocity);
+            if(level().clip(new ClipContext(from,to,ClipContext.Block.COLLIDER,ClipContext.Fluid.NONE,this)).getType()!=HitResult.Type.MISS)return false;
+            from=to;velocity=velocity.add(0,-(double).04f,0).scale(.92f);
+        }
+        return true;
     }
     public ThaumicGolem fisher(){return level().getEntity(entityData.get(FISHER)) instanceof ThaumicGolem golem?golem:null;}
     @Override public void writeSpawnData(RegistryFriendlyByteBuf buffer){var velocity=getDeltaMovement();buffer.writeDouble(velocity.x);buffer.writeDouble(velocity.y);buffer.writeDouble(velocity.z);buffer.writeInt(entityData.get(FISHER));}

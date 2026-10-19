@@ -28,7 +28,7 @@ public final class ResearchMenu extends AbstractContainerMenu implements ActionM
     private ResearchMenu(int id,Inventory inventory,Container table,net.minecraft.core.BlockPos pos,UUID token) {
         super(R2Content.RESEARCH_MENU.get(),id);this.table=table;this.token=token;owner=inventory.player;
         for(int i=0;i<clientBonuses.length;i++) {final int index=i;addDataSlot(new DataSlot(){@Override public int get(){return table instanceof TableBlockEntity tile?tile.bonus(TableBlockEntity.BONUS_ASPECTS.get(index)):clientBonuses[index];}@Override public void set(int value){clientBonuses[index]=Math.clamp(value,0,1);}});}
-        addSlot(new Slot(table,0,14,10) { @Override public boolean mayPlace(ItemStack stack) { return stack.getItem() instanceof ScribingToolsItem; } });
+        addSlot(new Slot(table,0,14,10) { @Override public boolean mayPlace(ItemStack stack) { return stack.getItem() instanceof thaumcraft.api.IScribeTools; } });
         addSlot(new Slot(table,1,70,10) { @Override public boolean mayPlace(ItemStack stack) { return stack.getItem() instanceof ResearchNotesItem; } });
         for(int y=0;y<3;y++) for(int x=0;x<9;x++) addSlot(new Slot(inventory,9+y*9+x,48+x*18,175+y*18));
         for(int x=0;x<9;x++) addSlot(new Slot(inventory,x,48+x*18,233));
@@ -77,5 +77,5 @@ public final class ResearchMenu extends AbstractContainerMenu implements ActionM
         note.grid.put(hex,new ResearchNote.Entry(tag,aspect==null?0:2));note.checkComplete(k.aspectPools().keySet());ResearchNotes.write(stack,note);
         table.getItem(0).setDamageValue(table.getItem(0).getDamageValue()+1);if(table instanceof TableBlockEntity tile)tile.changedAndSync();else table.setChanged();broadcastChanges();return true;
     }
-    public static boolean usableInk(ItemStack stack) { return stack.getItem() instanceof ScribingToolsItem&&stack.getDamageValue()<stack.getMaxDamage(); }
+    public static boolean usableInk(ItemStack stack) { return stack.getItem() instanceof thaumcraft.api.IScribeTools&&stack.getDamageValue()<stack.getMaxDamage(); }
 }

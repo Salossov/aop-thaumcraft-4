@@ -57,7 +57,7 @@ public final class ThaumicSlime extends Monster implements TaintedMob {
             var small=R2Entities.THAUMIC_SLIME.get().create(level());small.size(1);small.moveTo(getX()+((i%2)-0.5)*count/4,getY()+0.5,getZ()+((i/2)-0.5)*count/4,random.nextFloat()*360,0);level().addFreshEntity(small);
         }}
     }
-    @Override protected void dropCustomDeathLoot(ServerLevel level,DamageSource source,boolean recentlyHit) { if(size()<3&&random.nextInt(3)==0) spawnAtLocation(R2Content.TAINT_TENDRIL.get()); }
+    @Override protected void dropCustomDeathLoot(ServerLevel level,DamageSource source,boolean recentlyHit) { if(size()<3&&random.nextInt(3)==0) spawnAtLocation(R2Content.TAINT_GOO.get()); }
     @Override public void addAdditionalSaveData(CompoundTag tag) {super.addAdditionalSaveData(tag);tag.putInt("Size",size());tag.putInt("SpitCounter",spitCounter);}
     @Override public void readAdditionalSaveData(CompoundTag tag) {super.readAdditionalSaveData(tag);float health=getHealth();size(tag.getInt("Size"));setHealth(Math.min(health,getMaxHealth()));spitCounter=tag.getInt("SpitCounter");}
 }

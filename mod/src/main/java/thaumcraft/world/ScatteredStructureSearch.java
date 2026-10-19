@@ -29,10 +29,16 @@ public final class ScatteredStructureSearch implements AutoCloseable {
     private BlockPos best,ringBest;
     private double distance=Double.MAX_VALUE,ringDistance=Double.MAX_VALUE;
     private boolean foundAtRadius,finished;
+    private final int maxRadius;
+    private BlockPos candidatePosition;
     public ScatteredStructureSearch(ServerLevel level,BlockPos origin){
+        this(level,origin,ResourceLocation.parse("thaumcraft:scattered_temples"),100);
+    }
+    public ScatteredStructureSearch(ServerLevel level,BlockPos origin,ResourceLocation tagId,int maxRadius){
+        this.maxRadius=maxRadius;
         this.level=level;this.origin=origin;
         if(!level.getServer().getWorldData().worldGenOptions().generateStructures()){finished=true;return;}
-        var tag=level.registryAccess().registryOrThrow(Registries.STRUCTURE).getTag(TagKey.create(Registries.STRUCTURE,ResourceLocation.parse("thaumcraft:scattered_temples")));
+        var tag=level.registryAccess().registryOrThrow(Registries.STRUCTURE).getTag(TagKey.create(Registries.STRUCTURE,tagId));
         if(tag.isEmpty()){finished=true;return;}
         var map=new LinkedHashMap<StructurePlacement,Set<Holder<Structure>>>();
         for(var holder:tag.get())for(var placement:level.getChunkSource().getGeneratorState().getPlacementsForStructure(holder))map.computeIfAbsent(placement,p->new LinkedHashSet<>()).add(holder);
@@ -51,10 +57,10 @@ public final class ScatteredStructureSearch implements AutoCloseable {
                 var p=positions.get(ringIndex);double d=new BlockPos(p.getMiddleBlockX(),32,p.getMiddleBlockZ()).distSqr(origin);
                 if(ringBest!=null&&d>=ringDistance){ringIndex++;continue;}
                 var value=candidate(group,p);if(value==null)return false;
-                if(value){ringBest=group.placement.getLocatePos(p);ringDistance=d;}
+                if(value){ringBest=candidatePosition==null?group.placement.getLocatePos(p):candidatePosition;ringDistance=d;}
                 release();ringIndex++;continue;
             }
-            if(spread.isEmpty()||radius>100){finished=true;break;}
+            if(spread.isEmpty()||radius>maxRadius){finished=true;break;}
             if(spreadGroup==spread.size()){
                 if(foundAtRadius){finished=true;break;}
                 radius++;spreadGroup=0;candidates=null;continue;
@@ -67,13 +73,15 @@ public final class ScatteredStructureSearch implements AutoCloseable {
             if(candidateIndex==candidates.size()){spreadGroup++;candidates=null;continue;}
             var p=candidates.get(candidateIndex);var value=candidate(group,p);if(value==null)return false;
             release();candidateIndex++;
-            if(value){accept(placement.getLocatePos(p));foundAtRadius=true;spreadGroup++;candidates=null;}
+            if(value){accept(candidatePosition==null?placement.getLocatePos(p):candidatePosition);foundAtRadius=true;spreadGroup++;candidates=null;}
         }
         return finished;
     }
     private void accept(BlockPos pos){double d=origin.distSqr(pos);if(d<distance){distance=d;best=pos;}}
     private Boolean candidate(Group group,ChunkPos pos){
         if(future==null){
+            candidatePosition=null;
+            if(group.structures.stream().allMatch(holder->holder.value() instanceof NativeStructures.Site site&&!NativeStructures.candidate(site.kind,level.getSeed(),pos)))return false;
             pending=pos;
             level.getChunkSource().addRegionTicket(TYPE,pos,33-ChunkLevel.byStatus(ChunkStatus.STRUCTURE_STARTS),token);
             // checkStructurePresence can itself join disk I/O and run biome generation.
@@ -85,7 +93,7 @@ public final class ScatteredStructureSearch implements AutoCloseable {
         if(!future.isDone())return null;
         var result=future.getNow(null);var chunk=result==null?null:result.orElse(null);
         if(chunk==null){release();return null;}
-        for(var holder:group.structures){var start=chunk.getStartForStructure(holder.value());if(start!=null&&start.isValid())return true;}
+        for(var holder:group.structures){var start=chunk.getStartForStructure(holder.value());if(start!=null&&start.isValid()){if(!start.getPieces().isEmpty()&&start.getPieces().getFirst() instanceof NativeStructures.Piece piece)candidatePosition=piece.locate();return true;}}
         return false;
     }
     private void release(){if(pending!=null)level.getChunkSource().removeRegionTicket(TYPE,pending,33-ChunkLevel.byStatus(ChunkStatus.STRUCTURE_STARTS),token);pending=null;future=null;}

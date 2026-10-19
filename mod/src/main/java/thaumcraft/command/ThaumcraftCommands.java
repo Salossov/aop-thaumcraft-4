@@ -91,7 +91,7 @@ public final class ThaumcraftCommands {
                         .executes(context->maze(context,null,IntegerArgumentType.getInteger(context,"width"),IntegerArgumentType.getInteger(context,"height")))
                         .then(Commands.argument("pos",BlockPosArgument.blockPos()).executes(context->maze(context,BlockPosArgument.getBlockPos(context,"pos"),IntegerArgumentType.getInteger(context,"width"),IntegerArgumentType.getInteger(context,"height")))))))
             .then(Commands.literal("locate")
-                .then(Commands.argument("kind",StringArgumentType.word()).suggests((context,builder)->SharedSuggestionProvider.suggest(new String[]{"mound","hilltop","ring_altar","spider_tree","magical_forest","tainted_land","cultists"},builder))
+                .then(Commands.argument("kind",StringArgumentType.word()).suggests((context,builder)->SharedSuggestionProvider.suggest(thaumcraft.world.NaturalStructureLocate.KINDS,builder))
                     .executes(context->locate(context,StringArgumentType.getString(context,"kind"))))));
         var root=dispatcher.getRoot().getChild("thaumcraft");
         root.addChild(Commands.literal("wand")
@@ -351,41 +351,7 @@ public final class ThaumcraftCommands {
     }
 
     private static int locate(CommandContext<CommandSourceStack> context,String kind){
-        var source=context.getSource();
-        var level=source.getLevel();
-        var origin=BlockPos.containing(source.getPosition());
-        var normalized=kind.toLowerCase(Locale.ROOT).replace("-","_");
-        var index=StructureIndexData.get(level);
-        StructureIndexData.Entry entry=switch(normalized){
-            case "mound"->index.nearest(level,StructureIndexData.Kind.MOUND,origin.getX(),origin.getZ());
-            case "hilltop"->index.nearest(level,StructureIndexData.Kind.HILLTOP,origin.getX(),origin.getZ());
-            case "ring_altar"->index.nearest(level,StructureIndexData.Kind.RING_ALTAR,origin.getX(),origin.getZ());
-            case "spider_tree"->index.nearest(level,StructureIndexData.Kind.SPIDER_TREE,origin.getX(),origin.getZ());
-            case "cultists"->index.nearest(level,StructureIndexData.Kind.RING_ALTAR,origin.getX(),origin.getZ());
-            default->null;
-        };
-        if(entry!=null){
-            int x=entry.x(),y=entry.y(),z=entry.z();
-            source.sendSuccess(()->Component.literal(kind+" found at "+x+" "+y+" "+z),false);
-            return 1;
-        }
-        if(normalized.equals("magical_forest")||normalized.equals("tainted_land")){
-            var key=normalized.equals("magical_forest")?WorldBiomes.MAGICAL:WorldBiomes.TAINT;
-            var sampler=level.getChunkSource().randomState().sampler();
-            for(int radius=0;radius<64;radius++)for(int dx=-radius;dx<=radius;dx++)for(int dz=-radius;dz<=radius;dz++){
-                if(Math.max(Math.abs(dx),Math.abs(dz))!=radius)continue;
-                int qx=(origin.getX()>>2)+dx*8,qz=(origin.getZ()>>2)+dz*8;
-                if(level.getNoiseBiome(qx,16,qz).is(key)){
-                    int x=qx*4,z=qz*4;
-                    source.sendSuccess(()->Component.literal(kind+" found near "+x+" 64 "+z),false);
-                    return 1;
-                }
-            }
-            source.sendFailure(Component.literal("No "+kind+" within search range"));
-            return 0;
-        }
-        source.sendFailure(Component.literal("Nothing recorded for "+kind+" yet; generate one first"));
-        return 0;
+        return thaumcraft.world.NaturalStructureLocate.start(context.getSource(),kind);
     }
 
     private ThaumcraftCommands(){}

@@ -11,13 +11,14 @@ import thaumcraft.items.*;
 import thaumcraft.production.PedestalBlockEntity;
 import thaumcraft.registry.R3Content;
 
-public final class WandPedestalBlockEntity extends PedestalBlockEntity {
+public final class WandPedestalBlockEntity extends PedestalBlockEntity implements thaumcraft.api.aspects.IAspectDisplay {
     private final List<BlockPos> nodes = new ArrayList<>();
     private BlockPos drainSource;
     private int drainColor;private long nextNodeSearch;
     private long drainUntil;
     public WandPedestalBlockEntity(BlockPos pos,BlockState state) { super(R3Content.WAND_PEDESTAL_ENTITY.get(),pos,state); }
     public static boolean accepts(ItemStack stack) { return stack.getItem() instanceof CastingWandItem || stack.getItem() instanceof ThaumicCurioItem curio && curio.storesVis(); }
+    @Override public AspectList displayedAspects(){var result=new AspectList();var stack=getItem(0);if(accepts(stack))for(var aspect:Aspects.PRIMALS)result.add(aspect,WandVis.get(stack,aspect)/100);return result;}
     @Override public boolean canPlaceItem(int slot,ItemStack stack) { return accepts(stack); }
     @Override public boolean canPlaceItemThroughFace(int slot,ItemStack stack,Direction face) { return isEmpty()&&accepts(stack); }
     public BlockPos drainSource() { return level!=null&&level.getGameTime()<=drainUntil?drainSource:null; }

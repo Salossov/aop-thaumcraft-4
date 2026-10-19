@@ -42,13 +42,13 @@ public record ArcaneShapelessRecipe(String research, Map<String, Integer> vis, N
         private static final StreamCodec<RegistryFriendlyByteBuf, ArcaneShapelessRecipe> STREAM = new StreamCodec<>() {
             public ArcaneShapelessRecipe decode(RegistryFriendlyByteBuf b) {
                 String key = b.readUtf(128); int size = b.readVarInt(); if (size < 1 || size > 6) throw new IllegalArgumentException("Vis count");
-                var vis = new LinkedHashMap<String, Integer>(); for (int n = 0; n < size; n++) if (vis.put(b.readUtf(32), b.readVarInt()) != null) throw new IllegalArgumentException("Duplicate vis");
+                var vis = new LinkedHashMap<String, Integer>(); for (int n = 0; n < size; n++) if (vis.put(b.readUtf(128), b.readVarInt()) != null) throw new IllegalArgumentException("Duplicate vis");
                 size = b.readVarInt(); if (size < 1 || size > 9) throw new IllegalArgumentException("Ingredient count");
                 var ingredients = NonNullList.<Ingredient>create(); for (int n = 0; n < size; n++) ingredients.add(Ingredient.CONTENTS_STREAM_CODEC.decode(b));
                 return new ArcaneShapelessRecipe(key, vis, ingredients, ItemStack.STREAM_CODEC.decode(b));
             }
             public void encode(RegistryFriendlyByteBuf b, ArcaneShapelessRecipe r) {
-                b.writeUtf(r.research, 128); b.writeVarInt(r.vis.size()); r.vis.forEach((tag, n) -> { b.writeUtf(tag, 32); b.writeVarInt(n); });
+                b.writeUtf(r.research, 128); b.writeVarInt(r.vis.size()); r.vis.forEach((tag, n) -> { b.writeUtf(tag, 128); b.writeVarInt(n); });
                 b.writeVarInt(r.ingredients.size()); r.ingredients.forEach(ingredient -> Ingredient.CONTENTS_STREAM_CODEC.encode(b, ingredient)); ItemStack.STREAM_CODEC.encode(b, r.result);
             }
         };

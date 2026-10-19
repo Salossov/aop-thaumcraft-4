@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "thaumcraft:items/aura_node_icon"
+  "parent": "builtin/entity",
+  "textures": {"particle": "thaumcraft:items/aura_node_icon"},
+  "display": {
+    "gui": {"scale": [1,1,1]},
+    "ground": {"translation": [0,3,0], "scale": [0.5,0.5,0.5]},
+    "firstperson_righthand": {"scale": [0.7,0.7,0.7]},
+    "firstperson_lefthand": {"scale": [0.7,0.7,0.7]},
+    "thirdperson_righthand": {"scale": [0.5,0.5,0.5]},
+    "thirdperson_lefthand": {"scale": [0.5,0.5,0.5]}
   }
 }

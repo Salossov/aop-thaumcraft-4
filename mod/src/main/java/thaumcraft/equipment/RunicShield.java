@@ -55,14 +55,14 @@ public final class RunicShield {
     }
     @SubscribeEvent public static void tick(PlayerTickEvent.Post event){
         if(!(event.getEntity() instanceof ServerPlayer player)||!player.isAlive())return;
-        var state=STATES.computeIfAbsent(player.getUUID(),id->new State());int old=state.charge,oldMax=state.max;
-        if(player.tickCount%40==0||state.max==0)gear(player,state);
+        boolean first=!STATES.containsKey(player.getUUID());var state=STATES.computeIfAbsent(player.getUUID(),id->new State());int old=state.charge,oldMax=state.max;
+        gear(player,state);
         if(state.delay>0)state.delay--;
         else if(state.charge<state.max&&player.level().getGameTime()>=state.nextRecharge
                 &&WandVis.consumeInventory(player,Map.of(Aspects.AIR,ThaumcraftConfig.RUNIC_VIS_COST.get(),Aspects.EARTH,ThaumcraftConfig.RUNIC_VIS_COST.get()))){
             state.charge++;state.nextRecharge=player.level().getGameTime()+Math.max(1,(ThaumcraftConfig.RUNIC_RECHARGE_MS.get()-state.charged*500)/50);
         }
-        if(old!=state.charge||oldMax!=state.max)sync(player,state,false);
+        if(first||old!=state.charge||oldMax!=state.max)sync(player,state,false);
     }
     @SubscribeEvent public static void damage(LivingIncomingDamageEvent event){
         if(!(event.getEntity() instanceof ServerPlayer player)||event.getAmount()<=0)return;
@@ -91,6 +91,8 @@ public final class RunicShield {
     }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event){STATES.remove(event.getEntity().getUUID());}
     @SubscribeEvent public static void death(PlayerEvent.Clone event){STATES.remove(event.getEntity().getUUID());}
+    @SubscribeEvent public static void died(net.neoforged.neoforge.event.entity.living.LivingDeathEvent event){if(event.getEntity() instanceof ServerPlayer player){STATES.remove(player.getUUID());sync(player,new State(),false);}}
+    @SubscribeEvent public static void respawn(PlayerEvent.PlayerRespawnEvent event){if(event.getEntity() instanceof ServerPlayer player){var state=new State();gear(player,state);STATES.put(player.getUUID(),state);sync(player,state,false);}}
     @SubscribeEvent public static void stop(ServerStoppedEvent event){STATES.clear();}
     private RunicShield(){}
 }

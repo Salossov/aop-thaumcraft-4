@@ -21,10 +21,17 @@ public final class FocusDigEffects {
         for(var entry:beams.entrySet())if(mc.level.getEntity(entry.getKey()) instanceof Player player&&player.isUsingItem()){
             float side=player.getMainArm()==net.minecraft.world.entity.HumanoidArm.RIGHT?-.15f:.15f;if(player.getUsedItemHand()==net.minecraft.world.InteractionHand.OFF_HAND)side=-side;
             var offset=new Vec3(side,-.15,.5).xRot(-player.getXRot()*(float)Math.PI/180).yRot(-player.getYRot()*(float)Math.PI/180);var start=player.getEyePosition(partial).add(offset);var end=entry.getValue().endpoint;
-            VisDeviceRenderers.beam(pose,buffers,start,end,time,65382,.035f,.8f);
+            beam(pose,buffers,start,end,time);
+            pose.pushPose();pose.translate(end.x,end.y,end.z);pose.mulPose(event.getCamera().rotation());
+            var vertices=buffers.getBuffer(ThaumcraftRenderTypes.unlit(ResearchGraphics.texture("misc/particles"),true,false));var m=pose.last().pose();float u=((int)time%16)/16f,v=.3125f,size=.15f;
+            // FXBeamWand impact uses one 16x16 tile; the 8x8 spark sampler exposed four tiles.
+            vertices.addVertex(m,-size,-size,0).setUv(u+.0624375f,v+.0624375f).setColor(0f,1f,.4f,.66f);vertices.addVertex(m,size,-size,0).setUv(u,v+.0624375f).setColor(0f,1f,.4f,.66f);vertices.addVertex(m,size,size,0).setUv(u,v).setColor(0f,1f,.4f,.66f);vertices.addVertex(m,-size,size,0).setUv(u+.0624375f,v).setColor(0f,1f,.4f,.66f);pose.popPose();
         }
     }
-    @SubscribeEvent public static void tick(ClientTickEvent.Post event){var mc=Minecraft.getInstance();if(mc.level==null)return;for(var beam:beams.values())if(beam.expires>=mc.level.getGameTime()){var p=beam.endpoint;GolemClientEffects.spark(p,.12f,0,1,.4f,.8f);}}
+    private static void beam(com.mojang.blaze3d.vertex.PoseStack pose,net.minecraft.client.renderer.MultiBufferSource buffers,Vec3 start,Vec3 end,float time){
+        var delta=end.subtract(start);var axis=delta.normalize();var reference=Math.abs(axis.y)<.9?new Vec3(0,1,0):new Vec3(1,0,0);var first=axis.cross(reference).normalize();var second=axis.cross(first);var vertices=buffers.getBuffer(ThaumcraftRenderTypes.unlit(ResearchGraphics.texture("misc/beam2"),true,false));
+        for(int i=0;i<3;i++){double angle=Math.toRadians(time*5+i*60);var cross=first.scale(Math.cos(angle)*.15).add(second.scale(Math.sin(angle)*.15));var far=cross.scale(2);float scroll=-time*.2f+i/3f;Vec3[] points={end.subtract(far),start.subtract(cross),start.add(cross),end.add(far)};for(int c=0;c<4;c++)vertices.addVertex(pose.last().pose(),(float)points[c].x,(float)points[c].y,(float)points[c].z).setUv(c<2?1:0,scroll+(c==0||c==3?(float)delta.length():0)).setColor(0f,1f,.4f,.4f);}
+    }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event){beams.clear();}
     private FocusDigEffects(){}
 }

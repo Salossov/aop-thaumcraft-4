@@ -41,7 +41,8 @@ public final class CrucibleBlockEntity extends EssentiaBlockEntity {
     public CrucibleBlockEntity(BlockPos pos, BlockState state) { super(R3Content.CRUCIBLE_ENTITY.get(), pos, state, 1_048_576, true, false); }
     public int water() { return water; }
     public int fillWater(int n) { if (n < 0) throw new IllegalArgumentException("Negative water"); int accepted = Math.min(n, 1000 - water); water += accepted; if (accepted > 0) sync(); return accepted; }
-    public float fluidHeight() { return 0.3f + 0.5f * water / 1000.0f; }
+    public float fluidHeight() { float base=.3f+.5f*water/1000f,out=base+store.amount()/100f*(1-base);return out>1?1.001f:out==1?.9999f:out; }
+    public void clientTick(){if(level!=null&&level.isClientSide&&water>0)thaumcraft.client.CrucibleEffects.tick(this);}
     public boolean heated() { return R3Content.heatSource(level, worldPosition.below()); }
     @Override public void serverTick() {
         counter++;

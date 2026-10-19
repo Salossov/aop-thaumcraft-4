@@ -10,7 +10,7 @@ import thaumcraft.api.visnet.*;
 import thaumcraft.blocks.AuraNodeBlockEntity;
 import thaumcraft.registry.R3Content;
 
-public final class EnergizedNodeBlockEntity extends TileVisNode {
+public final class EnergizedNodeBlockEntity extends TileVisNode implements thaumcraft.api.aspects.IAspectDisplay {
     private final Map<String,Integer> aura = new LinkedHashMap<>(), capacity = new LinkedHashMap<>(), available = new LinkedHashMap<>();
     private UUID id = UUID.randomUUID();
     private NodeState.Type nodeType = NodeState.Type.NORMAL;
@@ -25,6 +25,7 @@ public final class EnergizedNodeBlockEntity extends TileVisNode {
     @Override public int getRange() { return 8; }
     @Override public boolean isSource() { return true; }
     public Map<String,Integer> capacity() { return Collections.unmodifiableMap(capacity); }
+    @Override public thaumcraft.api.aspects.AspectList displayedAspects(){return thaumcraft.api.aspects.IAspectDisplay.snapshot(capacity);}
     public Map<String,Integer> aura() { return Collections.unmodifiableMap(aura); }
     public UUID id() { return id; }
     public NodeState.Type nodeType() { return nodeType; }

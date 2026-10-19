@@ -1,0 +1,45 @@
+{
+  "kind": "book_page",
+  "id": "thaumcraft_example:mixed",
+  "elements": [
+    {
+      "kind": "text",
+      "value": "page.thaumcraft_example.intro"
+    },
+    {
+      "kind": "item",
+      "value": "thaumcraft_example:device",
+      "width": 20,
+      "height": 20,
+      "tooltip": [
+        "page.thaumcraft_example.device_tip"
+      ]
+    },
+    {
+      "kind": "aspect",
+      "value": "thaumcraft_example:resonantia",
+      "count": 4,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "kind": "image",
+      "value": "minecraft:textures/item/diamond.png",
+      "x": 100,
+      "y": 40,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "kind": "text",
+      "value": "page.thaumcraft_example.flow"
+    },
+    {
+      "kind": "link",
+      "value": "thaumcraft_example:introduction",
+      "tooltip": [
+        "page.thaumcraft_example.back"
+      ]
+    }
+  ]
+}

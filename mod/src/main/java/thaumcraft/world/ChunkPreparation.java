@@ -26,7 +26,19 @@ public final class ChunkPreparation implements AutoCloseable {
         for(int x=minX;x<=maxX;x++)for(int z=minZ;z<=maxZ;z++)positions.add(new ChunkPos(x,z));
         ACTIVE.add(this);
     }
+    /** Exact, insertion-ordered columns for addon operations such as relay searches. */
+    public ChunkPreparation(ServerLevel level,Collection<ChunkPos> requested){
+        this.level=Objects.requireNonNull(level);
+        var unique=new LinkedHashSet<ChunkPos>();
+        for(var position:requested)unique.add(Objects.requireNonNull(position));
+        positions.addAll(unique);ACTIVE.add(this);
+    }
     public boolean advance(int budget){
+        return advance(budget,false);
+    }
+    /** Already-FULL columns need tickets, but must not consume the cold-generation budget. */
+    public boolean advanceCold(int budget){return advance(budget,true);}
+    private boolean advance(int budget,boolean hotUnbudgeted){
         if(closed)throw new IllegalStateException("Closed chunk preparation");
         for(int i=0;i<submitted;i++){
             var p=positions.get(i);
@@ -34,7 +46,9 @@ public final class ChunkPreparation implements AutoCloseable {
         }
         // Bound both requests per tick and unfinished generation, including overlapping jobs.
         int allowance=Math.min(Math.max(0,budget),8-(submitted-completed.size()));
-        while(allowance-->0&&submitted<positions.size()){
+        while(submitted<positions.size()){
+            var next=positions.get(submitted);boolean hot=hotUnbudgeted&&level.getChunkSource().getChunkNow(next.x,next.z)!=null;
+            if(!hot&&allowance--<=0)break;
             var p=positions.get(submitted++);
             level.getChunkSource().addRegionTicket(TYPE,p,0,token);
             if(level.getChunkSource().getChunkNow(p.x,p.z)!=null)completed.add(p.toLong());

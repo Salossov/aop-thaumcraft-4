@@ -45,7 +45,7 @@ final class FocusProjectileEffects {
         var mc=Minecraft.getInstance();if(mc.level==null)return;var r=entity.effectRandom();
         switch(entity.kind()){
             case FROST->{
-                for(int i=0;i<entity.upgrade;i++){
+                for(int i=0;i<Math.max(1,entity.upgrade);i++){
                     float spread=entity.damage()/10f;
                     var p=new Vec3((float)entity.getX()-spread+r.nextFloat()*(spread*2),(float)entity.getY()-spread+r.nextFloat()*(spread*2),(float)entity.getZ()-spread+r.nextFloat()*(spread*2));
                     FollowingItemEffects.sparkle(p,.4f,6,.005f);

@@ -13,8 +13,9 @@ import thaumcraft.entities.ThaumicGolem;
 
 final class GolemHeldRenderer {
     private static JarItemRenderer jarRenderer;
-    static void render(ThaumicGolem golem,PoseStack pose,MultiBufferSource buffers,int light){
+    static void render(ThaumicGolem golem,GolemModel model,PoseStack pose,MultiBufferSource buffers,int light){
         var mc=Minecraft.getInstance();var held=golem.displayCarried();
+        if(golem.core()==thaumcraft.items.GolemCoreItem.Kind.FISHING.ordinal())fishingRod(golem,model,pose,buffers,light);
         if(golem.core()==5){
             // Original RenderGolemBase: a real bucket mesh, present even when empty.
             pose.pushPose();pose.scale(.4f,.4f,.4f);pose.translate(0,3,-1.1);pose.mulPose(Axis.XP.rotationDegrees(90));OriginalObjMesh.get("bucket").render("Bucket",pose,buffers,ResearchGraphics.texture("models/bucket"),light,OverlayTexture.NO_OVERLAY,0xffffffff,false);
@@ -32,6 +33,10 @@ final class GolemHeldRenderer {
         pose.translate(0,1,-.5);pose.mulPose(Axis.XP.rotationDegrees(180));pose.scale(.4f,.4f,.4f);
         // NONE avoids multiplying the original held-object scale by the modern ground transform.
         mc.getItemRenderer().renderStatic(held,ItemDisplayContext.NONE,light,OverlayTexture.NO_OVERLAY,pose,buffers,golem.level(),golem.getId());pose.popPose();
+    }
+    private static void fishingRod(ThaumicGolem golem,GolemModel model,PoseStack pose,MultiBufferSource buffers,int light){
+        pose.pushPose();GolemFishingPose.rod(pose,model.rightArm.xRot);
+        Minecraft.getInstance().getItemRenderer().renderStatic(new ItemStack(Items.FISHING_ROD),ItemDisplayContext.NONE,light,OverlayTexture.NO_OVERLAY,pose,buffers,golem.level(),golem.getId());pose.popPose();
     }
     private GolemHeldRenderer(){}
 }

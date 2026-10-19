@@ -12,12 +12,12 @@ import net.minecraft.world.level.saveddata.SavedData;
 /** Generated TC4 structure positions per dimension, for QA locate. Survives save/restart. */
 public final class StructureIndexData extends SavedData {
     private static final Factory<StructureIndexData> FACTORY=new Factory<>(StructureIndexData::new,StructureIndexData::load);
-    public enum Kind { MOUND, HILLTOP, RING_ALTAR, SPIDER_TREE }
+    public enum Kind { MOUND, HILLTOP, RING_ALTAR, SPIDER_TREE, CULTIST_RING, TOTEM }
     public record Entry(Kind kind,int x,int y,int z){}
     private final Map<ResourceKey<Level>,List<Entry>> entries=new HashMap<>();
     public static StructureIndexData get(ServerLevel level){return level.getDataStorage().computeIfAbsent(FACTORY,"thaumcraft_structures");}
     public void record(ServerLevel level,Kind kind,int x,int y,int z){
-        entries.computeIfAbsent(level.dimension(),d->new ArrayList<>()).add(new Entry(kind,x,y,z));setDirty();
+        var rows=entries.computeIfAbsent(level.dimension(),d->new ArrayList<>());var entry=new Entry(kind,x,y,z);if(!rows.contains(entry)){rows.add(entry);setDirty();}
     }
     public Entry nearest(ServerLevel level,Kind kind,int x,int z){
         Entry best=null;double distance=Double.MAX_VALUE;

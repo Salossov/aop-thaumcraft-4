@@ -27,7 +27,7 @@ import thaumcraft.effects.TaintEffects;
 import thaumcraft.fluids.FluxBlock;
 
 /** Server-owned TC4 ritual, including the in-progress output and remaining resources. */
-public final class InfusionMatrixBlockEntity extends BlockEntity {
+public final class InfusionMatrixBlockEntity extends BlockEntity implements thaumcraft.api.aspects.IAspectDisplay {
     public boolean active,crafting;
     public int symmetry,instability,stabilizerCount,pedestalPenalty,pedestalCount;
     public float stabilization;
@@ -50,6 +50,7 @@ public final class InfusionMatrixBlockEntity extends BlockEntity {
     private final RitualEssentia sources=new RitualEssentia();
     public InfusionMatrixBlockEntity(BlockPos p,BlockState s){super(R3Content.INFUSION_ENTITY.get(),p,s);}
     public Map<String,Integer> remainingEssentia(){return Collections.unmodifiableMap(remainingEssentia);}
+    @Override public thaumcraft.api.aspects.AspectList displayedAspects(){return thaumcraft.api.aspects.IAspectDisplay.snapshot(remainingEssentia);}
     public int remainingIngredients(){return remainingIngredients.size();}
     public List<BlockPos> pedestals(){return List.copyOf(pedestals);}
     private PedestalBlockEntity pedestal(BlockPos p){return level!=null&&level.hasChunkAt(p)&&level.getBlockEntity(p) instanceof PedestalBlockEntity tile?tile:null;}

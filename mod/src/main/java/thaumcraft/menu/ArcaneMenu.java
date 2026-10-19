@@ -42,6 +42,25 @@ public final class ArcaneMenu extends AbstractContainerMenu {
         refresh();
     }
     @Override public boolean stillValid(Player player) { return player==owner&&table.stillValid(player); }
+    /** A fill is planned entirely on copies; no craft, wand debit or dropped remainder occurs here. */
+    public boolean fill(ServerPlayer player,thaumcraft.api.crafting.ArcaneTransferRequest request){
+        if(player!=owner||request.menuId()!=containerId||request.stateId()!=getStateId()||!stillValid(player))return false;
+        var display=thaumcraft.api.crafting.RecipeDisplays.recipes(player.level()).stream().filter(d->d.id().equals(request.displayId())).findFirst().orElse(null);
+        if(display==null||display.kind()!=thaumcraft.api.crafting.RecipeDisplay.Kind.ARCANE||display.recipeId()==null||display.inputs().size()!=9||!KnowledgeService.get(player).completedResearch().containsAll(display.research()))return false;
+        var holder=player.server.getRecipeManager().byKey(display.recipeId()).orElse(null);
+        if(holder==null||!(holder.value() instanceof thaumcraft.api.crafting.IArcaneRecipe recipe))return false;
+        var inventory=new ArrayList<ItemStack>();var grid=new ArrayList<ItemStack>();
+        for(int n=0;n<36;n++)inventory.add(player.getInventory().getItem(n).copy());for(int n=0;n<9;n++)grid.add(table.getItem(n).copy());
+        var required=new ArrayList<java.util.function.Predicate<ItemStack>>();for(var ingredient:display.inputs())required.add(ingredient.isEmpty()?null:ingredient::test);
+        var plan=thaumcraft.api.crafting.TransferPlanner.plan(inventory,grid,required,new thaumcraft.api.crafting.TransferPlanner.Stacks<ItemStack>(){
+            public boolean empty(ItemStack s){return s.isEmpty();}public int count(ItemStack s){return s.getCount();}public int limit(ItemStack s){return s.getMaxStackSize();}
+            public boolean same(ItemStack a,ItemStack b){return ItemStack.isSameItemSameComponents(a,b);}public ItemStack count(ItemStack s,int n){return n==0?ItemStack.EMPTY:s.copyWithCount(n);}public ItemStack empty(){return ItemStack.EMPTY;}
+        },request.maximum());
+        if(plan.isEmpty())return false;var value=plan.get();
+        var input=CraftingInput.ofPositioned(3,3,value.grid()).input();if(!recipe.matches(input,player.level())||!recipe.mayCraft(player,input))return false;
+        for(int n=0;n<36;n++)player.getInventory().setItem(n,value.inventory().get(n));for(int n=0;n<9;n++)table.setItem(n,value.grid().get(n));
+        player.getInventory().setChanged();table.setChanged();broadcastChanges();return true;
+    }
     private float discount() {return WandVis.discount(owner);}
     private Match match() {
         if(!(owner instanceof ServerPlayer player)||!stillValid(owner)) return null;

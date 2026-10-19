@@ -13,7 +13,8 @@ import thaumcraft.entities.*;
 /** TC4 FXSpark, FXBurst and crossed FXArc strips in the native particle pass. */
 final class GolemClientEffects {
     private static ParticleRenderType additive(String path){return(tessellator,textures)->{RenderSystem.depthMask(false);RenderSystem.enableBlend();RenderSystem.blendFunc(com.mojang.blaze3d.platform.GlStateManager.SourceFactor.SRC_ALPHA,com.mojang.blaze3d.platform.GlStateManager.DestFactor.ONE);RenderSystem.setShader(GameRenderer::getParticleShader);RenderSystem.setShaderTexture(0,ResearchGraphics.texture(path));return tessellator.begin(VertexFormat.Mode.QUADS,DefaultVertexFormat.PARTICLE);};}
-    private static final ParticleRenderType SPARK=additive("misc/particles"),BURST=additive("misc/nodes"),ARC=additive("misc/beamh");
+    // FXSpark uses layer 2 (8x8 particles2); endpoint FX uses the 16x16 particles atlas.
+    private static final ParticleRenderType SPARK=additive("misc/particles2"),SPARKLE=additive("misc/particles"),BURST=additive("misc/nodes"),ARC=additive("misc/beamh");
     static void spark(Vec3 from,float scale,float red,float green,float blue){Minecraft.getInstance().particleEngine.add(new Sprite(from,scale,red,green,blue,1,0));}
     static void spark(Vec3 from,float scale,float red,float green,float blue,float alpha){Minecraft.getInstance().particleEngine.add(new Sprite(from,scale,red,green,blue,alpha,0));}
     static void arc(Vec3 from,Vec3 to,float red,float green,float blue,double height){Minecraft.getInstance().particleEngine.add(new Arc(from,to,red,green,blue,height));}
@@ -33,7 +34,7 @@ final class GolemClientEffects {
             if(mode==0){size=scale;lifetime=5+level.random.nextInt(5);frame=level.random.nextInt(3)*8;flip=level.random.nextBoolean();}
             else{size=(random.nextFloat()*.5f+.5f)*2*scale;lifetime=mode==1?31:6;frame=0;flip=false;}
         }
-        @Override public ParticleRenderType getRenderType(){return mode==1?BURST:SPARK;}
+        @Override public ParticleRenderType getRenderType(){return mode==1?BURST:mode==0?SPARK:SPARKLE;}
         @Override public int getLightColor(float partial){return 240;}
         @Override public float getQuadSize(float partial){return mode==2?.1f*size*(lifetime-age+1)/(float)lifetime:size;}
         private float u(){return mode==1?age%32/32f:mode==2?(16+age/2)%4/16f:(frame+(int)(age/(float)lifetime*7))%8/8f;}

@@ -23,7 +23,8 @@ public final class GolemInfoHud {
         for(int kind=0;kind<6;kind++)for(int i=0;i<golem.upgrade(kind);i++)items.add(new ItemStack(R3Equipment.GOLEM_UPGRADES.get(kind).get()));
         for(var entry:R3Equipment.GOLEM_DECORATIONS)if(golem.decoration().contains(entry.get().decoration))items.add(new ItemStack(entry.get()));
         if(items.isEmpty())return;var pose=WorldOverlayPose.create(event);var camera=event.getCamera().getPosition();float partial=event.getPartialTick().getGameTimeDeltaPartialTick(false);var position=golem.getPosition(partial);
-        pose.pushPose();pose.translate(position.x-camera.x,position.y+golem.getBbHeight()+.4-camera.y,position.z-camera.z);pose.mulPose(event.getCamera().rotation());
+        // Vanilla places custom names at almost the same height as the inspection icons.
+        pose.pushPose();pose.translate(position.x-camera.x,position.y+golem.getBbHeight()+.4+(golem.hasCustomName()?.35:0)-camera.y,position.z-camera.z);pose.mulPose(event.getCamera().rotation());
         var buffers=mc.renderBuffers().bufferSource();for(int i=0;i<items.size();i++){int row=i/5,count=Math.min(5,items.size()-row*5);pose.pushPose();pose.translate((i%5-(count-1)/2f)*.32,row*.34,0);pose.scale(.28f,.28f,.28f);mc.getItemRenderer().renderStatic(items.get(i),net.minecraft.world.item.ItemDisplayContext.GUI,net.minecraft.client.renderer.LightTexture.FULL_BRIGHT,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY,pose,buffers,mc.level,golem.getId());pose.popPose();}buffers.endBatch();pose.popPose();
     }
     private GolemInfoHud(){}

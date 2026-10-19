@@ -23,5 +23,10 @@
     {
       "item": "minecraft:map"
     }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "thaumcraft:mirrors_enabled"
+    }
   ]
 }

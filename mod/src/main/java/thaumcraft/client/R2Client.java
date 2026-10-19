@@ -35,6 +35,7 @@ public final class R2Client {
         }
     }
     @SubscribeEvent public static void setup(FMLClientSetupEvent event) {event.enqueueWork(()->{
+        thaumcraft.api.client.BookNavigation.install(key->net.neoforged.neoforge.network.PacketDistributor.sendToServer(new thaumcraft.network.BookOpenPayload(key)));
         FallingTaintEffects.install();
         FollowingItemEffects.install();
         net.minecraft.client.renderer.item.ItemProperties.register(R2Content.NOTES.get(),ResourceLocation.parse("thaumcraft:complete"),(stack,level,entity,seed)->{var note=thaumcraft.items.ResearchNotes.read(stack);return note!=null&&note.complete?1:0;});
@@ -43,7 +44,8 @@ public final class R2Client {
                 (net.neoforged.neoforge.client.gui.IConfigScreenFactory)net.neoforged.neoforge.client.gui.ConfigurationScreen::new);
         ItemBlockRenderTypes.setRenderLayer(R2Fluids.GOO.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(R2Fluids.GAS.get(),RenderType.translucent());
-        for(var block:java.util.List.of(R2Content.TAINT_FIBRES,R2Content.TAINT_GROWTH,R2Content.TAINT_TENDRILS,R2Content.TAINT_SPORE_STALK)) ItemBlockRenderTypes.setRenderLayer(block.get(),RenderType.cutout());
+        for(var block:java.util.List.of(R2Content.TAINT_GROWTH,R2Content.TAINT_TENDRILS,R2Content.TAINT_SPORE_STALK)) ItemBlockRenderTypes.setRenderLayer(block.get(),RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(R2Content.TAINT_FIBRES.get(),RenderType.translucent());
     });}
     @SubscribeEvent public static void itemColors(RegisterColorHandlersEvent.Item event) {
         event.register((stack,tint)->{if(tint!=1)return 0xffffffff;var note=thaumcraft.items.ResearchNotes.read(stack);if(note==null)return 0xff999999;return note.grid.values().stream().filter(e->e.type()==1).map(e->thaumcraft.api.aspects.Aspect.getAspect(e.aspect())).filter(java.util.Objects::nonNull).findFirst().map(a->0xff000000|a.getColor()).orElse(0xff999999);},R2Content.NOTES.get());

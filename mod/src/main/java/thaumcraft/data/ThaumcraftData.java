@@ -31,6 +31,10 @@ public final class ThaumcraftData extends SimpleJsonResourceReloadListener {
         public Snapshot { objects=Map.copyOf(objects);entities=Map.copyOf(entities);research=Map.copyOf(research);entityVariants=Map.copyOf(entityVariants);derived=Map.copyOf(derived);scanGroups=Map.copyOf(scanGroups);researchItemTags=Map.copyOf(researchItemTags);itemTagAspects=Map.copyOf(itemTagAspects); }
     }
     private static final Map<net.minecraft.world.item.crafting.RecipeManager,Snapshot> SERVERS=java.util.Collections.synchronizedMap(new WeakHashMap<>());
+    private static final Map<net.minecraft.world.item.crafting.RecipeManager,thaumcraft.api.book.BookCatalog> BOOKS=java.util.Collections.synchronizedMap(new WeakHashMap<>());
+    private record ResolvedSnapshot(Snapshot data,thaumcraft.api.book.BookCatalog books) {}
+    private static final Map<MinecraftServer,ResolvedSnapshot> LAST_GOOD=java.util.Collections.synchronizedMap(new WeakHashMap<>());
+    public static thaumcraft.api.book.BookCatalog books(MinecraftServer server){return BOOKS.getOrDefault(server.getRecipeManager(),thaumcraft.api.book.BookCatalog.EMPTY);}
     private final net.minecraft.world.item.crafting.RecipeManager recipes;
     private ThaumcraftData(net.minecraft.world.item.crafting.RecipeManager recipes) { super(new Gson(),"thaumcraft");this.recipes=recipes; }
     public static void register() { NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent event)->event.addListener(new ThaumcraftData(event.getServerResources().getRecipeManager()))); }
@@ -42,11 +46,21 @@ public final class ThaumcraftData extends SimpleJsonResourceReloadListener {
             if(!server.isSameThread())throw new IllegalStateException("Aspect derivation requires server thread after tag binding");
             var explicit=new LinkedHashMap<>(data.objects);var items=server.registryAccess().lookupOrThrow(net.minecraft.core.registries.Registries.ITEM);
             for(var entry:data.itemTagAspects.entrySet())if(entry.getValue().requiredTags.stream().allMatch(tag->thaumcraft.crafting.TagOutput.present(server.registryAccess(),tag)))items.get(net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM,ResourceLocation.parse(entry.getKey()))).ifPresent(values->values.forEach(holder->explicit.putIfAbsent(BuiltInRegistries.ITEM.getKey(holder.value()).toString(),entry.getValue().aspects)));
-            var active=new LinkedHashMap<>(data.research);var requirements=data.researchItemTags;active.keySet().removeIf(key->dataResearchTagsMissing(server,requirements.getOrDefault(key,List.of())));
+            var active=new LinkedHashMap<>(data.research);active.keySet().removeAll(thaumcraft.api.addon.AddonRegistry.disabledResearch());if(!thaumcraft.config.ThaumcraftConfig.ALLOW_MIRRORS.get())for(var key:java.util.List.of("MIRROR","MIRRORHAND","MIRRORESSENTIA"))active.remove(key);var requirements=data.researchItemTags;active.keySet().removeIf(key->dataResearchTagsMissing(server,requirements.getOrDefault(key,List.of())));
             boolean removed;do{removed=active.values().removeIf(d->java.util.stream.Stream.concat(d.parents().stream(),d.hiddenParents().stream()).anyMatch(parent->!active.containsKey(parent)));}while(removed);
+            Map<String,ResearchDefinition> dynamic;
+            try {dynamic=thaumcraft.api.research.ResearchCatalogRules.resolve(active);}
+            catch(IllegalArgumentException error) {
+                var previous=LAST_GOOD.get(server);if(previous==null)throw error;
+                // Tag/config filtering happens only after reload's resource/tag binding.
+                // Keep the entire prior snapshot and its matching book catalog atomically.
+                SERVERS.put(manager,previous.data);BOOKS.put(manager,previous.books);
+                Thaumcraft.LOGGER.error("Rejected active research catalog; retaining previous snapshot",error);return previous.data;
+            }
+            active.clear();active.putAll(dynamic);
             var objects=new RecipeAspectResolver(server,explicit,data.derived).resolve();data=new Snapshot(objects,data.entities,active,data.entityVariants,data.derived,data.scanGroups,data.modifiers,true,data.researchItemTags,data.itemTagAspects);SERVERS.put(manager,data);
             Thaumcraft.LOGGER.info("TC4 recipe aspect allowlist resolved: {} object values",objects.size());
-        }return data;
+        }LAST_GOOD.put(server,new ResolvedSnapshot(data,BOOKS.getOrDefault(manager,thaumcraft.api.book.BookCatalog.EMPTY)));return data;
     }
     public static Map<String,Integer> aspects(MinecraftServer server,ItemStack stack) {
         var data=get(server);return StackAspectRules.aspects(stack,data.objects.getOrDefault(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString(),Map.of()),data.modifiers);
@@ -64,13 +78,25 @@ public final class ThaumcraftData extends SimpleJsonResourceReloadListener {
     public static String entityScanKey(MinecraftServer server,Entity entity) {
         return EntityAspectRules.scanKey(entity,get(server).entityVariants);
     }
+    /** Unlike vanilla's permissive scanner, a malformed file aborts the entire transaction. */
+    @Override protected Map<ResourceLocation,JsonElement> prepare(ResourceManager manager,ProfilerFiller profiler){
+        var converter=net.minecraft.resources.FileToIdConverter.json("thaumcraft");var files=new LinkedHashMap<ResourceLocation,JsonElement>();
+        for(var entry:converter.listMatchingResources(manager).entrySet())try(var reader=entry.getValue().openAsReader()){
+            var json=com.google.gson.JsonParser.parseReader(reader);if(json==null||!json.isJsonObject()||!json.getAsJsonObject().has("kind"))throw new IllegalArgumentException("Missing data kind in "+entry.getKey());
+            files.put(converter.fileToId(entry.getKey()),json);
+        }catch(java.io.IOException|com.google.gson.JsonParseException error){throw new IllegalArgumentException("Invalid Thaumcraft data: "+entry.getKey(),error);}
+        return files;
+    }
     @Override protected void apply(Map<ResourceLocation,JsonElement> files,ResourceManager manager,ProfilerFiller profiler) {
+        var categories=new LinkedHashMap<>(thaumcraft.api.book.BookCategory.originals());categories.putAll(thaumcraft.api.addon.AddonRegistry.categories());var pages=new LinkedHashMap<>(thaumcraft.api.addon.AddonRegistry.pages());
         var objects=new LinkedHashMap<String,Map<String,Integer>>();var entities=new LinkedHashMap<String,Map<String,Integer>>();var research=new LinkedHashMap<String,ResearchDefinition>();var variants=new LinkedHashMap<String,List<EntityVariant>>();var derived=new LinkedHashMap<String,RecipeAspectResolver.Rule>();var groups=new LinkedHashMap<String,String>();
         var researchItemTags=new LinkedHashMap<String,List<String>>();var itemTagAspects=new LinkedHashMap<String,ItemTagRule>();
         var itemMinimums=new LinkedHashMap<String,Map<String,Integer>>();var potionBases=new LinkedHashMap<String,Map<String,Integer>>();var potionEffects=new LinkedHashMap<String,Map<String,Integer>>();var enchantments=new LinkedHashMap<String,Map<String,Integer>>();
+        research.putAll(thaumcraft.api.addon.AddonRegistry.research());
         for(var id:files.keySet().stream().sorted().toList()) {
             var json=files.get(id).getAsJsonObject();String kind=json.get("kind").getAsString();
-            if(kind.equals("object_aspects")||kind.equals("entity_aspects")) {
+            if(kind.equals("book_category")||kind.equals("book_page")){String key=json.has("id")?json.get("id").getAsString():id.toString();thaumcraft.api.addon.AddonRegistry.id(key);if(kind.equals("book_category")){if(categories.putIfAbsent(key,thaumcraft.addon.BookData.category(key,json))!=null)throw new IllegalArgumentException("Duplicate book category "+key);}else {var page=thaumcraft.api.book.BookPage.read(key,json);thaumcraft.api.book.PageTypes.validate(page);if(pages.putIfAbsent(key,page)!=null)throw new IllegalArgumentException("Duplicate book page "+key);}
+            } else if(kind.equals("object_aspects")||kind.equals("entity_aspects")) {
                 var target=kind.equals("object_aspects")?objects:entities;
                 for(var entry:json.getAsJsonObject("entries").entrySet()) { ResourceLocation.parse(entry.getKey());target.put(entry.getKey(),quantities(entry.getValue().getAsJsonObject())); }
             } else if(kind.equals("item_tag_aspects")) {
@@ -89,13 +115,14 @@ public final class ThaumcraftData extends SimpleJsonResourceReloadListener {
                     variants.put(entry.getKey(),List.copyOf(values));
                 }
             } else if(kind.equals("research")) {
-                String key=json.get("key").getAsString();if(research.containsKey(key)) throw new IllegalArgumentException("Duplicate research "+key);
+                thaumcraft.addon.BookData.researchDefaults(json);
+                String key=json.get("key").getAsString();if(!id.getNamespace().equals("thaumcraft"))thaumcraft.api.addon.AddonRegistry.id(key);if(research.containsKey(key)) throw new IllegalArgumentException("Duplicate research "+key);
                 if(json.has("required_item_tags")){var required=strings(json,"required_item_tags");required.forEach(ResourceLocation::parse);researchItemTags.put(key,required);}
                 var definition=new ResearchDefinition(key,json.get("category").getAsString(),strings(json,"parents"),quantities(json.getAsJsonObject("aspects")),
                     json.get("complexity").getAsInt(),json.get("auto_unlock").getAsBoolean(),json.get("concealed").getAsBoolean(),json.get("column").getAsInt(),json.get("row").getAsInt(),
                     strings(json,"text_pages"),strings(json,"recipe_pages"),json.get("icon").getAsString(),
                     json.has("virtual")&&json.get("virtual").getAsBoolean(),json.has("round")&&json.get("round").getAsBoolean(),json.has("stub")&&json.get("stub").getAsBoolean(),json.has("secondary")&&json.get("secondary").getAsBoolean(),json.has("siblings")?strings(json,"siblings"):List.of(),json.has("page_order")?strings(json,"page_order"):List.of(),json.has("hidden")&&json.get("hidden").getAsBoolean(),json.has("warp")?json.get("warp").getAsInt():0,
-                    json.has("item_triggers")?strings(json,"item_triggers"):List.of(),json.has("entity_triggers")?strings(json,"entity_triggers"):List.of(),json.has("aspect_triggers")?strings(json,"aspect_triggers"):List.of(),json.has("hidden_parents")?strings(json,"hidden_parents"):List.of(),json.has("page_requirements")?stringMap(json.getAsJsonObject("page_requirements")):Map.of(),json.has("special")&&json.get("special").getAsBoolean(),recipeGroups(json));
+                    json.has("item_triggers")?strings(json,"item_triggers"):List.of(),json.has("entity_triggers")?strings(json,"entity_triggers"):List.of(),json.has("aspect_triggers")?strings(json,"aspect_triggers"):List.of(),json.has("hidden_parents")?strings(json,"hidden_parents"):List.of(),json.has("page_requirements")?stringMap(json.getAsJsonObject("page_requirements")):Map.of(),json.has("special")&&json.get("special").getAsBoolean(),recipeGroups(json),json.has("linked_research")?json.get("linked_research").getAsString():"");
                 if(definition.complexity()<0||definition.complexity()>3) throw new IllegalArgumentException("Invalid complexity "+key);research.put(key,definition);
             } else throw new IllegalArgumentException("Unknown Thaumcraft data kind "+kind+" in "+id);
         }
@@ -111,7 +138,10 @@ public final class ThaumcraftData extends SimpleJsonResourceReloadListener {
         for(var key:itemMinimums.keySet())if(!BuiltInRegistries.ITEM.containsKey(ResourceLocation.parse(key)))throw new IllegalArgumentException("Unknown stack modifier item ID "+key);
         for(var key:potionBases.keySet())if(!BuiltInRegistries.POTION.containsKey(ResourceLocation.parse(key)))throw new IllegalArgumentException("Unknown potion modifier ID "+key);
         for(var key:potionEffects.keySet())if(!BuiltInRegistries.MOB_EFFECT.containsKey(ResourceLocation.parse(key)))throw new IllegalArgumentException("Unknown effect modifier ID "+key);
+        var bookCatalog=new thaumcraft.api.book.BookCatalog(categories,pages);thaumcraft.api.book.CatalogValidator.validate(research,bookCatalog);
         SERVERS.put(recipes,new Snapshot(objects,entities,research,variants,derived,groups,new StackAspectRules.Settings(itemMinimums,potionBases,potionEffects,enchantments),false,researchItemTags,itemTagAspects));
+        BOOKS.put(recipes,bookCatalog);
+        thaumcraft.api.crafting.RecipeDisplays.invalidate();
         Thaumcraft.LOGGER.info("TC4 R2 data loaded: {} object tags, {} entity tags, {} research definitions",objects.size(),entities.size(),research.size());
     }
     private static boolean dataResearchTagsMissing(MinecraftServer server,List<String> tags){return tags.stream().anyMatch(tag->!thaumcraft.crafting.TagOutput.present(server.registryAccess(),tag));}

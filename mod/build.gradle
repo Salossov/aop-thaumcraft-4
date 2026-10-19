@@ -339,3 +339,71 @@ def generateModMetadata = tasks.register('generateModMetadata', ProcessResources
 }
 sourceSets.main.resources.srcDir generateModMetadata
 neoForge.ideSyncTask generateModMetadata
+
+// Focused addon data tests run ordinary Java, never a Minecraft run configuration.
+sourceSets {
+    addonVerification {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+        runtimeClasspath += project(':api').sourceSets.main.output
+    }
+}
+configurations.addonVerificationImplementation.extendsFrom configurations.implementation
+configurations.addonVerificationCompileOnly.extendsFrom configurations.compileOnly
+configurations.addonVerificationRuntimeOnly.extendsFrom configurations.runtimeOnly
+neoForge { addModdingDependenciesTo sourceSets.addonVerification }
+def addonPersistenceTest = tasks.register('addonPersistenceTest', JavaExec) {
+    dependsOn addonVerificationClasses
+    classpath = sourceSets.addonVerification.runtimeClasspath
+    mainClass = 'thaumcraft.addon.AddonPersistenceTest'
+    workingDir = rootProject.projectDir
+}
+tasks.named('check') { dependsOn addonPersistenceTest }
+
+evaluationDependsOn(':emi-jei-integration-aoptc4')
+// Isolated real-viewer visual harness; never included in the release JAR.
+sourceSets {
+    viewerVerification {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+        runtimeClasspath += project(':api').sourceSets.main.output
+    }
+}
+configurations.viewerVerificationImplementation.extendsFrom configurations.implementation
+configurations.viewerVerificationCompileOnly.extendsFrom configurations.compileOnly
+configurations.viewerVerificationRuntimeOnly.extendsFrom configurations.runtimeOnly
+dependencies {
+    viewerVerificationCompileOnly project(':emi-jei-integration-aoptc4')
+    viewerVerificationCompileOnly files(rootProject.file('.cache/viewer-compat-2026-10-17/jei-common-api-min.jar'),rootProject.file('.cache/viewer-compat-2026-10-17/jei-neoforge-api-min.jar'),rootProject.file('.cache/viewer-compat-2026-10-17/emi-api-min.jar'))
+}
+neoForge {
+    addModdingDependenciesTo sourceSets.viewerVerification
+    mods {
+        thaumcraft_viewer_qa { sourceSet sourceSets.viewerVerification }
+        thaumcraft_recipe_addon { sourceSet project(':emi-jei-integration-aoptc4').sourceSets.main }
+    }
+    runs {
+        viewerReviewServer {
+            server()
+            sourceSet = sourceSets.viewerVerification
+            gameDirectory = rootProject.file('runs/viewer-review-server')
+            programArgument '--nogui'
+            systemProperty 'thaumcraft.viewerqa.output', rootProject.file('.cache/viewer-layout-073').absolutePath
+        }
+        viewerReviewClient {
+            client()
+            sourceSet = sourceSets.viewerVerification
+            def viewer = providers.gradleProperty('viewerReview').getOrElse('emi')
+            gameDirectory = rootProject.file('runs/viewer-review-' + viewer)
+            programArguments.addAll('--username','ViewerQA','--quickPlayMultiplayer','127.0.0.1:25603','--width','1920','--height','1080')
+            systemProperty 'thaumcraft.viewerqa.output', rootProject.file('.cache/viewer-layout-073/' + viewer).absolutePath
+            systemProperty 'thaumcraft.viewerqa.start', providers.gradleProperty('viewerQaStart').getOrElse('0')
+            systemProperty 'thaumcraft.viewerqa.viewer', viewer
+            systemProperty 'fml.earlyprogresswindow', 'false'
+        }
+    }
+}
+neoForge.runs.configureEach {
+    if(name=='viewerReviewServer')loadedMods=[neoForge.mods.thaumcraft,neoForge.mods.thaumcraft_viewer_qa]
+    if(name=='viewerReviewClient')loadedMods=[neoForge.mods.thaumcraft,neoForge.mods.thaumcraft_viewer_qa,neoForge.mods.thaumcraft_recipe_addon]
+}

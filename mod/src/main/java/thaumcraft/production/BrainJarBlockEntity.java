@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import thaumcraft.registry.*;
 
-public final class BrainJarBlockEntity extends BlockEntity {
+public final class BrainJarBlockEntity extends BlockEntity implements thaumcraft.api.world.IBrainInAJar {
     private int xp,eatDelay;
     private float rotation,previousRotation;
     private long nextSigh;

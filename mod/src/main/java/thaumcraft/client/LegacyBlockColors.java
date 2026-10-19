@@ -14,5 +14,6 @@ public final class LegacyBlockColors {
         if(level==null||pos==null)return 0x8a21b5;
         return BiomeColors.getAverageGrassColor(level,pos);
     },R2Content.TAINT_FIBRES.get(),R2Content.TAINT_GROWTH.get(),R2Content.TAINT_TENDRILS.get(),R2Content.TAINT_SPORE_STALK.get(),R2Content.TAINTED_SOIL.get());}
-    @SubscribeEvent public static void items(RegisterColorHandlersEvent.Item event){event.register((stack,tint)->0x8a21b5,R2Content.TAINT_FIBRES.get().asItem(),R2Content.TAINT_GROWTH.get().asItem(),R2Content.TAINT_TENDRILS.get().asItem(),R2Content.TAINT_SPORE_STALK.get().asItem(),R2Content.TAINTED_SOIL.get().asItem());}
+    // Modern ItemRenderer also multiplies alpha, so the old RGB-only tint hides every quad.
+    @SubscribeEvent public static void items(RegisterColorHandlersEvent.Item event){event.register((stack,tint)->0xff8a21b5,R2Content.TAINT_FIBRES.get().asItem(),R2Content.TAINT_GROWTH.get().asItem(),R2Content.TAINT_TENDRILS.get().asItem(),R2Content.TAINT_SPORE_STALK.get().asItem(),R2Content.TAINTED_SOIL.get().asItem());}
 }

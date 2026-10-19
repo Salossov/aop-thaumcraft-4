@@ -181,7 +181,7 @@ public final class R3Content {
     public static final DeferredHolder<MenuType<?>, MenuType<AlchemyFurnaceMenu>> FURNACE_MENU = MENUS.register("alchemy_furnace", () -> IMenuTypeExtension.create(AlchemyFurnaceMenu::new));
     public static final DeferredHolder<MenuType<?>,MenuType<thaumcraft.menu.HarnessMenu>> HARNESS_MENU=MENUS.register("hover_harness",()->IMenuTypeExtension.create(thaumcraft.menu.HarnessMenu::new));
     private static DeferredBlock<ProductionBlock> production(String id, ProductionBlock.Kind kind) {
-        var block = BLOCKS.register(id, () -> switch(kind){case TUBE,VALVE,FILTER,RESTRICTED,ONEWAY,BUFFER -> new TubeBlock(kind);default -> new ProductionBlock(kind);}); PRODUCTION.put(kind, block); ITEMS.registerSimpleBlockItem(block); return block;
+        var block = BLOCKS.register(id, () -> switch(kind){case TUBE,VALVE,FILTER,RESTRICTED,ONEWAY,BUFFER -> new TubeBlock(kind);default -> new ProductionBlock(kind);}); PRODUCTION.put(kind, block); if(kind==ProductionBlock.Kind.JAR||kind==ProductionBlock.Kind.VOID_JAR)ITEMS.register(id,()->new thaumcraft.items.EssentiaJarItem(block.get()));else ITEMS.registerSimpleBlockItem(block); return block;
     }
     public static Aspect aspect(ItemStack stack) { return Aspect.getAspect(stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("Aspect")); }
     public static void setAspect(ItemStack stack, Aspect aspect) { CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putString("Aspect", aspect.getTag())); }
@@ -199,6 +199,7 @@ public final class R3Content {
         event.registerBlockEntity(EssentiaCapabilities.TRANSPORT,LAMP_ENTITY.get(),(tile,side)->tile.kind()==ArcaneLampBlock.Kind.LIGHT?null:tile);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,HUNGRY_CHEST_ENTITY.get(),(tile,side)->tile.handler);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,INFERNAL_ENTITY.get(),(tile,side)->tile.core()?tile.input:null);
+        event.registerBlockEntity(EssentiaCapabilities.TRANSPORT,INFERNAL_ENTITY.get(),(tile,side)->tile.nozzle()?tile:null);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,BORE_ENTITY.get(),(tile,side)->tile.base()?null:tile.handler);
         event.registerBlockEntity(EssentiaCapabilities.TRANSPORT,BORE_ENTITY.get(),(tile,side)->tile.base()?tile:null);
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,MIRROR_ENTITY.get(),(tile,side)->tile.essentia()?null:tile.items);

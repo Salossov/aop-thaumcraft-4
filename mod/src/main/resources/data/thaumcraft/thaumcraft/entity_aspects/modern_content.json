@@ -1,0 +1,351 @@
+{
+  "kind": "entity_aspects",
+  "entries": {
+    "minecraft:allay": {
+      "volatus": 3,
+      "sensus": 3,
+      "humanus": 2,
+      "auram": 2
+    },
+    "minecraft:armadillo": {
+      "bestia": 3,
+      "tutamen": 2,
+      "terra": 2
+    },
+    "minecraft:armor_stand": {
+      "arbor": 2,
+      "humanus": 1,
+      "pannus": 1
+    },
+    "minecraft:axolotl": {
+      "bestia": 3,
+      "aqua": 3,
+      "victus": 2
+    },
+    "minecraft:bee": {
+      "bestia": 2,
+      "volatus": 2,
+      "venenum": 1
+    },
+    "minecraft:bogged": {
+      "exanimis": 3,
+      "humanus": 1,
+      "herba": 2,
+      "venenum": 1
+    },
+    "minecraft:breeze": {
+      "aer": 8,
+      "motus": 4,
+      "potentia": 2
+    },
+    "minecraft:camel": {
+      "bestia": 4,
+      "terra": 1,
+      "aer": 1
+    },
+    "minecraft:cat": {
+      "bestia": 3,
+      "perditio": 3
+    },
+    "minecraft:chest_boat": {
+      "machina": 2,
+      "aqua": 2,
+      "vacuos": 1
+    },
+    "minecraft:cod": {
+      "bestia": 1,
+      "aqua": 2,
+      "victus": 1
+    },
+    "minecraft:dolphin": {
+      "bestia": 3,
+      "aqua": 4,
+      "motus": 2
+    },
+    "minecraft:donkey": {
+      "bestia": 4,
+      "terra": 1,
+      "aer": 1
+    },
+    "minecraft:drowned": {
+      "exanimis": 2,
+      "humanus": 1,
+      "aqua": 2
+    },
+    "minecraft:elder_guardian": {
+      "bestia": 4,
+      "aqua": 6,
+      "sensus": 4,
+      "tutamen": 2
+    },
+    "minecraft:endermite": {
+      "bestia": 1,
+      "alienis": 2
+    },
+    "minecraft:evoker": {
+      "humanus": 3,
+      "praecantatio": 6,
+      "cognitio": 3,
+      "alienis": 2
+    },
+    "minecraft:fox": {
+      "bestia": 3,
+      "sensus": 2,
+      "fames": 1
+    },
+    "minecraft:frog": {
+      "bestia": 2,
+      "aqua": 2,
+      "motus": 1
+    },
+    "minecraft:glow_item_frame": {
+      "sensus": 3,
+      "pannus": 1,
+      "lux": 1
+    },
+    "minecraft:glow_squid": {
+      "bestia": 2,
+      "aqua": 2,
+      "lux": 3
+    },
+    "minecraft:goat": {
+      "bestia": 3,
+      "terra": 2,
+      "motus": 2
+    },
+    "minecraft:guardian": {
+      "bestia": 2,
+      "aqua": 3,
+      "sensus": 2,
+      "tutamen": 1
+    },
+    "minecraft:hoglin": {
+      "bestia": 4,
+      "fames": 3,
+      "telum": 2
+    },
+    "minecraft:husk": {
+      "exanimis": 2,
+      "humanus": 1,
+      "terra": 2
+    },
+    "minecraft:illusioner": {
+      "humanus": 3,
+      "praecantatio": 4,
+      "sensus": 3
+    },
+    "minecraft:llama": {
+      "bestia": 4,
+      "pannus": 2,
+      "iter": 1
+    },
+    "minecraft:mule": {
+      "bestia": 4,
+      "terra": 1,
+      "aer": 1
+    },
+    "minecraft:panda": {
+      "bestia": 4,
+      "fames": 2,
+      "herba": 1
+    },
+    "minecraft:parrot": {
+      "bestia": 2,
+      "volatus": 3,
+      "sensus": 1
+    },
+    "minecraft:phantom": {
+      "volatus": 4,
+      "exanimis": 3,
+      "alienis": 2
+    },
+    "minecraft:piglin": {
+      "humanus": 3,
+      "lucrum": 3,
+      "ignis": 2,
+      "bestia": 1
+    },
+    "minecraft:piglin_brute": {
+      "humanus": 3,
+      "lucrum": 3,
+      "telum": 3
+    },
+    "minecraft:pillager": {
+      "humanus": 3,
+      "telum": 3,
+      "perditio": 2
+    },
+    "minecraft:polar_bear": {
+      "bestia": 4,
+      "gelum": 3,
+      "telum": 2
+    },
+    "minecraft:pufferfish": {
+      "bestia": 1,
+      "aqua": 2,
+      "venenum": 3
+    },
+    "minecraft:rabbit": {
+      "bestia": 1,
+      "motus": 2,
+      "victus": 1
+    },
+    "minecraft:ravager": {
+      "bestia": 6,
+      "telum": 4,
+      "perditio": 4,
+      "tutamen": 2
+    },
+    "minecraft:salmon": {
+      "bestia": 1,
+      "aqua": 2,
+      "victus": 2
+    },
+    "minecraft:shulker": {
+      "alienis": 4,
+      "tutamen": 4,
+      "ordo": 2,
+      "volatus": 2
+    },
+    "minecraft:skeleton_horse": {
+      "exanimis": 4,
+      "bestia": 3,
+      "spiritus": 2
+    },
+    "minecraft:sniffer": {
+      "bestia": 4,
+      "herba": 3,
+      "terra": 2,
+      "sensus": 2
+    },
+    "minecraft:stray": {
+      "exanimis": 3,
+      "humanus": 1,
+      "gelum": 3
+    },
+    "minecraft:strider": {
+      "bestia": 3,
+      "ignis": 4,
+      "motus": 2
+    },
+    "minecraft:tadpole": {
+      "bestia": 1,
+      "aqua": 1,
+      "victus": 1
+    },
+    "minecraft:trader_llama": {
+      "bestia": 4,
+      "pannus": 2,
+      "iter": 1
+    },
+    "minecraft:tropical_fish": {
+      "bestia": 1,
+      "aqua": 2,
+      "sensus": 1
+    },
+    "minecraft:turtle": {
+      "bestia": 2,
+      "aqua": 3,
+      "tutamen": 3
+    },
+    "minecraft:vex": {
+      "alienis": 3,
+      "spiritus": 3,
+      "volatus": 3,
+      "telum": 2
+    },
+    "minecraft:vindicator": {
+      "humanus": 3,
+      "telum": 4,
+      "perditio": 2
+    },
+    "minecraft:wandering_trader": {
+      "humanus": 3,
+      "aer": 2
+    },
+    "minecraft:warden": {
+      "alienis": 8,
+      "sensus": 8,
+      "telum": 8,
+      "perditio": 4
+    },
+    "minecraft:zoglin": {
+      "exanimis": 4,
+      "bestia": 4,
+      "telum": 2
+    },
+    "minecraft:zombie_horse": {
+      "exanimis": 4,
+      "bestia": 3
+    },
+    "minecraft:zombie_villager": {
+      "exanimis": 2,
+      "humanus": 2,
+      "cognitio": 1
+    },
+    "thaumcraft:cultist_cleric": {
+      "alienis": 1,
+      "humanus": 2,
+      "perditio": 1
+    },
+    "thaumcraft:cultist_knight": {
+      "alienis": 1,
+      "humanus": 2,
+      "perditio": 1
+    },
+    "thaumcraft:cultist_leader": {
+      "alienis": 4,
+      "humanus": 4,
+      "perditio": 2,
+      "telum": 2
+    },
+    "thaumcraft:cultist_portal": {
+      "alienis": 8,
+      "vacuos": 4,
+      "praecantatio": 4
+    },
+    "thaumcraft:eldritch_crab": {
+      "bestia": 2,
+      "alienis": 2,
+      "tutamen": 2
+    },
+    "thaumcraft:eldritch_golem": {
+      "metallum": 8,
+      "alienis": 4,
+      "machina": 4,
+      "telum": 4
+    },
+    "thaumcraft:eldritch_warden": {
+      "alienis": 8,
+      "mortuus": 4,
+      "exanimis": 8,
+      "praecantatio": 4
+    },
+    "thaumcraft:inhabited_zombie": {
+      "exanimis": 3,
+      "corpus": 2,
+      "alienis": 2
+    },
+    "thaumcraft:pech": {
+      "humanus": 2,
+      "praecantatio": 2,
+      "permutatio": 2,
+      "lucrum": 2
+    },
+    "thaumcraft:taintacle_giant": {
+      "vitium": 8,
+      "aqua": 4,
+      "bestia": 4
+    },
+    "thaumcraft:traveling_trunk": {
+      "arbor": 4,
+      "motus": 2,
+      "vacuos": 4,
+      "praecantatio": 2
+    },
+    "thaumcraft:wisp": {
+      "aer": 3,
+      "praecantatio": 1
+    }
+  }
+}

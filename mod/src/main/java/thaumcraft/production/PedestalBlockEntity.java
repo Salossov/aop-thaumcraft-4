@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import thaumcraft.registry.R3Content;
 
-public class PedestalBlockEntity extends BlockEntity implements WorldlyContainer {
+public class PedestalBlockEntity extends BlockEntity implements WorldlyContainer, thaumcraft.api.crafting.IInfusionPedestal {
     private NonNullList<ItemStack> items=NonNullList.withSize(1,ItemStack.EMPTY);
     public PedestalBlockEntity(BlockPos p,BlockState s){this(R3Content.PEDESTAL_ENTITY.get(),p,s);}
     protected PedestalBlockEntity(net.minecraft.world.level.block.entity.BlockEntityType<?> type,BlockPos p,BlockState s){super(type,p,s);}

@@ -1,0 +1,36 @@
+{
+  "kind": "entity_variant_aspects",
+  "entries": {
+    "thaumcraft:pech": [
+      {
+        "field": "PechType",
+        "value": "0",
+        "aspects": {
+          "humanus": 2,
+          "praecantatio": 2,
+          "permutatio": 2,
+          "lucrum": 2
+        }
+      },
+      {
+        "field": "PechType",
+        "value": "1",
+        "aspects": {
+          "humanus": 2,
+          "praecantatio": 2,
+          "permutatio": 2,
+          "telum": 2
+        }
+      },
+      {
+        "field": "PechType",
+        "value": "2",
+        "aspects": {
+          "humanus": 2,
+          "praecantatio": 4,
+          "permutatio": 2
+        }
+      }
+    ]
+  }
+}

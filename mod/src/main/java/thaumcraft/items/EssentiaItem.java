@@ -6,9 +6,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import thaumcraft.registry.R3Content;
 
-public final class EssentiaItem extends Item {
+public final class EssentiaItem extends Item implements thaumcraft.api.aspects.IAspectItem {
     private final int units;
     public EssentiaItem(int units) { super(new Properties()); this.units = units; }
+    @Override public thaumcraft.api.aspects.AspectList getAspects(ItemStack stack){var aspect=R3Content.aspect(stack);return aspect==null?null:new thaumcraft.api.aspects.AspectList().add(aspect,units);}
     @Override public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag flags) {
         var aspect = R3Content.aspect(stack);
         if (aspect != null) {

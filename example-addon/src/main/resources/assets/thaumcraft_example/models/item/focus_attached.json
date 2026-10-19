@@ -1,0 +1,39 @@
+{
+  "textures": {
+    "all": "minecraft:block/gold_block"
+  },
+  "elements": [
+    {
+      "from": [
+        6,
+        18,
+        6
+      ],
+      "to": [
+        10,
+        22,
+        10
+      ],
+      "faces": {
+        "up": {
+          "texture": "#all"
+        },
+        "down": {
+          "texture": "#all"
+        },
+        "north": {
+          "texture": "#all"
+        },
+        "south": {
+          "texture": "#all"
+        },
+        "east": {
+          "texture": "#all"
+        },
+        "west": {
+          "texture": "#all"
+        }
+      }
+    }
+  ]
+}

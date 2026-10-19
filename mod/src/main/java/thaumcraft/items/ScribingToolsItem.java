@@ -7,7 +7,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import thaumcraft.blocks.*;
 import thaumcraft.registry.R2Content;
 
-public final class ScribingToolsItem extends Item {
+public final class ScribingToolsItem extends Item implements thaumcraft.api.IScribeTools {
     public ScribingToolsItem() { super(new Properties().durability(100)); }
     @Override public InteractionResult useOn(UseOnContext context) {
         var level=context.getLevel();var pos=context.getClickedPos();var stack=context.getItemInHand();

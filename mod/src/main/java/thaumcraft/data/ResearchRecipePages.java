@@ -16,6 +16,6 @@ public final class ResearchRecipePages {
         Map.entry("JarLabel","jar_label"),Map.entry("PlankGreatwood","greatwood_planks"),Map.entry("PlankSilverwood","silverwood_planks"),
         Map.entry("BlockFlesh","tainted_flesh"),Map.entry("BlockThaumium","thaumium_block"),Map.entry("BlockTallow","tallow_block"),Map.entry("Phial","empty_phial"),
         Map.entry("NodeJar","@node_jar"),Map.entry("InfernalFurnace","@infernal_furnace"));
-    public static String resolve(String key){return RECIPES.getOrDefault(key,ADDITIONAL.getOrDefault(key,key.toLowerCase(Locale.ROOT)));}
+    public static String resolve(String key){if(key.contains(":"))return key;return RECIPES.getOrDefault(key,ADDITIONAL.getOrDefault(key,key.toLowerCase(Locale.ROOT)));}
     private ResearchRecipePages(){}
 }

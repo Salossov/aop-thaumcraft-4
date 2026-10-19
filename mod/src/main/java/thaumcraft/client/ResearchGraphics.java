@@ -46,8 +46,16 @@ final class ResearchGraphics {
         g.flush();g.pose().popPose();RenderSystem.enableBlend();RenderSystem.defaultBlendFunc();
     }
     static void glowingIcon(GuiGraphics g,ResourceLocation texture,int x,int y,int u,int v,int w,int h,int tw,int th,float alpha) {
-        g.flush();RenderSystem.enableBlend();RenderSystem.blendFunc(com.mojang.blaze3d.platform.GlStateManager.SourceFactor.SRC_ALPHA,com.mojang.blaze3d.platform.GlStateManager.DestFactor.ONE);
-        g.setColor(1,1,1,alpha);g.blit(texture,x,y,u,v,w,h,tw,th);g.flush();g.setColor(1,1,1,1);RenderSystem.defaultBlendFunc();
+        additiveSprite(g,texture,x,y,w,h,u/(float)tw,v/(float)th,(u+w)/(float)tw,(v+h)/(float)th,0xffffff,alpha);
+    }
+    private static void additiveSprite(GuiGraphics g,ResourceLocation texture,int x,int y,int w,int h,float u0,float v0,float u1,float v1,int color,float alpha){
+        g.flush();g.setColor(1,1,1,1);
+        var out=g.bufferSource().getBuffer(ThaumcraftRenderTypes.unlit(texture,true,true));var matrix=g.pose().last().pose();int a=Math.clamp(Math.round(alpha*255),0,255),r=color>>16&255,green=color>>8&255,b=color&255;
+        out.addVertex(matrix,x,y+h,0).setUv(u0,v1).setColor(r,green,b,a);
+        out.addVertex(matrix,x+w,y+h,0).setUv(u1,v1).setColor(r,green,b,a);
+        out.addVertex(matrix,x+w,y,0).setUv(u1,v0).setColor(r,green,b,a);
+        out.addVertex(matrix,x,y,0).setUv(u0,v0).setColor(r,green,b,a);
+        g.flush();g.setColor(1,1,1,1);RenderSystem.enableBlend();RenderSystem.defaultBlendFunc();
     }
     static void aspectHighlight(GuiGraphics g,int x,int y){
         // _back is a dark backing, not an additive light: additive blending erased it on parchment.
@@ -59,16 +67,16 @@ final class ResearchGraphics {
     }
     static void researchOrb(GuiGraphics g,int x,int y,int color,float alpha){
         int tick=net.minecraft.client.Minecraft.getInstance().player==null?0:net.minecraft.client.Minecraft.getInstance().player.tickCount;
-        g.flush();RenderSystem.enableBlend();RenderSystem.blendFunc(com.mojang.blaze3d.platform.GlStateManager.SourceFactor.SRC_ALPHA,com.mojang.blaze3d.platform.GlStateManager.DestFactor.ONE);
-        g.setColor((color>>16&255)/255f,(color>>8&255)/255f,(color&255)/255f,alpha);g.blit(texture("misc/particles"),x,y,128+(tick%8)*16,128,16,16,256,256);g.flush();g.setColor(1,1,1,1);RenderSystem.defaultBlendFunc();
+        additiveSprite(g,texture("misc/particles"),x,y,16,16,(128+(tick%8)*16)/256f,.5f,(144+(tick%8)*16)/256f,144/256f,color,alpha);
     }
     static void forbidden(GuiGraphics g,int x,int y,int tick) {
         RenderSystem.enableBlend();RenderSystem.defaultBlendFunc();g.setColor(.267f,0,.333f,.66f);
         blit(g,texture("misc/nodes"),x-40,y-40,80,80,(31-tick%32)*32,5*32,32,32,1024,1024);g.setColor(1,1,1,1);
     }
-    static Component aspectName(Aspect aspect) {return Component.literal(aspect.getTag().substring(0,1).toUpperCase(java.util.Locale.ROOT)+aspect.getTag().substring(1));}
+    static Component aspectName(Aspect aspect) {if(aspect.translationKey()!=null)return Component.translatable(aspect.translationKey());return Component.literal(aspect.getTag().substring(0,1).toUpperCase(java.util.Locale.ROOT)+aspect.getTag().substring(1));}
     static boolean inside(double x,double y,int left,int top,int width,int height) {return x>=left&&x<left+width&&y>=top&&y<top+height;}
     static void outlinedNumber(GuiGraphics g,net.minecraft.client.gui.Font font,String value,int x,int y){for(int[] offset:new int[][]{{-1,0},{1,0},{0,-1},{0,1}})g.drawString(font,value,x+offset[0],y+offset[1],0xff000000,false);g.drawString(font,value,x,y,WHITE,false);}
+    static void aspectCount(GuiGraphics g,net.minecraft.client.gui.Font font,String value,int x,int y){g.pose().pushPose();g.pose().translate(x+16-font.width(value)*.5f,y+11,150);g.pose().scale(.5f,.5f,1);outlinedNumber(g,font,value,0,0);g.pose().popPose();}
     static void line(GuiGraphics graphics,int x,int y,int endX,int endY,int color) {
         int steps=Math.max(Math.abs(endX-x),Math.abs(endY-y));for(int i=0;i<=steps;i++) {int px=x+(steps==0?0:(endX-x)*i/steps),py=y+(steps==0?0:(endY-y)*i/steps);graphics.fill(px,py,px+1,py+1,color);}
     }

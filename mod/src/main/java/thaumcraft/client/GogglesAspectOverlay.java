@@ -40,12 +40,12 @@ public final class GogglesAspectOverlay {
         double seconds=clock.seconds();float previous=tagScale;
         tagScale=FrameAnimation.aspect(previous,seconds,false);
         if(mc.player==null||mc.level==null||mc.hitResult==null||mc.hitResult.getType()!=HitResult.Type.BLOCK)return;
-        if(!thaumcraft.equipment.FortressArmor.goggles(mc.player.getItemBySlot(EquipmentSlot.HEAD)))return;
+        if(!thaumcraft.api.EquipmentVision.canSeeAspects(mc.player))return;
         var pos=((BlockHitResult)mc.hitResult).getBlockPos();
         Map<String,Integer> aspects=null;
         if(mc.level.getBlockEntity(pos) instanceof AuraNodeBlockEntity node&&!node.state.current.isEmpty())aspects=node.state.current;
         else if(mc.level.getBlockEntity(pos) instanceof thaumcraft.blocks.JarredNodeBlockEntity jar)aspects=jar.state.current;
-        else if(mc.level.getBlockEntity(pos) instanceof thaumcraft.visnet.EnergizedNodeBlockEntity node)aspects=node.aura();
+        else if(mc.level.getBlockEntity(pos) instanceof thaumcraft.visnet.EnergizedNodeBlockEntity node)aspects=node.capacity();
         else if(mc.level.getBlockEntity(pos) instanceof TransportBlockEntity jar){
             var stored=jar.store.first();int amount=jar.store.amount();
             if(stored!=null&&amount>0)aspects=Map.of(stored.getTag(),amount);

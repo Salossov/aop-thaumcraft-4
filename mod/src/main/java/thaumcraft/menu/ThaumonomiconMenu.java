@@ -17,12 +17,13 @@ import thaumcraft.registry.R2Content;
 
 public final class ThaumonomiconMenu extends AbstractContainerMenu implements ActionMenu {
     private final UUID token;
+    public String openingResearch="";
     private final Player owner;
     private long lastSequence;
-    public ThaumonomiconMenu(int id,Inventory inventory,RegistryFriendlyByteBuf data) { this(id,inventory,data.readUUID()); }
+    public ThaumonomiconMenu(int id,Inventory inventory,RegistryFriendlyByteBuf data) { this(id,inventory,data.readUUID());openingResearch=data.readUtf(128); }
     public ThaumonomiconMenu(int id,Inventory inventory,UUID token) { super(R2Content.BOOK_MENU.get(),id);this.token=token;owner=inventory.player; }
     @Override public UUID token() { return token; }
-    @Override public boolean stillValid(Player player) { return player==owner&&(player.getMainHandItem().is(R2Content.BOOK.get())||player.getOffhandItem().is(R2Content.BOOK.get())); }
+    @Override public boolean stillValid(Player player) { return player==owner&&player.getInventory().contains(new ItemStack(R2Content.BOOK.get())); }
     @Override public ItemStack quickMoveStack(Player player,int index) { return ItemStack.EMPTY; }
     @Override public boolean accept(ServerPlayer player,ResearchActionPayload request) {
         if(!token.equals(request.token())||request.sequence()!=lastSequence+1||!stillValid(player)||request.action()!=0) return false;

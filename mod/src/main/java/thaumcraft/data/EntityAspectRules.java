@@ -25,6 +25,6 @@ public final class EntityAspectRules {
         String id=BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString();var values=definitions.getOrDefault(id,Map.of());var rules=variants.get(id);
         if(rules!=null){var nbt=entity.saveWithoutId(new CompoundTag());for(var rule:rules)if(matches(nbt,rule))values=rule.aspects();}return values;
     }
-    private static boolean matches(CompoundTag tag,ThaumcraftData.EntityVariant rule){return tag.contains(rule.field())&&tag.get(rule.field()).getAsString().equals(rule.value());}
+    private static boolean matches(CompoundTag tag,ThaumcraftData.EntityVariant rule){if(!tag.contains(rule.field()))return false;var value=tag.get(rule.field());return value.getAsString().equals(rule.value())||value instanceof net.minecraft.nbt.NumericTag number&&number.getAsNumber().toString().equals(rule.value());}
     private EntityAspectRules(){}
 }

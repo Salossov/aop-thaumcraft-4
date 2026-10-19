@@ -23,6 +23,8 @@ public final class FortressArmor {
         if(mask(helmet)==1&&source.getEntity() instanceof net.minecraft.world.entity.LivingEntity attacker&&wearer.getRandom().nextFloat()<event.getAmount()/10)
             attacker.addEffect(new MobEffectInstance(MobEffects.WITHER,80));
         if(source.getEntity() instanceof net.minecraft.world.entity.player.Player attacker&&mask(attacker.getItemBySlot(EquipmentSlot.HEAD))==2&&attacker.getRandom().nextFloat()<event.getAmount()/12)attacker.heal(1);
+        // A mixed addon set is handled once at the actual armor stage, with original priorities.
+        if(SpecialArmorProtection.active(wearer))return;
         double set=.875;int allPoints=0,specialPoints=0;double specialRatio=0;
         for(var stack:wearer.getArmorSlots())if(stack.getItem() instanceof ArmorItem armor){
             allPoints+=armor.getDefense();if(armor instanceof ThaumicArmorItem gear&&gear.kind()==ThaumicArmorItem.Kind.FORTRESS){set+=.125;if(mask(stack)>=0)set+=.05;}

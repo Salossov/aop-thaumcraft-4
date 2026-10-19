@@ -1,0 +1,19 @@
+{
+  "structures": [
+    {
+      "structure": "thaumcraft:hilltop",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 1,
+    "separation": 0,
+    "salt": 423501,
+    "locate_offset": [
+      8,
+      0,
+      8
+    ]
+  }
+}

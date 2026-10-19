@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "BiomeManagerMixin",
+    "BlockEntityPositionAccessor",
     "OwnedBlockHardnessMixin",
     "FurnaceCookingAccessor",
     "LootTableAccessor",
@@ -12,10 +13,21 @@
     "ItemAgeAccessor",
     "LivingEntityRecentHitAccessor",
     "LivingAttackTickerAccessor",
+    "LivingAttackAttemptMixin",
+    "LivingEquipmentTickMixin",
+    "PlayerAirControlMixin",
+    "MobEffectDurationAccessor",
+    "MobGoalSelectorAccessor",
+    "AvoidEntityClassAccessor",
+    "NearestTargetClassAccessor",
+    "NearestTargetNonLivingMixin",
+    "CreeperSwellAccessor",
+    "SpecialArmorProtectionMixin",
     "NaturalBiomePresetMixin",
     "EldritchVoidStateMixin",
-    "PavingStoneStateMixin"
-    ,"FloatingCounterAccessor"
+    "PavingStoneStateMixin",
+    "FloatingCounterAccessor",
+    "PersistentAirInsertionMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -23,6 +35,8 @@
   "client": [
     "ResearchOverlayLayerMixin",
     "ThaumometerEquipMixin",
-    "CreativeWandScreenMixin"
+    "CreativeWandScreenMixin",
+    "ExperimentalWorldWarningMixin",
+    "WandLayerLightMixin"
   ]
 }

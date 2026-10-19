@@ -40,12 +40,12 @@ public final class InfusionUpgradeRecipe extends InfusionRecipe {
                 var research=b.readUtf(128);var input=Ingredient.CONTENTS_STREAM_CODEC.decode(b);int count=b.readVarInt();if(count<1||count>64)throw new IllegalArgumentException("Invalid upgrade components");
                 var components=new ArrayList<Ingredient>();for(int n=0;n<count;n++)components.add(Ingredient.CONTENTS_STREAM_CODEC.decode(b));
                 var result=ItemStack.STREAM_CODEC.decode(b);int length=b.readVarInt();if(length<0||length>48)throw new IllegalArgumentException("Invalid upgrade aspects");
-                var aspects=new LinkedHashMap<String,Integer>();for(int n=0;n<length;n++)if(aspects.put(b.readUtf(32),b.readVarInt())!=null)throw new IllegalArgumentException("Duplicate aspect");
-                return new InfusionUpgradeRecipe(research,input,components,result,aspects,b.readVarInt(),b.readUtf(32),b.readVarInt());
+                var aspects=new LinkedHashMap<String,Integer>();for(int n=0;n<length;n++)if(aspects.put(b.readUtf(128),b.readVarInt())!=null)throw new IllegalArgumentException("Duplicate aspect");
+                return new InfusionUpgradeRecipe(research,input,components,result,aspects,b.readVarInt(),b.readUtf(128),b.readVarInt());
             }
             public void encode(RegistryFriendlyByteBuf b,InfusionUpgradeRecipe recipe){
                 b.writeUtf(recipe.research(),128);Ingredient.CONTENTS_STREAM_CODEC.encode(b,recipe.input());b.writeVarInt(recipe.components().size());for(var item:recipe.components())Ingredient.CONTENTS_STREAM_CODEC.encode(b,item);
-                ItemStack.STREAM_CODEC.encode(b,recipe.getRecipeOutput());b.writeVarInt(recipe.aspects().size());recipe.aspects().forEach((tag,n)->{b.writeUtf(tag,32);b.writeVarInt(n);});
+                ItemStack.STREAM_CODEC.encode(b,recipe.getRecipeOutput());b.writeVarInt(recipe.aspects().size());recipe.aspects().forEach((tag,n)->{b.writeUtf(tag,128);b.writeVarInt(n);});
                 b.writeVarInt(recipe.instability());b.writeUtf(recipe.field,32);b.writeVarInt(recipe.value);
             }
         };

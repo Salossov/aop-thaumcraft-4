@@ -21,7 +21,7 @@ public final class RunicShieldHud {
         }
     }
     private static void renderHearts(net.minecraft.client.gui.GuiGraphics g){
-        var mc=Minecraft.getInstance();if(mc.player==null||mc.options.hideGui||maximum<=0||!mc.gameMode.canHurtPlayer())return;
+        var mc=Minecraft.getInstance();if(mc.player==null||!mc.player.isAlive()||mc.options.hideGui||maximum<=0||!mc.gameMode.canHurtPlayer())return;
         int hearts=Math.min(40,(maximum+1)/2),rows=(hearts+9)/10,x=g.guiWidth()/2-91,y=g.guiHeight()-mc.gui.leftHeight;
         for(int heart=0;heart<hearts;heart++)heart(g,x+heart%10*8,y-heart/10*10,Math.clamp(charge-heart*2,0,2));
         mc.gui.leftHeight+=rows*10;
@@ -38,5 +38,6 @@ public final class RunicShieldHud {
         @SubscribeEvent public static void register(net.neoforged.neoforge.client.event.RegisterGuiLayersEvent event){event.registerAbove(net.neoforged.neoforge.client.gui.VanillaGuiLayers.PLAYER_HEALTH,net.minecraft.resources.ResourceLocation.parse("thaumcraft:runic_hearts"),(graphics,partial)->renderHearts(graphics));}
     }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event){charge=maximum=0;}
+    @SubscribeEvent public static void respawn(ClientPlayerNetworkEvent.Clone event){charge=maximum=0;}
     private RunicShieldHud(){}
 }

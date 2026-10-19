@@ -1,0 +1,7 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+[[mods]]
+modId="thaumcraft_viewer_qa"
+version="1"
+displayName="Thaumcraft isolated viewer verification"

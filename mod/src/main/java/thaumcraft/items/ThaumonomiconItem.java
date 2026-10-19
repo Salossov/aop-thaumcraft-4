@@ -20,7 +20,7 @@ public final class ThaumonomiconItem extends Item {
             server.openMenu(new MenuProvider() {
                 public Component getDisplayName() { return Component.translatable("item.ItemThaumonomicon.name"); }
                 public AbstractContainerMenu createMenu(int id,Inventory inventory,Player owner) { return new ThaumonomiconMenu(id,inventory,token); }
-                public void writeClientSideData(AbstractContainerMenu menu,RegistryFriendlyByteBuf buffer) { buffer.writeUUID(token); }
+                public void writeClientSideData(AbstractContainerMenu menu,RegistryFriendlyByteBuf buffer) { buffer.writeUUID(token);buffer.writeUtf("",128); }
             });
         }return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand),level.isClientSide);
     }

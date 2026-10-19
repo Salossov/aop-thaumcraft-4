@@ -13,7 +13,7 @@ import net.minecraft.world.phys.*;
 import thaumcraft.blocks.*;
 import thaumcraft.registry.R2Content;
 
-public final class CastingWandItem extends Item {
+public final class CastingWandItem extends Item implements thaumcraft.api.wands.ICastingWand {
     private record Target(net.minecraft.resources.ResourceKey<Level> dimension,net.minecraft.core.BlockPos pos) {}
     private static final java.util.Map<ServerPlayer,Target> ACTIVE=new java.util.WeakHashMap<>();
     public enum Kind { WAND, STAFF, SCEPTRE }
@@ -63,7 +63,12 @@ public final class CastingWandItem extends Item {
         return slotChanged||!oldStack.is(newStack.getItem())||!WandMaterials.parts(oldStack).equals(WandMaterials.parts(newStack))||!ItemStack.isSameItemSameComponents(WandFocus.get(oldStack),WandFocus.get(newStack));
     }
     @Override public int getUseDuration(ItemStack stack,LivingEntity entity) { return 72000; }
-    @Override public InteractionResult onItemUseFirst(ItemStack stack,UseOnContext context){return OwnedBlockInteractions.removeWithWand(context);}
+    @Override public InteractionResult onItemUseFirst(ItemStack stack,UseOnContext context){
+        var level=context.getLevel();var player=context.getPlayer();
+        // Modern sneak-use skips the block's useItemOn; TC4's wand hook still empties the crucible.
+        if(player!=null&&player.isShiftKeyDown()&&level.getBlockEntity(context.getClickedPos()) instanceof thaumcraft.production.CrucibleBlockEntity crucible){if(!level.isClientSide)crucible.empty();return InteractionResult.sidedSuccess(level.isClientSide);}
+        return OwnedBlockInteractions.removeWithWand(context);
+    }
     @Override public InteractionResult useOn(UseOnContext context) {
         var level=context.getLevel();var pos=context.getClickedPos();var player=context.getPlayer();if(player==null) return InteractionResult.PASS;
         if(level.getBlockEntity(pos) instanceof JarredNodeBlockEntity jar){if(!level.isClientSide&&level.mayInteract(player,pos))jar.release();return InteractionResult.sidedSuccess(level.isClientSide);}

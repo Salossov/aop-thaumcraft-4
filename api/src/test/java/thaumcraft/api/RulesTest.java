@@ -26,6 +26,10 @@ public final class RulesTest {
         var list=new AspectList().add(Aspects.AIR,3).merge(Aspects.AIR,2);check(list.getAmount(Aspects.AIR)==3,"merge uses maximum");
         list.add(Aspects.AIR,2);check(list.getAmount(Aspects.AIR)==5,"add sums");check(!list.reduce(Aspects.AIR,6),"insufficient reduction rejected");
         check(list.reduce(Aspects.AIR,5)&&list.size()==1&&list.getAmount(Aspects.AIR)==0,"zero discovery retained");
+        list.add(Aspects.FIRE,3).remove(Aspects.FIRE,1);check(list.getAmount(Aspects.FIRE)==2,"remove decrements populated aspect");
+        list.remove(Aspects.FIRE,2);check(list.size()==1,"remove deletes an exhausted entry while preserving other discovered zero");
+        list.remove(Aspects.AIR);check(list.size()==0,"explicit remove deletes discovered zero");
+        list.remove(Aspects.WATER,1);check(list.size()==0,"remove missing aspect does not introduce a negative entry");
         var knowledge=new PlayerKnowledge();check(knowledge.knows(Aspects.AIR)&&knowledge.pool(Aspects.AIR)==0,"primal discovery has no free points");
         check(knowledge.knowsParents(Aspects.LIGHT)&&!knowledge.knowsParents(Aspects.MAGIC),"scan component prerequisites");
         knowledge.addPool(Aspects.AIR,1);var copy=knowledge.copy();check(copy.spend(Aspects.AIR,1),"can spend final point");

@@ -24,7 +24,8 @@
             0,
             16,
             16
-          ]
+          ],
+          "tintindex": 0
         },
         "up": {
           "texture": "#all",
@@ -43,7 +44,8 @@
             0,
             16,
             16
-          ]
+          ],
+          "tintindex": 0
         },
         "south": {
           "texture": "#all",
@@ -52,7 +54,8 @@
             0,
             16,
             16
-          ]
+          ],
+          "tintindex": 0
         },
         "west": {
           "texture": "#all",
@@ -61,7 +64,8 @@
             0,
             16,
             16
-          ]
+          ],
+          "tintindex": 0
         },
         "east": {
           "texture": "#all",
@@ -70,7 +74,8 @@
             0,
             16,
             16
-          ]
+          ],
+          "tintindex": 0
         }
       }
     }

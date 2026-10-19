@@ -1,0 +1,19 @@
+{
+  "category.thaumcraft_example.workshop": "Мастерская аддона",
+  "aspect.thaumcraft_example.resonantia": "Резонанс",
+  "page.thaumcraft_example.intro": "Эта вкладка, исследование и смешанная страница добавлены отдельным аддоном. Текст автоматически переносится в координатах страницы.",
+  "page.thaumcraft_example.flow": "Ретранслятор хранит до 64 эссенции и 10 вис (1000 centivis). Подключите его к сети возбуждённого узла. ПКМ показывает содержимое. При выгрузке чанка устройство отключается от сети и сохраняет содержимое.",
+  "page.thaumcraft_example.meter": "Особая Java-страница: данные проверяются с обеих сторон; отрисовка и взаимодействие используют только клиентский API.",
+  "page.thaumcraft_example.back": "К введению",
+  "page.thaumcraft_example.device_tip": "Example essentia/vis relay",
+  "message.thaumcraft_example.device": "Запас: %s centivis, %s эссенции",
+  "message.thaumcraft_example.focus_end": "Применение набалдашника завершено",
+  "item.thaumcraft_example.focus": "Resonance focus",
+  "item.thaumcraft_example.rod": "Resonant rod",
+  "item.thaumcraft_example.cap": "Resonant cap",
+  "block.thaumcraft_example.device": "Resonance relay",
+  "research.name.thaumcraft_example:introduction": "Addon introduction",
+  "focus.upgrade.thaumcraft_example:pulse.name": "Pulse",
+  "focus.upgrade.thaumcraft_example:pulse.text": "Example addon upgrade",
+  "tc.research_name.thaumcraft_example:introduction": "Введение в аддоны"
+}

@@ -81,7 +81,14 @@
           ],
           "cullface": "down"
         }
+      },
+      "shade": false,
+      "neoforge_data": {
+        "block_light": 15,
+        "sky_light": 15,
+        "ambient_occlusion": false
       }
     }
-  ]
+  ],
+  "ambientocclusion": false
 }

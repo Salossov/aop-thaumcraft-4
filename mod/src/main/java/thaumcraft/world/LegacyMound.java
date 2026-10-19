@@ -30,13 +30,16 @@ public final class LegacyMound {
     }
     private static <T extends Comparable<T>> BlockState set(BlockState s,Property<T> p,String value){return s.setValue(p,p.getValue(value).orElseThrow());}
     private static BlockState property(BlockState s,String key,String value){var p=s.getBlock().getStateDefinition().getProperty(key);if(p==null)throw new IllegalArgumentException("Missing property "+key);return set(s,p,value);}
-    public boolean generate(WorldGenLevel level,RandomSource random,BlockPos origin){
+    public boolean generate(WorldGenLevel level,RandomSource random,BlockPos origin){return generate(level,random,origin,false);}
+    public boolean generateNative(WorldGenLevel level,RandomSource random,BlockPos origin){return generate(level,random,origin,true);}
+    private boolean generate(WorldGenLevel level,RandomSource random,BlockPos origin,boolean prepared){
         if(level.isOutsideBuildHeight(origin.below())||level.isOutsideBuildHeight(origin.above(16)))return false;
-        for(var offset:List.of(new BlockPos(9,9,9),new BlockPos(0,9,0),new BlockPos(18,9,0),new BlockPos(18,9,18),new BlockPos(0,9,18)))if(!AncientStructureSupport.validSurface(level,origin.offset(offset)))return false;
+        if(!prepared)for(var offset:List.of(new BlockPos(9,9,9),new BlockPos(0,9,0),new BlockPos(18,9,0),new BlockPos(18,9,18),new BlockPos(0,9,18)))if(!AncientStructureSupport.validSurface(level,origin.offset(offset)))return false;
         for(var row:LAYOUT)level.setBlock(origin.offset(row.x,row.y,row.z),row.state,row.flags);
         // Vanilla connected states replace the old renderer's implicit neighbour connections.
         for(var row:LAYOUT)if(row.state.getBlock() instanceof StairBlock||row.state.is(Blocks.IRON_BARS)){var p=origin.offset(row.x,row.y,row.z);var current=level.getBlockState(p);level.setBlock(p,Block.updateFromNeighbourShapes(current,level,p),3);}
-        for(int z:new int[]{7,11}){float r=random.nextFloat();int rarity=r<.1f?2:r<.33f?1:0;var block=level.getLevel().random.nextFloat()<.3f?R5Content.LOOT_CRATE.get():R5Content.LOOT_URN.get();level.setBlock(origin.offset(9,1,z),block.defaultBlockState().setValue(AncientLootBlock.RARITY,rarity),3);}
+        // FEATURES owns a region RNG; the underlying ServerLevel RNG belongs to its server thread.
+        for(int z:new int[]{7,11}){float r=random.nextFloat();int rarity=r<.1f?2:r<.33f?1:0;var block=level.getRandom().nextFloat()<.3f?R5Content.LOOT_CRATE.get():R5Content.LOOT_URN.get();level.setBlock(origin.offset(9,1,z),block.defaultBlockState().setValue(AncientLootBlock.RARITY,rarity),3);}
         boolean trapped=random.nextInt(3)==0;AncientStructureSupport.chest(level,origin.offset(10,1,9),trapped,random);if(trapped)level.setBlock(origin.offset(10,-1,9),Blocks.TNT.defaultBlockState(),3);
         AncientStructureSupport.spawner(level,origin.offset(4,5,4),EntityType.SKELETON,random);AncientStructureSupport.spawner(level,origin.offset(4,5,14),EntityType.ZOMBIE,random);
         return true;

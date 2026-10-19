@@ -26,6 +26,11 @@ public final class EldritchVoidBlock extends Block implements EntityBlock {
     @Override public ItemStack getCloneItemStack(BlockState state,HitResult hit,LevelReader level,BlockPos pos,Player player){return ItemStack.EMPTY;}
     @Override protected void entityInside(BlockState state,Level level,BlockPos pos,Entity entity){if(!level.isClientSide&&entity.tickCount>20&&(!(entity instanceof Player player)||!player.getAbilities().instabuild))entity.hurt(level.damageSources().fellOutOfWorld(),8);}
     @Override public BlockEntity newBlockEntity(BlockPos pos,BlockState state){return state.getValue(EXPOSED)?new EldritchVoidBlockEntity(pos,state):null;}
+    @Override protected void onRemove(BlockState state,Level level,BlockPos pos,BlockState replacement,boolean moving){
+        // Vanilla only removes tiles when the block changes. This block's tile also depends on EXPOSED.
+        if(state.getValue(EXPOSED)&&replacement.is(this)&&!replacement.getValue(EXPOSED))level.removeBlockEntity(pos);
+        super.onRemove(state,level,pos,replacement,moving);
+    }
     @Override protected void neighborChanged(BlockState state,Level level,BlockPos pos,Block block,BlockPos from,boolean moving){updateExposure(level,pos);}
     public static boolean exposed(BlockGetter level,BlockPos pos){for(var face:Direction.values()){var neighbor=pos.relative(face);if(!level.getBlockState(neighbor).isSolidRender(level,neighbor))return true;}return false;}
     public static void updateExposure(Level level,BlockPos pos){var state=level.getBlockState(pos);if(!(state.getBlock() instanceof EldritchVoidBlock block))return;boolean visible=exposed(level,pos);if(visible){if(!state.getValue(EXPOSED)){state=state.setValue(EXPOSED,true);level.setBlock(pos,state,2);}if(!(level.getBlockEntity(pos) instanceof EldritchVoidBlockEntity))level.setBlockEntity(new EldritchVoidBlockEntity(pos,state));}else{level.removeBlockEntity(pos);if(state.getValue(EXPOSED)){state=state.setValue(EXPOSED,false);level.setBlock(pos,state,2);}}}

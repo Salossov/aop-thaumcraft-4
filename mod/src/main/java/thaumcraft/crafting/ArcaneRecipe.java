@@ -34,11 +34,11 @@ public record ArcaneRecipe(String research,Map<String,Integer> vis,ShapedRecipeP
         private static final StreamCodec<RegistryFriendlyByteBuf,ArcaneRecipe> STREAM=new StreamCodec<>() {
             public ArcaneRecipe decode(RegistryFriendlyByteBuf b) {
                 String research=b.readUtf(128);int count=b.readVarInt();if(count<1||count>6) throw new IllegalArgumentException("Invalid vis count");
-                var costs=new java.util.LinkedHashMap<String,Integer>();for(int i=0;i<count;i++) costs.put(b.readUtf(32),b.readVarInt());
+                var costs=new java.util.LinkedHashMap<String,Integer>();for(int i=0;i<count;i++) costs.put(b.readUtf(128),b.readVarInt());
                 return new ArcaneRecipe(research,costs,ShapedRecipePattern.STREAM_CODEC.decode(b),ItemStack.STREAM_CODEC.decode(b));
             }
             public void encode(RegistryFriendlyByteBuf b,ArcaneRecipe recipe) {
-                b.writeUtf(recipe.research,128);b.writeVarInt(recipe.vis.size());recipe.vis.forEach((tag,amount)->{b.writeUtf(tag,32);b.writeVarInt(amount);});
+                b.writeUtf(recipe.research,128);b.writeVarInt(recipe.vis.size());recipe.vis.forEach((tag,amount)->{b.writeUtf(tag,128);b.writeVarInt(amount);});
                 ShapedRecipePattern.STREAM_CODEC.encode(b,recipe.pattern);ItemStack.STREAM_CODEC.encode(b,recipe.result);
             }
         };

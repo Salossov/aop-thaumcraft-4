@@ -8,7 +8,7 @@ import net.minecraft.world.level.Level;
 import thaumcraft.api.*;
 import thaumcraft.api.aspects.Aspect;
 
-public final class ThaumicArmorItem extends ArmorItem implements IRepairable, IRunicArmor, IVisDiscountGear {
+public final class ThaumicArmorItem extends ArmorItem implements IRepairable, IRunicArmor, IVisDiscountGear, IGoggles, thaumcraft.api.nodes.IRevealer {
     public enum Kind { THAUMIUM, VOID, ROBE, FORTRESS, VOID_ROBE, TRAVELLER, HARNESS }
     private final Kind kind;
 
@@ -18,6 +18,8 @@ public final class ThaumicArmorItem extends ArmorItem implements IRepairable, IR
     }
 
     public Kind kind() { return kind; }
+    public boolean showNodes(ItemStack stack,net.minecraft.world.entity.LivingEntity wearer){return thaumcraft.equipment.FortressArmor.goggles(stack);}
+    public boolean showIngamePopups(ItemStack stack,net.minecraft.world.entity.LivingEntity wearer){return thaumcraft.equipment.FortressArmor.goggles(stack);}
     @Override public void appendHoverText(ItemStack stack,TooltipContext context,java.util.List<net.minecraft.network.chat.Component> lines,TooltipFlag flags){super.appendHoverText(stack,context,lines,flags);int discount=getVisDiscount(stack,null,null);if(discount>0)lines.add(net.minecraft.network.chat.Component.translatable("tc.visdiscount").append(": "+discount+"%").withStyle(net.minecraft.ChatFormatting.DARK_PURPLE));if(kind==Kind.HARNESS)lines.add(net.minecraft.network.chat.Component.translatable("tc.visdiscount").append(" (Aer): 5%").withStyle(net.minecraft.ChatFormatting.DARK_PURPLE));}
     @Override public net.minecraft.world.InteractionResult onItemUseFirst(ItemStack stack,net.minecraft.world.item.context.UseOnContext context){
         var level=context.getLevel();var pos=context.getClickedPos();var state=level.getBlockState(pos);

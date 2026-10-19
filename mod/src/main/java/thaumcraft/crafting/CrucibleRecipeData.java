@@ -30,13 +30,13 @@ public final class CrucibleRecipeData extends CrucibleRecipe {
                 var result = ItemStack.STREAM_CODEC.decode(b); int size = b.readVarInt();
                 if (size < 1 || size > 48) throw new IllegalArgumentException("Invalid aspect count");
                 var aspects = new LinkedHashMap<String, Integer>();
-                for (int n = 0; n < size; n++) { if (aspects.put(b.readUtf(32), b.readVarInt()) != null) throw new IllegalArgumentException("Duplicate aspect"); }
+                for (int n = 0; n < size; n++) { if (aspects.put(b.readUtf(128), b.readVarInt()) != null) throw new IllegalArgumentException("Duplicate aspect"); }
                 return new CrucibleRecipeData(research, catalyst, result, aspects);
             }
             public void encode(RegistryFriendlyByteBuf b, CrucibleRecipeData r) {
                 b.writeUtf(r.research(), 128); Ingredient.CONTENTS_STREAM_CODEC.encode(b, r.catalyst());
                 ItemStack.STREAM_CODEC.encode(b, r.getRecipeOutput()); b.writeVarInt(r.aspects().size());
-                r.aspects().forEach((tag, n) -> { b.writeUtf(tag, 32); b.writeVarInt(n); });
+                r.aspects().forEach((tag, n) -> { b.writeUtf(tag, 128); b.writeVarInt(n); });
             }
         };
         public MapCodec<CrucibleRecipeData> codec() { return CODEC; }

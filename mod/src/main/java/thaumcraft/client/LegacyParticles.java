@@ -23,6 +23,7 @@ public final class LegacyParticles {
     };
     static final ParticleRenderType TRAIL=(tessellator,textures)->{RenderSystem.depthMask(false);RenderSystem.enableBlend();RenderSystem.defaultBlendFunc();RenderSystem.setShader(GameRenderer::getParticleShader);RenderSystem.setShaderTexture(0,ResearchGraphics.texture("misc/particles"));return tessellator.begin(VertexFormat.Mode.QUADS,DefaultVertexFormat.PARTICLE);};
     static void essentia(Vec3 from,Vec3 target,float count,int color){add(new Mote(from,target,count,color,0,ItemStack.EMPTY,null));}
+    static void essentia(Vec3 from,Vec3 target,float count,int color,float scale){var mote=new Mote(from,target,count,color,0,ItemStack.EMPTY,null);mote.size*=scale;add(mote);}
     static void ingredient(Vec3 from,Vec3 target,ItemStack stack){add(new Mote(from,target,0,0xffffff,1,stack,null));}
     static void infusionSparkle(Vec3 from,Vec3 target){add(new Mote(from,target,0,0x8033cc,6,ItemStack.EMPTY,null));}
     static void nitor(Vec3 from,boolean outer){add(new Mote(from,null,0,0xffffff,outer?4:5,ItemStack.EMPTY,null));}

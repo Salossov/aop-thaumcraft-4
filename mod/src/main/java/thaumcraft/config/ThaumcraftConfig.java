@@ -21,6 +21,7 @@ public final class ThaumcraftConfig {
     public static final ModConfigSpec.ConfigValue<java.util.List<? extends String>> DIMENSION_BLACKLIST,BIOME_BLACKLIST;
     public static final ModConfigSpec.ConfigValue<String> REGENERATION_VERSION;
     public static final ModConfigSpec.BooleanValue MODERN_WEAPON_COOLDOWN;
+    public static final ModConfigSpec.BooleanValue ALLOW_MIRRORS=ThaumcraftContentConfig.ALLOW_MIRRORS;
     public static final ModConfigSpec.BooleanValue WUSS_MODE;
     public static final ModConfigSpec.BooleanValue CHAMPION_MOBS;
     public static final ModConfigSpec.BooleanValue MODERN_PECH_DUNGEON;

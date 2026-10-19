@@ -104,7 +104,7 @@ public final class NodeEffects {
             if(state.modifier==NodeState.Modifier.PALE&&random.nextInt(100)==0) state.modifier=NodeState.Modifier.NONE;
             if(random.nextInt(3)==0) other.state.base.merge(aspect.getTag(),-1,Integer::sum);
         }
-        other.state.wait=other.state.rechargeInterval()/2;other.changedAndSync();return true;
+        other.state.wait=other.state.rechargeInterval()/2;other.changedAndSync();var at=node.getBlockPos();net.neoforged.neoforge.network.PacketDistributor.sendToPlayersNear(level,null,at.getX()+.5,at.getY()+.5,at.getZ()+.5,32,new thaumcraft.network.NodeZapPayload(other.getBlockPos().getCenter(),at.getCenter()));return true;
     }
     private static int total(NodeState state) { return (state.current.values().stream().mapToInt(Integer::intValue).sum()+state.base.values().stream().mapToInt(Integer::intValue).sum())/2; }
     private static boolean biomeAllowed(ServerLevel level,BlockPos pos){var key=WorldBiomes.effective(level,pos).unwrapKey();int value=key.map(k->PopulationPolicy.blacklist(ThaumcraftConfig.BIOME_BLACKLIST.get(),k.location())).orElse(-1);return value!=0&&value!=2;}

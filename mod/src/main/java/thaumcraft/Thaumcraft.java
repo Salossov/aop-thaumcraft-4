@@ -15,6 +15,7 @@ public final class Thaumcraft {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public Thaumcraft(IEventBus modBus, ModContainer container) {
+        thaumcraft.addon.ApiBootstrap.install();
         ThaumcraftContent.register(modBus);
         thaumcraft.registry.R2Content.register(modBus);
         thaumcraft.crafting.R2Recipes.register(modBus);
@@ -27,6 +28,7 @@ public final class Thaumcraft {
         thaumcraft.fluids.R4Fluids.register(modBus);
         modBus.addListener((net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent event)->event.enqueueWork(thaumcraft.items.WandMaterials::initialize));
         modBus.addListener((net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent event)->event.enqueueWork(thaumcraft.loot.LegacyLoot::initialize));
+        modBus.addListener((net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent event)->event.enqueueWork(thaumcraft.addon.ApiBootstrap::registerAddons));
         thaumcraft.crafting.R3Recipes.register(modBus);
         thaumcraft.entities.R2Entities.register(modBus);
         thaumcraft.entities.R3Entities.register(modBus);
@@ -41,10 +43,12 @@ public final class Thaumcraft {
         thaumcraft.fluids.R2Fluids.register(modBus);
         thaumcraft.world.R2Worldgen.register(modBus);
         thaumcraft.world.R3Worldgen.register(modBus);
+        thaumcraft.world.NativeStructures.register(modBus);
         thaumcraft.world.dim.R5Worldgen.register(modBus);
         modBus.addListener(thaumcraft.network.ThaumcraftNetwork::register);
         thaumcraft.knowledge.KnowledgeService.register();
         thaumcraft.knowledge.InventoryScanService.register();
+        container.registerConfig(ModConfig.Type.STARTUP, thaumcraft.config.ThaumcraftContentConfig.SPEC);
         container.registerConfig(ModConfig.Type.SERVER, ThaumcraftConfig.SPEC);
         container.registerConfig(ModConfig.Type.CLIENT, thaumcraft.config.ThaumcraftClientConfig.SPEC);
         thaumcraft.data.ThaumcraftData.register();

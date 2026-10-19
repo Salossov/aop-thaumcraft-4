@@ -4,11 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Release version, e.g. 0.6.0 (creates tag v0.6.0)'
-        required: true
-        type: string
 
 permissions:
   contents: write
@@ -26,7 +21,6 @@ jobs:
       run:
         shell: bash
     env:
-      RELEASE_VERSION: ${{ inputs.version }}
       RELEASE_MODE: ${{ github.event_name == 'workflow_dispatch' && 'release' || 'nightly' }}
     steps:
       - name: Check out source
@@ -53,12 +47,12 @@ jobs:
           from pathlib import Path
           properties = dict(line.split('=', 1) for line in Path('gradle.properties').read_text().splitlines() if '=' in line and not line.lstrip().startswith('#'))
           if os.environ['RELEASE_MODE'] == 'release':
-              version = os.environ['RELEASE_VERSION'].strip().removeprefix('v')
+              version = properties['mod_version'].strip()
           else:
               base = properties['mod_version'].strip().split('-', 1)[0].split('+', 1)[0]
               version = base + '-nightly.' + os.environ['GITHUB_RUN_NUMBER']
           if not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z]+(?:[.-][0-9A-Za-z]+)*)?(?:\+[0-9A-Za-z]+(?:[.-][0-9A-Za-z]+)*)?', version):
-              raise SystemExit('Use a version such as 0.6.0 or 0.6.0-rc.1')
+              raise SystemExit('mod_version in gradle.properties must be a version such as 0.6.0 or 0.6.0-rc.1')
           with open(os.environ['GITHUB_ENV'], 'a') as output:
               output.write('BUILD_VERSION=' + version + '\n')
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:

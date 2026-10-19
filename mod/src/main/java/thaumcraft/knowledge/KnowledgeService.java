@@ -38,17 +38,30 @@ public final class KnowledgeService {
     }
     public static UUID session(ServerPlayer player) { return world(player.server).session; }
     public static UUID session(MinecraftServer server) { return world(server).session; }
+    public static java.util.List<String> completedResearch(MinecraftServer server,UUID author) {
+        if(!server.isSameThread())throw new IllegalStateException("Knowledge lookup requires server thread");
+        try{return java.util.List.copyOf(world(server).store.get(author).completedResearch());}
+        catch(IOException error){throw new UncheckedIOException(error);}
+    }
+    public static boolean completeSharedResearch(ServerPlayer player,String key) {
+        return mutate(player,k->k.completeResearch(key),false);
+    }
     public static boolean mutate(ServerPlayer player,Predicate<PlayerKnowledge> mutation) {
+        return mutate(player,mutation,true);
+    }
+    private static boolean mutate(ServerPlayer player,Predicate<PlayerKnowledge> mutation,boolean expandSiblings) {
         if(!player.server.isSameThread()) throw new IllegalStateException("Knowledge changes require server thread");
         var before=get(player);var state=before.copy();if(!mutation.test(state)) return false;
         var definitions=thaumcraft.data.ThaumcraftData.get(player.server).research();boolean discovered;
-        do {discovered=false;for(var key:java.util.List.copyOf(state.completedResearch())){var definition=definitions.get(key);if(definition!=null)for(var sibling:definition.siblings())discovered|=state.completeResearch(sibling);}}while(discovered);
+        do {discovered=thaumcraft.api.research.ResearchLinks.completeAliases(state,definitions);
+            if(expandSiblings)for(var key:java.util.List.copyOf(state.completedResearch())){var definition=definitions.get(key);if(definition!=null)for(var sibling:definition.siblings())discovered|=state.completeResearch(sibling);}
+        }while(discovered);
         int permanent=state.permanentWarp(),sticky=state.stickyWarp();
         // Original grants warp per completed forbidden research: each gets its own
         // perm packet (whispers) and a sticky packet when its sticky half is nonzero,
         // so a bulk grant floods the stack just like the original did.
         int perms=0,stickies=0;var warpNotices=new java.util.ArrayList<String>();
-        for(var key:state.completedResearch()){if(before.completedResearch().contains(key))continue;var definition=definitions.get(key);if(definition!=null&&definition.warp()>0&&!thaumcraft.config.ThaumcraftConfig.WUSS_MODE.get()){int w=definition.warp();permanent+=(w+1)/2;sticky+=w/2;perms++;warpNotices.add("tc.addwarp");if(w/2>0){stickies++;warpNotices.add("tc.addwarpsticky");}}}
+        for(var key:state.completedResearch()){if(before.completedResearch().contains(key))continue;var definition=definitions.get(key);if(definition!=null&&definition.linkedResearch().isEmpty()&&definition.warp()>0&&!thaumcraft.config.ThaumcraftConfig.WUSS_MODE.get()){int w=definition.warp();permanent+=(w+1)/2;sticky+=w/2;perms++;warpNotices.add("tc.addwarp");if(w/2>0){stickies++;warpNotices.add("tc.addwarpsticky");}}}
         boolean gainedWarp=perms>0||stickies>0;
         if(gainedWarp)state.setWarp(permanent,sticky,state.temporaryWarp(),permanent+sticky+state.temporaryWarp());
         state.changed();
@@ -70,9 +83,9 @@ public final class KnowledgeService {
         return true;
     }
     public static void sync(ServerPlayer player) {
-        if(player.connection!=null) {var world=world(player.server);var data=KnowledgeNbt.encode(get(player));var definitions=thaumcraft.data.ThaumcraftData.get(player.server);thaumcraft.data.ResearchDataSync.encode(data,definitions.research());thaumcraft.data.AspectDataSync.encode(data,definitions);data.putLong("snapshotSequence",++world.snapshotSequence);PacketDistributor.sendToPlayer(player,new KnowledgePayload(player.getUUID(),world.session,data));}
+        if(player.connection!=null) {var world=world(player.server);var data=KnowledgeNbt.encode(get(player));var definitions=thaumcraft.data.ThaumcraftData.get(player.server);thaumcraft.data.ResearchDataSync.encode(data,definitions.research());thaumcraft.data.AspectDataSync.encode(data,definitions);thaumcraft.addon.BookData.encode(data,thaumcraft.data.ThaumcraftData.books(player.server));data.putLong("snapshotSequence",++world.snapshotSequence);PacketDistributor.sendToPlayer(player,new KnowledgePayload(player.getUUID(),world.session,data));NeoForge.EVENT_BUS.post(new thaumcraft.api.addon.KnowledgeChangedEvent(player.getUUID(),get(player),false));}
     }
-    private static void dataReload(net.neoforged.neoforge.event.OnDatapackSyncEvent event){if(event.getPlayer()!=null)sync(event.getPlayer());else for(var player:event.getPlayerList().getPlayers()){initialize(player);sync(player);}}
+    private static void dataReload(net.neoforged.neoforge.event.OnDatapackSyncEvent event){if(event.getPlayer()==null)NeoForge.EVENT_BUS.post(new thaumcraft.api.addon.CatalogChangedEvent(event.getPlayerList().getServer().getTickCount(),event.getPlayerList().getServer()));if(event.getPlayer()!=null)sync(event.getPlayer());else for(var player:event.getPlayerList().getPlayers()){initialize(player);sync(player);}}
     private static void login(PlayerEvent.PlayerLoggedInEvent event) {
         if(event.getEntity() instanceof ServerPlayer player) try { initialize(player);sync(player);if(player.hasPermissions(2)&&player.getPersistentData().getBoolean("ThaumcraftInfusionDebug"))PacketDistributor.sendToPlayer(player,new thaumcraft.network.AdminUiPayload(1,player.blockPosition(),true)); }
         catch(UncheckedIOException error) { Thaumcraft.LOGGER.error("TC4 knowledge was not loaded; files retained",error);player.connection.disconnect(Component.literal("Thaumcraft: cannot load your knowledge file. See server log; your files were retained.")); }
@@ -92,7 +105,7 @@ public final class KnowledgeService {
     }
     public static int loadedWorldCount() { return WORLDS.size(); }
     public static void initialize(ServerPlayer player) {
-        var definitions=thaumcraft.data.ThaumcraftData.get(player.server).research().values();
+        var definitions=thaumcraft.data.ThaumcraftData.get(player.server).research();
         mutate(player,k->{
             boolean changed=false;
             // TC4 ResearchManager.loadPlayerData: grant 15 + nextInt(5) once to a new player.
@@ -100,7 +113,8 @@ public final class KnowledgeService {
                 for(var aspect:Aspects.PRIMALS) k.setPool(aspect.getTag(),15+player.level().random.nextInt(5));
                 changed=true;
             }
-            for(var definition:definitions) if(definition.autoUnlock()) changed|=k.completeResearch(definition.key());
+            for(var definition:definitions.values()) if(definition.autoUnlock()&&definition.linkedResearch().isEmpty()) changed|=k.completeResearch(definition.key());
+            changed|=thaumcraft.api.research.ResearchLinks.completeAliases(k,definitions);
             return changed;
         });
     }

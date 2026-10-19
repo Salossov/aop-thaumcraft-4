@@ -1,0 +1,55 @@
+plugins { id 'java-library'; id 'net.neoforged.moddev' }
+neoForge { version = project.neo_version; addModdingDependenciesTo sourceSets.test }
+base { archivesName = 'thaumcraft-viewers' }
+version = '0.7.3'
+dependencies { compileOnly project(':api') }
+repositories {
+    maven { url = 'https://maven.blamejared.com' }
+    maven { url = 'https://maven.terraformersmc.com/releases' }
+}
+// Compile against the oldest supported APIs, not the newest convenient build.
+// Runtime ranges remain broad within the compatible major/minor family.
+dependencies {
+    def cache = rootProject.file('.cache/viewer-compat-2026-10-17')
+    if (new File(cache, 'jei-common-api-min.jar').exists()) {
+        compileOnly files(new File(cache, 'jei-common-api-min.jar'), new File(cache, 'jei-neoforge-api-min.jar'), new File(cache, 'emi-api-min.jar'))
+    } else {
+        compileOnly 'mezz.jei:jei-1.21.1-common-api:19.8.4.110'
+        compileOnly 'mezz.jei:jei-1.21.1-neoforge-api:19.8.4.110'
+        compileOnly 'dev.emi:emi-neoforge:1.1.13+1.21.1:api'
+    }
+    testImplementation project(':api')
+    def profile = providers.gradleProperty('viewerCompatibility').getOrElse('latest')
+    def candidates = [
+        minimum: ['.cache/viewer-compat-2026-10-17/jei-runtime-min.jar', '.cache/viewer-compat-2026-10-17/emi-runtime-min.jar'],
+        middle: ['.cache/viewer-compat-2026-10-17/jei-runtime-middle.jar', '.cache/viewer-compat-2026-10-17/emi-runtime-middle.jar'],
+        latest: ['.cache/viewer-compat-2026-10-17/jei-runtime-latest.jar', '.cache/addon-api-2026-10-17/dependencies/emi-test-runtime.jar']
+    ]
+    if (!candidates.containsKey(profile)) { throw new GradleException('Unknown viewerCompatibility profile: ' + profile) }
+    if (candidates[profile].every { rootProject.file(it).exists() }) {
+        testRuntimeOnly files(candidates[profile].collect { rootProject.file(it) })
+    } else {
+        def jeiVersions = [minimum: '19.8.4.110', middle: '19.19.6.233', latest: '19.64.0.455']
+        def emiVersions = [minimum: '1.1.13+1.21.1', middle: '1.1.20+1.21.1', latest: '1.1.24+1.21.1']
+        testRuntimeOnly "mezz.jei:jei-1.21.1-neoforge:${jeiVersions[profile]}"
+        testRuntimeOnly "dev.emi:emi-neoforge:${emiVersions[profile]}"
+    }
+}
+
+tasks.named('test') { enabled = false }
+def isolationTest = tasks.register('isolationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'thaumcraft.viewers.IsolationTest'
+    args layout.buildDirectory.dir('classes/java/main').get().asFile.absolutePath, file('src/main/resources/META-INF/neoforge.mods.toml').absolutePath
+    inputs.file('src/main/resources/META-INF/neoforge.mods.toml')
+}
+tasks.named('check') { dependsOn isolationTest }
+
+// Data/registry checks only: no Minecraft instance, renderer, client or server is started.
+def presentationTest = tasks.register('presentationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'thaumcraft.viewers.PresentationTest'
+}
+tasks.named('check') { dependsOn presentationTest }

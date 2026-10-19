@@ -16,10 +16,16 @@ import thaumcraft.items.ThaumometerItem;
 import thaumcraft.registry.R2Content;
 
 /** Original 32-frame aspect rings, core strips, brightness and distance fading. */
+@net.neoforged.fml.common.EventBusSubscriber(modid="thaumcraft",bus=net.neoforged.fml.common.EventBusSubscriber.Bus.MOD,value=net.neoforged.api.distmarker.Dist.CLIENT)
 public final class AuraNodeRenderer implements BlockEntityRenderer<AuraNodeBlockEntity> {
     private static final ResourceLocation TEXTURE=ResourceLocation.parse("thaumcraft:textures/misc/nodes.png");
+    private static ShaderInstance shader;
+    static ShaderInstance shader(){return shader;}
+    @net.neoforged.bus.api.SubscribeEvent public static void shaders(net.neoforged.neoforge.client.event.RegisterShadersEvent event)throws java.io.IOException{
+        event.registerShader(new ShaderInstance(event.getResourceProvider(),ResourceLocation.parse("thaumcraft:aura_node"),DefaultVertexFormat.POSITION_TEX_COLOR),value->shader=value);
+    }
     public AuraNodeRenderer(BlockEntityRendererProvider.Context context){}
-    public static boolean revealed(){var player=Minecraft.getInstance().player;return player!=null&&(thaumcraft.equipment.FortressArmor.goggles(player.getItemBySlot(EquipmentSlot.HEAD))||player.getMainHandItem().getItem() instanceof ThaumometerItem);}
+    public static boolean revealed(){var player=Minecraft.getInstance().player;return player!=null&&(thaumcraft.api.EquipmentVision.canSeeNodes(player)||player.getMainHandItem().getItem() instanceof ThaumometerItem);}
     @Override public int getViewDistance(){return 64;}
     @Override public boolean shouldRenderOffScreen(AuraNodeBlockEntity node){return true;}
     @Override public void render(AuraNodeBlockEntity node,float partial,PoseStack pose,MultiBufferSource buffers,int light,int overlay){
@@ -28,7 +34,7 @@ public final class AuraNodeRenderer implements BlockEntityRenderer<AuraNodeBlock
         renderAura(node.getBlockPos(),node.state.current,node.state.type,node.state.modifier,false,pose,buffers);
     }
     static void renderAura(net.minecraft.core.BlockPos pos,java.util.Map<String,Integer> aspects,NodeState.Type type,NodeState.Modifier modifier,boolean forceVisible,PoseStack pose,MultiBufferSource buffers){
-        var mc=Minecraft.getInstance();var viewer=mc.getCameraEntity();if(viewer==null)return;boolean goggles=forceVisible||mc.player!=null&&thaumcraft.equipment.FortressArmor.goggles(mc.player.getItemBySlot(EquipmentSlot.HEAD)),visible=forceVisible||revealed();double range=goggles?64:48,distance=viewer.position().distanceTo(pos.getCenter());if(distance>64)return;
+        var mc=Minecraft.getInstance();var viewer=mc.getCameraEntity();if(viewer==null)return;boolean goggles=forceVisible||mc.player!=null&&thaumcraft.api.EquipmentVision.canSeeNodes(mc.player),visible=forceVisible||revealed();double range=goggles?64:48,distance=viewer.position().distanceTo(pos.getCenter());if(distance>64)return;
         int frame=(int)Math.floorMod(System.nanoTime()/40000000+pos.getX(),32);float alpha=(float)((range-distance)/range),angle=0;long time=System.nanoTime()/5000000;
         if(!visible||aspects.isEmpty()){strip(pose,buffers,frame,1,0,0.5f,0.1f,0xffffff,true,false);return;}if(distance>range)return;
         switch(modifier){case BRIGHT->alpha*=1.5f;case PALE->alpha*=0.66f;case FADING->alpha*=Mth.sin(viewer.tickCount/3f)*0.25f+0.33f;default->{}}
@@ -42,7 +48,7 @@ public final class AuraNodeRenderer implements BlockEntityRenderer<AuraNodeBlock
         // Transform the two screen axes through the full inverse linear transform instead.
         var composite=new org.joml.Matrix3f(new org.joml.Matrix4f(com.mojang.blaze3d.systems.RenderSystem.getModelViewMatrix()).mul(pose.last().pose()));
         float size=composite.transform(new org.joml.Vector3f(1,0,0)).length();var inverse=new org.joml.Matrix3f(composite).invert();
-        var vertices=buffers.getBuffer(ThaumcraftRenderTypes.unlit(TEXTURE,additive,throughWalls));float u=frame/32f,v=row/32f;int opacity=Math.clamp((int)(alpha*255),0,255);float sin=Mth.sin(angle),cos=Mth.cos(angle);
+        var vertices=buffers.getBuffer(ThaumcraftRenderTypes.auraNode(TEXTURE,additive,throughWalls));float u=frame/32f,v=row/32f;int opacity=Math.clamp((int)(alpha*255),0,255);float sin=Mth.sin(angle),cos=Mth.cos(angle);
         for(int i=0;i<4;i++){float x=i<2?-scale:scale,y=i==0||i==3?-scale:scale;var delta=inverse.transform(new org.joml.Vector3f((x*cos-y*sin)*size,(x*sin+y*cos)*size,0));vertices.addVertex(pose.last().pose(),delta.x,delta.y,delta.z).setColor(color>>16&255,color>>8&255,color&255,opacity).setUv(i<2?u+1/32f:u,i==0||i==3?v+1/32f:v);}
         pose.popPose();
     }

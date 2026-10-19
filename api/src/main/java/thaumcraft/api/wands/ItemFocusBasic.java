@@ -9,11 +9,14 @@ import net.minecraft.world.item.component.CustomData;
 import thaumcraft.api.aspects.Aspect;
 
 public abstract class ItemFocusBasic extends Item {
-    protected ItemFocusBasic(){super(new Properties().stacksTo(1).rarity(Rarity.RARE));}
+    protected ItemFocusBasic(){this(new Properties().stacksTo(1).rarity(Rarity.RARE));}
+    protected ItemFocusBasic(Properties properties){super(properties);}
     public abstract Map<Aspect,Integer> getVisCost(ItemStack stack);
     public boolean isVisCostPerTick(ItemStack stack){return false;}
     public int getActivationCooldown(ItemStack stack){return 0;}
     public int getFocusColor(ItemStack stack){return 0xffffff;}
+    /** Optional original selector grouping key. null keeps the core's native grouping. */
+    public String getSortingHelper(ItemStack stack){return null;}
     public abstract List<FocusUpgradeType> getPossibleUpgradesByRank(ItemStack stack,int rank);
     public int[] getAppliedUpgrades(ItemStack stack){int[] result={-1,-1,-1,-1,-1};var stored=stack.getOrDefault(DataComponents.CUSTOM_DATA,CustomData.EMPTY).copyTag().getIntArray("FocusUpgrades");System.arraycopy(stored,0,result,0,Math.min(5,stored.length));return result;}
     public int getUpgradeLevel(ItemStack stack,FocusUpgradeType upgrade){return (int)Arrays.stream(getAppliedUpgrades(stack)).filter(id->id==upgrade.id()).count();}

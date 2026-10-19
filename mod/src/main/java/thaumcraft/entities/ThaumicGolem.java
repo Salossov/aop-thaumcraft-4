@@ -21,7 +21,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.items.*;
 import thaumcraft.registry.R3Equipment;
 
-public final class ThaumicGolem extends PathfinderMob implements MenuProvider {
+public final class ThaumicGolem extends PathfinderMob implements MenuProvider, thaumcraft.api.entities.IControllableGolem {
     private static final EntityDataAccessor<Integer> UPGRADE_MASK=SynchedEntityData.defineId(ThaumicGolem.class,EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> MATERIAL=SynchedEntityData.defineId(ThaumicGolem.class,EntityDataSerializers.INT),CORE=SynchedEntityData.defineId(ThaumicGolem.class,EntityDataSerializers.INT),ACTION=SynchedEntityData.defineId(ThaumicGolem.class,EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> ADVANCED=SynchedEntityData.defineId(ThaumicGolem.class,EntityDataSerializers.BOOLEAN);
@@ -111,7 +111,12 @@ public final class ThaumicGolem extends PathfinderMob implements MenuProvider {
         if(stack.is(Items.SUGAR)){if(!level().isClientSide){stack.consume(1,player);heal(5);addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.MOVEMENT_SPEED,Math.min(2400,600+(hasEffect(net.minecraft.world.effect.MobEffects.MOVEMENT_SPEED)?getEffect(net.minecraft.world.effect.MobEffects.MOVEMENT_SPEED).getDuration():0)),0));level().broadcastEntityEvent(this,(byte)7);}return InteractionResult.sidedSuccess(level().isClientSide);}
         if(player instanceof ServerPlayer server&&Set.of(0,1,2,4,5,8,10).contains(core()))server.openMenu(this,buffer->buffer.writeVarInt(getId()));return InteractionResult.sidedSuccess(level().isClientSide);
     }
-    public void replaceMarkers(java.util.List<GolemMarker> values){markers.clear();markers.addAll(values);}
+    public void replaceMarkers(java.util.List<GolemMarker> values){var copy=List.copyOf(values);markers.clear();markers.addAll(copy);workRevision++;}
+    @Override public String golemMaterial(){return material().name().toLowerCase(Locale.ROOT);}
+    @Override public List<thaumcraft.api.entities.IControllableGolem.Marker> golemMarkers(){return markers.stream().map(marker->new thaumcraft.api.entities.IControllableGolem.Marker(marker.dimension(),marker.pos(),marker.face(),marker.color())).toList();}
+    private void requireGolemServerThread(){if(level().isClientSide||level().getServer()==null||!level().getServer().isSameThread())throw new IllegalStateException("Golem configuration requires its server thread");}
+    @Override public void setGolemHome(BlockPos position,Direction face){requireGolemServerThread();var next=Objects.requireNonNull(position,"position").immutable();Objects.requireNonNull(face,"face");home=next;homeFace=face;restrictTo(next,35);workRevision++;}
+    @Override public void replaceGolemMarkers(List<thaumcraft.api.entities.IControllableGolem.Marker> values){requireGolemServerThread();var copy=List.copyOf(values).stream().map(marker->new GolemMarker(marker.dimension(),marker.position(),marker.face(),marker.color())).toList();replaceMarkers(copy);}
     public boolean mark(GolemMarker marker,boolean remove){workRevision++;for(int i=0;i<markers.size();i++){var existing=markers.get(i);if(existing.pos().equals(marker.pos())&&existing.dimension().equals(marker.dimension())&&existing.face()==marker.face()){markers.remove(i);if(!remove&&upgrade(4)>0&&existing.color()<15)markers.add(new GolemMarker(marker.dimension(),marker.pos(),marker.face(),existing.color()+1));return true;}}markers.add(marker);return true;}
     public void dismantle(Player player){if(level().isClientSide)return;var result=new ItemStack(R3Equipment.GOLEM_BODIES.get(material()).get());var config=configuration();config.remove("Toggles");config.remove("Colors");if(player.isShiftKeyDown()){config.remove("core");config.remove("upgrades");config.remove("deco");config.remove("Markers");config.remove("Filters");if(core()>=0)spawnAtLocation(R3Equipment.GOLEM_CORES.get(GolemCoreItem.Kind.values()[core()]).get());for(byte upgrade:upgrades)if(upgrade>=0&&random.nextBoolean())spawnAtLocation(R3Equipment.GOLEM_UPGRADES.get(upgrade).get());}result.set(DataComponents.CUSTOM_DATA,CustomData.of(config));if(hasCustomName()&&!player.isShiftKeyDown())result.set(DataComponents.CUSTOM_NAME,getCustomName());spawnAtLocation(result);dropCarried();playSound(thaumcraft.registry.R2Sounds.ZAP.get(),.5f,1);discard();}
     public void dropCarried(){if(!carried().isEmpty()){spawnAtLocation(carried());carried(ItemStack.EMPTY);}}

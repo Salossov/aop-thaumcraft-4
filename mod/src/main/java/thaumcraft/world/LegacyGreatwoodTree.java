@@ -252,7 +252,10 @@ public final class LegacyGreatwoodTree {
         return var14 == var15 ? -1 : Math.abs(var14);
     }
 
+    private boolean prepared;
+    public boolean generateNative(WorldGenLevel level,Random random,int x,int y,int z){prepared=true;return generate(level,random,x,y,z,true);}
     boolean validTreeLocation(int x, int z) {
+        if(prepared)return true;
         int[] var1 = new int[]{this.basePos[0] + x, this.basePos[1], this.basePos[2] + z};
         int[] var2 = new int[]{this.basePos[0] + x, this.basePos[1] + this.heightLimit - 1, this.basePos[2] + z};
         try {

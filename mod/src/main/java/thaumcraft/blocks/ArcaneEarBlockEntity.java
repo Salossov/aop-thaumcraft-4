@@ -15,7 +15,7 @@ import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import thaumcraft.registry.R4Content;
 
 @EventBusSubscriber(modid="thaumcraft")
-public final class ArcaneEarBlockEntity extends BlockEntity {
+public final class ArcaneEarBlockEntity extends BlockEntity implements thaumcraft.api.world.IArcaneEar {
     public static final NoteBlockInstrument[] INSTRUMENTS={NoteBlockInstrument.HARP,NoteBlockInstrument.BASEDRUM,NoteBlockInstrument.SNARE,NoteBlockInstrument.HAT,NoteBlockInstrument.BASS};
     private record Played(long sequence,long time,BlockPos position,int tone,int note){}
     private static final Map<ServerLevel,List<Played>> EVENTS=new WeakHashMap<>();
@@ -27,6 +27,7 @@ public final class ArcaneEarBlockEntity extends BlockEntity {
     @SubscribeEvent public static void expired(LevelTickEvent.Post e){if(e.getLevel() instanceof ServerLevel l){var events=EVENTS.get(l);if(events!=null){events.removeIf(n->n.time()<l.getGameTime()-1);if(events.isEmpty())EVENTS.remove(l);}}}
     private static int originalTone(NoteBlockInstrument instrument){for(int i=0;i<INSTRUMENTS.length;i++)if(INSTRUMENTS[i]==instrument)return i;return -1;}
     public int note(){return note;}
+    @Override public void setNote(byte value){if(!(level instanceof ServerLevel server)||!server.getServer().isSameThread())throw new IllegalStateException("Arcane ear mutation requires its server thread");note=value;changed();}
     public int tone(){return tone;}
     public int redstoneTicks(){return redstoneTicks;}
     public void updateTone(){if(level==null)return;int current=originalTone(level.getBlockState(worldPosition.below()).instrument());current=Math.max(0,current);if(tone!=current){tone=current;changed();}}
@@ -36,7 +37,7 @@ public final class ArcaneEarBlockEntity extends BlockEntity {
     public void triggerNote(boolean sound){if(level!=null&&level.isEmptyBlock(worldPosition.above()))level.blockEvent(worldPosition,getBlockState().getBlock(),sound?tone:-1,note);}
     public void tick(){if(!(level instanceof ServerLevel l))return;if(redstoneTicks>0&&--redstoneTicks==0)output(false);else if(redstoneTicks==0&&getBlockState().getValue(ArcaneEarBlock.POWERED))output(false);for(var n:EVENTS.getOrDefault(l,List.of()))if(n.sequence()>consumedSequence){consumedSequence=n.sequence();if(n.time()>=l.getGameTime()-1&&n.tone()==tone&&n.note()==note&&worldPosition.distSqr(n.position())<=4096){triggerNote(false);redstoneTicks=10;output(true);}}}
     @Override protected void saveAdditional(CompoundTag tag,HolderLookup.Provider lookup){super.saveAdditional(tag,lookup);tag.putByte("note",(byte)note);tag.putByte("tone",(byte)tone);}
-    @Override protected void loadAdditional(CompoundTag tag,HolderLookup.Provider lookup){super.loadAdditional(tag,lookup);note=Math.clamp(tag.getByte("note"),0,24);tone=Math.clamp(tag.getByte("tone"),0,4);redstoneTicks=0;consumedSequence=sequence;}
+    @Override protected void loadAdditional(CompoundTag tag,HolderLookup.Provider lookup){super.loadAdditional(tag,lookup);note=tag.getByte("note");tone=Math.clamp(tag.getByte("tone"),0,4);redstoneTicks=0;consumedSequence=sequence;}
     @Override public CompoundTag getUpdateTag(HolderLookup.Provider lookup){return saveWithoutMetadata(lookup);}
     @Override public ClientboundBlockEntityDataPacket getUpdatePacket(){return ClientboundBlockEntityDataPacket.create(this);}
 }

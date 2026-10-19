@@ -30,7 +30,7 @@ public final class ThaumicFocusItem extends ItemFocusBasic {
     public Map<Aspect,Integer> activationCost(ItemStack stack,net.minecraft.util.RandomSource random){return getVisCost(stack);}
     @Override public boolean isVisCostPerTick(ItemStack stack){return kind==Kind.FIRE&&!isUpgradedWith(stack,FocusUpgradeType.fireball)||kind==Kind.EXCAVATION;}
     @Override public int getActivationCooldown(ItemStack stack){return switch(kind){case HELLBAT->1000;case PRIMAL->500;case FROST->isUpgradedWith(stack,FocusUpgradeType.scattershot)||isUpgradedWith(stack,FocusUpgradeType.iceboulder)?500:200;case SHOCK->isUpgradedWith(stack,FocusUpgradeType.chainlightning)?500:isUpgradedWith(stack,FocusUpgradeType.earthshock)?1000:250;case FIRE->isUpgradedWith(stack,FocusUpgradeType.fireball)?1000:0;default->0;};}
-    @Override public int getFocusColor(ItemStack stack){return switch(kind){case FIRE->15028484;case FROST->5204428;case SHOCK->10466239;case EXCAVATION->409606;case TRADE->8747923;case HELLBAT->14431746;case PORTABLE_HOLE->594985;case WARDING->0xfc9e00;case PRIMAL->10854849;};}
+    @Override public int getFocusColor(ItemStack stack){return switch(kind){case FIRE->15028484;case FROST->5204428;case SHOCK->10466239;case EXCAVATION->409606;case TRADE->8747923;case HELLBAT->14431746;case PORTABLE_HOLE->594985;case WARDING->16771535;case PRIMAL->10854849;};}
     @Override public List<FocusUpgradeType> getPossibleUpgradesByRank(ItemStack stack,int rank){if(rank<1||rank>5)return List.of();var choices=new ArrayList<FocusUpgradeType>();choices.add(FocusUpgradeType.frugal);switch(kind){
         case PORTABLE_HOLE->{choices.add(FocusUpgradeType.enlarge);choices.add(FocusUpgradeType.extend);}
         case PRIMAL->{if(rank==3)choices.add(FocusUpgradeType.seeker);}

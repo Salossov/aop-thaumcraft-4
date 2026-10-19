@@ -1,0 +1,12 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+group = 'example.thaumcraft'
+version = '1.0.0'
+base { archivesName = 'thaumcraft-example' }
+java { toolchain.languageVersion = JavaLanguageVersion.of(21); withSourcesJar() }
+neoForge { version = '21.1.252' }
+dependencies { compileOnly files('../lib/thaumcraft-api-1.0.0.jar') }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(AbstractArchiveTask).configureEach { preserveFileTimestamps = false; reproducibleFileOrder = true }

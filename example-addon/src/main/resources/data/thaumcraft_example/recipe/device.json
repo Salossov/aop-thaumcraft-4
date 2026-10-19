@@ -1,0 +1,24 @@
+{
+  "type": "thaumcraft:arcane",
+  "research": "thaumcraft_example:introduction",
+  "vis": {
+    "aer": 5
+  },
+  "pattern": [
+    " I ",
+    "IDI",
+    " I "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "id": "thaumcraft_example:device",
+    "count": 1
+  }
+}

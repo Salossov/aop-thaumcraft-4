@@ -42,13 +42,15 @@ public final class LegacyNaturalPopulation {
         boolean aura=false;
         if(gates.aura()){
             if(!nether){
-                var nearest=searchPrepared?preparedStructure:server.findNearestMapStructure(SCATTERED,center,100,false);
+                // TC4's fresh MapGenScatteredFeature reads recorded starts, not a global locate
+                // that generates remote structures before this chunk can receive its population.
+                var nearest=searchPrepared?preparedStructure:NaturalPopulationData.get(server).nearestTemple(center);
                 if(nearest!=null){var nodePos=nearest;var seen=STRUCTURE_NODES.computeIfAbsent(server,key->new HashSet<>());if(seen.add(nodePos)){aura=true;NodeFactory.create(level,new BlockPos(nodePos.getX(),surface(level,nodePos.getX(),nodePos.getZ())+3,nodePos.getZ()),random);}}
             }
             aura=wildNode(level,random,chunkX,chunkZ,aura);
         }
         PopulationPolicy.Structure selected=PopulationPolicy.Structure.NONE;boolean placed=false;
-        if(gates.structures()){
+        if(gates.structures()&&!newGen){
             int x=chunkX*16+random.nextInt(16),z=chunkZ*16+random.nextInt(16),y=surface(level,x,z)-9;
             if(y<level.getMaxBuildHeight()){
                 selected=PopulationPolicy.structure(random);
@@ -68,15 +70,17 @@ public final class LegacyNaturalPopulation {
     public static void decorate(WorldGenLevel level,RandomSource random,int chunkX,int chunkZ){
         var server=level.getLevel();var dimension=server.dimension();
         if(dimension.equals(Level.END)||dimension.equals(Level.NETHER)||dimension.location().equals(ResourceLocation.parse("thaumcraft:outer_lands")))return;
-        var center=new BlockPos(chunkX*16+8,server.getSeaLevel(),chunkZ*16+8);
+        int centerX=chunkX*16+8,centerZ=chunkZ*16+8;
+        var center=new BlockPos(centerX,surface(level,centerX,centerZ),centerZ);
         var biome=level.getBiome(center);
         if(biome.is(WorldBiomes.MAGICAL))MagicalForestPopulation.populate(level,random,chunkX,chunkZ);
+        if(biome.is(WorldBiomes.TAINT))LegacyTaintPopulation.populate(level,random,chunkX,chunkZ);
         var gates=PopulationPolicy.gates(PopulationPolicy.blacklist(ThaumcraftConfig.DIMENSION_BLACKLIST.get(),dimension.location()),PopulationPolicy.blacklist(ThaumcraftConfig.BIOME_BLACKLIST.get(),biome.unwrapKey().orElseThrow().location()),dimension.equals(Level.OVERWORLD),false,false,server.getChunkSource().getGenerator() instanceof FlatLevelSource,true,new PopulationPolicy.Switches(ThaumcraftConfig.GENERATE_MAGIC_TREES.get(),false,false,false,false,false));
         if(gates.trees())vegetation(level,random,chunkX,chunkZ);
     }
     private static void vegetation(WorldGenLevel level,RandomSource random,int chunkX,int chunkZ){
         if(random.nextInt(60)==3){int x=chunkX*16+random.nextInt(16),z=chunkZ*16+random.nextInt(16),y=surface(level,x,z);if(BiomeProfiles.supportsSilverwood(level.getBiome(new BlockPos(x,y,z))))new LegacySilverwoodTree(false,7,4).func_76484_a(level,random,x,y,z);}
-        if(random.nextInt(25)==7){int x=chunkX*16+random.nextInt(16),z=chunkZ*16+random.nextInt(16),y=surface(level,x,z);if(BiomeProfiles.greatwoodChance(level.getBiome(new BlockPos(x,y,z)))>random.nextFloat()){boolean spiders=random.nextInt(8)==0;if(new LegacyGreatwoodTree().generate(level,new RandomAdapter(random),x,y,z,spiders)&&spiders){var host=level.getLevel();host.getServer().execute(()->thaumcraft.world.StructureIndexData.get(host).record(host,thaumcraft.world.StructureIndexData.Kind.SPIDER_TREE,x,y,z));}}}
+        if(random.nextInt(25)==7){int x=chunkX*16+random.nextInt(16),z=chunkZ*16+random.nextInt(16),y=surface(level,x,z);if(BiomeProfiles.greatwoodChance(level.getBiome(new BlockPos(x,y,z)))>random.nextFloat()){boolean spiders=random.nextInt(8)==0;if(!spiders)new LegacyGreatwoodTree().generate(level,new RandomAdapter(random),x,y,z,false);}}
         LegacyCinderpearlFlowers.populate(level,random,new BlockPos(chunkX*16,0,chunkZ*16));
     }
     private static void ores(WorldGenLevel level,RandomSource random,int chunkX,int chunkZ,boolean newGen){

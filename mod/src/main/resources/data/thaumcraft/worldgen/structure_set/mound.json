@@ -1,0 +1,19 @@
+{
+  "structures": [
+    {
+      "structure": "thaumcraft:mound",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 1,
+    "separation": 0,
+    "salt": 423500,
+    "locate_offset": [
+      8,
+      0,
+      8
+    ]
+  }
+}

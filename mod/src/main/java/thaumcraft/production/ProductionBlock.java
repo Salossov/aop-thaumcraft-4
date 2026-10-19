@@ -49,19 +49,20 @@ public class ProductionBlock extends Block implements EntityBlock {
         };
     }
     @Override public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        if (level.isClientSide) return null;
+        if (level.isClientSide) return kind==Kind.CRUCIBLE&&type==R3Content.CRUCIBLE_ENTITY.get()?(world,pos,block,tile)->((CrucibleBlockEntity)tile).clientTick():null;
         BlockEntityType<?> expected = kind == Kind.CRUCIBLE ? R3Content.CRUCIBLE_ENTITY.get() : kind == Kind.FURNACE ? R3Content.FURNACE_ENTITY.get() : R3Content.TRANSPORT_ENTITY.get();
         return type == expected ? (world, pos, block, tile) -> ((EssentiaBlockEntity) tile).serverTick() : null;
     }
     @Override protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return switch (kind) {
-            case CRUCIBLE -> Shapes.or(box(0, 0, 0, 16, 3, 16), box(0, 3, 0, 2, 16, 16), box(14, 3, 0, 16, 16, 16), box(2, 3, 0, 14, 16, 2), box(2, 3, 14, 14, 16, 16));
+            case CRUCIBLE -> box(0,0,0,16,16,16);
             case JAR, VOID_JAR -> box(3, 0, 3, 13, 13, 13);
             case TUBE, VALVE, FILTER, RESTRICTED, ONEWAY, BUFFER -> tubeShape(state,level, pos);
             case RESERVOIR -> box(2, 0, 2, 14, 16, 14);
             default -> box(0, 0, 0, 16, 16, 16);
         };
     }
+    @Override protected VoxelShape getCollisionShape(BlockState state,BlockGetter level,BlockPos pos,CollisionContext context){return kind==Kind.CRUCIBLE?Shapes.or(box(0, 0, 0, 16, 3, 16), box(0, 3, 0, 2, 16, 16), box(14, 3, 0, 16, 16, 16), box(2, 3, 0, 14, 16, 2), box(2, 3, 14, 14, 16, 16)):super.getCollisionShape(state,level,pos,context);}
     private VoxelShape tubeShape(BlockState state,BlockGetter level, BlockPos pos) {
         double low=switch(kind){case BUFFER->4;case FILTER->5.5;case VALVE->6;default->6.5;};VoxelShape result = box(low,low,low,16-low,16-low,16-low);
         if(kind==Kind.VALVE)result=Shapes.or(result,switch(state.getValue(FACING)){case NORTH->Shapes.or(box(7,7,3,9,9,6),box(4,4,2,12,12,3));case SOUTH->Shapes.or(box(7,7,10,9,9,13),box(4,4,13,12,12,14));case WEST->Shapes.or(box(3,7,7,6,9,9),box(2,4,4,3,12,12));case EAST->Shapes.or(box(10,7,7,13,9,9),box(13,4,4,14,12,12));case UP->Shapes.or(box(7,10,7,9,13,9),box(4,13,4,12,14,12));case DOWN->Shapes.or(box(7,3,7,9,6,9),box(4,2,4,12,3,12));});

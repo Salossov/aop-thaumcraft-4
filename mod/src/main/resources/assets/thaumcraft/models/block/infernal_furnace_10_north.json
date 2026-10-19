@@ -10,19 +10,19 @@
     "particle": "thaumcraft:blocks/furnace7",
     "front": "thaumcraft:blocks/furnace13",
     "inner": "thaumcraft:blocks/furnace15",
-    "bars": "minecraft:block/iron_bars"
+    "fire": "minecraft:block/fire_0"
   },
   "elements": [
     {
       "from": [
         0,
         0,
-        0
+        12.64
       ],
       "to": [
         16,
         16,
-        8
+        12.64
       ],
       "faces": {
         "north": {
@@ -35,54 +35,13 @@
           ]
         },
         "south": {
-          "texture": "#south",
+          "texture": "#front",
           "uv": [
-            0,
-            0,
             16,
+            0,
+            0,
             16
-          ],
-          "cullface": "south"
-        },
-        "west": {
-          "texture": "#west",
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "cullface": "west"
-        },
-        "east": {
-          "texture": "#east",
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "cullface": "east"
-        },
-        "up": {
-          "texture": "#up",
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "cullface": "up"
-        },
-        "down": {
-          "texture": "#down",
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "cullface": "down"
+          ]
         }
       }
     },
@@ -98,7 +57,7 @@
         12.8
       ],
       "faces": {
-        "south": {
+        "north": {
           "texture": "#inner",
           "uv": [
             0,
@@ -107,6 +66,12 @@
             16
           ]
         }
+      },
+      "shade": false,
+      "neoforge_data": {
+        "block_light": 15,
+        "sky_light": 15,
+        "ambient_occlusion": false
       }
     },
     {
@@ -121,24 +86,30 @@
         14.4
       ],
       "faces": {
-        "south": {
-          "texture": "#bars",
+        "north": {
+          "texture": "#fire",
           "uv": [
             0,
             0,
             16,
-            24
+            16
           ]
         },
-        "north": {
-          "texture": "#bars",
+        "south": {
+          "texture": "#fire",
           "uv": [
-            0,
-            0,
             16,
-            24
+            0,
+            0,
+            16
           ]
         }
+      },
+      "shade": false,
+      "neoforge_data": {
+        "block_light": 15,
+        "sky_light": 15,
+        "ambient_occlusion": false
       }
     }
   ]

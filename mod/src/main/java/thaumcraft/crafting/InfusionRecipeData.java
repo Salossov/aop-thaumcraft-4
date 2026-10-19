@@ -34,13 +34,13 @@ public final class InfusionRecipeData extends InfusionRecipe {
                 var result = ItemStack.STREAM_CODEC.decode(b); int size = b.readVarInt();
                 if (size < 0 || size > 48) throw new IllegalArgumentException("Invalid aspect count");
                 var aspects = new LinkedHashMap<String, Integer>();
-                for (int n = 0; n < size; n++) { if (aspects.put(b.readUtf(32), b.readVarInt()) != null) throw new IllegalArgumentException("Duplicate aspect"); }
+                for (int n = 0; n < size; n++) { if (aspects.put(b.readUtf(128), b.readVarInt()) != null) throw new IllegalArgumentException("Duplicate aspect"); }
                 return new InfusionRecipeData(research, input, components, result, aspects, b.readVarInt());
             }
             public void encode(RegistryFriendlyByteBuf b, InfusionRecipeData r) {
                 b.writeUtf(r.research(), 128); Ingredient.CONTENTS_STREAM_CODEC.encode(b, r.input());b.writeVarInt(r.components().size());r.components().forEach(c->Ingredient.CONTENTS_STREAM_CODEC.encode(b,c));
                 ItemStack.STREAM_CODEC.encode(b, r.getRecipeOutput()); b.writeVarInt(r.aspects().size());
-                r.aspects().forEach((tag, n) -> { b.writeUtf(tag, 32); b.writeVarInt(n); });b.writeVarInt(r.instability());
+                r.aspects().forEach((tag, n) -> { b.writeUtf(tag, 128); b.writeVarInt(n); });b.writeVarInt(r.instability());
             }
         };
         public MapCodec<InfusionRecipeData> codec() { return CODEC; }

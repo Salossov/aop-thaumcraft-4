@@ -20,4 +20,21 @@ subprojects {
     }
 }
 
-tasks.named('build') { dependsOn ':api:build', ':mod:build' }
+tasks.named('build') { dependsOn ':api:build', ':mod:build', ':emi-jei-integration-aoptc4:build', ':example-addon:build' }
+
+// SDK is a development distribution; API classes remain bundled only in the core runtime JAR.
+tasks.register('addonSdk', Zip) {
+    dependsOn ':api:jar', ':api:sourcesJar', ':example-addon:jar', ':emi-jei-integration-aoptc4:jar', ':mod:jar'
+    archiveBaseName = 'thaumcraft-addon-sdk'
+    archiveVersion = project.mod_version
+    destinationDirectory = layout.buildDirectory.dir('distributions')
+    from(project(':api').tasks.named('jar')) { into 'lib' }
+    from(project(':api').tasks.named('sourcesJar')) { into 'lib' }
+    from('docs/addons') { exclude 'example-*.gradle'; into 'docs' }
+    from('example-addon/src') { into 'example-addon/src' }
+    from('docs/addons/example-build.gradle') { into 'example-addon'; rename { 'build.gradle' } }
+    from('docs/addons/example-settings.gradle') { into 'example-addon'; rename { 'settings.gradle' } }
+    from('gradlew.ps1') { into 'example-addon' }
+    from('gradle/wrapper') { into 'example-addon/gradle/wrapper' }
+    from('NOTICE.md') { into 'docs' }
+}

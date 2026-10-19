@@ -18,8 +18,33 @@ import thaumcraft.network.*;
 
 /** TC4 category tree, parent links, parchment pages and server-authorized notes. */
 public final class ThaumonomiconScreen extends FittedContainerScreen<ThaumonomiconMenu> {
-    private static final List<String> CATEGORIES=List.of("BASICS","THAUMATURGY","ALCHEMY","ARTIFICE","GOLEMANCY","ELDRITCH");
-    private static final Map<String,String> CATEGORY_ICONS=Map.of("BASICS","items/thaumonomiconcheat","THAUMATURGY","misc/r_thaumaturgy","ALCHEMY","misc/r_crucible","ARTIFICE","misc/r_artifice","GOLEMANCY","misc/r_golemancy","ELDRITCH","misc/r_eldritch");
+    private int tabOffset;
+    private List<String> categories(){var known=ClientKnowledge.snapshot().completedResearch();return thaumcraft.api.research.ResearchApi.books().categories().values().stream().filter(c->c.requiredResearch().isEmpty()||known.contains(c.requiredResearch())).sorted(Comparator.comparingInt(thaumcraft.api.book.BookCategory::order).thenComparing(thaumcraft.api.book.BookCategory::id)).map(thaumcraft.api.book.BookCategory::id).toList();}
+    private List<String> tabs(){var all=categories();int count=Math.max(1,imageHeight/24);tabOffset=Math.clamp(tabOffset,0,Math.max(0,all.size()-count));return all.subList(tabOffset,Math.min(all.size(),tabOffset+count));}
+    private record AddonHover(int x,int y,int width,int height,List<Component> tooltip,Runnable click){}
+    private record AddonCanvas(thaumcraft.api.book.BookPage page,int x,int y){}
+    private final List<AddonHover> addonHovers=new ArrayList<>();
+    private final List<AddonCanvas> addonCanvases=new ArrayList<>();
+    private String navigationHighlight="";private long navigationUntil;private boolean navigationNotice;
+    private void openResearch(String key){
+        var target=thaumcraft.api.research.ResearchNavigation.resolve(key,ClientKnowledge.definitions(),thaumcraft.api.research.ResearchApi.books(),ClientKnowledge.snapshot());
+        var d=ClientKnowledge.definitions().get(target.focus());spread=0;
+        if(target.reason()==thaumcraft.api.research.ResearchNavigation.Reason.KNOWN){category=d.category();selected=d;return;}
+        selected=null;if(d!=null){category=d.category();panX=-d.column()*24;panY=-d.row()*24;navigationHighlight=d.key();navigationUntil=System.currentTimeMillis()+12000;var all=categories();int index=all.indexOf(category);if(index>=0)tabOffset=Math.max(0,index-Math.max(1,imageHeight/24)+1);}
+        if(target.reason()==thaumcraft.api.research.ResearchNavigation.Reason.PREREQUISITES||target.reason()==thaumcraft.api.research.ResearchNavigation.Reason.UNDISCOVERED){String message=target.reason()==thaumcraft.api.research.ResearchNavigation.Reason.PREREQUISITES?"thaumcraft.book.navigation.prerequisites":"thaumcraft.book.navigation.undiscovered";navigationNotice=true;popupMessage=I18n.get(message);popupUntil=System.nanoTime()/1000000+8000;if(minecraft.player!=null)minecraft.player.displayClientMessage(Component.translatable(message).withStyle(net.minecraft.ChatFormatting.GOLD),false);}
+    }
+
+    private thaumcraft.api.client.BookRenderContext addonContext(GuiGraphics g,int originX,int originY,thaumcraft.api.book.BookPage page){
+        addonCanvases.add(new AddonCanvas(page,originX,originY));var renderer=thaumcraft.api.client.BookRenderers.get(page.type());if(renderer!=null)renderer.mouseMoved(page,pointerX-originX,pointerY-originY);
+        return new thaumcraft.api.client.BookRenderContext(){
+            public GuiGraphics graphics(){return g;}public net.minecraft.client.gui.Font font(){return ThaumonomiconScreen.this.font;}public int x(){return originX;}public int y(){return originY;}
+            public void item(ItemStack stack,int x,int y){ThaumonomiconScreen.this.item(g,stack,originX+x,originY+y,true);}
+            public void aspect(thaumcraft.api.aspects.Aspect aspect,int amount,int x,int y){if(aspect!=null)tag(g,aspect,amount,originX+x,originY+y,1);}
+            public void recipe(String id,int x,int y){renderRecipe(g,id,originX+x,originY+y);}
+            public void link(Component text,String research,int x,int y){g.drawString(font(),text,originX+x,originY+y,0xff563e89,false);addonHovers.add(new AddonHover(originX+x,originY+y,Math.min(139,font().width(text)),10,List.of(text),()->openResearch(research)));}
+            public void tooltip(int x,int y,int w,int h,List<Component> lines){addonHovers.add(new AddonHover(originX+x,originY+y,w,h,List.copyOf(lines),null));}
+        };
+    }
 
     private int pointerX=-1,pointerY=-1;
     private String category="BASICS";private ResearchDefinition selected;private double panX,panY;private long sequence;private int spread,recipeCycle;private long nextRecipeCycle;
@@ -31,19 +56,31 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
     private List<Page> cachedPages=List.of();private ResearchDefinition cachedSelection;private long cachedRevision=-1;private thaumcraft.config.ThaumcraftClientConfig.BookFontStyle cachedFont;
     public ThaumonomiconScreen(ThaumonomiconMenu menu,Inventory inventory,Component title) {super(menu,inventory,title);imageWidth=256;imageHeight=230;}
     public static void noteCreated(ResearchNoteCreatedPayload packet){var mc=net.minecraft.client.Minecraft.getInstance();if(mc.screen instanceof ThaumonomiconScreen screen&&screen.menu.containerId==packet.containerId()){
-        screen.popupMessage=I18n.get("tc.research.popup",I18n.get("tc.research_name."+packet.key()));screen.popupUntil=System.nanoTime()/1000000+3000;screen.play(thaumcraft.registry.R2Sounds.LEARN.get(),.75f);
+        screen.navigationNotice=false;screen.popupMessage=I18n.get("tc.research.popup",I18n.get("tc.research_name."+packet.key()));screen.popupUntil=System.nanoTime()/1000000+3000;screen.play(thaumcraft.registry.R2Sounds.LEARN.get(),.75f);
     }}
     private boolean hasNote(String key){if(minecraft.player==null)return false;for(var stack:minecraft.player.getInventory().items){var note=thaumcraft.items.ResearchNotes.read(stack);if(note!=null&&note.key.equals(key))return true;}return false;}
     private boolean hasScribingSupplies(){if(minecraft.player==null)return false;boolean paper=false,ink=false;for(var stack:minecraft.player.getInventory().items){paper|=stack.is(net.minecraft.world.item.Items.PAPER);ink|=thaumcraft.menu.ResearchMenu.usableInk(stack);}return paper&&ink;}
     @Override protected int fittingWidth() {return 334;}
     @Override protected int fittingHeight() {return 236;}
-    private boolean opened;
-    @Override protected void init() {super.init();centreCategory();if(!opened){opened=true;play(thaumcraft.registry.R2Sounds.PAGE.get(),.66f);}}
+    private boolean opened;private double treeZoom=1;
+    private int treeCenterX(){return leftPos+imageWidth/2;}
+    private int treeCenterY(){return topPos+imageHeight/2-7;}
+    private boolean inTree(double x,double y){return ResearchGraphics.inside(x,y,leftPos+16,topPos+16,imageWidth-32,imageHeight-32);}
+    private void zoom(double value,double mouseX,double mouseY){double next=Math.clamp(value,.5,2);panX+=(mouseX-treeCenterX())/next-(mouseX-treeCenterX())/treeZoom;panY+=(mouseY-treeCenterY())/next-(mouseY-treeCenterY())/treeZoom;treeZoom=next;thaumcraft.config.ThaumcraftClientConfig.BOOK_ZOOM.set(next);}
+    private void frame(GuiGraphics g){var texture=ResearchGraphics.texture("gui/gui_research");int[] sx={0,16,240},sy={0,16,214},sw={16,224,16},sh={16,198,16},dx={leftPos,leftPos+16,leftPos+imageWidth-16},dy={topPos,topPos+16,topPos+imageHeight-16},dw={16,imageWidth-32,16},dh={16,imageHeight-32,16};for(int row=0;row<3;row++)for(int col=0;col<3;col++)g.blit(texture,dx[col],dy[row],dw[col],dh[row],sx[col],sy[row],sw[col],sh[row],256,256);}
+
+    @Override protected void init() {
+        imageWidth=256;imageHeight=230;super.init();var mode=thaumcraft.config.ThaumcraftClientConfig.BOOK_WINDOW_MODE.get();
+        if(mode!=thaumcraft.config.ThaumcraftClientConfig.BookWindowMode.ORIGINAL){imageWidth=Math.max(128,width-64);imageHeight=Math.max(144,height-36);if(mode==thaumcraft.config.ThaumcraftClientConfig.BookWindowMode.SQUARE)imageWidth=imageHeight=Math.min(imageWidth,imageHeight);leftPos=(width-imageWidth+24)/2;topPos=(height-imageHeight)/2;}
+        treeZoom=thaumcraft.config.ThaumcraftClientConfig.BOOK_ZOOM.get();if(!opened)centreCategory();if(!menu.openingResearch.isEmpty()){openResearch(menu.openingResearch);menu.openingResearch="";}
+        addRenderableWidget(net.minecraft.client.gui.components.Button.builder(Component.literal("\u2699"),button->minecraft.setScreen(new net.neoforged.neoforge.client.gui.ConfigurationScreen(net.neoforged.fml.ModList.get().getModContainerById("thaumcraft").orElseThrow(),this))).bounds(width-26,6,20,20).tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.translatable("thaumcraft.book.settings"))).build());
+        if(!opened){opened=true;play(thaumcraft.registry.R2Sounds.PAGE.get(),.66f);}
+    }
     private List<ResearchDefinition> visible(){var k=ClientKnowledge.snapshot();return ClientKnowledge.definitions().values().stream().filter(d->!d.virtual()&&d.category().equals(category)&&(k.completedResearch().contains(d.key())||d.available(k))).toList();}
     private void centreCategory() {var nodes=visible();panX=-nodes.stream().mapToInt(ResearchDefinition::column).average().orElse(0)*24;panY=-nodes.stream().mapToInt(ResearchDefinition::row).average().orElse(0)*24;}
-    private int nodeX(ResearchDefinition d) {return leftPos+128+(int)Math.round(panX)+d.column()*24;}
-    private int nodeY(ResearchDefinition d) {return topPos+108+(int)Math.round(panY)+d.row()*24;}
-    private ResearchDefinition hovered(double x,double y) {if(!ResearchGraphics.inside(x,y,leftPos+16,topPos+16,224,198))return null;return visible().stream().filter(d->ResearchGraphics.inside(x,y,nodeX(d)-11,nodeY(d)-11,22,22)).findFirst().orElse(null);}
+    private int nodeX(ResearchDefinition d) {return treeCenterX()+(int)Math.round(panX)+d.column()*24;}
+    private int nodeY(ResearchDefinition d) {return treeCenterY()+(int)Math.round(panY)+d.row()*24;}
+    private ResearchDefinition hovered(double x,double y) {if(!inTree(x,y))return null;double tx=treeCenterX()+(x-treeCenterX())/treeZoom,ty=treeCenterY()+(y-treeCenterY())/treeZoom;return visible().stream().filter(d->ResearchGraphics.inside(tx,ty,nodeX(d)-11,nodeY(d)-11,22,22)).findFirst().orElse(null);}
     private List<Page> pages() {
         var result=new ArrayList<Page>();if(selected==null)return result;
         var knowledge=ClientKnowledge.snapshot();var style=thaumcraft.config.ThaumcraftClientConfig.BOOK_FONT_STYLE.get();
@@ -51,14 +88,15 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
         cachedSelection=selected;cachedRevision=knowledge.revision();cachedFont=style;
         for(var key:selected.pageOrder()){
         if(selected.pageRequirements().containsKey(key)&&!thaumcraft.network.ClientKnowledge.snapshot().completedResearch().contains(selected.pageRequirements().get(key)))continue;
-        if(selected.textPages().contains(key))for(var text:I18n.get(key).split("(?i)<PAGE>")) {
+        if(thaumcraft.api.research.ResearchApi.books().pages().containsKey(key)){var page=thaumcraft.api.research.ResearchApi.books().pages().get(key);for(var layout:AddonBookLayouts.layout(page,font,result.isEmpty()?174:199,this::addonContext))result.add(new Page(List.of(layout),"",List.of()));}
+        else if(selected.textPages().contains(key))for(var text:I18n.get(key).split("(?i)<PAGE>")) {
             var elements=new ArrayList<BookPageLayout.Element>();int used=0;
             for(var element:BookPageLayout.parse(font,text)){int capacity=result.isEmpty()?174:199;if(used+element.height()>capacity&&!elements.isEmpty()){result.add(new Page(List.copyOf(elements),"",List.of()));elements.clear();used=0;}elements.add(element);used+=element.height();}
             if(!elements.isEmpty())result.add(new Page(List.copyOf(elements),"",List.of()));
         }
         else if(!selected.recipeVariants(key).isEmpty())result.add(new Page(List.of(),key,List.of()));
         }
-        if(selected.key().equals("ASPECTS")) {
+        if(displayResearch(selected).key().equals("ASPECTS")) {
             var aspects=knowledge.aspectPools().keySet().stream().map(thaumcraft.api.aspects.Aspect::getAspect).filter(Objects::nonNull).sorted(Comparator.comparing(thaumcraft.api.aspects.Aspect::getTag)).toList();
             for(int i=0;i<aspects.size();i+=4)result.add(new Page(List.of(),"",aspects.subList(i,Math.min(i+4,aspects.size()))));
         }
@@ -68,15 +106,15 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
     @Override protected void renderBg(GuiGraphics g,float partial,int mouseX,int mouseY) {
         com.mojang.blaze3d.systems.RenderSystem.enableBlend();com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();
         if(selected!=null) {renderBook(g);return;}
-        ResearchGraphics.blit(g,ResearchGraphics.texture(category.equals("ELDRITCH")?"gui/gui_researchbackeldritch":"gui/gui_researchback"),leftPos+8,topPos+8,0,0,240,210,512,512);
-        fittedScissor(g,leftPos+16,topPos+16,leftPos+240,topPos+214);var nodes=visible();var k=ClientKnowledge.snapshot();
+        g.blit(ResourceLocation.parse(thaumcraft.api.research.ResearchApi.books().categories().getOrDefault(category,thaumcraft.api.book.BookCategory.originals().get("BASICS")).background()),leftPos+8,topPos+8,imageWidth-16,imageHeight-20,0f,0f,240,210,512,512);
+        fittedScissor(g,leftPos+16,topPos+16,leftPos+imageWidth-16,topPos+imageHeight-16);g.pose().pushPose();g.pose().translate(treeCenterX(),treeCenterY(),0);g.pose().scale((float)treeZoom,(float)treeZoom,1);g.pose().translate(-treeCenterX(),-treeCenterY(),0);var nodes=visible();var k=ClientKnowledge.snapshot();
         var visibleKeys=nodes.stream().map(ResearchDefinition::key).collect(java.util.stream.Collectors.toSet());
         for(var d:nodes){
             for(var parent:d.parents()){var p=ClientKnowledge.definitions().get(parent);if(p!=null&&visibleKeys.contains(parent))ResearchGraphics.researchLink(g,nodeX(d),nodeY(d),nodeX(p),nodeY(p),k.completedResearch().contains(d.key()),k.completedResearch().contains(parent),(minecraft.player==null?0:minecraft.player.tickCount)+partial);}
             for(var sibling:d.siblings()){var p=ClientKnowledge.definitions().get(sibling);if(p!=null&&visibleKeys.contains(sibling)&&!p.parents().contains(d.key()))ResearchGraphics.researchLink(g,nodeX(d),nodeY(d),nodeX(p),nodeY(p),k.completedResearch().contains(d.key()),k.completedResearch().contains(sibling),(minecraft.player==null?0:minecraft.player.tickCount)+partial);}
         }
         for(var d:nodes) {int x=nodeX(d),y=nodeY(d);boolean done=k.completedResearch().contains(d.key());boolean unlockable=d.available(k);
-            // Original only tints icons to ~30% when locked — never invisible — and pulses
+            // Original only tints icons to ~30% when locked â€” never invisible â€” and pulses
             // brighter when they can be unlocked. Forbidden glow is only drawn behind
             // entries the player can actually see or has done.
             float brightness=done?1:unlockable?0.75f+0.25f*(float)Math.sin((System.currentTimeMillis()%600)/600d*Math.PI*2):0.3f;
@@ -85,23 +123,27 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
             if(d.special())g.blit(ResearchGraphics.texture("gui/gui_research"),x-13,y-13,26,230,26,26,256,256);
             renderResearchIcon(g,d,x-8,y-8,brightness);g.setColor(1,1,1,1);}
 
+        if(System.currentTimeMillis()<navigationUntil)for(var d:nodes)if(d.key().equals(navigationHighlight)){int x=nodeX(d),y=nodeY(d);g.renderOutline(x-17,y-17,34,34,0xffffdd55);g.renderOutline(x-16,y-16,32,32,0xffb57b21);}
+
         for(var d:nodes)if(ResearchHighlights.unread(d.key()))ResearchGraphics.discoveryFlame(g,nodeX(d)-9,nodeY(d)-9,1);
 
-        g.flush();g.disableScissor();com.mojang.blaze3d.systems.RenderSystem.enableBlend();com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();
-        for(int i=0;i<CATEGORIES.size();i++) {var cat=CATEGORIES.get(i);if(cat.equals("ELDRITCH")&&!k.completedResearch().contains("ELDRITCHMINOR"))continue;
-            int x=leftPos-24,y=topPos+i*24;boolean active=category.equals(cat);com.mojang.blaze3d.systems.RenderSystem.enableBlend();com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();g.blit(ResearchGraphics.texture("gui/gui_research"),x,y,active?152:176,232,24,24,256,256);ResearchGraphics.icon(g,ResearchGraphics.texture(CATEGORY_ICONS.get(cat)),leftPos-19+(active?0:8),y+4,16,16,1);com.mojang.blaze3d.systems.RenderSystem.enableBlend();com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();if(ResearchHighlights.unread(cat))ResearchGraphics.discoveryFlame(g,x+1+(active?0:8),y,1);}
+        g.flush();g.pose().popPose();g.disableScissor();com.mojang.blaze3d.systems.RenderSystem.enableBlend();com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();
+        for(int i=0;i<tabs().size();i++) {var cat=tabs().get(i);if(cat.equals("ELDRITCH")&&!k.completedResearch().contains("ELDRITCHMINOR"))continue;
+            int x=leftPos-24,y=topPos+i*24;boolean active=category.equals(cat);com.mojang.blaze3d.systems.RenderSystem.enableBlend();com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();g.blit(ResearchGraphics.texture("gui/gui_research"),x,y,active?152:176,232,24,24,256,256);ResearchGraphics.icon(g,ResourceLocation.parse(thaumcraft.api.research.ResearchApi.books().categories().get(cat).icon()),leftPos-19+(active?0:8),y+4,16,16,1);com.mojang.blaze3d.systems.RenderSystem.enableBlend();com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();if(ResearchHighlights.unread(cat))ResearchGraphics.discoveryFlame(g,x+1+(active?0:8),y,1);}
         // Inactive tabs slide under the wooden book frame; no black mask clips their icons.
-        ResearchGraphics.blit(g,ResearchGraphics.texture("gui/gui_research"),leftPos,topPos,0,0,256,230,256,256);
+        frame(g);
     }
     private void renderNoteMessage(GuiGraphics g){
         if(selected!=null||System.nanoTime()/1000000>=popupUntil||popupMessage.isEmpty())return;
-        var lines=font.split(net.minecraft.network.chat.FormattedText.of(popupMessage),150);int x=leftPos+53,y=topPos+128-lines.size()*font.lineHeight/2;
+        int textWidth=navigationNotice?Math.max(100,imageWidth-48):150;var lines=font.split(net.minecraft.network.chat.FormattedText.of(popupMessage),textWidth);int x=navigationNotice?leftPos+24:leftPos+53,y=navigationNotice?topPos+imageHeight-24-lines.size()*font.lineHeight:topPos+128-lines.size()*font.lineHeight/2;
         if(researchTooltipTop>=0)y=Math.max(4,Math.min(y,researchTooltipTop-lines.size()*font.lineHeight-6));
         g.flush();g.setColor(1,1,1,1);g.pose().pushPose();g.pose().translate(0,0,1200);
-        g.fill(x-3,y-3,x+153,y+lines.size()*font.lineHeight+3,0x80000000);
+        g.fill(x-3,y-3,x+textWidth+3,y+lines.size()*font.lineHeight+3,0x80000000);
         for(var line:lines){g.drawString(font,line,x,y,0xff9085ff,true);y+=font.lineHeight;}g.flush();g.pose().popPose();
     }
+    private ResearchDefinition displayResearch(ResearchDefinition definition){return thaumcraft.api.research.ResearchLinks.target(definition,ClientKnowledge.definitions());}
     private void renderResearchIcon(GuiGraphics g,ResearchDefinition d,int x,int y,float brightness){
+        d=displayResearch(d);
         if(d.key().equals("BANNERS")){researchItem(g,thaumcraft.items.ThaumicBannerItem.stack(10,null),x,y);return;}if(d.key().equals("PRIMALARROW")){researchItem(g,new ItemStack(thaumcraft.registry.R3Equipment.PRIMAL_ARROWS.get((int)(System.currentTimeMillis()/1000%6)).get()),x,y);return;}
         var id=ResourceLocation.tryParse(d.icon());if(id==null)return;g.setColor(1,1,1,1);
         if(!id.getPath().startsWith("textures/")){researchItem(g,new ItemStack(BuiltInRegistries.ITEM.get(id)),x,y);return;}
@@ -139,11 +181,11 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
     private void constructionBlock(GuiGraphics g,ItemStack stack,int x,int y){item(g,stack,x,y,false);}
     private void renderBook(GuiGraphics g) {
         if(nextRecipeCycle<System.currentTimeMillis()){recipeCycle++;nextRecipeCycle=System.currentTimeMillis()+1000;}
-        pageHovers.clear();int sw=(width-256)/2,sh=(height-181)/2;
+        pageHovers.clear();addonHovers.clear();addonCanvases.clear();if(selected!=null)selected=ClientKnowledge.definitions().get(selected.key());if(selected==null)return;if(!categories().contains(category)&&!categories().isEmpty())category=categories().getFirst();int sw=(width-256)/2,sh=(height-181)/2;
         g.pose().pushPose();g.pose().translate((width-256*1.3f)/2,(height-181*1.3f)/2,0);g.pose().scale(0.65f,0.65f,1);g.blit(ResearchGraphics.texture("gui/gui_researchbook"),0,0,0,0,512,362,512,512);g.pose().popPose();
         var pages=pages();spread=Math.clamp(spread,0,(pages.size()-1)/2);
         for(int side=0;side<2;side++) {int index=spread*2+side;if(index>=pages.size())continue;var page=pages.get(index);int x=sw-15+side*152,y=sh-10;
-            if(index==0){bookSprite(g,sw+4,sh-13,24,184,96,4);bookSprite(g,sw+4,sh+4,24,184,96,4);var title=Component.translatable("tc.research_name."+selected.key());float scale=Math.min(1,130f/Math.max(1,font.width(title)));g.pose().pushPose();g.pose().translate(sw+52-font.width(title)*scale/2,sh-6,0);g.pose().scale(scale,scale,1);g.drawString(font,title,0,0,ResearchGraphics.INK,false);g.pose().popPose();y+=25;}
+            if(index==0){bookSprite(g,sw+4,sh-13,24,184,96,4);bookSprite(g,sw+4,sh+4,24,184,96,4);var title=Component.translatable("tc.research_name."+displayResearch(selected).key());float scale=Math.min(1,130f/Math.max(1,font.width(title)));g.pose().pushPose();g.pose().translate(sw+52-font.width(title)*scale/2,sh-6,0);g.pose().scale(scale,scale,1);g.drawString(font,title,0,0,ResearchGraphics.INK,false);g.pose().popPose();y+=25;}
             for(var element:page.elements){element.draw(g,font,x,y);y+=element.height();}
             if(!page.recipe.isEmpty())renderRecipe(g,page.recipe,sw-4+side*152,sh-8);
             if(!page.aspects.isEmpty())renderAspects(g,page.aspects,sw-8+side*152,sh-8);}
@@ -161,9 +203,9 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
     }
     private void tag(GuiGraphics g,thaumcraft.api.aspects.Aspect aspect,int amount,int x,int y,float scale) {
         g.pose().pushPose();g.pose().translate(x,y,0);g.pose().scale(scale,scale,1);
-        if(selected.key().equals("ASPECTS")&&scale==2&&ResearchGraphics.inside(pointerX,pointerY,x,y,32,32))ResearchGraphics.aspectHighlight(g,-3,-3);
+        if(displayResearch(selected).key().equals("ASPECTS")&&scale==2&&ResearchGraphics.inside(pointerX,pointerY,x,y,32,32))ResearchGraphics.aspectHighlight(g,-3,-3);
         ResearchGraphics.aspect(g,aspect,0,0,1);
-        if(amount>0){String value=Integer.toString(amount);g.pose().translate(16-font.width(value)*0.5f,11,150);g.pose().scale(0.5f,0.5f,1);ResearchGraphics.outlinedNumber(g,font,value,0,0);}g.pose().popPose();pageHovers.add(new Hover(x,y,(int)(16*scale),(int)(16*scale),ItemStack.EMPTY,aspect));
+        if(amount>0)ResearchGraphics.aspectCount(g,font,Integer.toString(amount),0,0);g.pose().popPose();pageHovers.add(new Hover(x,y,(int)(16*scale),(int)(16*scale),ItemStack.EMPTY,aspect));
     }
     private void renderAspects(GuiGraphics g,List<thaumcraft.api.aspects.Aspect> aspects,int x,int y) {
         var knowledge=ClientKnowledge.snapshot();for(int i=0;i<aspects.size();i++) {
@@ -171,14 +213,14 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
             var name=BookPageLayout.formatted(ResearchGraphics.aspectName(aspect).getString());g.drawString(font,name,x+16-font.width(name)/2,row+33,0xff505050,false);
             if(aspect.isPrimal())g.drawString(font,BookPageLayout.formatted(I18n.get("tc.aspect.primal")),x+48,row+12,0xff444444,false);
             else {g.drawString(font,"=",x+39,row+12,0xff999999,false);g.drawString(font,"+",x+83,row+12,0xff999999,false);
-                for(int j=0;j<2;j++){var component=aspect.getComponents().get(j);int cx=x+54+j*42;tag(g,component,0,cx,row+4,1.5f);var label=BookPageLayout.formatted("§o"+ResearchGraphics.aspectName(component).getString());float labelScale=Math.min(1,36f/Math.max(1,font.width(label)));g.pose().pushPose();g.pose().translate(cx+12-font.width(label)*labelScale/2,row+30,0);g.pose().scale(labelScale,labelScale,1);g.drawString(font,label,0,0,0xff505050,false);g.pose().popPose();}
+                for(int j=0;j<2;j++){var component=aspect.getComponents().get(j);int cx=x+54+j*42;tag(g,component,0,cx,row+4,1.5f);var label=BookPageLayout.formatted("Â§o"+ResearchGraphics.aspectName(component).getString());float labelScale=Math.min(1,36f/Math.max(1,font.width(label)));g.pose().pushPose();g.pose().translate(cx+12-font.width(label)*labelScale/2,row+30,0);g.pose().scale(labelScale,labelScale,1);g.drawString(font,label,0,0,0xff505050,false);g.pose().popPose();}
             }
         }
     }
     private void renderRecipe(GuiGraphics g,String key,int x,int y) {
-        var variants=selected.recipeVariants(key);if(variants.isEmpty())return;int index=0;if(variants.size()>1){if(recipeCycle>=variants.size())recipeCycle=0;index=recipeCycle;}key=thaumcraft.data.ResearchRecipePages.resolve(variants.get(index));
+        var variants=selected.recipeVariants(key);if(variants.isEmpty())variants=List.of(key);int index=0;if(variants.size()>1){if(recipeCycle>=variants.size())recipeCycle=0;index=recipeCycle;}key=thaumcraft.data.ResearchRecipePages.resolve(variants.get(index));
         if(key.startsWith("@")){renderTransformation(g,key.substring(1),x,y);return;}
-        if(minecraft.level==null)return;var holder=minecraft.level.getRecipeManager().byKey(ResourceLocation.fromNamespaceAndPath("thaumcraft",key));if(holder.isEmpty())return;
+        if(minecraft.level==null)return;var holder=minecraft.level.getRecipeManager().byKey(ResourceLocation.parse(key.contains(":")?key:"thaumcraft:"+key));if(holder.isEmpty())return;
         var recipe=holder.get().value();
         if(recipe instanceof thaumcraft.api.crafting.InfusionRecipe infusion){renderInfusion(g,infusion,x,y);return;}
         if(recipe instanceof thaumcraft.api.crafting.CrucibleRecipe crucible){
@@ -232,11 +274,13 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
         else {item(g,wand,x+offset,y+58,false);constructionBlock(g,key.equals("thaumonomicon")?new ItemStack(net.minecraft.world.item.Items.BOOKSHELF):table,x+offset,y+108);}
     }
     @Override protected void renderFitted(GuiGraphics g,int x,int y,float partial) {researchTooltipTop=-1;pointerX=x;pointerY=y;renderBackground(g,x,y,partial);super.renderFitted(g,x,y,partial);
-        if(selected==null) {var d=hovered(x,y);if(d!=null)researchTooltip(g,d,x,y);else for(int i=0;i<CATEGORIES.size();i++){var cat=CATEGORIES.get(i);if(cat.equals("ELDRITCH")&&!ClientKnowledge.snapshot().completedResearch().contains("ELDRITCHMINOR"))continue;if(ResearchGraphics.inside(x,y,leftPos-24,topPos+i*24,24,24)){fittedTooltip(g,Component.translatable("tc.research_category."+cat),x,y);break;}}}
-        else {for(int i=pageHovers.size()-1;i>=0;i--){var hover=pageHovers.get(i);if(ResearchGraphics.inside(x,y,hover.x,hover.y,hover.width,hover.height)){if(hover.aspect!=null){if(selected.key().equals("ASPECTS")&&hover.width>=32)aspectSources(g,hover,x,y);else fittedTooltip(g,ResearchGraphics.aspectTooltip(hover.aspect),x,y);}else fittedTooltip(g,hover.item.isEmpty()?List.of(Component.translatable("tile.blockHole.name").withStyle(net.minecraft.ChatFormatting.AQUA)):net.minecraft.client.gui.screens.Screen.getTooltipFromItem(minecraft,hover.item),x,y);break;}}}
+        if(selected==null) {var d=hovered(x,y);if(d!=null)researchTooltip(g,d,x,y);else for(int i=0;i<tabs().size();i++){var cat=tabs().get(i);if(cat.equals("ELDRITCH")&&!ClientKnowledge.snapshot().completedResearch().contains("ELDRITCHMINOR"))continue;if(ResearchGraphics.inside(x,y,leftPos-24,topPos+i*24,24,24)){fittedTooltip(g,Component.translatable(thaumcraft.api.research.ResearchApi.books().categories().get(cat).name()),x,y);break;}}}
+        else {for(int i=pageHovers.size()-1;i>=0;i--){var hover=pageHovers.get(i);if(ResearchGraphics.inside(x,y,hover.x,hover.y,hover.width,hover.height)){if(hover.aspect!=null){if(displayResearch(selected).key().equals("ASPECTS")&&hover.width>=32)aspectSources(g,hover,x,y);else fittedTooltip(g,ResearchGraphics.aspectTooltip(hover.aspect),x,y);}else fittedTooltip(g,hover.item.isEmpty()?List.of(Component.translatable("tile.blockHole.name").withStyle(net.minecraft.ChatFormatting.AQUA)):net.minecraft.client.gui.screens.Screen.getTooltipFromItem(minecraft,hover.item),x,y);break;}}}
+        if(selected!=null)for(var hover:addonHovers)if(ResearchGraphics.inside(x,y,hover.x,hover.y,hover.width,hover.height)){fittedTooltip(g,hover.tooltip,x,y);break;}
         renderNoteMessage(g);
     }
     private void researchTooltip(GuiGraphics g,ResearchDefinition d,int mouseX,int mouseY){
+        d=displayResearch(d);
         var k=ClientKnowledge.snapshot();boolean completed=k.completedResearch().contains(d.key()),unlockable=d.available(k);
         boolean secondary=!completed&&d.secondary()&&!d.aspects().isEmpty(),primary=!secondary&&!completed;
         var costs=d.aspects().entrySet().stream().filter(e->thaumcraft.api.aspects.Aspect.getAspect(e.getKey())!=null).sorted(Map.Entry.comparingByKey()).toList();
@@ -276,9 +320,10 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
         int row=0;for(var line:lines){g.drawString(font,line,0,row,color,false);row+=10;}g.pose().popPose();return y+lines.size()*5;
     }
     @Override protected boolean mouseClickedFitted(double x,double y,int button) {
-        if(minecraft.player==null)return super.mouseClickedFitted(x,y,button);
+        if(minecraft.player==null)return super.mouseClickedFitted(x,y,button);if(children().stream().anyMatch(widget->widget instanceof net.minecraft.client.gui.components.AbstractWidget w&&w.visible&&w.isMouseOver(x,y)))return super.mouseClickedFitted(x,y,button);
+        if(selected!=null){for(var hover:addonHovers)if(hover.click!=null&&ResearchGraphics.inside(x,y,hover.x,hover.y,hover.width,hover.height)){hover.click.run();return true;}for(var canvas:addonCanvases){var renderer=thaumcraft.api.client.BookRenderers.get(canvas.page.type());if(renderer!=null&&renderer.mouseClicked(canvas.page,x-canvas.x,y-canvas.y,button))return true;}}
         if(selected!=null) {int sw=(width-256)/2,sh=(height-181)/2;if(ResearchGraphics.inside(x,y,sw-18,sh+187,20,16)){spread--;play(thaumcraft.registry.R2Sounds.PAGE.get(),.66f);return true;}if(ResearchGraphics.inside(x,y,sw+260,sh+187,20,16)){spread++;play(thaumcraft.registry.R2Sounds.PAGE.get(),.66f);return true;}return super.mouseClickedFitted(x,y,button);}
-        var k=ClientKnowledge.snapshot();for(int i=0;i<CATEGORIES.size();i++)if(ResearchGraphics.inside(x,y,leftPos-24,topPos+i*24,24,24)) {var cat=CATEGORIES.get(i);if(!cat.equals("ELDRITCH")||k.completedResearch().contains("ELDRITCHMINOR")){category=cat;centreCategory();play(thaumcraft.registry.R2Sounds.PAGE.get(),.66f);}return true;}
+        var k=ClientKnowledge.snapshot();for(int i=0;i<tabs().size();i++)if(ResearchGraphics.inside(x,y,leftPos-24,topPos+i*24,24,24)) {var cat=tabs().get(i);if(!cat.equals("ELDRITCH")||k.completedResearch().contains("ELDRITCHMINOR")){category=cat;centreCategory();play(thaumcraft.registry.R2Sounds.PAGE.get(),.66f);}return true;}
         var d=hovered(x,y);if(d!=null) {
             if(k.completedResearch().contains(d.key())) {selected=d;spread=recipeCycle=0;nextRecipeCycle=0;play(thaumcraft.registry.R2Sounds.PAGE.get(),.66f);}
             else if(d.available(k)){
@@ -289,7 +334,8 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
         return super.mouseClickedFitted(x,y,button);
     }
     private void play(net.minecraft.sounds.SoundEvent sound,float volume){if(minecraft.player!=null)minecraft.player.playSound(sound,volume,1);}
-    @Override public void onClose(){ResearchHighlights.clear();super.onClose();}
-    @Override protected boolean mouseDraggedFitted(double x,double y,int button,double dx,double dy) {if(selected==null&&button==0&&ResearchGraphics.inside(x,y,leftPos+16,topPos+16,224,198)){panX+=dx;panY+=dy;return true;}return super.mouseDraggedFitted(x,y,button,dx,dy);}
+    @Override public void onClose(){thaumcraft.config.ThaumcraftClientConfig.SPEC.save();ResearchHighlights.clear();super.onClose();}
+    @Override protected boolean mouseDraggedFitted(double x,double y,int button,double dx,double dy) {if(selected==null&&button==0&&inTree(x,y)){panX+=dx/treeZoom;panY+=dy/treeZoom;return true;}return super.mouseDraggedFitted(x,y,button,dx,dy);}
+    @Override protected boolean mouseScrolledFitted(double x,double y,double horizontal,double vertical){if(selected==null&&ResearchGraphics.inside(x,y,leftPos-24,topPos,24,imageHeight)){tabOffset-=Math.signum(vertical);return true;}if(selected==null&&inTree(x,y)){zoom(treeZoom*Math.pow(1.1,vertical),x,y);return true;}return super.mouseScrolledFitted(x,y,horizontal,vertical);}
     @Override public boolean keyPressed(int key,int scan,int modifiers) {if(key==256&&selected!=null){selected=null;return true;}return super.keyPressed(key,scan,modifiers);}
 }

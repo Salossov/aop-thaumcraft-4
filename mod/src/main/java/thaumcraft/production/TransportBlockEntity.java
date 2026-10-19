@@ -35,6 +35,8 @@ public final class TransportBlockEntity extends EssentiaBlockEntity {
         return switch (k) { case ALEMBIC -> 32; case JAR, VOID_JAR -> 64; case BUFFER -> 8; case RESERVOIR -> 256; default -> 1; };
     }
     public boolean tube() { return switch (kind) { case TUBE, VALVE, FILTER, RESTRICTED, ONEWAY -> true; default -> false; }; }
+    @Override public Aspect getAspectFilter() { return kind == ProductionBlock.Kind.JAR || kind == ProductionBlock.Kind.VOID_JAR ? store.filter() : null; }
+    @Override public JarType getJarType(){return kind==ProductionBlock.Kind.JAR?JarType.NORMAL:kind==ProductionBlock.Kind.VOID_JAR?JarType.VOID:JarType.NONE;}
     public IEssentiaTransport neighbour(Direction d) {
         if (level == null || !isConnectable(d)) return null;
         BlockPos adjacent = worldPosition.relative(d);

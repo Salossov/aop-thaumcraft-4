@@ -51,7 +51,7 @@ public final class NodeFactory {
         for(var aspect:aspects) { int value=weights.getAmount(aspect)==2?50+random.nextInt(25):25+random.nextInt(50);spread.add(value);total+=value; }
         for(int i=0;i<aspects.size();i++) amounts.put(aspects.get(i).getTag(),Math.max(weights.getAmount(aspects.get(i)),(int)(spread.get(i)/total*strength)));
         if(!embedded)level.setBlock(pos,R2Content.AURA_NODE.get().defaultBlockState(),2);
-        if(level.getBlockEntity(pos) instanceof AuraNodeBlockEntity node) { node.initialize(amounts,type,modifier);return true; }return false;
+        if(level.getBlockEntity(pos) instanceof AuraNodeBlockEntity node) { node.initialize(amounts,type,modifier);if(level instanceof net.minecraft.server.level.ServerLevel server&&embedded&&eerie&&node.getBlockState().is(thaumcraft.registry.R4Content.OBSIDIAN_TOTEM_NODE.get()))StructureIndexData.get(server).record(server,StructureIndexData.Kind.TOTEM,pos.getX(),pos.getY(),pos.getZ());return true; }return false;
     }
     private NodeFactory() {}
 }

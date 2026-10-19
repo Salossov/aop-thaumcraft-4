@@ -13,11 +13,12 @@ import thaumcraft.api.nodes.NodeState;
 import thaumcraft.registry.R3Content;
 
 /** Frozen TileJarNode state. No natural-node ticks, recharge or hungry/taint effects. */
-public final class JarredNodeBlockEntity extends BlockEntity {
+public final class JarredNodeBlockEntity extends BlockEntity implements thaumcraft.api.aspects.IAspectDisplay {
     public final NodeState state=new NodeState();
     private UUID id=UUID.randomUUID();
     public JarredNodeBlockEntity(BlockPos pos,BlockState block){super(R3Content.NODE_JAR_ENTITY.get(),pos,block);}
     public UUID id(){return id;}
+    @Override public thaumcraft.api.aspects.AspectList displayedAspects(){return thaumcraft.api.aspects.IAspectDisplay.snapshot(state.current);}
     public void capture(AuraNodeBlockEntity node){
         id=node.id();state.initialize(node.state.current);state.type=node.state.type;state.modifier=node.state.modifier;
         // WandManager.replaceNodeJar: 75% chance to lose one brightness tier.

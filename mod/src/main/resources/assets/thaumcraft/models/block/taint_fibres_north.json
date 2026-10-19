@@ -1,5 +1,5 @@
 {
-  "render_type": "minecraft:cutout",
+  "render_type": "minecraft:translucent",
   "ambientocclusion": false,
   "textures": {
     "fibre": "thaumcraft:blocks/taint_fibres",

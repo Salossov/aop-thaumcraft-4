@@ -3,4 +3,4 @@ pluginManagement {
 }
 
 rootProject.name = 'thaumcraft4-port'
-include 'api', 'mod'
+include 'api', 'mod', 'emi-jei-integration-aoptc4', 'example-addon'

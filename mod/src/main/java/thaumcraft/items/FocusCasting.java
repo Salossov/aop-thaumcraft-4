@@ -16,16 +16,23 @@ import thaumcraft.registry.R2Sounds;
 
 public final class FocusCasting {
     private static final Map<ServerPlayer,Long> COOLDOWN=new WeakHashMap<>();
-    public static boolean continuous(ItemStack wand){var focus=WandFocus.get(wand);return focus.getItem() instanceof ThaumicFocusItem item&&(item.kind()==ThaumicFocusItem.Kind.EXCAVATION||item.kind()==ThaumicFocusItem.Kind.FIRE&&!item.isUpgradedWith(focus,FocusUpgradeType.fireball)||item.kind()==ThaumicFocusItem.Kind.SHOCK&&!item.isUpgradedWith(focus,FocusUpgradeType.earthshock));}
-    public static boolean begin(ServerPlayer player,InteractionHand hand){var wand=player.getItemInHand(hand);if(!WandFocus.supports(wand)||!(WandFocus.get(wand).getItem() instanceof ThaumicFocusItem||WandFocus.get(wand).getItem() instanceof PechFocusItem))return false;if(continuous(wand)){player.startUsingItem(hand);return true;}return cast(player,wand);}
+    public static boolean continuous(ItemStack wand){var focus=WandFocus.get(wand);var addon=thaumcraft.api.wands.FocusBehaviors.get(focus);if(addon!=null)return addon.behavior().continuous(focus);return focus.getItem() instanceof ThaumicFocusItem item&&(item.kind()==ThaumicFocusItem.Kind.EXCAVATION||item.kind()==ThaumicFocusItem.Kind.FIRE&&!item.isUpgradedWith(focus,FocusUpgradeType.fireball)||item.kind()==ThaumicFocusItem.Kind.SHOCK&&!item.isUpgradedWith(focus,FocusUpgradeType.earthshock));}
+    public static boolean begin(ServerPlayer player,InteractionHand hand){var wand=player.getItemInHand(hand);var addon=thaumcraft.api.wands.FocusBehaviors.get(WandFocus.get(wand));if(addon!=null){endAddon(player);if(COOLDOWN.getOrDefault(player,Long.MIN_VALUE)>player.server.getTickCount()||!WandFocus.supports(wand)||!addon.behavior().begin(player,wand,WandFocus.get(wand),hand))return false;ACTIVE.put(player,new Active(wand,WandFocus.get(wand).copy(),addon.behavior()));if(continuous(wand)){player.startUsingItem(hand);return true;}try{return cast(player,wand);}finally{endAddon(player);}}if(!WandFocus.supports(wand)||!(WandFocus.get(wand).getItem() instanceof ThaumicFocusItem||WandFocus.get(wand).getItem() instanceof PechFocusItem))return false;if(continuous(wand)){player.startUsingItem(hand);return true;}return cast(player,wand);}
     public static void tick(ServerPlayer player,ItemStack wand){if(!continuous(wand)){player.stopUsingItem();return;}cast(player,wand);}
-    public static void stop(ServerPlayer player){FocusActions.stop(player);}
+    private record Active(ItemStack wand,ItemStack focus,thaumcraft.api.wands.FocusBehavior behavior){}
+    private static final Map<ServerPlayer,Active> ACTIVE=new WeakHashMap<>();
+    private static void endAddon(ServerPlayer player){var active=ACTIVE.remove(player);if(active!=null)active.behavior.end(player,active.wand,active.focus);}
+    public static void stop(ServerPlayer player){endAddon(player);FocusActions.stop(player);}
     private static LivingEntity target(ServerPlayer player,double range){
-        var start=player.getEyePosition();var end=start.add(player.getLookAngle().scale(range));var block=player.pick(range,0,false);double distance=block.getType()==HitResult.Type.MISS?range*range:start.distanceToSqr(block.getLocation());
-        var hit=ProjectileUtil.getEntityHitResult(player,start,end,player.getBoundingBox().expandTowards(player.getLookAngle().scale(range)).inflate(1),e->e instanceof LivingEntity&&!(e instanceof FocusFireBat)&&e.isPickable()&&FocusProjectile.allowed(player,e),distance);return hit!=null?(LivingEntity)hit.getEntity():null;
+        var start=player.getEyePosition();var end=start.add(player.getLookAngle().scale(range));LivingEntity nearest=null;double distance=Double.MAX_VALUE;
+        // TC4 EntityUtils uses at least .8 block of aim padding, independently of vanilla projectile picking.
+        for(var entity:player.serverLevel().getEntitiesOfClass(LivingEntity.class,player.getBoundingBox().expandTowards(player.getLookAngle().scale(range)).inflate(1.1),e->!(e instanceof FocusFireBat)&&e.isPickable()&&FocusProjectile.allowed(player,e))){
+            if(player.serverLevel().clip(new net.minecraft.world.level.ClipContext(start,entity.getEyePosition(),net.minecraft.world.level.ClipContext.Block.COLLIDER,net.minecraft.world.level.ClipContext.Fluid.NONE,player)).getType()!=HitResult.Type.MISS)continue;
+            var bounds=entity.getBoundingBox().inflate(Math.max(.8f,entity.getPickRadius()));var hit=bounds.clip(start,end);double d=bounds.contains(start)?0:hit.map(start::distanceToSqr).orElse(Double.MAX_VALUE);if(d<distance){nearest=entity;distance=d;}
+        }return nearest;
     }
     public static boolean cast(ServerPlayer player,ItemStack wand){
-        var selected=WandFocus.get(wand);if(selected.getItem() instanceof PechFocusItem pech){long now=player.server.getTickCount();if(COOLDOWN.getOrDefault(player,Long.MIN_VALUE)>now)return false;boolean success=pech.cast(player,wand,selected);player.swing(player.getOffhandItem()==wand?InteractionHand.OFF_HAND:InteractionHand.MAIN_HAND,true);if(success)COOLDOWN.put(player,now+(pech.getActivationCooldown(selected)+49)/50);return success;}
+        var selected=WandFocus.get(wand);var addon=thaumcraft.api.wands.FocusBehaviors.get(selected);if(addon!=null&&selected.getItem() instanceof thaumcraft.api.wands.ItemFocusBasic focus){long now=player.server.getTickCount();if(COOLDOWN.getOrDefault(player,Long.MIN_VALUE)>now||!WandFocus.supports(wand))return false;if(addon.behavior().managesVis())return castManagedAddon(player,wand,selected,focus,addon.behavior(),now);var costs=focus.getVisCost(selected);var quoted=WandFocus.costs(wand,player,costs);if(!WandFocus.consume(wand,player,costs,false)){player.stopUsingItem();endAddon(player);return false;}var before=new java.util.LinkedHashMap<thaumcraft.api.aspects.Aspect,Integer>();quoted.forEach((a,n)->{before.put(a,WandVis.get(wand,a));WandVis.set(wand,a,WandVis.get(wand,a)-n);});boolean success=false;try{success=addon.behavior().cast(player,wand,selected);}finally{if(!success)before.forEach((a,n)->WandVis.set(wand,a,Math.min(WandVis.capacity(wand),n)));}if(success){if(WandFocus.get(wand).getItem()==selected.getItem())WandFocus.set(wand,selected);var active=ACTIVE.get(player);if(active!=null)ACTIVE.put(player,new Active(wand,selected.copy(),active.behavior));COOLDOWN.put(player,now+Math.max(1,(focus.getActivationCooldown(selected)+49)/50));}return success;}if(selected.getItem() instanceof PechFocusItem pech){long now=player.server.getTickCount();if(COOLDOWN.getOrDefault(player,Long.MIN_VALUE)>now)return false;boolean success=pech.cast(player,wand,selected);player.swing(player.getOffhandItem()==wand?InteractionHand.OFF_HAND:InteractionHand.MAIN_HAND,true);if(success)COOLDOWN.put(player,now+(pech.getActivationCooldown(selected)+49)/50);return success;}
         var focus=WandFocus.get(wand);if(!(focus.getItem() instanceof ThaumicFocusItem item))return false;long now=player.server.getTickCount();if(COOLDOWN.getOrDefault(player,Long.MIN_VALUE)>now)return false;
         var level=player.serverLevel();var costs=item.activationCost(focus,level.random);boolean actionPays=item.kind()==ThaumicFocusItem.Kind.WARDING||item.kind()==ThaumicFocusItem.Kind.TRADE||item.kind()==ThaumicFocusItem.Kind.PORTABLE_HOLE;if(!actionPays&&!WandFocus.consume(wand,player,costs,false)){player.stopUsingItem();stop(player);level.playSound(null,player.blockPosition(),R2Sounds.WAND_FAIL.get(),SoundSource.PLAYERS,.1f,.8f);return false;}
         int potency=item.getUpgradeLevel(focus,FocusUpgradeType.potency);boolean success=false,paid=false;var hit=player.pick(10,0,false);
@@ -46,6 +53,17 @@ public final class FocusCasting {
             case PORTABLE_HOLE->{if(hit instanceof BlockHitResult block&&hit.getType()==HitResult.Type.BLOCK)success=FocusActions.hole(player,wand,focus,item,block);paid=true;}
         }
         if(success){if(!paid)WandFocus.consume(wand,player,costs,true);COOLDOWN.put(player,now+(item.getActivationCooldown(focus)+49)/50);if(!continuous(wand))player.swing(player.getOffhandItem()==wand?InteractionHand.OFF_HAND:InteractionHand.MAIN_HAND,true);}return success;
+    }
+    /** A delayed/conditional addon decides when to pay; the core still enforces cooldown and focus ownership. */
+    private static boolean castManagedAddon(ServerPlayer player,ItemStack wand,ItemStack selected,
+            thaumcraft.api.wands.ItemFocusBasic focus,thaumcraft.api.wands.FocusBehavior behavior,long now){
+        boolean success=behavior.cast(player,wand,selected);
+        if(success){
+            if(WandFocus.get(wand).getItem()==selected.getItem())WandFocus.set(wand,selected);
+            var active=ACTIVE.get(player);if(active!=null)ACTIVE.put(player,new Active(wand,selected.copy(),active.behavior));
+            COOLDOWN.put(player,now+Math.max(1,(focus.getActivationCooldown(selected)+49)/50));
+        }
+        return success;
     }
     private static FocusProjectile projectile(ServerPlayer player,FocusProjectile.Kind kind,float damage,int flags,float speed,float scatter){var projectile=new FocusProjectile(kind==FocusProjectile.Kind.PRIMAL?R3Entities.PRIMAL_ORB.get():R3Entities.FOCUS_PROJECTILE.get(),player.level()).configure(kind,damage,flags);projectile.launch(player,speed,scatter);return projectile;}
     private static Entity shockTarget(ServerPlayer player){
@@ -80,5 +98,6 @@ public final class FocusCasting {
     private static void sendLightning(ServerPlayer player,Entity source,Entity target,Vec3 endpoint,boolean fromWand,boolean blockSparkles){
         net.neoforged.neoforge.network.PacketDistributor.sendToPlayersNear(player.serverLevel(),null,source.getX(),source.getY(),source.getZ(),64,new thaumcraft.network.FocusLightningPayload(source.getId(),target==null?-1:target.getId(),endpoint,fromWand,blockSparkles));
     }
+    public static void logout(ServerPlayer player){stop(player);COOLDOWN.remove(player);}
     private FocusCasting(){}
 }

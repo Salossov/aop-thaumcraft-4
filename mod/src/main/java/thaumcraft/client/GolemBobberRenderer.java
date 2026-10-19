@@ -19,10 +19,8 @@ final class GolemBobberRenderer extends EntityRenderer<GolemBobber> {
         vertex(vertices,p,.25f,.25f,.125f,.125f,light);vertex(vertices,p,-.25f,.25f,.0625f,.125f,light);pose.popPose();
         var fisher=bobber.fisher();
         if(fisher!=null){
-            float bodyYaw=Mth.lerp(partial,fisher.yBodyRotO,fisher.yBodyRot)*Mth.DEG_TO_RAD;
-            double sine=Mth.sin(bodyYaw),cosine=Mth.cos(bodyYaw);
             var origin=bobber.getPosition(partial);
-            var hand=fisher.getPosition(partial).add(-cosine*.25-sine*.7,fisher.getEyeHeight()-.4,-sine*.25+cosine*.7);
+            var hand=GolemFishingPose.tip(fisher,partial);
             var difference=hand.subtract(origin.add(0,.25,0));
             // The source casts the three deltas to float before building its 16-segment parabola.
             double x=(float)difference.x,y=(float)difference.y,z=(float)difference.z;

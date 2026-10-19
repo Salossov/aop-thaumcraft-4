@@ -1,0 +1,14 @@
+{
+  "type": "thaumcraft:crucible",
+  "research": "thaumcraft_example:introduction",
+  "catalyst": {
+    "item": "minecraft:diamond"
+  },
+  "aspects": {
+    "thaumcraft_example:resonantia": 4
+  },
+  "result": {
+    "id": "thaumcraft_example:focus",
+    "count": 1
+  }
+}

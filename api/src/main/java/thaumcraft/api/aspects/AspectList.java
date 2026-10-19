@@ -9,6 +9,13 @@ public final class AspectList {
     private final Map<Aspect, Integer> amounts = new LinkedHashMap<>();
     public AspectList add(Aspect aspect, int amount) { amounts.merge(aspect, amount, Integer::sum); return this; }
     public AspectList merge(Aspect aspect, int amount) { amounts.merge(aspect, amount, Math::max); return this; }
+    /** Original remove semantics: unlike reduce, exhausted entries disappear. */
+    public AspectList remove(Aspect aspect, int amount) {
+        int remaining=getAmount(aspect)-amount;
+        if(remaining<=0)amounts.remove(aspect);else amounts.put(aspect,remaining);
+        return this;
+    }
+    public AspectList remove(Aspect aspect) { amounts.remove(aspect); return this; }
     public boolean reduce(Aspect aspect, int amount) {
         if (getAmount(aspect) < amount) return false;
         amounts.put(aspect, getAmount(aspect) - amount); return true;

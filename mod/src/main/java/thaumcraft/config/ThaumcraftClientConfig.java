@@ -11,6 +11,10 @@ public final class ThaumcraftClientConfig {
     public static final ModConfigSpec.EnumValue<BookFontStyle> BOOK_FONT_STYLE;
     public enum GuardianFogMode implements net.neoforged.neoforge.common.TranslatableEnum {OFF,VANILLA,SHADER;
         @Override public net.minecraft.network.chat.Component getTranslatedName(){return net.minecraft.network.chat.Component.translatable("thaumcraft.configuration.fog."+name().toLowerCase(java.util.Locale.ROOT));}}
+    public enum BookWindowMode implements net.neoforged.neoforge.common.TranslatableEnum {ORIGINAL,SQUARE,FULL;
+        @Override public net.minecraft.network.chat.Component getTranslatedName(){return net.minecraft.network.chat.Component.translatable("thaumcraft.configuration.book_window."+name().toLowerCase(java.util.Locale.ROOT));}}
+    public static final ModConfigSpec.EnumValue<BookWindowMode> BOOK_WINDOW_MODE;
+    public static final ModConfigSpec.DoubleValue BOOK_ZOOM;
     public static final ModConfigSpec SPEC;
     public static final ModConfigSpec.IntValue GOLEM_LINK_QUALITY;
     public static final ModConfigSpec.EnumValue<GuardianFogMode> GUARDIAN_FOG_MODE;
@@ -22,6 +26,8 @@ public final class ThaumcraftClientConfig {
         GOLEM_LINK_QUALITY=builder.comment("TC4 golem marker ribbon segments per block; values below 4 hide the animated lines while retaining markers.").translation("thaumcraft.configuration.effects.golemLinkQuality").defineInRange("golemLinkQuality",16,0,64);
         builder.pop();builder.push("interface");SHOW_TAGS=builder.comment("Show scanned item aspects without Shift; Shift inverts this choice, as in TC4.").translation("thaumcraft.configuration.interface.showTags").define("showTags",false);WAND_DIAL_BOTTOM=builder.comment("Place the original wand dial at the bottom left instead of the top left.").translation("thaumcraft.configuration.interface.wandDialBottom").define("wandDialBottom",false);
         FIT_LARGE_SCREENS=builder.comment("Reduce oversized Thaumcraft menus to fit the current window, including inventory slots.","Disable to keep TC4's original GUI scale, which can crop large menus in small windows.").translation("thaumcraft.configuration.interface.fitLargeScreens").define("fitLargeScreens",true);
+        BOOK_WINDOW_MODE=builder.comment("Research tree viewport: original size, largest fitting square, or full window with margins.").translation("thaumcraft.configuration.interface.bookWindowMode").defineEnum("bookWindowMode",BookWindowMode.ORIGINAL);
+        BOOK_ZOOM=builder.comment("Research tree zoom; also adjustable from inside the Thaumonomicon.").translation("thaumcraft.configuration.interface.bookZoom").defineInRange("bookZoom",1d,.5d,2d);
         BOOK_FONT_STYLE=builder.comment("Research text font: VANILLA uses the normal Minecraft font; UNICODE uses the thin Unicode style of TC4.").translation("thaumcraft.configuration.interface.bookFontStyle").defineEnum("bookFontStyle",BookFontStyle.VANILLA);
         COLORED_JAR_LABELS=builder.comment("Color the printed aspect on jar labels. False retains TC4's dark monochrome print; the liquid and goggles display remain colored.").translation("thaumcraft.configuration.interface.coloredJarLabels").define("coloredJarLabels",false);
         CREATIVE_TAB_ICON=builder.comment("Thaumcraft creative tab icon: iron-capped wooden WAND (default), THAUMONOMICON or THAUMOMETER.").translation("thaumcraft.configuration.interface.creativeTabIcon").defineEnum("creativeTabIcon",CreativeTabIcon.WAND);

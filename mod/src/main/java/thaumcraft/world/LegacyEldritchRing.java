@@ -26,6 +26,11 @@ public final class LegacyEldritchRing {
         var data=LabyrinthData.get(level.getLevel());
         synchronized(data){
             if(data.inRange(chunkX,chunkZ,width,height))return false;
+            return place(level,random,origin,-1,false);
+        }
+    }
+    public boolean generateNative(WorldGenLevel level,RandomSource random,BlockPos origin,int variation){return place(level,random,origin,variation,true);}
+    private boolean place(WorldGenLevel level,RandomSource random,BlockPos origin,int forcedVariation,boolean nativeGeneration){
             for(int x=-3;x<=3;x++)for(int z=-3;z<=3;z++){
                 if(Math.abs(x)==3&&Math.abs(z)==3)continue;
                 var pos=origin.offset(x,0,z);
@@ -39,9 +44,10 @@ public final class LegacyEldritchRing {
                 if(x==0&&z==0){
                     level.setBlock(pos.above(),R3Content.ELDRITCH_ALTAR.get().defaultBlockState(),3);
                     level.setBlock(pos,R4Content.OBSIDIAN_TILE.get().defaultBlockState(),3);
-                    int variation=random.nextInt(10);
+                    int variation=random.nextInt(10);if(forcedVariation>=0)variation=forcedVariation;
                     if(level.getBlockEntity(pos.above()) instanceof thaumcraft.production.EldritchAltarBlockEntity altar){
                         if(variation>=1&&variation<=4){altar.setSpawner(true);altar.setSpawnType((byte)0);
+                            var server=level.getLevel();if(!nativeGeneration)StructureIndexData.get(server).record(server,StructureIndexData.Kind.CULTIST_RING,pos.getX(),pos.getY(),pos.getZ());
                             for(var direction:new Direction[]{Direction.NORTH,Direction.SOUTH,Direction.WEST,Direction.EAST}){
                                 var banner=pos.offset(-direction.getStepX()*3,1,direction.getStepZ()*3);
                                 int facing=switch(direction){case NORTH->8;case SOUTH->0;case WEST->12;default->4;};
@@ -57,6 +63,5 @@ public final class LegacyEldritchRing {
                 }
             }
             return true;
-        }
     }
 }

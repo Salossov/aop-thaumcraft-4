@@ -39,8 +39,8 @@ public final class R2Content {
     });
     public static final DeferredItem<Item> IRON_CAP=ITEMS.registerSimpleItem("iron_wand_cap");
     public static final DeferredItem<Item> ZOMBIE_BRAIN=ITEMS.register("zombie_brain",thaumcraft.items.ZombieBrainItem::new);
-    public static final DeferredItem<Item> TAINT_TENDRIL=ITEMS.registerSimpleItem("taint_tendril");
-    public static final DeferredItem<Item> TAINT_GOO=ITEMS.registerSimpleItem("taint_goo");
+    public static final DeferredItem<Item> TAINT_TENDRIL=ITEMS.register("taint_tendril",thaumcraft.items.TaintResourceItem::new);
+    public static final DeferredItem<Item> TAINT_GOO=ITEMS.register("taint_goo",thaumcraft.items.TaintResourceItem::new);
     public static final DeferredItem<Item> AMBER=ITEMS.registerSimpleItem("amber");
     public static final DeferredItem<Item> COIN=ITEMS.registerSimpleItem("coin");
     public static final DeferredItem<WispEssenceItem> WISP_ESSENCE=ITEMS.register("wisp_essence",()->new WispEssenceItem(new Item.Properties()));

@@ -9,7 +9,7 @@ import thaumcraft.fluids.*;
 public final class R4Content {
     private static final DeferredRegister.Blocks BLOCKS=DeferredRegister.createBlocks("thaumcraft");
     private static final DeferredRegister.Items ITEMS=DeferredRegister.createItems("thaumcraft");
-    public static final DeferredBlock<thaumcraft.blocks.ObsidianTotemBlock> OBSIDIAN_TOTEM=BLOCKS.register("obsidian_totem",()->new thaumcraft.blocks.ObsidianTotemBlock(false)),OBSIDIAN_TOTEM_NODE=BLOCKS.register("obsidian_totem_node",()->new thaumcraft.blocks.ObsidianTotemBlock(true));
+    public static final DeferredBlock<thaumcraft.blocks.ObsidianTotemBlock> OBSIDIAN_TOTEM=BLOCKS.register("obsidian_totem",()->new thaumcraft.blocks.ObsidianTotemBlock(false)),OBSIDIAN_TOTEM_NODE=BLOCKS.register("obsidian_totem_node",()->new thaumcraft.blocks.ObsidianTotemBlock.Node());
     static{ITEMS.registerSimpleBlockItem(OBSIDIAN_TOTEM);ITEMS.registerSimpleBlockItem(OBSIDIAN_TOTEM_NODE);}
     private static final DeferredRegister<net.minecraft.world.level.block.entity.BlockEntityType<?>> TILES=DeferredRegister.create(net.minecraft.core.registries.Registries.BLOCK_ENTITY_TYPE,"thaumcraft");
     private static final DeferredRegister<net.minecraft.world.inventory.MenuType<?>> MENUS=DeferredRegister.create(net.minecraft.core.registries.Registries.MENU,"thaumcraft");

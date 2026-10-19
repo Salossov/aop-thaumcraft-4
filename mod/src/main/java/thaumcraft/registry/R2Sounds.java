@@ -14,6 +14,7 @@ public final class R2Sounds {
     public static final DeferredHolder<SoundEvent,SoundEvent> FLY=sound("fly");
     public static final DeferredHolder<SoundEvent,SoundEvent> WIND=sound("wind");
     public static final DeferredHolder<SoundEvent,SoundEvent> BRAIN=sound("brain"),JAR=sound("jar");
+    public static final DeferredHolder<SoundEvent,SoundEvent> TOOL=sound("tool");
     public static final DeferredHolder<SoundEvent,SoundEvent> ICE=sound("ice"),SHOCK=sound("shock"),FIRE_LOOP=sound("fireloop"),WAND_FAIL=sound("wandfail"),RUMBLE=sound("rumble");
     public static final DeferredHolder<SoundEvent,SoundEvent> PUMP=sound("pump"),RUNIC_SHIELD_CHARGE=sound("runicshieldcharge"),MONOLITH=sound("monolith");
     public static final DeferredHolder<SoundEvent,SoundEvent> RUNIC_SHIELD_EFFECT=sound("runicshieldeffect");

@@ -27,5 +27,10 @@
     {
       "item": "minecraft:ender_pearl"
     }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "thaumcraft:mirrors_enabled"
+    }
   ]
 }

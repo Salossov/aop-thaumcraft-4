@@ -26,7 +26,7 @@ public final class ArcaneScreen extends FittedContainerScreen<ArcaneMenu> {
         var recipe=minecraft.level.getRecipeManager().getRecipeFor(R2Recipes.ARCANE_TYPE.get(),input,minecraft.level);if(recipe.isEmpty()||!recipe.get().value().research().isEmpty()&&!ClientKnowledge.snapshot().completedResearch().contains(recipe.get().value().research()))return;
         var wand=menu.table.getItem(10);var amounts=recipe.get().value().vis(input);var cost=WandVis.cost(wand,amounts,minecraft.player);boolean sufficient=WandVis.consume(wand,amounts,minecraft.player,false);
         for(int i=0;i<6;i++) {var aspect=Aspects.PRIMALS.get(i);int amount=cost.getOrDefault(aspect,0);if(amount<=0)continue;int x=leftPos+POS[i][0]-8,y=topPos+POS[i][1]-8;
-            ResearchGraphics.aspect(g,aspect,x,y,WandVis.get(wand,aspect)>=amount?1:0.4f);g.pose().pushPose();g.pose().translate(x+8,y+16,0);g.pose().scale(0.5f,0.5f,1);g.drawCenteredString(font,String.format(java.util.Locale.ROOT,"%.2f",amount/100f),0,0,ResearchGraphics.WHITE);g.pose().popPose();}
+            ResearchGraphics.aspect(g,aspect,x,y,WandVis.get(wand,aspect)>=amount?1:0.4f);ResearchGraphics.aspectCount(g,font,String.format(java.util.Locale.ROOT,"%.2f",amount/100f),x,y);}
         if(!sufficient) {g.drawCenteredString(font,Component.translatable("thaumcraft.arcane.insufficient_vis"),leftPos+95,topPos+138,0xffee6e6e);g.renderFakeItem(recipe.get().value().getResultItem(minecraft.level.registryAccess()),leftPos+160,topPos+64);}
     }
     @Override protected void renderFitted(GuiGraphics g,int x,int y,float partial) {renderBackground(g,x,y,partial);super.renderFitted(g,x,y,partial);renderTooltip(g,x,y);}

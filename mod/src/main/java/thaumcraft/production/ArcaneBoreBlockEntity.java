@@ -27,7 +27,7 @@ import thaumcraft.api.visnet.VisNetHandler;
 import thaumcraft.api.wands.*;
 import thaumcraft.items.ThaumicFocusItem;
 
-public final class ArcaneBoreBlockEntity extends BlockEntity implements MenuProvider,IEssentiaTransport {
+public final class ArcaneBoreBlockEntity extends BlockEntity implements MenuProvider,IEssentiaTransport,thaumcraft.api.world.IArcaneBore {
     private static final GameProfile PROFILE=new GameProfile(UUID.nameUUIDFromBytes("FakeThaumcraftBore".getBytes(java.nio.charset.StandardCharsets.UTF_8)),"FakeThaumcraftBore");
     public final SimpleContainer items=new SimpleContainer(2){@Override public void setChanged(){super.setChanged();ArcaneBoreBlockEntity.this.changed();}@Override public boolean canPlaceItem(int slot,ItemStack stack){return slot==0?stack.getItem() instanceof ThaumicFocusItem focus&&focus.kind()==ThaumicFocusItem.Kind.EXCAVATION:stack.getItem() instanceof PickaxeItem;}};
     public final InvWrapper handler=new InvWrapper(items);
@@ -69,6 +69,7 @@ public final class ArcaneBoreBlockEntity extends BlockEntity implements MenuProv
     public float miningProgress(float partial){return target==null||totalDelay<=0?0:Math.clamp(1-(delay-(working()?partial:0))/(float)totalDelay,0,1);}
     public float boost(){return boost;}
     public boolean powered(){return level.hasNeighborSignal(worldPosition)||level.hasNeighborSignal(basePosition());}
+    @Override public thaumcraft.api.world.IArcaneBore.State inspectBore(){var pick=items.getItem(1);boolean hasPick=items.canPlaceItem(1,pick),hasFocus=items.canPlaceItem(0,items.getItem(0)),nearBroken=!pick.isEmpty()&&pick.getDamageValue()+1==pick.getMaxDamage();return new thaumcraft.api.world.IArcaneBore.State(hasPick,hasFocus,nearBroken,powered()&&hasFocus&&hasPick&&pick.isDamageableItem()&&!nearBroken,1+(area+2)*2,speed,pick.is(thaumcraft.registry.R3Equipment.TOOLS.get("elemental_pickaxe").get()),enchant(Enchantments.FORTUNE),enchant(Enchantments.SILK_TOUCH)>0);}
     public BlockPos basePosition(){return worldPosition.relative(getBlockState().getValue(ArcaneBoreBlock.HANGING)?Direction.UP:Direction.DOWN);}
     private ArcaneBoreBlockEntity baseTile(){return level.hasChunkAt(basePosition())&&level.getBlockEntity(basePosition()) instanceof ArcaneBoreBlockEntity tile&&tile.base()?tile:null;}
     public int upgrade(FocusUpgradeType type){return items.getItem(0).getItem() instanceof ItemFocusBasic focus?focus.getUpgradeLevel(items.getItem(0),type):0;}

@@ -13,6 +13,7 @@ import thaumcraft.registry.R3Content;
 
 /** Full BlockState preservation, including properties introduced after 1.7.10. */
 public final class FocusMemoryBlockEntity extends BlockEntity {
+    public static java.util.function.Consumer<FocusMemoryBlockEntity> clientTick=tile->{};
     private BlockState original=Blocks.AIR.defaultBlockState();
     private UUID owner;
     private int elapsed,duration=120,remaining=1;
@@ -21,16 +22,16 @@ public final class FocusMemoryBlockEntity extends BlockEntity {
     public BlockState original(){return original;}
     public boolean ownedBy(UUID player){return player.equals(owner);}
     public void remember(BlockState original,UUID owner,int duration,int remaining,Direction direction){this.original=original;this.owner=owner;this.duration=Math.max(1,duration);this.remaining=Math.max(1,remaining);this.direction=direction;this.elapsed=0;setChanged();if(level!=null)level.sendBlockUpdated(worldPosition,getBlockState(),getBlockState(),3);}
-    public void restore(){if(level!=null&&level.getBlockEntity(worldPosition)==this){level.setBlockAndUpdate(worldPosition,original);level.scheduleTick(worldPosition,original.getBlock(),2);}}
+    public void restore(){if(level!=null&&level.getBlockEntity(worldPosition)==this){if(level instanceof ServerLevel server&&getBlockState().is(R3Content.PORTABLE_HOLE.get()))net.neoforged.neoforge.network.PacketDistributor.sendToPlayersNear(server,null,worldPosition.getX()+.5,worldPosition.getY()+.5,worldPosition.getZ()+.5,32,new thaumcraft.network.BlockSparklePayload(worldPosition,0x400040));level.setBlockAndUpdate(worldPosition,original);level.scheduleTick(worldPosition,original.getBlock(),2);}}
     public void tick(){
-        if(level==null||level.isClientSide||!getBlockState().is(R3Content.PORTABLE_HOLE.get()))return;
+        if(level==null||!getBlockState().is(R3Content.PORTABLE_HOLE.get()))return;if(level.isClientSide){clientTick.accept(this);return;}
         if(elapsed==0&&remaining>1&&direction!=null){
             for(int a=-1;a<=1;a++)for(int b=-1;b<=1;b++)if(a!=0||b!=0){var pos=switch(direction.getAxis()){case X->worldPosition.offset(0,a,b);case Y->worldPosition.offset(a,0,b);case Z->worldPosition.offset(a,b,0);};createHole((ServerLevel)level,pos,owner,duration,1,null);}
             createHole((ServerLevel)level,worldPosition.relative(direction),owner,duration,remaining-1,direction);
         }
         if(++elapsed>=duration)restore();else setChanged();
     }
-    public static boolean suitable(ServerLevel level,BlockPos pos){if(!level.hasChunkAt(pos)||level.isOutsideBuildHeight(pos)||level.getBlockEntity(pos)!=null)return false;var state=level.getBlockState(pos);return !state.isAir()&&!state.is(Blocks.BEDROCK)&&!state.is(R3Content.PORTABLE_HOLE.get())&&!state.is(R3Content.WARDED_BLOCK.get())&&state.getDestroySpeed(level,pos)>=0&&!state.is(net.minecraft.tags.BlockTags.FEATURES_CANNOT_REPLACE);}
+    public static boolean suitable(ServerLevel level,BlockPos pos){if(!level.hasChunkAt(pos)||level.isOutsideBuildHeight(pos)||level.getBlockEntity(pos)!=null)return false;var state=level.getBlockState(pos);return !thaumcraft.api.ThaumcraftApi.portableHoleBlackList.contains(state.getBlock())&&!state.isAir()&&!state.is(Blocks.BEDROCK)&&!state.is(R3Content.PORTABLE_HOLE.get())&&!state.is(R3Content.WARDED_BLOCK.get())&&state.getDestroySpeed(level,pos)>=0&&!state.is(net.minecraft.tags.BlockTags.FEATURES_CANNOT_REPLACE);}
     public static boolean createHole(ServerLevel level,BlockPos pos,UUID owner,int duration,int remaining,Direction direction){
         if(!suitable(level,pos))return false;var player=owner==null?null:level.getServer().getPlayerList().getPlayer(owner);if(player==null||player.level()!=level||!FocusActions.canChange(player,pos))return false;
         var previous=level.getBlockState(pos);if(!level.setBlockAndUpdate(pos,R3Content.PORTABLE_HOLE.get().defaultBlockState()))return false;if(level.getBlockEntity(pos) instanceof FocusMemoryBlockEntity tile){tile.remember(previous,owner,duration,remaining,direction);return true;}level.setBlockAndUpdate(pos,previous);return false;

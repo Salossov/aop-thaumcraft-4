@@ -17,5 +17,9 @@ public final class ResearchNotificationQueue<T> {
     public int remaining(){return pending.size();}
     public float alpha(int index,long now){float entry=Math.clamp((now-rows().get(index).entered())/250f,0,1);return index==0?Math.min(entry,Math.clamp((headExpires-now)/(float)lifetime,.06f,1)):entry;}
     public float shift(long now){return shiftStarted<0?0:shifted*8*(float)Math.pow(1-Math.clamp((now-shiftStarted)/250f,0,1),3);}
+    public boolean dismiss(int index,long now){
+        if(index<0||index>=visible.size())return false;var iterator=visible.iterator();for(int i=0;i<=index;i++)iterator.next();iterator.remove();
+        if(index==0){headExpires=now+lifetime;shiftStarted=now;shifted=1;}advance(now);return true;
+    }
     public void clear(){visible.clear();pending.clear();headExpires=0;shiftStarted=-1;shifted=0;}
 }

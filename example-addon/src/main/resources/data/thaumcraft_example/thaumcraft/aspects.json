@@ -1,0 +1,12 @@
+{
+  "kind": "object_aspects",
+  "entries": {
+    "thaumcraft_example:device": {
+      "thaumcraft_example:resonantia": 4,
+      "metallum": 4
+    },
+    "thaumcraft_example:focus": {
+      "thaumcraft_example:resonantia": 2
+    }
+  }
+}

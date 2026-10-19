@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+[[mods]]
+modId="thaumcraft_example"
+version="1.0.0"
+displayName="Thaumcraft API Example"
+[[dependencies.thaumcraft_example]]
+modId="thaumcraft"
+type="required"
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.thaumcraft_example]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.252,21.2)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.thaumcraft_example]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+ordering="NONE"
+side="BOTH"

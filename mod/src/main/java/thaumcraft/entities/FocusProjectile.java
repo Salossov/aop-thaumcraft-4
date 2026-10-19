@@ -96,7 +96,7 @@ public final class FocusProjectile extends ThrowableItemProjectile implements IE
     }
     @Override protected void onHit(HitResult hit){
         if(kind()==Kind.FROST){frostHit(hit);return;}
-        if(level().isClientSide){if(kind()==Kind.PRIMAL||kind()==Kind.SHOCK)clientImpact.accept(this);if(kind()!=Kind.PRIMAL)discard();return;}
+        if(level().isClientSide)return;
         var level=(ServerLevel)level();var owner=getOwner();
         if(kind()==Kind.EMBER){
             if(hit instanceof EntityHitResult target){if(!target.getEntity().fireImmune()&&target.getEntity().hurt(fireDamage(false),damage()))target.getEntity().igniteForSeconds(3+upgrade);}
@@ -132,9 +132,10 @@ public final class FocusProjectile extends ThrowableItemProjectile implements IE
                 }
             }
         }
-        discard();
+        if(kind()==Kind.PRIMAL||kind()==Kind.SHOCK)level.broadcastEntityEvent(this,(byte)(kind()==Kind.PRIMAL?-63:-64));discard();
     }
     private void frostHit(HitResult hit){
+        if(level().isClientSide)return; // Impact and shatter FX are delivered before the authoritative removal packet.
         var velocity=getDeltaMovement();
         if(hit instanceof BlockHitResult block){
             var axis=block.getDirection().getAxis();velocity=velocity.multiply(axis==Direction.Axis.X?-1:1,axis==Direction.Axis.Y?-.9:1,axis==Direction.Axis.Z?-1:1);
@@ -149,14 +150,16 @@ public final class FocusProjectile extends ThrowableItemProjectile implements IE
             if(target instanceof LivingEntity living&&upgrade>0)living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,200,upgrade-1));
             if(flag(1)){target.invulnerableTime=0;discard();iceBreak();target.setDeltaMovement(before.add(target.getDeltaMovement().subtract(before).scale(.1)));}
         }
-        if(bounces--<=0){discard();iceBreak();cracks(Blocks.ICE.defaultBlockState(),8*damage(),true);}
+        if(bounces--<=0){iceBreak();cracks(Blocks.ICE.defaultBlockState(),8*damage(),true);discard();}
     }
     private void iceBreak(){playSound(Blocks.ICE.defaultBlockState().getSoundType().getBreakSound(),.3f,1.2f/(random.nextFloat()*.2f+.9f));}
     private void cracks(net.minecraft.world.level.block.state.BlockState state,float count,boolean frost){
+        if(level() instanceof ServerLevel server){if(frost)server.broadcastEntityEvent(this,(byte)(count>damage()?-62:-61));else server.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK,state),getX(),getY(),getZ(),(int)Math.ceil(count),.15,.15,.15,.1);return;}
         var velocities=new java.util.ArrayList<Vec3>();
         for(int i=0;i<count;i++)velocities.add(new Vec3(4*((double)random.nextFloat()-.5),.5,((double)random.nextFloat()-.5)*4));
         if(level().isClientSide)clientCracks.accept(new Cracks(position(),state,java.util.List.copyOf(velocities),frost));
     }
+    @Override public void handleEntityEvent(byte event){if(kind()==Kind.FROST&&(event==-61||event==-62))cracks(Blocks.ICE.defaultBlockState(),damage()*(event==-62?8:1),true);else if(kind()==Kind.PRIMAL&&event==-63||kind()==Kind.SHOCK&&event==-64)clientImpact.accept(this);else super.handleEntityEvent(event);}
     @Override public void addAdditionalSaveData(CompoundTag tag){super.addAdditionalSaveData(tag);tag.putInt("Kind",kind().ordinal());tag.putInt("Flags",entityData.get(FLAGS));tag.putFloat("Damage",damage());tag.putInt("Duration",duration);tag.putInt("Upgrade",upgrade);tag.putInt("Bounces",bounces);tag.putDouble("Bounce",bounce);tag.putInt("Area",area);}
     @Override public void readAdditionalSaveData(CompoundTag tag){super.readAdditionalSaveData(tag);configure(Kind.values()[Math.floorMod(tag.getInt("Kind"),Kind.values().length)],tag.getFloat("Damage"),tag.getInt("Flags"));duration=tag.getInt("Duration");upgrade=tag.getInt("Upgrade");bounces=tag.getInt("Bounces");bounce=tag.getDouble("Bounce");area=Math.max(1,Math.min(16,tag.getInt("Area")));}
 }

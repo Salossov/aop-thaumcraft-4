@@ -16,7 +16,7 @@ import thaumcraft.data.ThaumcraftData;
 import thaumcraft.knowledge.KnowledgeService;
 import thaumcraft.registry.R4Content;
 
-public final class DeconstructionTableBlockEntity extends BlockEntity implements WorldlyContainer,MenuProvider {
+public final class DeconstructionTableBlockEntity extends BlockEntity implements WorldlyContainer,MenuProvider,thaumcraft.api.world.IDeconstructionTable {
     private NonNullList<ItemStack> items=NonNullList.withSize(1,ItemStack.EMPTY);
     private Aspect aspect;
     private int breakTime;
