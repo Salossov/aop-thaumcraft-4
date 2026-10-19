@@ -12,6 +12,8 @@ import thaumcraft.api.aspects.Aspect;
 /** A loaded member of a TC4 centivis network. Networks never load chunks. */
 public abstract class TileVisNode extends BlockEntity {
     private BlockPos parent;
+    private java.lang.ref.WeakReference<TileVisNode> resolvedParent;
+    private boolean parentResolved;
     private int pulseColor = 0xffffff;
     private long pulseUntil;
 
@@ -32,6 +34,11 @@ public abstract class TileVisNode extends BlockEntity {
         return taken;
     }
     public TileVisNode getParent() {
+        if (parentResolved) {
+            var node = resolvedParent == null ? null : resolvedParent.get();
+            return node != null && !node.isRemoved() && node.getLevel() == level && level != null
+                    && level.hasChunkAt(node.getBlockPos()) ? node : null;
+        }
         return parent != null && level != null && level.hasChunkAt(parent)
                 && level.getBlockEntity(parent) instanceof TileVisNode node && !node.isRemoved() ? node : null;
     }
@@ -46,6 +53,11 @@ public abstract class TileVisNode extends BlockEntity {
     }
     void setNetworkParent(BlockPos value) {
         if (!java.util.Objects.equals(parent, value)) { parent = value; changedAndSync(); }
+    }
+    void setResolvedParent(TileVisNode value) {
+        parentResolved = true;
+        resolvedParent = value == null ? null : new java.lang.ref.WeakReference<>(value);
+        setNetworkParent(value == null ? null : value.getBlockPos());
     }
     public void triggerConsumeEffect(Aspect aspect) {
         if (level == null || level.isClientSide) return;
@@ -63,6 +75,7 @@ public abstract class TileVisNode extends BlockEntity {
     @Override protected void loadAdditional(CompoundTag tag, HolderLookup.Provider lookup) {
         super.loadAdditional(tag, lookup);
         parent = tag.contains("VisParent") ? BlockPos.of(tag.getLong("VisParent")) : null;
+        parentResolved = false; resolvedParent = null;
         pulseColor = tag.contains("VisPulseColor") ? tag.getInt("VisPulseColor") : 0xffffff;
         pulseUntil = tag.getLong("VisPulseUntil");
     }

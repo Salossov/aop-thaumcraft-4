@@ -3,6 +3,8 @@ package thaumcraft.api.visnet;
 import java.lang.ref.WeakReference;
 import java.util.*;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
@@ -17,6 +19,12 @@ public final class VisNetHandler {
         boolean dirty = true, rebuilding;
         long refreshed = Long.MIN_VALUE;
     }
+    /** Registers a virtual source one block in front of the exact live owner, without placing a block. */
+    public static VirtualSourceRegistration registerVirtualSource(BlockEntity owner, Direction face, VirtualVisSource source) {
+        return VirtualVisSources.register(owner, face, source);
+    }
+    static void virtualSourcesChanged(Level level) { NETWORKS.computeIfAbsent(level, ignored -> new Network()).dirty = true; }
+    static void forgetLevel(Level level) { NETWORKS.remove(level); }
     public static void addNode(Level level, TileVisNode node) {
         var network = NETWORKS.computeIfAbsent(level, ignored -> new Network());
         network.nodes.put(node.getBlockPos(), new WeakReference<>(node)); network.dirty = true;
@@ -38,6 +46,7 @@ public final class VisNetHandler {
             if (!stale) result.add(node);
             return stale;
         });
+        result.addAll(VirtualVisSources.loaded(level));
         result.sort(Comparator.comparingLong(node -> node.getBlockPos().asLong()));
         return result;
     }
@@ -51,7 +60,7 @@ public final class VisNetHandler {
             var connected = new ArrayList<TileVisNode>();
             var pending = new ArrayList<TileVisNode>();
             for (var node : nodes) {
-                if (node.isSource()) {node.setNetworkParent(null);connected.add(node);} else pending.add(node);
+                if (node.isSource()) {node.setResolvedParent(null);connected.add(node);} else pending.add(node);
             }
             boolean progress;
             do {
@@ -65,10 +74,10 @@ public final class VisNetHandler {
                         double score = square - (candidate.isSource() ? target.getRange() * 2 : 0);
                         if (score < distance && canNodeBeSeen(target, candidate)) { closest = candidate; distance = score; }
                     }
-                    if (closest != null) { target.setNetworkParent(closest.getBlockPos()); connected.add(target); iterator.remove(); progress = true; }
+                    if (closest != null) { target.setResolvedParent(closest); connected.add(target); iterator.remove(); progress = true; }
                 }
             } while (progress && !pending.isEmpty());
-            for(var node:pending)node.setNetworkParent(null);
+            for(var node:pending)node.setResolvedParent(null);
             network.refreshed = level.getGameTime(); network.dirty = false;
         } finally { network.rebuilding = false; }
     }
