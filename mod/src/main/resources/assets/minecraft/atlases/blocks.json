@@ -94,6 +94,11 @@
       "type": "minecraft:single",
       "resource": "thaumcraft:misc/tunnel",
       "sprite": "thaumcraft:misc/tunnel"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "thaumcraft:misc/script",
+      "sprite": "thaumcraft:misc/script"
     }
   ]
 }

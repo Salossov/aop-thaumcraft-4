@@ -14,6 +14,8 @@ import thaumcraft.data.*;
 public final class ApiBootstrap {
     private static boolean addonsRegistered;
     public static void install(){
+        thaumcraft.api.client.ParticleApi.installBroadcast(thaumcraft.network.ParticleEffectPayload::send);
+        thaumcraft.api.client.ParticleApi.installSmokeBroadcast(thaumcraft.network.SmokeSpiralPayload::send);
         thaumcraft.api.world.BlockEntityMovementApi.install(new BlockEntityMovement());
         thaumcraft.api.world.BlockPlacementApi.install(new SelectedBlockPlacement());
         thaumcraft.api.world.BlockReplacementApi.install(new ProtectedBlockReplacement());

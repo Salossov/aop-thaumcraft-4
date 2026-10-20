@@ -14,7 +14,20 @@ import thaumcraft.api.client.ParticleApi;
 /** Native particle-engine adaptation of TC4 FXSparkle, untargeted FXWisp and FXBurst. */
 @EventBusSubscriber(modid = "thaumcraft", bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class AddonParticleEffects {
+    public static void receiveSmoke(thaumcraft.network.SmokeSpiralPayload packet){
+        var minecraft=Minecraft.getInstance();var level=minecraft.level;
+        if(level!=null&&level.dimension().location().equals(packet.dimension()))ParticleApi.smokeSpiral(level,packet.effect());
+    }
+    public static void receive(thaumcraft.network.ParticleEffectPayload packet) {
+        var minecraft=Minecraft.getInstance();var level=minecraft.level;
+        if(level!=null&&level.dimension().location().equals(packet.dimension()))ParticleApi.emit(level,packet.effect());
+    }
     @SubscribeEvent public static void setup(FMLClientSetupEvent event) {
+        event.enqueueWork(()->ParticleApi.installSmokeSpirals((source,effect)->{
+            var minecraft=Minecraft.getInstance();var displayed=minecraft.level;
+            if(displayed==null||source!=displayed)return;
+            minecraft.execute(()->{if(minecraft.level==displayed)minecraft.particleEngine.add(new SmokeSpiralParticle(displayed,effect));});
+        }));
         event.enqueueWork(()->ParticleApi.installEssentiaTrails((source,effect)->{
             var minecraft=Minecraft.getInstance();var displayed=minecraft.level;if(displayed==null)return;
             if(source.isClientSide()?source!=displayed:minecraft.getSingleplayerServer()!=source.getServer()||!source.dimension().equals(displayed.dimension()))return;
@@ -43,7 +56,11 @@ public final class AddonParticleEffects {
             minecraft.execute(() -> {
                 if (minecraft.level != displayed) return;
                 if (effect.kind() == ParticleApi.Kind.SPARKLE && displayed.random.nextInt(6) >= LegacyParticles.particleCount(2)) return;
-                minecraft.particleEngine.add(effect.kind()==ParticleApi.Kind.BURST?new LegacyBurstParticle(displayed,effect):new ProxyParticle(displayed, effect));
+                minecraft.particleEngine.add(switch(effect.kind()) {
+                    case BURST -> new LegacyBurstParticle(displayed,effect);
+                    case SHADOW_SPARKLE -> new ShadowSparkleParticle(displayed,effect);
+                    default -> new ProxyParticle(displayed,effect);
+                });
             });
         }));
     }

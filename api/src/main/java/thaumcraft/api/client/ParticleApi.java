@@ -6,12 +6,13 @@ import net.minecraft.world.level.Level;
 
 /**
  * Public access to the original TC4 client-proxy sparkle/wisp effects.
- * No packets are sent: dedicated servers do nothing, while an integrated server may
+ * Legacy emit/sparkle calls send no packets: dedicated servers do nothing, while an integrated server may
  * emit into its matching local client world, as the original ClientProxy did.
- * The implementation schedules rendering on the client thread.
+ * The implementation schedules rendering on the client thread. Explicit broadcast
+ * methods instead deliver effects to nearby clients of a server level.
  */
 public final class ParticleApi {
-    public enum Kind { SPARKLE, WISP, BURST }
+    public enum Kind { SPARKLE, WISP, BURST, SHADOW_SPARKLE }
     public record Effect(Kind kind, double x, double y, double z, float size, int palette,
                          float red, float green, float blue, boolean shrink, boolean noClip, float gravity) {
         public Effect {
@@ -22,6 +23,48 @@ public final class ParticleApi {
         }
     }
     private static volatile BiConsumer<Level, Effect> access = (level, effect) -> { };
+    private static volatile BiConsumer<net.minecraft.server.level.ServerLevel, Effect> broadcastAccess =
+            (level, effect) -> { throw new IllegalStateException("Server particle transport unavailable"); };
+    /** Explicit server transport; legacy emit/sparkle retain their original local-only semantics. */
+    public static void installBroadcast(BiConsumer<net.minecraft.server.level.ServerLevel, Effect> implementation) {
+        broadcastAccess = Objects.requireNonNull(implementation);
+    }
+    /** Send one effect to nearby clients of this level, including the integrated-server host exactly once. */
+    public static void broadcast(net.minecraft.server.level.ServerLevel level, Effect effect) {
+        Objects.requireNonNull(level); Objects.requireNonNull(effect);
+        if (!level.getServer().isSameThread()) throw new IllegalStateException("Server thread required");
+        broadcastAccess.accept(level, effect);
+    }
+    public static void broadcastSparkle(net.minecraft.server.level.ServerLevel level, double x, double y, double z, int color) {
+        broadcast(level, new Effect(Kind.SPARKLE, x, y, z, 1.5f, color, 0, 0, 0, true, true, 0));
+    }
+    /** TT Shadowbeam's five-tick, unshrinking, alpha-blended FXSparkle variant; coordinates retain the original float conversion. */
+    public static void broadcastShadowSparkle(net.minecraft.server.level.ServerLevel level, float x, float y, float z, float size) {
+        broadcast(level, new Effect(Kind.SHADOW_SPARKLE, x, y, z, size, -1,
+                .001f, .001f, .001f, false, true, -.7f));
+    }
+    /** Original stationary FXSmokeSpiral: radius, starting angle, lower Y clamp and packed RGB. */
+    public record SmokeSpiral(double x,double y,double z,float radius,int start,int minY,int color){
+        public SmokeSpiral{
+            if(!Double.isFinite(x)||!Double.isFinite(y)||!Double.isFinite(z)||!Float.isFinite(radius)||radius<0)
+                throw new IllegalArgumentException("Invalid smoke spiral");
+        }
+    }
+    private static volatile BiConsumer<Level,SmokeSpiral> smokeAccess=(level,effect)->{};
+    private static volatile BiConsumer<net.minecraft.server.level.ServerLevel,SmokeSpiral> smokeBroadcastAccess=
+            (level,effect)->{throw new IllegalStateException("Server smoke transport unavailable");};
+    public static void installSmokeSpirals(BiConsumer<Level,SmokeSpiral> implementation){smokeAccess=Objects.requireNonNull(implementation);}
+    public static void installSmokeBroadcast(BiConsumer<net.minecraft.server.level.ServerLevel,SmokeSpiral> implementation){smokeBroadcastAccess=Objects.requireNonNull(implementation);}
+    /** Client-only emission; server callers use explicit broadcast to avoid integrated-server duplicates. */
+    public static void smokeSpiral(Level level,SmokeSpiral effect){
+        Objects.requireNonNull(level);Objects.requireNonNull(effect);
+        if(level.isClientSide())smokeAccess.accept(level,effect);
+    }
+    public static void broadcastSmokeSpiral(net.minecraft.server.level.ServerLevel level,SmokeSpiral effect){
+        Objects.requireNonNull(level);Objects.requireNonNull(effect);
+        if(!level.getServer().isSameThread())throw new IllegalStateException("Server thread required");
+        smokeBroadcastAccess.accept(level,effect);
+    }
     public record BlockSparkle(net.minecraft.core.BlockPos pos, int color, int count) {
         public BlockSparkle { pos = Objects.requireNonNull(pos).immutable(); if (count < 0) throw new IllegalArgumentException("Negative particle count"); }
     }

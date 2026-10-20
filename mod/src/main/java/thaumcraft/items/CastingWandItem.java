@@ -101,18 +101,20 @@ public final class CastingWandItem extends Item implements thaumcraft.api.wands.
         if(level.getBlockEntity(pos) instanceof thaumcraft.production.EssentiaBlockEntity) return InteractionResult.PASS;
         if(level.getBlockEntity(pos) instanceof AuraNodeBlockEntity) {
             if(player instanceof ServerPlayer server) ACTIVE.put(server,new Target(level.dimension(),pos.immutable()));
+            else thaumcraft.api.client.FocusClientVisuals.end(player);
             player.startUsingItem(context.getHand());return InteractionResult.CONSUME;
         }
-        if(WandFocus.supports(context.getItemInHand())&&!WandFocus.get(context.getItemInHand()).isEmpty()){if(player instanceof ServerPlayer server)FocusCasting.begin(server,context.getHand());else if(FocusCasting.continuous(context.getItemInHand()))player.startUsingItem(context.getHand());return InteractionResult.CONSUME;}
+        if(WandFocus.supports(context.getItemInHand())&&!WandFocus.get(context.getItemInHand()).isEmpty()){if(player instanceof ServerPlayer server)FocusCasting.begin(server,context.getHand());else if(FocusCasting.continuous(context.getItemInHand())){player.startUsingItem(context.getHand());thaumcraft.api.client.FocusClientVisuals.begin(player,context.getItemInHand(),context.getHand());}return InteractionResult.CONSUME;}
         return InteractionResult.PASS;
     }
-    @Override public InteractionResultHolder<ItemStack> use(Level level,Player player,InteractionHand hand){var wand=player.getItemInHand(hand);if(!WandFocus.supports(wand)||WandFocus.get(wand).isEmpty())return InteractionResultHolder.pass(wand);if(player instanceof ServerPlayer server)FocusCasting.begin(server,hand);else{var f=WandFocus.get(wand);if(f.getItem() instanceof thaumcraft.api.wands.ItemFocusBasic i)thaumcraft.client.WandHud.castAt(level.getGameTime()+(i.getActivationCooldown(f)+49)/50);if(FocusCasting.continuous(wand))player.startUsingItem(hand);}return InteractionResultHolder.consume(wand);}
+    @Override public InteractionResultHolder<ItemStack> use(Level level,Player player,InteractionHand hand){var wand=player.getItemInHand(hand);if(!WandFocus.supports(wand)||WandFocus.get(wand).isEmpty())return InteractionResultHolder.pass(wand);if(player instanceof ServerPlayer server)FocusCasting.begin(server,hand);else{var f=WandFocus.get(wand);if(f.getItem() instanceof thaumcraft.api.wands.ItemFocusBasic i)thaumcraft.client.WandHud.castAt(level.getGameTime()+(i.getActivationCooldown(f)+49)/50);if(FocusCasting.continuous(wand)){player.startUsingItem(hand);thaumcraft.api.client.FocusClientVisuals.begin(player,wand,hand);}}return InteractionResultHolder.consume(wand);}
     @Override public void onUseTick(Level level,LivingEntity entity,ItemStack stack,int remaining) {
+        if(level.isClientSide()&&entity instanceof Player local){thaumcraft.api.client.FocusClientVisuals.tick(local,stack,remaining);return;}
         if(!(entity instanceof ServerPlayer player)) return;var hit=player.pick(8,0,false);var original=ACTIVE.get(player);
         if(original==null){FocusCasting.tick(player,stack);return;}
         if(!original.dimension.equals(level.dimension())||!(hit instanceof BlockHitResult blockHit)||!original.pos.equals(blockHit.getBlockPos())||hit.getType()!=HitResult.Type.BLOCK||!(level.getBlockEntity(blockHit.getBlockPos()) instanceof AuraNodeBlockEntity node)) {stopDrain(player);player.stopUsingItem();return;}
         if(remaining%5==0) node.charge(player,stack);
     }
     private static void stopDrain(ServerPlayer player){var target=ACTIVE.remove(player);if(target==null)return;var level=player.server.getLevel(target.dimension);if(level!=null&&level.hasChunkAt(target.pos)&&level.getBlockEntity(target.pos) instanceof AuraNodeBlockEntity node)node.stopDrain(player);}
-    @Override public void releaseUsing(ItemStack stack,Level level,LivingEntity entity,int remaining) {if(entity instanceof ServerPlayer player){stopDrain(player);FocusCasting.stop(player);}}
+    @Override public void releaseUsing(ItemStack stack,Level level,LivingEntity entity,int remaining) {if(entity instanceof ServerPlayer player){stopDrain(player);FocusCasting.stop(player);}else if(entity instanceof Player local)thaumcraft.api.client.FocusClientVisuals.end(local);}
 }

@@ -20,10 +20,11 @@ public final class WandMaterials {
             new WandRod(tag,capacity[i],()->new ItemStack(R3Equipment.RODS.get(tag).get()),cost[i],update);
             new StaffRod(tag,staffCapacity[i],()->new ItemStack(R3Equipment.RODS.get(tag+"_staff").get()),staffCost[i],update);
         }
-        new StaffRod("primal",250,()->new ItemStack(R3Equipment.RODS.get("primal_staff").get()),32,(stack,player)->{
+        var primal=new StaffRod("primal",250,()->new ItemStack(R3Equipment.RODS.get("primal_staff").get()),32,(stack,player)->{
             if(player.tickCount%50!=0)return;var candidates=Aspects.PRIMALS.stream().filter(a->WandVis.get(stack,a)<WandVis.capacity(stack)/10).toList();
             if(!candidates.isEmpty())WandVis.add(stack,candidates.get(player.getRandom().nextInt(candidates.size())),1);
         });
+        primal.setRunes(true);
         cap("iron",1.1f,1,Set.of(),1.1f);cap("gold",1,3,Set.of(),1);cap("thaumium",.9f,6,Set.of(),.9f);cap("void",.8f,9,Set.of(),.8f);
         cap("copper",1.1f,2,Set.of(Aspect.getAspect("ordo"),Aspect.getAspect("perditio")),1);
         cap("silver",1,4,Set.of(Aspect.getAspect("aer"),Aspect.getAspect("terra"),Aspect.getAspect("ignis"),Aspect.getAspect("aqua")),.95f);

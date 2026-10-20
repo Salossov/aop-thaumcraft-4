@@ -11,7 +11,7 @@ import thaumcraft.items.*;
 public final class WandClientEffects implements IClientItemExtensions {
     static net.minecraft.world.phys.Vec3 chargingTip(LocalPlayer player,float partial){
         var stack=player.getUseItem();var arm=player.getUsedItemHand()==net.minecraft.world.InteractionHand.MAIN_HAND?player.getMainArm():player.getMainArm().getOpposite();var pose=new PoseStack();usePose(pose,player,arm,stack,partial,0);pose.mulPose(Axis.YP.rotationDegrees(arm==HumanoidArm.RIGHT?-45:45));pose.translate(0,.8/16,0);pose.scale(.55f,.55f,.55f);
-        float top=stack.getItem() instanceof CastingWandItem item?switch(item.kind()){case STAFF->29/16f-.5f;case SCEPTRE->15.91f/16-.5f;default->19/16f-.5f;}:.6875f;
+        float top=stack.getItem() instanceof CastingWandItem item?switch(item.kind()){case STAFF->27.8f/16f-.5f;case SCEPTRE->15.91f/16-.5f;default->19/16f-.5f;}:.6875f;
         var point=pose.last().pose().transformPosition(new org.joml.Vector3f(0,top,0));net.minecraft.client.Minecraft.getInstance().gameRenderer.getMainCamera().rotation().transform(point);return player.getEyePosition(partial).add(point.x,point.y,point.z);
     }
     public static boolean expandedTooltip(){return net.minecraft.client.gui.screens.Screen.hasShiftDown();}
