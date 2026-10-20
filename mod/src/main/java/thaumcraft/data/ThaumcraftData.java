@@ -34,7 +34,7 @@ public final class ThaumcraftData extends SimpleJsonResourceReloadListener {
     private static final Map<net.minecraft.world.item.crafting.RecipeManager,thaumcraft.api.book.BookCatalog> BOOKS=java.util.Collections.synchronizedMap(new WeakHashMap<>());
     private record ResolvedSnapshot(Snapshot data,thaumcraft.api.book.BookCatalog books) {}
     private static final Map<MinecraftServer,ResolvedSnapshot> LAST_GOOD=java.util.Collections.synchronizedMap(new WeakHashMap<>());
-    public static thaumcraft.api.book.BookCatalog books(MinecraftServer server){return BOOKS.getOrDefault(server.getRecipeManager(),thaumcraft.api.book.BookCatalog.EMPTY);}
+    public static thaumcraft.api.book.BookCatalog books(MinecraftServer server){get(server);return BOOKS.getOrDefault(server.getRecipeManager(),thaumcraft.api.book.BookCatalog.EMPTY);}
     private final net.minecraft.world.item.crafting.RecipeManager recipes;
     private ThaumcraftData(net.minecraft.world.item.crafting.RecipeManager recipes) { super(new Gson(),"thaumcraft");this.recipes=recipes; }
     public static void register() { NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent event)->event.addListener(new ThaumcraftData(event.getServerResources().getRecipeManager()))); }

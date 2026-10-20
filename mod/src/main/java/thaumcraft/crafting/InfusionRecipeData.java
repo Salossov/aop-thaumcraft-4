@@ -22,7 +22,7 @@ public final class InfusionRecipeData extends InfusionRecipe {
                 Codec.STRING.fieldOf("research").forGetter(InfusionRecipeData::research),
                 Ingredient.CODEC_NONEMPTY.fieldOf("input").forGetter(InfusionRecipeData::input),
                 Ingredient.CODEC_NONEMPTY.listOf().fieldOf("components").forGetter(InfusionRecipeData::components),
-                ItemStack.STRICT_CODEC.fieldOf("result").forGetter(InfusionRecipeData::getRecipeOutput),
+                ItemStack.CODEC.validate(thaumcraft.api.crafting.IInfusionOutput::validateOutput).fieldOf("result").forGetter(InfusionRecipeData::getRecipeOutput),
                 Codec.unboundedMap(Codec.STRING, Codec.INT).fieldOf("aspects").forGetter(InfusionRecipeData::aspects),
                 Codec.INT.fieldOf("instability").forGetter(InfusionRecipeData::instability)
         ).apply(i, InfusionRecipeData::new));

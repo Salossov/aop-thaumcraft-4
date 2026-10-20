@@ -12,6 +12,7 @@ import thaumcraft.api.research.ResearchDefinition;
 public final class ResearchDataSync {
     private static final Gson GSON=new Gson();
     public static void encode(CompoundTag target,Map<String,ResearchDefinition> definitions) {
+        target.putBoolean("easyResearch",thaumcraft.api.research.ResearchApi.serverEasyMode());
         var list=new ListTag();definitions.values().stream().sorted(java.util.Comparator.comparing(ResearchDefinition::key)).forEach(d->list.add(StringTag.valueOf(GSON.toJson(d))));target.put("researchDefinitions",list);
     }
     public static Map<String,ResearchDefinition> decode(CompoundTag data) {

@@ -12,8 +12,21 @@ public final class ResearchApi {
         default Map<String,ResearchDefinition> definitions(ServerPlayer player){throw new UnsupportedOperationException("Server research catalog is unavailable");}
     }
     private static Access access;
-    private record Snapshot(Map<String,ResearchDefinition> definitions,BookCatalog books,PlayerKnowledge knowledge){}
-    private static volatile Snapshot snapshot=new Snapshot(Map.of(),BookCatalog.EMPTY,new PlayerKnowledge());
+    private record Snapshot(Map<String,ResearchDefinition> definitions,BookCatalog books,PlayerKnowledge knowledge,boolean easyMode){}
+    private static volatile Snapshot snapshot=new Snapshot(Map.of(),BookCatalog.EMPTY,new PlayerKnowledge(),false);
+    private static final Map<net.minecraft.resources.ResourceLocation,java.util.function.BooleanSupplier> EASY_MODE_RULES=new LinkedHashMap<>();
+    private static boolean modesFrozen;
+    /** Startup-only, pure configuration requests. Any enabled request selects TC4's global easy mode. */
+    public static synchronized void registerEasyMode(net.minecraft.resources.ResourceLocation id,java.util.function.BooleanSupplier enabled){
+        if(modesFrozen)throw new IllegalStateException("Research mode registration is closed");
+        if(EASY_MODE_RULES.putIfAbsent(Objects.requireNonNull(id),Objects.requireNonNull(enabled))!=null)throw new IllegalArgumentException("Duplicate research mode rule "+id);
+    }
+    public static synchronized void freezeModes(){modesFrozen=true;}
+    /** Server authority; clients must use clientEasyMode(), which comes from their current server. */
+    public static synchronized boolean serverEasyMode(){return EASY_MODE_RULES.values().stream().anyMatch(java.util.function.BooleanSupplier::getAsBoolean);}
+    public static boolean clientEasyMode(){return snapshot.easyMode;}
+    /** Matches TC4's book purchase branch; an empty aspect list is not a purchase. */
+    public static boolean usesAspectPurchase(ResearchDefinition research,boolean easyMode){return !research.aspects().isEmpty()&&(easyMode||research.secondary());}
     public static void install(Access value){if(access!=null)throw new IllegalStateException("Research API already installed");access=Objects.requireNonNull(value);}
     public static PlayerKnowledge knowledge(ServerPlayer player){return access.knowledge(player).copy();}
     public static boolean knows(ServerPlayer player,String research){return research.isEmpty()||access.knowledge(player).completedResearch().contains(research);}
@@ -32,6 +45,7 @@ public final class ResearchApi {
     }
     public static BookCatalog books(){return snapshot.books;}
     public static PlayerKnowledge clientKnowledge(){return snapshot.knowledge.copy();}
-    public static void accept(Map<String,ResearchDefinition> research,BookCatalog catalog,PlayerKnowledge state){snapshot=new Snapshot(Map.copyOf(research),Objects.requireNonNull(catalog),state.copy());}
+    public static void accept(Map<String,ResearchDefinition> research,BookCatalog catalog,PlayerKnowledge state){accept(research,catalog,state,false);}
+    public static void accept(Map<String,ResearchDefinition> research,BookCatalog catalog,PlayerKnowledge state,boolean easyMode){snapshot=new Snapshot(Map.copyOf(research),Objects.requireNonNull(catalog),state.copy(),easyMode);}
     private ResearchApi(){}
 }

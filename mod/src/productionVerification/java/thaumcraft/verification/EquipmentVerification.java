@@ -78,9 +78,11 @@ final class EquipmentVerification {
         }
         var pouch=new ItemStack(R3Equipment.FOCUS_POUCH.get());var inside=FocusPouchItem.contents(pouch);
         inside.set(0,new ItemStack(R3Equipment.FOCI.get("fire").get()));FocusPouchItem.store(pouch,inside);player.getInventory().setItem(1,pouch);
-        check.accept(WandFocus.select(player,InteractionHand.MAIN_HAND,1018)&&WandFocus.get(wand).is(R3Equipment.FOCI.get("fire").get())&&FocusPouchItem.contents(pouch).getFirst().isEmpty(),"radial selection moves one focus from pouch to held wand");
+        int pouchChoice=WandFocus.choices(player).stream().filter(choice->choice.slot()>=player.getInventory().getContainerSize()&&choice.stack().is(R3Equipment.FOCI.get("fire").get())).findFirst().orElseThrow().slot();
+        check.accept(WandFocus.select(player,InteractionHand.MAIN_HAND,pouchChoice)&&WandFocus.get(wand).is(R3Equipment.FOCI.get("fire").get())&&FocusPouchItem.contents(pouch).getFirst().isEmpty(),"radial selection moves one focus from pouch to held wand");
         var second=FocusPouchItem.contents(pouch);second.set(0,new ItemStack(R3Equipment.FOCI.get("frost").get()));FocusPouchItem.store(pouch,second);
-        check.accept(WandFocus.select(player,InteractionHand.MAIN_HAND,1018)&&WandFocus.get(wand).is(R3Equipment.FOCI.get("frost").get())&&FocusPouchItem.contents(pouch).getFirst().is(R3Equipment.FOCI.get("fire").get()),"pouch focus swap returns the previous focus without duplication");
+        pouchChoice=WandFocus.choices(player).stream().filter(choice->choice.slot()>=player.getInventory().getContainerSize()&&choice.stack().is(R3Equipment.FOCI.get("frost").get())).findFirst().orElseThrow().slot();
+        check.accept(WandFocus.select(player,InteractionHand.MAIN_HAND,pouchChoice)&&WandFocus.get(wand).is(R3Equipment.FOCI.get("frost").get())&&FocusPouchItem.contents(pouch).getFirst().is(R3Equipment.FOCI.get("fire").get()),"pouch focus swap returns the previous focus without duplication");
         var crusher=new ItemStack(R3Equipment.TOOLS.get("primal_crusher").get());crusher.setDamageValue(10);player.tickCount=20;
         crusher.getItem().inventoryTick(crusher,level,player,2,true);
         player.setItemInHand(InteractionHand.MAIN_HAND,crusher);

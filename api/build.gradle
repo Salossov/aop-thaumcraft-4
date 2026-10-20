@@ -43,3 +43,10 @@ def researchCatalogRulesTest = tasks.register('researchCatalogRulesTest', JavaEx
     mainClass = 'thaumcraft.api.ResearchCatalogRulesTest'
 }
 tasks.named('check') { dependsOn researchCatalogRulesTest }
+
+def researchModeRulesTest = tasks.register('researchModeRulesTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'thaumcraft.api.ResearchModeRulesTest'
+}
+tasks.named('check') { dependsOn researchModeRulesTest }

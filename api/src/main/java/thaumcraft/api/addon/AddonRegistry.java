@@ -24,6 +24,6 @@ public final class AddonRegistry {
     public static synchronized Map<String,BookCategory> categories(){return Map.copyOf(CATEGORIES);}
     public static synchronized Map<String,BookPage> pages(){return Map.copyOf(PAGES);}
     public static synchronized Map<String,ResearchDefinition> research(){return Map.copyOf(RESEARCH);}
-    public static synchronized void freeze(){thaumcraft.api.research.ResearchCatalogRules.freeze();frozen=true;}
+    public static synchronized void freeze(){thaumcraft.api.research.ResearchCatalogRules.freeze();thaumcraft.api.research.ResearchApi.freezeModes();frozen=true;}
     private AddonRegistry(){}
 }

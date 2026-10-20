@@ -119,7 +119,8 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
             // entries the player can actually see or has done.
             float brightness=done?1:unlockable?0.75f+0.25f*(float)Math.sin((System.currentTimeMillis()%600)/600d*Math.PI*2):0.3f;
             if(d.warp()>0&&(done||unlockable||!d.hidden()))ResearchGraphics.forbidden(g,x,y,minecraft.player==null?0:minecraft.player.tickCount);
-            g.setColor(brightness,brightness,brightness,1);com.mojang.blaze3d.systems.RenderSystem.enableBlend();com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();g.blit(ResearchGraphics.texture("gui/gui_research"),x-13,y-13,d.round()?54:d.hidden()?86:d.secondary()?110:0,230,26,26,256,256);
+            boolean secondary=thaumcraft.api.research.ResearchApi.clientEasyMode()||d.secondary();
+            g.setColor(brightness,brightness,brightness,1);com.mojang.blaze3d.systems.RenderSystem.enableBlend();com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();g.blit(ResearchGraphics.texture("gui/gui_research"),x-13,y-13,d.round()?54:d.hidden()?(secondary?230:86):secondary?110:0,230,26,26,256,256);
             if(d.special())g.blit(ResearchGraphics.texture("gui/gui_research"),x-13,y-13,26,230,26,26,256,256);
             renderResearchIcon(g,d,x-8,y-8,brightness);g.setColor(1,1,1,1);}
 
@@ -282,12 +283,12 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
     private void researchTooltip(GuiGraphics g,ResearchDefinition d,int mouseX,int mouseY){
         d=displayResearch(d);
         var k=ClientKnowledge.snapshot();boolean completed=k.completedResearch().contains(d.key()),unlockable=d.available(k);
-        boolean secondary=!completed&&d.secondary()&&!d.aspects().isEmpty(),primary=!secondary&&!completed;
+        boolean secondary=!completed&&thaumcraft.api.research.ResearchApi.usesAspectPurchase(d,thaumcraft.api.research.ResearchApi.clientEasyMode()),primary=!secondary&&!completed;
         var costs=d.aspects().entrySet().stream().filter(e->thaumcraft.api.aspects.Aspect.getAspect(e.getKey())!=null).sorted(Map.Entry.comparingByKey()).toList();
         boolean enough=costs.stream().allMatch(e->{var a=thaumcraft.api.aspects.Aspect.getAspect(e.getKey());return k.knows(a)&&k.pool(a)>=e.getValue();});
         int maxWidth=Math.min(180,Math.max(32,width-16));
         var title=font.split(Component.translatable("tc.research_name."+d.key()),maxWidth);
-        var description=font.split(Component.translatable("tc.research_text."+d.key()),maxWidth*2);
+        var description=font.split(thaumcraft.api.client.ResearchTextFormatters.description(d),maxWidth*2);
         var forbidden=d.warp()>0?font.split(Component.literal(I18n.get("tc.forbidden",I18n.get("tc.forbidden.level."+Math.min(5,d.warp())))),maxWidth*2):List.<FormattedCharSequence>of();
         boolean existing=primary&&hasNote(d.key());
         var advice=primary?font.split(Component.translatable(existing?"tc.research.hasnote":hasScribingSupplies()?"tc.research.getprim":"tc.research.shortprim"),maxWidth*2):secondary?font.split(Component.translatable(enough?"tc.research.purchase":"tc.research.short"),maxWidth*2):List.<FormattedCharSequence>of();
@@ -327,7 +328,7 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
         var d=hovered(x,y);if(d!=null) {
             if(k.completedResearch().contains(d.key())) {selected=d;spread=recipeCycle=0;nextRecipeCycle=0;play(thaumcraft.registry.R2Sounds.PAGE.get(),.66f);}
             else if(d.available(k)){
-                popupUntil=0;if(!d.secondary()&&(!hasScribingSupplies()||hasNote(d.key())))return true;
+                popupUntil=0;if(!thaumcraft.api.research.ResearchApi.usesAspectPurchase(d,thaumcraft.api.research.ResearchApi.clientEasyMode())&&(!hasScribingSupplies()||hasNote(d.key())))return true;
                 PacketDistributor.sendToServer(new ResearchActionPayload(menu.containerId,menu.token(),++sequence,0,d.key(),"",0,0));
             }
             return true;}
@@ -337,5 +338,12 @@ public final class ThaumonomiconScreen extends FittedContainerScreen<Thaumonomic
     @Override public void onClose(){thaumcraft.config.ThaumcraftClientConfig.SPEC.save();ResearchHighlights.clear();super.onClose();}
     @Override protected boolean mouseDraggedFitted(double x,double y,int button,double dx,double dy) {if(selected==null&&button==0&&inTree(x,y)){panX+=dx/treeZoom;panY+=dy/treeZoom;return true;}return super.mouseDraggedFitted(x,y,button,dx,dy);}
     @Override protected boolean mouseScrolledFitted(double x,double y,double horizontal,double vertical){if(selected==null&&ResearchGraphics.inside(x,y,leftPos-24,topPos,24,imageHeight)){tabOffset-=Math.signum(vertical);return true;}if(selected==null&&inTree(x,y)){zoom(treeZoom*Math.pow(1.1,vertical),x,y);return true;}return super.mouseScrolledFitted(x,y,horizontal,vertical);}
-    @Override public boolean keyPressed(int key,int scan,int modifiers) {if(key==256&&selected!=null){selected=null;return true;}return super.keyPressed(key,scan,modifiers);}
+    @Override public boolean keyPressed(int key,int scan,int modifiers) {
+        if(selected!=null){
+            var event=new thaumcraft.api.client.BookResearchKeyEvent(this,selected,key,scan,modifiers);
+            thaumcraft.api.client.BookResearchKeyEvent.BUS.post(event);
+            if(event.isCanceled())return true;
+        }
+        if(key==256&&selected!=null){selected=null;return true;}return super.keyPressed(key,scan,modifiers);
+    }
 }

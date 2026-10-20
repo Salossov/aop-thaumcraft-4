@@ -33,7 +33,7 @@ public final class ThaumonomiconMenu extends AbstractContainerMenu implements Ac
         if(!stillValid(player)) return false;
         var definition=ThaumcraftData.get(player.server).research().get(key);var knowledge=KnowledgeService.get(player);
         if(definition==null||definition.autoUnlock()||!definition.available(knowledge)) return false;
-        if(definition.secondary()) {
+        if(thaumcraft.api.research.ResearchApi.usesAspectPurchase(definition,thaumcraft.api.research.ResearchApi.serverEasyMode())) {
             boolean completed=KnowledgeService.mutate(player,state->{
                 if(!definition.available(state)||definition.aspects().entrySet().stream().anyMatch(e->!state.knows(Aspect.getAspect(e.getKey()))||state.pool(Aspect.getAspect(e.getKey()))<e.getValue()))return false;
                 definition.aspects().forEach((tag,amount)->state.spend(Aspect.getAspect(tag),amount));return state.completeResearch(key);
