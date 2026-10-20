@@ -50,6 +50,9 @@ public final class WandModels {
                 private final ItemOverrides overrides=new ItemOverrides(){
                     private final Map<String,BakedModel> cache=new HashMap<>();
                     @Override public BakedModel resolve(BakedModel model,ItemStack stack,ClientLevel level,LivingEntity entity,int seed){
+                        return WandUseModel.wrap(resolveBody(model,stack,level,entity,seed),stack,entity,kind);
+                    }
+                    private BakedModel resolveBody(BakedModel model,ItemStack stack,ClientLevel level,LivingEntity entity,int seed){
                         var parts=WandMaterials.parts(stack);
                         var base=parts.rod().contains(":")||parts.cap().contains(":")?original:models.getOrDefault(variant(kind,parts.rod().replace("_staff",""),parts.cap()),original);
                         var addonBase=thaumcraft.api.wands.WandVisuals.model(kind,parts);

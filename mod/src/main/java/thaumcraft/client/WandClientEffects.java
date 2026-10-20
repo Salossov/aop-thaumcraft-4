@@ -26,11 +26,17 @@ public final class WandClientEffects implements IClientItemExtensions {
         pose.translate(sign*net.minecraft.util.Mth.lerp(raise,.56f,.18f),net.minecraft.util.Mth.lerp(raise,-.52f,-.5f)-equip*.6f,net.minecraft.util.Mth.lerp(raise,-.72f,-1.2f));
         pose.mulPose(Axis.YP.rotationDegrees(sign*45));
         pose.translate(0,.35f,0);
-        var focus=WandFocus.get(stack);boolean charge=focus.getItem() instanceof ThaumicFocusItem item&&switch(item.kind()){case EXCAVATION->true;case FIRE->!item.isUpgradedWith(focus,thaumcraft.api.wands.FocusUpgradeType.fireball);case SHOCK->!item.isUpgradedWith(focus,thaumcraft.api.wands.FocusUpgradeType.earthshock);default->false;};
-        var hit=net.minecraft.client.Minecraft.getInstance().hitResult;if(hit instanceof net.minecraft.world.phys.BlockHitResult block&&player.level().getBlockEntity(block.getBlockPos()) instanceof thaumcraft.blocks.AuraNodeBlockEntity)charge=false;
+        boolean charge=chargeAnimation(player,stack,partial);
         pose.mulPose(Axis.XP.rotationDegrees(10));pose.mulPose(Axis.ZP.rotationDegrees(sign*10));pose.mulPose(Axis.XN.rotationDegrees(60*Math.min(1,ticks/3)));
         pose.mulPose(Axis.ZP.rotationDegrees(sign*(float)Math.sin(ticks/(charge?.8f:10))*(charge?1:10)));
         pose.mulPose(Axis.XP.rotationDegrees((float)Math.sin(ticks/(charge?.7f:15))*(charge?1:10)));
         pose.translate(0,-.35f,0);
+    }
+    static boolean chargeAnimation(LivingEntity wielder,ItemStack stack,float partial){
+        var focus=WandFocus.get(stack);boolean charge=focus.getItem() instanceof ThaumicFocusItem item&&switch(item.kind()){case EXCAVATION->true;case FIRE->!item.isUpgradedWith(focus,thaumcraft.api.wands.FocusUpgradeType.fireball);case SHOCK->!item.isUpgradedWith(focus,thaumcraft.api.wands.FocusUpgradeType.earthshock);default->false;};
+        if(!charge)return false;
+        var mc=net.minecraft.client.Minecraft.getInstance();
+        var hit=wielder==mc.player?mc.hitResult:wielder.pick(5,partial,false);
+        return !(hit instanceof net.minecraft.world.phys.BlockHitResult block&&wielder.level().getBlockEntity(block.getBlockPos()) instanceof thaumcraft.blocks.AuraNodeBlockEntity);
     }
 }
