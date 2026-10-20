@@ -123,6 +123,7 @@ public final class ThaumcraftData extends SimpleJsonResourceReloadListener {
                     strings(json,"text_pages"),strings(json,"recipe_pages"),json.get("icon").getAsString(),
                     json.has("virtual")&&json.get("virtual").getAsBoolean(),json.has("round")&&json.get("round").getAsBoolean(),json.has("stub")&&json.get("stub").getAsBoolean(),json.has("secondary")&&json.get("secondary").getAsBoolean(),json.has("siblings")?strings(json,"siblings"):List.of(),json.has("page_order")?strings(json,"page_order"):List.of(),json.has("hidden")&&json.get("hidden").getAsBoolean(),json.has("warp")?json.get("warp").getAsInt():0,
                     json.has("item_triggers")?strings(json,"item_triggers"):List.of(),json.has("entity_triggers")?strings(json,"entity_triggers"):List.of(),json.has("aspect_triggers")?strings(json,"aspect_triggers"):List.of(),json.has("hidden_parents")?strings(json,"hidden_parents"):List.of(),json.has("page_requirements")?stringMap(json.getAsJsonObject("page_requirements")):Map.of(),json.has("special")&&json.get("special").getAsBoolean(),recipeGroups(json),json.has("linked_research")?json.get("linked_research").getAsString():"");
+                if(json.has("lost"))definition=definition.withLost(json.get("lost").getAsBoolean());
                 if(definition.complexity()<0||definition.complexity()>3) throw new IllegalArgumentException("Invalid complexity "+key);research.put(key,definition);
             } else throw new IllegalArgumentException("Unknown Thaumcraft data kind "+kind+" in "+id);
         }

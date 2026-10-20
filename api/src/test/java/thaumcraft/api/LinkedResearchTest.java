@@ -16,10 +16,11 @@ final class LinkedResearchTest {
     }
     static void run(){
         var target=ordinary("NATIVE",List.of("BASE"),List.of("SECRET"));
-        var raw=new LinkedHashMap<String,ResearchDefinition>();raw.put("BASE",ordinary("BASE",List.of(),List.of()));raw.put("SECRET",ordinary("SECRET",List.of(),List.of()));raw.put("NATIVE",target);raw.put("example:alias",alias("example:alias","NATIVE"));raw.put("example:chain",alias("example:chain","example:alias"));
+        var raw=new LinkedHashMap<String,ResearchDefinition>();raw.put("BASE",ordinary("BASE",List.of(),List.of()));raw.put("SECRET",ordinary("SECRET",List.of(),List.of()));raw.put("NATIVE",target);raw.put("example:alias",alias("example:alias","NATIVE").withLost(true));raw.put("example:chain",alias("example:chain","example:alias"));
         var resolved=ResearchCatalogRules.resolve(raw);var link=resolved.get("example:alias");
         check(resolved.get("NATIVE")==target&&target.category().equals("BASICS"),"native node is unchanged in its own category");
         check(link.category().equals("example:links")&&link.column()==-2&&link.row()==4&&link.stub()&&link.hidden(),"alias retains identity, map placement and flags");
+        check(link.lost()&&!target.lost(),"linked presentation keeps the alias lost flag independently of its target");
         check(link.icon().equals(target.icon())&&link.textPages().equals(target.textPages())&&link.recipePages().equals(target.recipePages())&&link.pageOrder().equals(target.pageOrder())&&link.pageRequirements().equals(target.pageRequirements())&&link.recipeGroups().equals(target.recipeGroups()),"all current target presentation and page gates delegate");
         check(ResearchLinks.target(resolved.get("example:chain"),resolved)==target,"translations and special icons use ultimate native identity");
         check(link.withHiddenParents(List.of("BASE")).linkedResearch().equals("NATIVE"),"dynamic parent copy preserves link");

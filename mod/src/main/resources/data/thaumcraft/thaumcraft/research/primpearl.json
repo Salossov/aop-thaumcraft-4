@@ -35,6 +35,7 @@
   "secondary": true,
   "siblings": [],
   "hidden": false,
+  "lost": true,
   "warp": 0,
   "item_triggers": [
     "thaumcraft:primal_pearl"

@@ -30,6 +30,14 @@ public final class ResearchCatalogRulesTest {
         check(observations.getFirst().equals(List.of("BASE")),"later rule sees original catalog rather than another rule's output");
         check(input.get("KAMI")==kami&&kami.hiddenParents().equals(List.of("BASE")),"input definitions are never mutated");
         check(resolved.get("KAMI").withHiddenParents(kami.hiddenParents()).equals(kami),"copy preserves every non-parent record field");
+        check(!kami.lost(),"previous API constructors default lost to false independently of hidden");
+        var lost=kami.withLost(true);
+        check(lost.lost()&&lost.hidden()&&lost.withLost(false).equals(kami),"lost is an independent reversible flag");
+        check(lost.withHiddenParents(List.of("LATE")).lost(),"dynamic requirement copy retains lost");
+        var gson=new com.google.gson.Gson();
+        check(gson.fromJson(gson.toJson(lost),ResearchDefinition.class).equals(lost),"server/client definition serialization retains lost");
+        var oldJson=gson.toJsonTree(kami).getAsJsonObject();oldJson.remove("lost");
+        check(gson.fromJson(oldJson,ResearchDefinition.class).equals(kami),"older synchronized definitions without lost keep false");
         check(new ArrayList<>(resolved.keySet()).equals(new ArrayList<>(input.keySet())),"catalog registration order retained");
         rejects(()->resolved.put("NEW",base),"output catalog immutable");
         check(ResearchCatalogRules.resolve(resolved).get("KAMI").equals(resolved.get("KAMI")),"reapplying additive rule does not duplicate requirements");

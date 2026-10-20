@@ -9,7 +9,11 @@ public record ResearchDefinition(String key,String category,List<String> parents
                                  int complexity,boolean autoUnlock,boolean concealed,int column,int row,
                                  List<String> textPages,List<String> recipePages,String icon,
                                  boolean virtual,boolean round,boolean stub,boolean secondary,List<String> siblings,List<String> pageOrder,boolean hidden,int warp,
-                                 List<String> itemTriggers,List<String> entityTriggers,List<String> aspectTriggers,List<String> hiddenParents,Map<String,String> pageRequirements,boolean special,Map<String,List<String>> recipeGroups,String linkedResearch) {
+                                 List<String> itemTriggers,List<String> entityTriggers,List<String> aspectTriggers,List<String> hiddenParents,Map<String,String> pageRequirements,boolean special,Map<String,List<String>> recipeGroups,String linkedResearch,boolean lost) {
+    /** Existing definitions are not lost. Lost and hidden are independent TC4 flags. */
+    public ResearchDefinition(String key,String category,List<String> parents,Map<String,Integer> aspects,int complexity,boolean autoUnlock,boolean concealed,int column,int row,List<String> textPages,List<String> recipePages,String icon,boolean virtual,boolean round,boolean stub,boolean secondary,List<String> siblings,List<String> pageOrder,boolean hidden,int warp,List<String> itemTriggers,List<String> entityTriggers,List<String> aspectTriggers,List<String> hiddenParents,Map<String,String> pageRequirements,boolean special,Map<String,List<String>> recipeGroups,String linkedResearch){
+        this(key,category,parents,aspects,complexity,autoUnlock,concealed,column,row,textPages,recipePages,icon,virtual,round,stub,secondary,siblings,pageOrder,hidden,warp,itemTriggers,entityTriggers,aspectTriggers,hiddenParents,pageRequirements,special,recipeGroups,linkedResearch,false);
+    }
     /** Compatibility constructor for definitions without a cross-category research link. */
     public ResearchDefinition(String key,String category,List<String> parents,Map<String,Integer> aspects,int complexity,boolean autoUnlock,boolean concealed,int column,int row,List<String> textPages,List<String> recipePages,String icon,boolean virtual,boolean round,boolean stub,boolean secondary,List<String> siblings,List<String> pageOrder,boolean hidden,int warp,List<String> itemTriggers,List<String> entityTriggers,List<String> aspectTriggers,List<String> hiddenParents,Map<String,String> pageRequirements,boolean special,Map<String,List<String>> recipeGroups){
         this(key,category,parents,aspects,complexity,autoUnlock,concealed,column,row,textPages,recipePages,icon,virtual,round,stub,secondary,siblings,pageOrder,hidden,warp,itemTriggers,entityTriggers,aspectTriggers,hiddenParents,pageRequirements,special,recipeGroups,"");
@@ -66,12 +70,17 @@ public record ResearchDefinition(String key,String category,List<String> parents
     /** Copy only hidden requirements, retaining every display, trigger and recipe field. */
     public ResearchDefinition withHiddenParents(List<String> requirements) {
         return new ResearchDefinition(key,category,parents,aspects,complexity,autoUnlock,concealed,column,row,textPages,recipePages,icon,
-                virtual,round,stub,secondary,siblings,pageOrder,hidden,warp,itemTriggers,entityTriggers,aspectTriggers,requirements,pageRequirements,special,recipeGroups,linkedResearch);
+                virtual,round,stub,secondary,siblings,pageOrder,hidden,warp,itemTriggers,entityTriggers,aspectTriggers,requirements,pageRequirements,special,recipeGroups,linkedResearch,lost);
+    }
+    /** Copy only the lost flag, independently of discovery visibility. */
+    public ResearchDefinition withLost(boolean value) {
+        return new ResearchDefinition(key,category,parents,aspects,complexity,autoUnlock,concealed,column,row,textPages,recipePages,icon,
+                virtual,round,stub,secondary,siblings,pageOrder,hidden,warp,itemTriggers,entityTriggers,aspectTriggers,hiddenParents,pageRequirements,special,recipeGroups,linkedResearch,value);
     }
     /** Alias identity, placement and flags stay local; presentation follows the active target. */
     ResearchDefinition withLinkedDisplay(ResearchDefinition target) {
         return new ResearchDefinition(key,category,parents,aspects,complexity,autoUnlock,concealed,column,row,target.textPages,target.recipePages,target.icon,
-                virtual,round,stub,secondary,siblings,target.pageOrder,hidden,warp,itemTriggers,entityTriggers,aspectTriggers,hiddenParents,target.pageRequirements,special,target.recipeGroups,linkedResearch);
+                virtual,round,stub,secondary,siblings,target.pageOrder,hidden,warp,itemTriggers,entityTriggers,aspectTriggers,hiddenParents,target.pageRequirements,special,target.recipeGroups,linkedResearch,lost);
     }
     public boolean available(PlayerKnowledge knowledge) {
         return linkedResearch.isEmpty()&&!virtual&&(!hidden||knowledge.completedResearch().contains("@"+key))&&!knowledge.completedResearch().contains(key)&&knowledge.completedResearch().containsAll(parents)&&knowledge.completedResearch().containsAll(hiddenParents);
