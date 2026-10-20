@@ -44,8 +44,10 @@ public final class WandModels {
     @SubscribeEvent public static void registerFocus(ModelEvent.RegisterAdditional event){for(var registration:thaumcraft.api.wands.FocusBehaviors.all()){event.register(ModelResourceLocation.standalone(registration.model()));if(registration.staffModel()!=null)event.register(ModelResourceLocation.standalone(registration.staffModel()));if(registration.ornament()!=null)event.register(ModelResourceLocation.standalone(registration.ornament()));}for(var model:thaumcraft.api.wands.WandVisuals.models())event.register(ModelResourceLocation.standalone(model));for(var kind:List.of("wand","staff")){for(var focus:ThaumicFocusItem.Kind.values())event.register(focusModel(kind,focus.name().toLowerCase(Locale.ROOT)));event.register(focusModel(kind,"pech"));}for(var name:List.of("hellbat","trade","warding"))event.register(focusModel("item",name+"_ornament"));}
     @SubscribeEvent public static void register(ModelEvent.RegisterAdditional event){for(var kind:List.of("wand","staff","sceptre"))for(var rod:RODS)for(var cap:CAPS){if(kind.equals("staff")&&rod.equals("wood"))continue;event.register(variant(kind,rod,cap));}for(var cap:CAPS)event.register(variant("staff","primal",cap));}
     @SubscribeEvent public static void bake(ModelEvent.ModifyBakingResult event){
-        var models=event.getModels();for(var kind:List.of("wand","staff","sceptre")){
-            var id=new ModelResourceLocation(ResourceLocation.fromNamespaceAndPath("thaumcraft","casting_"+kind),"inventory");var original=models.get(id);if(original==null)continue;
+        var models=event.getModels();for(var kind:List.of("wand","staff","sceptre"))for(var item:kind.equals("wand")?List.of("casting_wand","iron_capped_wooden_wand"):List.of("casting_"+kind)){
+            // The original registered wand ID remains valid in saved stacks and addon tabs.
+            // It needs the same material overrides as the newer casting_wand ID.
+            var id=new ModelResourceLocation(ResourceLocation.fromNamespaceAndPath("thaumcraft",item),"inventory");var original=models.get(id);if(original==null)continue;
             models.put(id,new BakedModelWrapper<BakedModel>(original){
                 private final ItemOverrides overrides=new ItemOverrides(){
                     private final Map<String,BakedModel> cache=new HashMap<>();

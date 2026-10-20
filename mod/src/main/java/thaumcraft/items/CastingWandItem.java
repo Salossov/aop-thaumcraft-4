@@ -25,7 +25,8 @@ public final class CastingWandItem extends Item implements thaumcraft.api.wands.
         if(!level.isClientSide&&entity instanceof Player player){var rod=WandMaterials.rod(stack);if(rod!=null)rod.onUpdate(stack,player);}
     }
     @Override public net.minecraft.network.chat.Component getName(ItemStack stack){
-        if(stack.is(R2Content.WAND.get()))return super.getName(stack);
+        var parts=WandMaterials.parts(stack);
+        if(stack.is(R2Content.WAND.get())&&parts.rod().equals("wood")&&parts.cap().equals("iron"))return super.getName(stack);
         return net.minecraft.network.chat.Component.translatable("item.thaumcraft.composite_"+kind.name().toLowerCase(java.util.Locale.ROOT),
             net.minecraft.network.chat.Component.translatable("item.thaumcraft.cap."+WandMaterials.parts(stack).cap()),
             net.minecraft.network.chat.Component.translatable("item.thaumcraft.rod."+WandMaterials.parts(stack).rod()));
