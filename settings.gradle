@@ -3,4 +3,9 @@ pluginManagement {
 }
 
 rootProject.name = 'thaumcraft4-port'
-include 'api', 'mod', 'emi-jei-integration-aoptc4', 'example-addon'
+include 'api', 'mod', 'example-addon'
+// Enable the preserved visual harness only when checking the separate integration project.
+if (providers.gradleProperty('viewerIntegrationSource').isPresent()) {
+    include 'emi-jei-integration-aoptc4'
+    project(':emi-jei-integration-aoptc4').projectDir = file(providers.gradleProperty('viewerIntegrationSource').get())
+}

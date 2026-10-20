@@ -218,7 +218,7 @@ An infusion example using vanilla items, for its own recipe file:
 }
 ```
 
-Core and Recipe Addon discover standard supported recipes automatically. Java contracts `IArcaneRecipe`, `CrucibleRecipe` and `InfusionRecipe` support custom serializers, which still need normal RecipeType/RecipeSerializer registration and connection to the appropriate gameplay handler. `RecipeDisplays.register` alone adds a display, not a crafting mechanic.
+Core and AOP:TC4 Compact discover standard supported recipes automatically. Java contracts `IArcaneRecipe`, `CrucibleRecipe` and `InfusionRecipe` support custom serializers, which still need normal RecipeType/RecipeSerializer registration and connection to the appropriate gameplay handler. `RecipeDisplays.register` alone adds a display, not a crafting mechanic.
 
 ## Reload and compatibility
 

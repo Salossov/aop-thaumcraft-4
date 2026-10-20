@@ -326,7 +326,7 @@ Register an upgrade with `FocusUpgradeType.register(int id, ResourceLocation key
 
 Variants may share `recipeId`, but never `id`. A display provider does not register crafting logic or guarantee support for transferring an arbitrary custom RecipeType through “+”. The core already publishes ordinary Thaumcraft recipes; do not publish them twice.
 
-Recipe Addon is the separate optional `thaumcraft-viewers-0.7.3.jar`, built on these contracts. It supports JEI `[19.8.4.110,20)` and EMI `[1.1.13,1.2)` for MC 1.21.1; both installed selects EMI. Content addons should not import viewer addon internals or bundle viewers. Avoid revealing unknown aspect names/composition or unscanned sources in your UI. Display settings do not authorize server crafting.
+AOP:TC4 Compact is the separate optional `aoptc4-client-compact-0.8.0.jar`, built on these contracts. It supports JEI `[19.8.4.110,20)` and EMI `[1.1.13,1.2)` for MC 1.21.1; both installed selects EMI. Content addons should not import viewer addon internals or bundle viewers. Avoid revealing unknown aspect names/composition or unscanned sources in your UI. Display settings do not authorize server crafting.
 
 `WorkbenchApi.menuClass()` and `menuType()` expose actual menu identity without core imports. For a custom client adapter, the core already registers `ArcaneTransferRequest(menuId, stateId, displayId, maximum)`, which can be sent through normal `PacketDistributor.sendToServer`. Obtain the menu ID/`getStateId()` from the current menu and display ID from the catalog; do not send an invented ingredient list.
 

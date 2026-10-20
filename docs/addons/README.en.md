@@ -103,7 +103,7 @@ FocusUpgradeType.register retains stable integer persistence; addon keys must be
 
 ## JEI and EMI addon
 
-`thaumcraft-viewers-0.7.3.jar` is a separate optional client mod. It requires the updated core; it does not include or install a viewer. Supported runtime ranges for Minecraft 1.21.1: **JEI >=19.8.4.110 and <20**, **EMI >=1.1.13 and <1.2**. The build compiles against the minimum supported APIs; runtime versions are not pinned to a single build. No NEI binary exists in this target; use JEI or EMI. No viewer dependency is bundled. Both present selects native EMI; the JEI plugin registers no TC4 categories/ingredients/recipes into the bridge.
+`aoptc4-client-compact-0.8.0.jar` is a separate optional client mod. It requires the updated core; it does not include or install a viewer. Supported runtime ranges for Minecraft 1.21.1: **JEI >=19.8.4.110 and <20**, **EMI >=1.1.13 and <1.2**. The build compiles against the minimum supported APIs; runtime versions are not pinned to a single build. No NEI binary exists in this target; use JEI or EMI. No viewer dependency is bundled. Both present selects native EMI; the JEI plugin registers no TC4 categories/ingredients/recipes into the bridge.
 
 The shared catalog covers arcane recipes, crucible, infusion variants (including enchantments/runic augmentation), probabilistic infernal bonuses, distillation, centrifuging and crystallization. Each aspect has one searchable identity shared by vis and essentia, with the correct amount/unit retained in recipe slots. Item aspect composition appears as distillation outputs and honors scan visibility. Requirement text links to the corresponding research through a real server-opened Thaumonomicon menu; keep the book in inventory. Dynamic variants are representative: extra enchantments on a real central item can affect actual ritual cost. Infernal bonus previews describe their probability instead of promising a guaranteed output.
 
@@ -141,13 +141,13 @@ See CHECKLIST.en.md / CHECKLIST.ru.md for manual gameplay cases. Automated build
 
 ### Viewer compatibility regression checks
 
-Run `./gradlew.ps1 :emi-jei-integration-aoptc4:check -PviewerCompatibility=minimum`, then `middle` and `latest`. Each profile checks neither viewer, JEI alone, EMI alone and both. It resolves the actual API method/field symbols used by the compiled adapters, verifies required interface implementations and the EMI refresh hook, and checks the real Maven version-range parser (including JEI 19.64.0.455 and EMI build qualifiers). No Minecraft instance is launched.
+Run `./gradlew.ps1 check -PviewerCompatibility=minimum`, then `middle` and `latest`. Each profile checks neither viewer, JEI alone, EMI alone and both. It resolves the actual API method/field symbols used by the compiled adapters, verifies required interface implementations and the EMI refresh hook, and checks the real Maven version-range parser (including JEI 19.64.0.455 and EMI build qualifiers). No Minecraft instance is launched.
 
 Checked profiles: JEI 19.8.4.110 / 19.19.6.233 / 19.64.0.455; EMI 1.1.13 / 1.1.20 / 1.1.24 for Minecraft 1.21.1. This is API/linkage verification, not a claim of gameplay testing for every release in the range.
 
-### Recipe Addon 0.7.3
+### AOP:TC4 Compact 0.8.0
 
-The mod-list title is Thaumcraft Recipe Addon (JEI/EMI); the stable mod ID remains thaumcraft_viewers. Core/API 1.0.0 adds AspectApi.variants(), returning copied filled phials, jars, crystals and essence pieces. JEI indexes component subtypes and all 240 built-in variants.
+The mod-list title is AOP:TC4 Compact; the stable mod ID remains thaumcraft_viewers. Core/API 1.0.0 adds AspectApi.variants(), returning copied filled phials, jars, crystals and essence pieces. JEI indexes component subtypes and all 240 built-in variants.
 
 Diagrams and hover/click regions fit the available card height, including EMI's 125-logical-pixel card at GUI scale 4. Dark text on light cards has no shadow. Larger colored status marks sit beside research icons. Large quantities use compact labels (524k, 2.1G), retaining exact values in tooltips. Aspect names, units and auxiliary tooltip text use different colors.
 

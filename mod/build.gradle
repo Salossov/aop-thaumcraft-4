@@ -360,6 +360,7 @@ def addonPersistenceTest = tasks.register('addonPersistenceTest', JavaExec) {
 }
 tasks.named('check') { dependsOn addonPersistenceTest }
 
+if (findProject(':emi-jei-integration-aoptc4') != null) {
 evaluationDependsOn(':emi-jei-integration-aoptc4')
 // Isolated real-viewer visual harness; never included in the release JAR.
 sourceSets {
@@ -406,4 +407,6 @@ neoForge {
 neoForge.runs.configureEach {
     if(name=='viewerReviewServer')loadedMods=[neoForge.mods.thaumcraft,neoForge.mods.thaumcraft_viewer_qa]
     if(name=='viewerReviewClient')loadedMods=[neoForge.mods.thaumcraft,neoForge.mods.thaumcraft_viewer_qa,neoForge.mods.thaumcraft_recipe_addon]
+}
+
 }

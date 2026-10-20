@@ -24,8 +24,12 @@ import thaumcraft.items.ThaumometerItem;
 public final class ScannerHandRenderer {
     public static boolean hasTarget(){return ScannerTarget.current()!=null;}
     @SubscribeEvent public static void render(RenderHandEvent event){
-        if(event.getHand()!=InteractionHand.MAIN_HAND||!(event.getItemStack().getItem() instanceof ThaumometerItem))return;
-        var mc=Minecraft.getInstance();if(mc.player==null||mc.level==null)return;event.setCanceled(true);
+        var mc=Minecraft.getInstance();if(mc.player==null||mc.level==null)return;
+        var lensHand=mc.player.getMainHandItem().getItem() instanceof ThaumometerItem?InteractionHand.MAIN_HAND:
+                mc.player.getOffhandItem().getItem() instanceof ThaumometerItem?InteractionHand.OFF_HAND:null;
+        if(lensHand==null)return;
+        event.setCanceled(true);
+        if(event.getHand()!=lensHand||!(event.getItemStack().getItem() instanceof ThaumometerItem))return;
         var pose=event.getPoseStack();var buffers=event.getMultiBufferSource();pose.pushPose();pose.translate(0,-0.035-event.getEquipProgress()*1.5,-0.78);
         if(!mc.player.isInvisible())arms(pose,buffers,event.getPackedLight());
         pose.pushPose();pose.mulPose(Axis.ZP.rotationDegrees(90));pose.mulPose(Axis.XP.rotationDegrees(90));pose.scale(1.3f,1.3f,1.3f);

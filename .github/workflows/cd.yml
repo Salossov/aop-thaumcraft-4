@@ -3,6 +3,19 @@ name: Build and publish
 on:
   push:
     branches: [main]
+    paths: &build_paths
+      - 'api/src/**'
+      - 'mod/src/**'
+      - 'example-addon/src/**'
+      - '**/*.gradle'
+      - 'gradle.properties'
+      - 'gradle/**'
+      - 'gradlew'
+      - 'gradlew.ps1'
+      - '.github/workflows/**'
+      - 'tools/**'
+  pull_request:
+    paths: *build_paths
   workflow_dispatch:
 
 permissions:
@@ -38,6 +51,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v6
         with:
           cache-provider: basic
+          cache-disabled: ${{ env.ACT == 'true' }}
 
       - name: Select build version
         id: version
@@ -89,6 +103,7 @@ jobs:
           PY
 
       - name: Save build artifacts
+        if: ${{ !env.ACT }}
         uses: actions/upload-artifact@v7
         with:
           name: thaumcraft-${{ steps.version.outputs.version }}
@@ -97,6 +112,7 @@ jobs:
           retention-days: 14
 
       - name: Publish to GitHub Releases
+        if: ${{ github.event_name != 'pull_request' && !env.ACT }}
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}

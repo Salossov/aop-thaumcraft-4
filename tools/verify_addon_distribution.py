@@ -3,7 +3,6 @@ from pathlib import Path
 import hashlib,json,re,struct,tomllib,zipfile
 ROOT=Path(__file__).resolve().parents[1]
 VERSION=re.search(r'^mod_version=(.+)$',(ROOT/'gradle.properties').read_text(),re.M)[1].strip()
-VIEWER_VERSION=re.search(r"^version = '([^']+)'$",(ROOT/'emi-jei-integration-aoptc4/build.gradle').read_text(),re.M)[1]
 checks=0
 report=[]
 def check(ok,label):
@@ -29,7 +28,6 @@ def refs(data):
 jars={
  'api':ROOT/f'api/build/libs/thaumcraft-api-{VERSION}.jar',
  'mod':ROOT/f'mod/build/libs/thaumcraft-1.21.1-{VERSION}.jar',
- 'emi-jei-integration-aoptc4':ROOT/f'emi-jei-integration-aoptc4/build/libs/thaumcraft-viewers-{VIEWER_VERSION}.jar',
  'example-addon':ROOT/f'example-addon/build/libs/thaumcraft-example-{VERSION}.jar'}
 api_entries={}
 with zipfile.ZipFile(jars['api']) as z:api_entries={n:z.read(n) for n in z.namelist() if n.endswith('.class')}
@@ -59,7 +57,7 @@ for module,path in jars.items():
    check(not any(n.startswith(('thaumcraft/viewers/','mezz/jei/','dev/emi/','thaumcraft/verification/')) for n in names),'core contains no integration or verification classes')
    for name,data in api_entries.items():check(z.read(name)==data,'core missing/stale bundled API '+name)
   if module in ('emi-jei-integration-aoptc4','example-addon'):
-   meta=tomllib.loads(z.read('META-INF/neoforge.mods.toml').decode());check(meta['mods'][0]['version']==(VIEWER_VERSION if module=='emi-jei-integration-aoptc4' else VERSION),module+' metadata version');deps=meta['dependencies'][meta['mods'][0]['modId']];check(any(d['modId']=='thaumcraft' and d['type']=='required' for d in deps),module+' core dependency')
+   meta=tomllib.loads(z.read('META-INF/neoforge.mods.toml').decode());check(meta['mods'][0]['version']==VERSION,module+' metadata version');deps=meta['dependencies'][meta['mods'][0]['modId']];check(any(d['modId']=='thaumcraft' and d['type']=='required' for d in deps),module+' core dependency')
   for name in names:
    if name.endswith('.json'):json.loads(z.read(name))
   report.append({'artifact':path.name,'bytes':path.stat().st_size,'classes':len(classes),'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
@@ -73,6 +71,6 @@ with zipfile.ZipFile(sdk) as z:
  check(not any(n.startswith(('mezz/','dev/emi/')) or 'test-runtime.jar' in n for n in z.namelist()),'SDK includes viewer binaries')
  check(z.read(f'lib/thaumcraft-api-{VERSION}.jar')==jars['api'].read_bytes(),'SDK stale API')
 report.append({'artifact':sdk.name,'bytes':sdk.stat().st_size,'sha256':hashlib.sha256(sdk.read_bytes()).hexdigest()})
-out=ROOT/'.cache/addon-api-2026-10-17/artifact-audit.json';out.write_text(json.dumps({'checks':checks,'artifacts':report},indent=2)+'\n',encoding='utf-8')
+out=ROOT/'build/reports/addon-artifact-audit.json';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps({'checks':checks,'artifacts':report},indent=2)+'\n',encoding='utf-8')
 print('TC4_ADDON_ARTIFACT_AUDIT_PASS checks='+str(checks))
 for item in report:print(item['artifact'],item['bytes'],item['sha256'])
