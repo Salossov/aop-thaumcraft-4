@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:water",
+    "thaumcraft:liquid_death",
+    "thaumcraft:purifying_fluid"
+  ]
+}

@@ -15,6 +15,8 @@ public final class ApiBootstrap {
     private static boolean addonsRegistered;
     public static void install(){
         thaumcraft.api.world.BlockEntityMovementApi.install(new BlockEntityMovement());
+        thaumcraft.api.world.BlockPlacementApi.install(new SelectedBlockPlacement());
+        thaumcraft.api.world.BlockReplacementApi.install(new ProtectedBlockReplacement());
         thaumcraft.api.world.ChunkPreparationApi.install(new PreparedChunks());
         thaumcraft.api.world.ContentRules.install(new thaumcraft.api.world.ContentRules.Access(){
             public boolean mirrorsEnabled(){return thaumcraft.config.ThaumcraftConfig.ALLOW_MIRRORS.get();}

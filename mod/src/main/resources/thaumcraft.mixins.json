@@ -23,11 +23,18 @@
     "NearestTargetNonLivingMixin",
     "CreeperSwellAccessor",
     "SpecialArmorProtectionMixin",
+    "LivingPreArmorDamageMixin",
+    "LivingDamageContainersAccessor",
+    "BlockStartBreakToolMixin",
+    "BlockItemPlacementAccessor",
+    "SelectedBlockPlacementMixin",
     "NaturalBiomePresetMixin",
     "EldritchVoidStateMixin",
     "PavingStoneStateMixin",
     "FloatingCounterAccessor",
-    "PersistentAirInsertionMixin"
+    "PersistentAirInsertionMixin",
+    "ServerLevelReplacementDropsMixin",
+    "ExperienceOrbReplacementDropsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
