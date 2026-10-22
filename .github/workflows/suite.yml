@@ -1,0 +1,265 @@
+name: Build mod suite
+
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: Publish ordinary releases (unchecked updates all four nightlies)
+        type: boolean
+        default: false
+      force_rebuild:
+        description: Rebuild JARs instead of reusing verified artifacts
+        type: boolean
+        default: false
+      ui_version:
+        description: 'UI version; blank uses its gradle.properties'
+        type: string
+        default: ''
+      core_version:
+        description: 'TC4 version; blank uses its gradle.properties'
+        type: string
+        default: ''
+      tinkerer_version:
+        description: 'Tinkerer version; blank uses its gradle.properties'
+        type: string
+        default: ''
+      compact_version:
+        description: 'Compact version; blank uses its gradle.properties'
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: thaumcraft-cd
+  cancel-in-progress: false
+
+jobs:
+  suite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash
+    env:
+      RELEASE_REQUESTED: ${{ inputs.release || false }}
+      SUITE_FORCE_REBUILD: ${{ inputs.force_rebuild || false }}
+      SUITE_UI_VERSION: ${{ inputs.ui_version || '' }}
+      SUITE_CORE_VERSION: ${{ inputs.core_version || '' }}
+      SUITE_TINKERER_VERSION: ${{ inputs.tinkerer_version || '' }}
+      SUITE_COMPACT_VERSION: ${{ inputs.compact_version || '' }}
+      SUITE_CORE_REPOSITORY: ${{ github.repository || 'Salossov/aop-thaumcraft-4' }}
+      SUITE_UI_REPOSITORY: ${{ vars.AOPUI_REPOSITORY || 'Salossov/aop-ui' }}
+      SUITE_TINKERER_REPOSITORY: ${{ vars.TINKERER_REPOSITORY || 'Salossov/aoptc4-thaumic-tinkerer' }}
+      SUITE_COMPACT_REPOSITORY: ${{ vars.COMPACT_REPOSITORY || 'Salossov/aoptc4-compact' }}
+    steps:
+      - name: Check out TC4 and suite workflow
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check out UI
+        if: ${{ !env.ACT }}
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ env.SUITE_UI_REPOSITORY }}
+          ref: ${{ vars.AOPUI_REF || 'main' }}
+          token: ${{ secrets.DEPENDENCY_TOKEN || github.token }}
+          path: .dependencies/aopui
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check out Tinkerer
+        if: ${{ !env.ACT }}
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ env.SUITE_TINKERER_REPOSITORY }}
+          ref: ${{ vars.TINKERER_REF || 'main' }}
+          token: ${{ secrets.DEPENDENCY_TOKEN || github.token }}
+          path: .dependencies/tinkerer
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check out Compact
+        if: ${{ !env.ACT }}
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ env.SUITE_COMPACT_REPOSITORY }}
+          ref: ${{ vars.COMPACT_REF || 'main' }}
+          token: ${{ secrets.DEPENDENCY_TOKEN || github.token }}
+          path: .dependencies/compact
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check build and publication rules
+        run: python3 -m unittest discover -s .github/scripts -p 'test_*.py' -v
+      - name: Set up Java 21
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Set up Gradle dependency and task cache
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          cache-provider: basic
+          cache-disabled: ${{ env.ACT == 'true' }}
+      - name: Lock source revisions and toolchain
+        id: lock
+        run: python3 .github/scripts/suite.py prepare
+
+      - name: Plan UI artifact identity
+        id: plan_ui
+        run: python3 .github/scripts/suite.py plan ui
+      - name: Restore verified release UI
+        id: cache_ui_release
+        if: ${{ !env.ACT && !inputs.force_rebuild }}
+        uses: actions/cache/restore@v5
+        with:
+          path: .cache/mod-suite/ui/release
+          key: ${{ steps.plan_ui.outputs.release-key }}
+      - name: Restore verified nightly UI
+        id: cache_ui_nightly
+        if: ${{ !env.ACT && !inputs.force_rebuild && !inputs.release && steps.cache_ui_release.outputs.cache-hit != 'true' }}
+        uses: actions/cache/restore@v5
+        with:
+          path: .cache/mod-suite/ui/nightly
+          key: ${{ steps.plan_ui.outputs.nightly-key }}
+      - name: Find matching published UI
+        if: ${{ !env.ACT }}
+        env:
+          GH_TOKEN: ${{ secrets.DEPENDENCY_TOKEN || github.token }}
+        run: python3 .github/scripts/suite.py fetch ui
+      - name: '1 - Build or reuse UI'
+        id: build_ui
+        env:
+          SUITE_RELEASE_CACHE_HIT: ${{ steps.cache_ui_release.outputs.cache-hit }}
+          SUITE_NIGHTLY_CACHE_HIT: ${{ steps.cache_ui_nightly.outputs.cache-hit }}
+        run: python3 .github/scripts/suite.py build ui
+      - name: Save verified UI
+        if: ${{ !env.ACT && steps.build_ui.outputs.store == 'true' }}
+        uses: actions/cache/save@v5
+        with:
+          path: ${{ steps.build_ui.outputs.path }}
+          key: ${{ steps.build_ui.outputs.key }}
+
+      - name: Plan TC4 artifact identity
+        id: plan_core
+        run: python3 .github/scripts/suite.py plan core
+      - name: Restore verified release TC4
+        id: cache_core_release
+        if: ${{ !env.ACT && !inputs.force_rebuild }}
+        uses: actions/cache/restore@v5
+        with:
+          path: .cache/mod-suite/core/release
+          key: ${{ steps.plan_core.outputs.release-key }}
+      - name: Restore verified nightly TC4
+        id: cache_core_nightly
+        if: ${{ !env.ACT && !inputs.force_rebuild && !inputs.release && steps.cache_core_release.outputs.cache-hit != 'true' }}
+        uses: actions/cache/restore@v5
+        with:
+          path: .cache/mod-suite/core/nightly
+          key: ${{ steps.plan_core.outputs.nightly-key }}
+      - name: Find matching published TC4
+        if: ${{ !env.ACT }}
+        env:
+          GH_TOKEN: ${{ secrets.DEPENDENCY_TOKEN || github.token }}
+        run: python3 .github/scripts/suite.py fetch core
+      - name: '2 - Build or reuse TC4 and API'
+        id: build_core
+        env:
+          SUITE_RELEASE_CACHE_HIT: ${{ steps.cache_core_release.outputs.cache-hit }}
+          SUITE_NIGHTLY_CACHE_HIT: ${{ steps.cache_core_nightly.outputs.cache-hit }}
+        run: python3 .github/scripts/suite.py build core
+      - name: Save verified TC4
+        if: ${{ !env.ACT && steps.build_core.outputs.store == 'true' }}
+        uses: actions/cache/save@v5
+        with:
+          path: ${{ steps.build_core.outputs.path }}
+          key: ${{ steps.build_core.outputs.key }}
+
+      - name: Plan Tinkerer artifact identity
+        id: plan_tinkerer
+        run: python3 .github/scripts/suite.py plan tinkerer
+      - name: Restore verified release Tinkerer
+        id: cache_tinkerer_release
+        if: ${{ !env.ACT && !inputs.force_rebuild }}
+        uses: actions/cache/restore@v5
+        with:
+          path: .cache/mod-suite/tinkerer/release
+          key: ${{ steps.plan_tinkerer.outputs.release-key }}
+      - name: Restore verified nightly Tinkerer
+        id: cache_tinkerer_nightly
+        if: ${{ !env.ACT && !inputs.force_rebuild && !inputs.release && steps.cache_tinkerer_release.outputs.cache-hit != 'true' }}
+        uses: actions/cache/restore@v5
+        with:
+          path: .cache/mod-suite/tinkerer/nightly
+          key: ${{ steps.plan_tinkerer.outputs.nightly-key }}
+      - name: Find matching published Tinkerer
+        if: ${{ !env.ACT }}
+        env:
+          GH_TOKEN: ${{ secrets.DEPENDENCY_TOKEN || github.token }}
+        run: python3 .github/scripts/suite.py fetch tinkerer
+      - name: '3 - Build or reuse Tinkerer'
+        id: build_tinkerer
+        env:
+          SUITE_RELEASE_CACHE_HIT: ${{ steps.cache_tinkerer_release.outputs.cache-hit }}
+          SUITE_NIGHTLY_CACHE_HIT: ${{ steps.cache_tinkerer_nightly.outputs.cache-hit }}
+        run: python3 .github/scripts/suite.py build tinkerer
+      - name: Save verified Tinkerer
+        if: ${{ !env.ACT && steps.build_tinkerer.outputs.store == 'true' }}
+        uses: actions/cache/save@v5
+        with:
+          path: ${{ steps.build_tinkerer.outputs.path }}
+          key: ${{ steps.build_tinkerer.outputs.key }}
+
+      - name: Plan Compact artifact identity
+        id: plan_compact
+        run: python3 .github/scripts/suite.py plan compact
+      - name: Restore verified release Compact
+        id: cache_compact_release
+        if: ${{ !env.ACT && !inputs.force_rebuild }}
+        uses: actions/cache/restore@v5
+        with:
+          path: .cache/mod-suite/compact/release
+          key: ${{ steps.plan_compact.outputs.release-key }}
+      - name: Restore verified nightly Compact
+        id: cache_compact_nightly
+        if: ${{ !env.ACT && !inputs.force_rebuild && !inputs.release && steps.cache_compact_release.outputs.cache-hit != 'true' }}
+        uses: actions/cache/restore@v5
+        with:
+          path: .cache/mod-suite/compact/nightly
+          key: ${{ steps.plan_compact.outputs.nightly-key }}
+      - name: Find matching published Compact
+        if: ${{ !env.ACT }}
+        env:
+          GH_TOKEN: ${{ secrets.DEPENDENCY_TOKEN || github.token }}
+        run: python3 .github/scripts/suite.py fetch compact
+      - name: '4 - Build or reuse Compact'
+        id: build_compact
+        env:
+          SUITE_RELEASE_CACHE_HIT: ${{ steps.cache_compact_release.outputs.cache-hit }}
+          SUITE_NIGHTLY_CACHE_HIT: ${{ steps.cache_compact_nightly.outputs.cache-hit }}
+        run: python3 .github/scripts/suite.py build compact
+      - name: Save verified Compact
+        if: ${{ !env.ACT && steps.build_compact.outputs.store == 'true' }}
+        uses: actions/cache/save@v5
+        with:
+          path: ${{ steps.build_compact.outputs.path }}
+          key: ${{ steps.build_compact.outputs.key }}
+
+      - name: Collect complete mod suite
+        run: python3 .github/scripts/suite.py collect
+      - name: Save suite artifacts and provenance
+        if: ${{ !env.ACT }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: aop-mod-suite-${{ steps.lock.outputs.id }}
+          path: dist/suite/*
+          if-no-files-found: error
+          retention-days: 14
+      - name: Verify all four publication plans locally
+        if: ${{ env.ACT }}
+        run: python3 .github/scripts/suite.py publish --dry-run
+      - name: Publish to each mod repository
+        if: ${{ !env.ACT }}
+        env:
+          GH_TOKEN: ${{ secrets.DEPENDENCY_TOKEN || github.token }}
+        run: python3 .github/scripts/suite.py publish
