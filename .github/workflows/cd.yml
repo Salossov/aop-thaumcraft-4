@@ -149,7 +149,7 @@ jobs:
       - name: Find matching published TC4
         if: ${{ !env.ACT }}
         env:
-          GH_TOKEN: ${{ secrets.DEPENDENCY_TOKEN || github.token }}
+          GH_TOKEN: ${{ github.token }}
         run: python3 .github/scripts/suite.py fetch core
       - name: '2 - Build or reuse TC4 and API'
         id: build_core
