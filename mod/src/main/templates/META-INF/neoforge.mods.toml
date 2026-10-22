@@ -9,6 +9,7 @@ config="thaumcraft.mixins.json"
 modId="thaumcraft"
 version="${version}"
 displayName="AOP: Thaumcraft 4"
+logoFile="logo.png"
 authors="Salossov (port), Azanor (original mod)"
 description='''Unofficial port of Thaumcraft 4.2.3.5 to Minecraft 1.21.1 / NeoForge. Research, aspects, aura nodes, wands, alchemy, infusion, golems, equipment and the Outer Lands. Includes an addon API. JEI/EMI recipe integration is a separate optional mod. Original Thaumcraft by Azanor.'''
 
@@ -37,5 +38,12 @@ side="BOTH"
 modId="curios"
 type="required"
 versionRange="[${curiosVersion},10)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.thaumcraft]]
+modId="aop_ui"
+type="required"
+versionRange="[0.7.0,0.8)"
 ordering="AFTER"
 side="BOTH"

@@ -51,6 +51,7 @@ public final class Thaumcraft {
         container.registerConfig(ModConfig.Type.STARTUP, thaumcraft.config.ThaumcraftContentConfig.SPEC);
         container.registerConfig(ModConfig.Type.SERVER, ThaumcraftConfig.SPEC);
         container.registerConfig(ModConfig.Type.CLIENT, thaumcraft.config.ThaumcraftClientConfig.SPEC);
+        aop.ui.api.SettingsRegistry.register("thaumcraft", "Thaumcraft", aop.ui.api.UiTheme.THAUMCRAFT);
         thaumcraft.data.ThaumcraftData.register();
         thaumcraft.world.WorldBiomes.register();
         thaumcraft.world.NaturalBiomeIntegration.register(modBus);

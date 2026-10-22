@@ -1,65 +1,107 @@
 # AOP: Thaumcraft 4
 
-[Русский](README.ru.md)
+**Fully ported version with first addon (Thaumic Tinkerer) will be available in coming days. Stay tuned!**
 
-I maintain an unofficial port of **Thaumcraft 4.2.3.5** to **Minecraft 1.21.1 / NeoForge**.
-Research, aspects, aura nodes, wands and staves, alchemy, infusion, essentia networks, golems, equipment and the Outer Lands are included, together with a public API for addons.
+<img src="mod/src/main/resources/logo.png" alt="AOP: Thaumcraft 4" width="128" height="128">
+
+Unofficial port of **Thaumcraft 4.2.3.5** to **Minecraft 1.21.1**, built on NeoForge and Java 21.
+
+[Русский](README.ru.md) | [Addon development](docs/addons/README.en.md) | [Attribution](NOTICE.md)
 
 > **Personal use only.** Thaumcraft and all of its assets belong to Azanor. This repository contains the original mod's logic and assets and is not intended for redistribution.
 
 The project was inspired by [Thaumcraft 3: Reforged](https://github.com/notlikethiss/thaumcraft-3-reforged).
 
-## Status
+## Overview
 
-Version **1.0.0** is available for testing. Automated checks cover API rules and selected gameplay scenarios; manual visual and multiplayer acceptance is still in progress. Hidden Magic Box storage remains unimplemented.
+The port includes research, aspects, aura nodes, wands and staves, alchemy, infusion, essentia networks, golems, equipment and the Outer Lands. A separate public API and addon SDK provide extension points for additional content.
+
+Version **1.0.0** is available for testing. Automated verification covers API rules and selected gameplay scenarios. Manual visual and multiplayer acceptance remains in progress. Hidden Magic Box storage is not implemented.
+
+## Requirements
+
+| Component | Supported version | Requirement |
+| --- | --- | --- |
+| Minecraft | 1.21.1 | Required |
+| Java | 21 | Required |
+| NeoForge | 21.1.252 ≤ version < 21.2 | Required |
+| Curios | 9.5.1+1.21.1 ≤ version < 10 | Required |
+| AOP: UI | Compatible 0.7.x build | Required on client and server |
+| TerraBlender | 4.1.0.8 ≤ version < 4.2 | Optional |
+
+Dependencies must target Minecraft 1.21.1 and NeoForge. Without TerraBlender, the built-in biome placement fallback is used.
 
 ## Installation
 
-- Minecraft **1.21.1**, Java **21**, NeoForge **21.1.252 or newer within 21.1**.
-- [Curios](https://www.curseforge.com/minecraft/mc-mods/curios) **9.5.1+1.21.1 or newer within 9.x** is required.
-- [TerraBlender](https://www.curseforge.com/minecraft/mc-mods/terrablender) **4.1.0.8 or newer within 4.1** is optional. A built-in biome placement fallback is used without it.
+1. Install Minecraft, Java, NeoForge and the required dependencies.
+2. Place `thaumcraft-1.21.1-1.0.0.jar` in the instance's `mods` directory on both client and server.
+3. Install a compatible AOP: UI gameplay JAR on both sides.
 
-Place the gameplay JAR in `mods` on the client and server. The public API is already bundled; do not install the API or sources JAR as a mod.
+The gameplay JAR includes the public API. Separate API and sources JARs are development artifacts and must not be installed as mods. Existing worlds should be backed up before testing an update.
 
-**AOP:TC4 Compact** is a separate optional project for JEI/EMI recipes and Jade/WTHIT block tooltips. The core does not require those mods. Thaumic Tinkerer is also a separate addon and requires a matching core build.
+### Related projects
 
-## Playing
+- **Thaumic Tinkerer** provides additional devices, foci and KAMI content. It requires a compatible core build.
+- **AOP:TC4 Compact** provides optional JEI/EMI recipe integration and Jade/WTHIT tooltips. These integrations are separate from the core.
+- **AOP: UI** provides the shared configuration interface.
 
-Start with the Thaumonomicon. Scan objects with the Thaumometer to discover aspects and progress through research. Default controls: **F** selects a focus, **H** toggles the harness, **G** switches the architect mode, and **Shift+G** switches its axis. Controls can be reassigned in Minecraft settings.
+## Configuration and controls
 
-Client settings are in `config/thaumcraft-client.toml`; server settings are stored with the world. The Thaumonomicon also exposes display settings. Back up worlds before testing updates.
+The Thaumonomicon introduces research and progression. The Thaumometer discovers aspects through scanning.
 
-## Building
+| Default key | Action |
+| --- | --- |
+| F | Select a focus |
+| H | Toggle the harness |
+| G | Change architect mode |
+| Shift+G | Change architect axis |
 
-Install JDK 21, clone this repository, and run:
+Key bindings can be reassigned in Minecraft settings.
+
+Client configuration is stored in `config/thaumcraft-client.toml`; server configuration is stored with the world. The shared settings interface opens from Mods, the Thaumonomicon gear or the AOP: UI button in the pause menu.
+
+Client changes are saved immediately. Server changes are committed with **Save** or **Esc**. Multiplayer editing requires OP level 4; the singleplayer world owner can edit without enabling cheats. Options marked for restart retain their current effective value until restart. Existing configuration keys and defaults are preserved.
+
+## Building from source
+
+Build AOP: UI first and provide its gameplay JAR as a Gradle dependency. With JDK 21 available, run from this repository:
 
 ```powershell
-./gradlew.ps1 build
+./gradlew.ps1 build -PaopUiJar=C:/dependencies/aopui-1.21.1-0.7.0.jar
 ```
 
-On Linux/macOS, use `sh ./gradlew build`. Dependencies are downloaded on the first build. Minecraft and NeoForge versions are defined in `gradle.properties`.
+On Linux and macOS, use `sh ./gradlew` with the same task and properties. Dependencies are downloaded during the initial build. Minecraft and NeoForge versions are defined in `gradle.properties`.
 
-Outputs:
+| Output | Purpose |
+| --- | --- |
+| `mod/build/libs/thaumcraft-1.21.1-1.0.0.jar` | Gameplay mod |
+| `api/build/libs/thaumcraft-api-1.0.0.jar` | Addon development dependency |
+| `mod/build/libs/thaumcraft-1.21.1-1.0.0-sources.jar` | Source archive |
 
-- `mod/build/libs/thaumcraft-1.21.1-1.0.0.jar` — gameplay mod.
-- `api/build/libs/thaumcraft-api-1.0.0.jar` — development dependency.
-- `mod/build/libs/thaumcraft-1.21.1-1.0.0-sources.jar` — source archive.
+The development client uses `:mod:runClient`; the addon SDK uses `addonSdk`. Both commands accept the same `aopUiJar` property. The [addon development guide](docs/addons/README.en.md) documents SDK installation, data formats and public API contracts.
 
-Run a development client with `./gradlew.ps1 :mod:runClient`. Build the addon SDK with `./gradlew.ps1 addonSdk`. See the [addon development guide](docs/addons/README.en.md) for public API contracts and examples.
+## Verification and continuous integration
 
-## Verification and CI
+`build` compiles the project and executes the API and standalone rule checks. Gameplay verification uses separate source sets excluded from the gameplay JAR. Build success and in-game verification are separate results.
 
-`build` compiles the mod and executes the API and standalone rule checks. Game scenarios are kept in separate verification source sets and excluded from the gameplay JAR. A successful build does not replace an in-game test.
+Source and build changes trigger CI; documentation-only changes do not. Pushes to `main` retain the separate nightly channel.
 
-The GitHub workflow builds code changes and supports manual releases. Changes limited to documentation do not trigger it. Pushes to `main` produce a nightly build; a manual run uses `mod_version` and refuses to overwrite an existing release. Local `act` runs build without publishing.
+In **Actions → Build and release → Run workflow**, enable **release** to publish an ordinary GitHub release with tag `v<version>`. Leave **version** blank to use `mod_version` from `gradle.properties`, or enter `major.minor.patch` to override it for that run. The selected version is used in the JAR metadata, filenames and tag; the workflow does not modify the source files. Prerelease suffixes are rejected in release mode. Existing release tags are never overwritten. With **release** disabled, a manual run builds artifacts without publishing. Local `act` runs never publish. Ordinary release notes list every commit since the nearest previous ordinary release on the selected history, with commit links and a comparison link. The first release includes the full history. Nightly notes omit this list.
 
-For bug reports, include the mod versions, a reproduction, and the relevant log or crash report. Remove access tokens and personal data before attaching logs.
+For local `act` runs, place compatible dependency source checkouts at `.dependencies/aopui` before running `act workflow_dispatch --input release=true`. Local runs use these checkouts and skip GitHub publication. For private dependency repositories, configure the optional `DEPENDENCY_TOKEN` secret with read access to those repositories.
+
+| Repository variable | Purpose |
+| --- | --- |
+| `AOPUI_REPOSITORY` | AOP: UI source; `Salossov/aop-ui` |
+| `AOPUI_REF` | AOP: UI source revision; defaults to `main` |
+
+Bug reports should include component versions, reproduction steps, expected and actual behavior, and the relevant log or crash report. Credentials and personal information should be removed from attachments.
 
 ## Credits and terms
 
-- [Azanor](https://www.curseforge.com/minecraft/mc-mods/thaumcraft) — original Thaumcraft, gameplay and assets.
-- CovertJaguar, Dan Scott, Lorc, bonemouse, Scott Killen, Rorax and chicken_bones — original credits.
-- [Salossov](https://github.com/Salossov) — Minecraft 1.21.1 port, with AI-assisted implementation and verification.
-- [NeoForge](https://github.com/neoforged/NeoForge), Curios and TerraBlender — platform and integrations.
+- [Azanor](https://www.curseforge.com/minecraft/mc-mods/thaumcraft) - original Thaumcraft, gameplay and assets.
+- CovertJaguar, Dan Scott, Lorc, bonemouse, Scott Killen, Rorax and chicken_bones - original project credits.
+- [Salossov](https://github.com/Salossov) - Minecraft 1.21.1 port and maintenance.
+- [NeoForge](https://github.com/neoforged/NeoForge), Curios and TerraBlender - platform and integrations.
 
-See [NOTICE.md](NOTICE.md). `TEMPLATE_LICENSE.txt` covers the build template only; it does not license Thaumcraft or its assets under MIT. This is an unofficial project.
+[NOTICE.md](NOTICE.md) describes attribution and license scope. `TEMPLATE_LICENSE.txt` applies to the build template only; it does not license Thaumcraft or its assets under MIT. This project is unofficial.

@@ -39,9 +39,7 @@ public final class R2Client {
         FallingTaintEffects.install();
         FollowingItemEffects.install();
         net.minecraft.client.renderer.item.ItemProperties.register(R2Content.NOTES.get(),ResourceLocation.parse("thaumcraft:complete"),(stack,level,entity,seed)->{var note=thaumcraft.items.ResearchNotes.read(stack);return note!=null&&note.complete?1:0;});
-        net.neoforged.fml.ModList.get().getModContainerById("thaumcraft").orElseThrow().registerExtensionPoint(
-                net.neoforged.neoforge.client.gui.IConfigScreenFactory.class,
-                (net.neoforged.neoforge.client.gui.IConfigScreenFactory)net.neoforged.neoforge.client.gui.ConfigurationScreen::new);
+        // Config screen factory is supplied by AOP: UI for all registered providers.
         ItemBlockRenderTypes.setRenderLayer(R2Fluids.GOO.get(),RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(R2Fluids.GAS.get(),RenderType.translucent());
         for(var block:java.util.List.of(R2Content.TAINT_GROWTH,R2Content.TAINT_TENDRILS,R2Content.TAINT_SPORE_STALK)) ItemBlockRenderTypes.setRenderLayer(block.get(),RenderType.cutout());

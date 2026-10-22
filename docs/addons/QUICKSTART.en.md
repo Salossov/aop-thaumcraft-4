@@ -1,6 +1,6 @@
-# Your first addon
+# The first addon
 
-[Contents](README.en.md) · [Русский](QUICKSTART.ru.md)
+[Contents](README.en.md) | [Русский](QUICKSTART.ru.md)
 
 Target: Minecraft **1.21.1**, NeoForge **21.1.252**, JDK **21**, Thaumcraft **1.0.0**, API **1**. Examples use mod ID `myaddon`. Replace it consistently in Java, metadata, resource names and translations.
 
@@ -54,11 +54,11 @@ dependencies { compileOnly files('../lib/thaumcraft-api-1.0.0.jar') }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
 ```
 
-The API path is relative to your addon project. Update it if you move the project. Attach `sources.jar` in your IDE. Do not shade or Jar-in-Jar the API. Do not import implementation packages such as `thaumcraft.items`, `thaumcraft.registry` or `thaumcraft.knowledge`. The `internal` package within `thaumcraft.api` is also implementation support rather than an addon extension point.
+The API path is resolved relative to the addon project and must be updated when its location changes. Attach `sources.jar` in the IDE. Do not shade or Jar-in-Jar the API. Do not import implementation packages such as `thaumcraft.items`, `thaumcraft.registry` or `thaumcraft.knowledge`. The `internal` package within `thaumcraft.api` is also implementation support rather than an addon extension point.
 
 ## 3. Create the entry point
 
-In a copy of the example, replace its demonstration Java classes and resources with your own. Minimal `src/main/java/example/myaddon/MyAddon.java`:
+In a copy of the example, replace its demonstration Java classes and resources with addon-specific. Minimal `src/main/java/example/myaddon/MyAddon.java`:
 
 ```java
 // File: example/myaddon/MyAddon.java
@@ -91,7 +91,7 @@ public final class MyAddon {
 }
 ```
 
-This example registers a compound aspect using an existing icon. For your own icon, add `assets/myaddon/textures/aspects/resonance.png` and use `myaddon:textures/aspects/resonance.png`. Aspect definitions are startup registrations; `/reload` does not create or remove them.
+This example registers a compound aspect using an existing icon. For addon-specific icon, add `assets/myaddon/textures/aspects/resonance.png` and use `myaddon:textures/aspects/resonance.png`. Aspect definitions are startup registrations; `/reload` does not create or remove them.
 
 `AddonRegistrationEvent` uses the dedicated public **AddonRegistrationEvent.BUS**, active during common setup. Register the same IDs on both physical sides. Keep client classes such as `Minecraft` and `GuiGraphics` out of this entry point.
 
@@ -127,7 +127,7 @@ ordering="NONE"
 side="BOTH"
 ```
 
-Use your addon's actual license. The core range follows the SDK example: it declares a minimum, not verified compatibility with future releases. For distribution, constrain it to versions you support.
+The metadata must declare the addon's actual license. The core range follows the SDK example: it declares a minimum, not verified compatibility with future releases. Distributed addons should constrain the range to versions with verified support.
 
 ## 5. Add a category, research and recipe
 
@@ -137,7 +137,7 @@ The introductory example uses `auto_unlock: true` to grant the introduction auto
 
 ## 6. Build and install
 
-Run `.\gradlew.ps1 build` in the standalone project. Copy only `build/libs/myaddon-1.0.0.jar` to a test NeoForge instance containing Thaumcraft and its required dependencies, including Curios. Content addons normally belong on both client and server. Do not put the API JAR in `mods`. JEI/EMI are needed only when testing viewer integration.
+Run `.\gradlew.ps1 build` in the standalone project. Copy only `build/libs/myaddon-1.0.0.jar` to a test NeoForge instance containing Thaumcraft and its required dependencies, including Curios and a compatible AOP: UI build. Content addons normally belong on both client and server. Do not put the API JAR in `mods`. JEI/EMI are needed only when testing viewer integration.
 
 After joining a test world, the category and introduction should appear in the book. The recipe requires the research and 5 air vis; test it at an arcane workbench. Use `/reload` for content JSON changes and client resource reload for translations/textures. See [CHECKLIST.en.md](CHECKLIST.en.md) for further scenarios.
 

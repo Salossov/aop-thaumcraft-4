@@ -2,7 +2,7 @@
 
 [Contents](README.en.md) | [Quick start](QUICKSTART.en.md) | [Java API](API.en.md) | [Русский](CONTENT.ru.md)
 
-Paths below are relative to your addon's `src/main/resources`. Datapacks use the same `data/` layout. Aspect definitions and custom page types require the Java addon to be installed.
+This reference defines the data formats for book categories, research, pages, aspects and recipes. Paths are relative to the addon resource directory `src/main/resources`. Datapacks use the same `data/` layout; new aspect definitions and custom page types require the Java addon.
 
 ## Files and identifiers
 
@@ -82,7 +82,7 @@ This introduction is granted automatically. `auto_unlock` completes research dur
 
 Without `page_order`, text pages precede ungrouped recipes and recipe groups. Include new `book_page` IDs explicitly in `page_order`. Recipe group variants must also occur in `recipe_pages`.
 
-Trigger arrays alone are insufficient: the standard scan handler considers `hidden: true` research with nonempty `aspects`. Normal scanning and research access rules still apply. API 1 has no generic registry for arbitrary new discovery trigger types. For your own gameplay event, check conditions on the server and, when appropriate, grant completed research through `ResearchApi.grant`. That method does not merely reveal a hidden node.
+Trigger arrays alone are insufficient: the standard scan handler considers `hidden: true` research with nonempty `aspects`. Normal scanning and research access rules still apply. API 1 has no generic registry for arbitrary new discovery trigger types. For an addon-specific gameplay event, check conditions on the server and, when appropriate, grant completed research through `ResearchApi.grant`. That method does not merely reveal a hidden node.
 
 Research names use the exact translation key `tc.research_name.myaddon:introduction`, including the colon. Entries in `text_pages` are legacy translation keys supporting `<BR>`, `<LINE>` and `<IMG>namespace:path:u:v:w:h:scale</IMG>` markup. New mixed pages use the elements below; legacy image markup is not interpreted by their `text` element.
 
@@ -120,7 +120,7 @@ To embed a diagram, add `{"kind":"recipe","value":"myaddon:diamond","height":160
 
 Common defaults: `kind: "text"`, `value: ""`, `x: -1`, `y: -1`, `width: 139`, `height: 9`, `scale: 1`, `count: 1`, `translate: true`, `tooltip: []`. Tooltips contain translation keys. Set an explicit 16×16 tooltip area for item/aspect elements.
 
-The logical canvas is **139×199**. The first research page reserves 25 pixels for its title, leaving 174 for content. Coordinates are independent of screen scale. `y: -1` participates in vertical flow and pagination; `x: -1` starts at the left edge. An explicit `y` does not advance the flow cursor: reserve space yourself to avoid overlaps. Manually positioned text wraps downward from that point.
+The logical canvas is **139×199**. The first research page reserves 25 pixels for its title, leaving 174 for content. Coordinates are independent of screen scale. `y: -1` participates in vertical flow and pagination; `x: -1` starts at the left edge. An explicit `y` does not advance the flow cursor: reserve the corresponding space explicitly to avoid overlaps. Manually positioned text wraps downward from that point.
 
 Input limits: `x` -1–139, `y` -1–199, `width` 1–139, `height` 1–199, `scale` greater than 0 and at most 4, nonnegative `count`. These validate fields rather than every overlap: account for `x + width`, `y + height` and the smaller first page. `scale` affects images only; items/aspects remain 16×16 and text uses normal font wrapping. Test long translations.
 
@@ -157,7 +157,7 @@ Register a new compound aspect in Java first, as in the [quick start](QUICKSTART
 }
 ```
 
-This deliberately changes an existing item for illustration; normally assign your own item/block IDs. `entity_aspects` uses the same structure with entity type IDs. Quantities are integers 1–32767, not centivis. Native stack rules may add component, potion, enchantment and filled-container aspects; use `AspectApi` to read effective composition.
+This deliberately changes an existing item for illustration; normally assign addon-specific item/block IDs. `entity_aspects` uses the same structure with entity type IDs. Quantities are integers 1–32767, not centivis. Native stack rules may add component, potion, enchantment and filled-container aspects; use `AspectApi` to read effective composition.
 
 Additional loader rules:
 

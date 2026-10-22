@@ -1,4 +1,4 @@
-name: Build and publish
+name: Build and release
 
 on:
   push:
@@ -13,34 +13,71 @@ on:
       - 'gradlew'
       - 'gradlew.ps1'
       - '.github/workflows/**'
+      - '.github/scripts/**'
       - 'tools/**'
+      - '!**/*.md'
+      - '!**/*.rst'
+      - '!**/*.adoc'
   pull_request:
     paths: *build_paths
   workflow_dispatch:
+    inputs:
+      release:
+        description: Publish an ordinary release (not a prerelease or nightly)
+        type: boolean
+        required: false
+        default: false
+      version:
+        description: 'Optional version, e.g. 1.0.0; blank uses mod_version from gradle.properties'
+        type: string
+        required: false
+        default: ''
 
 permissions:
-  contents: write
+  contents: read
 
-# Serialize publications so a nightly update cannot race another publication.
 concurrency:
   group: thaumcraft-cd
   cancel-in-progress: false
 
 jobs:
-  publish:
+  build:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     timeout-minutes: 30
     defaults:
       run:
         shell: bash
     env:
-      RELEASE_MODE: ${{ github.event_name == 'workflow_dispatch' && 'release' || 'nightly' }}
+      RELEASE_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.release && 'release' || github.event_name == 'push' && 'nightly' || 'build' }}
+      RELEASE_VERSION: ${{ inputs.version || '' }}
+      RELEASE_NAME: 'AOP: Thaumcraft 4'
+      RELEASE_REQUIREMENTS: 'AOP: UI 0.7.x and Curios are required. TerraBlender is optional. Install the gameplay JAR; API and sources are for development.'
+      RELEASE_ARTIFACTS: |
+        mod/build/libs/thaumcraft-*.jar
+        api/build/libs/thaumcraft-api-*.jar
     steps:
       - name: Check out source
         uses: actions/checkout@v7
         with:
+          fetch-depth: 0
           persist-credentials: false
 
+      - name: Check out AOP UI
+        if: ${{ !env.ACT }}
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ vars.AOPUI_REPOSITORY || 'Salossov/aop-ui' }}
+          token: ${{ secrets.DEPENDENCY_TOKEN || github.token }}
+          ref: ${{ vars.AOPUI_REF || 'main' }}
+          path: .dependencies/aopui
+          persist-credentials: false
+      - name: Check release rules
+        run: python3 -m unittest discover -s .github/scripts -p 'test_*.py' -v
+      - name: Select build version
+        id: version
+        run: python3 .github/scripts/release.py prepare
       - name: Set up Java 21
         uses: actions/setup-java@v6
         with:
@@ -53,55 +90,22 @@ jobs:
           cache-provider: basic
           cache-disabled: ${{ env.ACT == 'true' }}
 
-      - name: Select build version
-        id: version
+      - name: Build AOP UI
+        working-directory: .dependencies/aopui
+        run: sh ./gradlew --no-daemon --console=plain assemble
+      - name: Select AOP UI artifact
         run: |
-          python3 - <<'PY'
-          import os, re
-          from pathlib import Path
-          properties = dict(line.split('=', 1) for line in Path('gradle.properties').read_text().splitlines() if '=' in line and not line.lstrip().startswith('#'))
-          if os.environ['RELEASE_MODE'] == 'release':
-              version = properties['mod_version'].strip()
-          else:
-              base = properties['mod_version'].strip().split('-', 1)[0].split('+', 1)[0]
-              version = base + '-nightly.' + os.environ['GITHUB_RUN_NUMBER']
-          if not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z]+(?:[.-][0-9A-Za-z]+)*)?(?:\+[0-9A-Za-z]+(?:[.-][0-9A-Za-z]+)*)?', version):
-              raise SystemExit('mod_version in gradle.properties must be a version such as 0.6.0 or 0.6.0-rc.1')
-          with open(os.environ['GITHUB_ENV'], 'a') as output:
-              output.write('BUILD_VERSION=' + version + '\n')
-          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
-              output.write('version=' + version + '\n')
-          PY
-
+          ui=$(find .dependencies/aopui/build/libs -maxdepth 1 -name 'aopui-*.jar' ! -name '*-sources.jar')
+          test -n "$ui" && test "$(printf '%s\n' "$ui" | wc -l)" -eq 1
+          echo "AOP_UI_JAR=$PWD/$ui" >> "$GITHUB_ENV"
       - name: Build and check
-        run: sh ./gradlew --no-daemon --console=plain --no-problems-report "-Pmod_version=$BUILD_VERSION" clean build :mod:compileProductionVerificationJava
+        run: sh ./gradlew --no-daemon --console=plain --no-problems-report "-Pmod_version=$BUILD_VERSION" clean build :mod:compileProductionVerificationJava "-PaopUiJar=$AOP_UI_JAR"
 
       - name: Collect release files
-        run: |
-          python3 - <<'PY'
-          import hashlib, os, shutil, zipfile
-          from pathlib import Path
-          properties = dict(line.split('=', 1) for line in Path('gradle.properties').read_text().splitlines() if '=' in line and not line.lstrip().startswith('#'))
-          version = os.environ['BUILD_VERSION']
-          base = 'thaumcraft-' + properties['minecraft_version'].strip() + '-' + version
-          paths = [Path('mod/build/libs') / (base + '.jar'),
-                   Path('mod/build/libs') / (base + '-sources.jar'),
-                   Path('api/build/libs') / ('thaumcraft-api-' + version + '.jar')]
-          destination = Path('dist')
-          destination.mkdir()
-          checksums = []
-          for index, source in enumerate(paths):
-              with zipfile.ZipFile(source) as archive:
-                  if archive.testzip() is not None:
-                      raise SystemExit('Damaged JAR: ' + str(source))
-                  if index == 0 and any(name.startswith('thaumcraft/verification/') for name in archive.namelist()):
-                      raise SystemExit('Verification classes leaked into gameplay JAR')
-              target = destination / source.name
-              shutil.copyfile(source, target)
-              checksums.append(hashlib.sha256(target.read_bytes()).hexdigest() + '  ' + target.name)
-          (destination / 'SHA256SUMS.txt').write_text('\n'.join(checksums) + '\n')
-          PY
-
+        run: python3 .github/scripts/release.py collect
+      - name: Verify publication plan locally
+        if: ${{ env.ACT && env.RELEASE_MODE != 'build' }}
+        run: python3 .github/scripts/release.py publish --dry-run
       - name: Save build artifacts
         if: ${{ !env.ACT }}
         uses: actions/upload-artifact@v7
@@ -112,49 +116,8 @@ jobs:
           retention-days: 14
 
       - name: Publish to GitHub Releases
-        if: ${{ github.event_name != 'pull_request' && !env.ACT }}
+        if: ${{ env.RELEASE_MODE != 'build' && !env.ACT }}
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-        run: |
-          python3 - <<'PY'
-          import json, os, subprocess
-          from pathlib import Path
-          repository = os.environ['GH_REPO']
-          version = os.environ['BUILD_VERSION']
-          mode = os.environ['RELEASE_MODE']
-          commit = os.environ['GITHUB_SHA']
-          prefix = 'repos/' + repository + '/'
-
-          def api(path, method='GET', missing_ok=False):
-              result = subprocess.run(['gh', 'api', '--method', method, prefix + path], capture_output=True, text=True)
-              if result.returncode:
-                  if missing_ok and '(HTTP 404)' in result.stderr:
-                      return None
-                  raise SystemExit(result.stderr or result.stdout)
-              return json.loads(result.stdout) if result.stdout.strip() else None
-
-          tag = 'nightly' if mode == 'nightly' else 'v' + version
-          if mode == 'nightly':
-              old = api('releases/tags/nightly', missing_ok=True)
-              if old is not None:
-                  api('releases/' + str(old['id']), method='DELETE')
-              if api('git/ref/tags/nightly', missing_ok=True) is not None:
-                  api('git/refs/tags/nightly', method='DELETE')
-          else:
-              if api('git/ref/tags/' + tag, missing_ok=True) is not None or api('releases/tags/' + tag, missing_ok=True) is not None:
-                  raise SystemExit('Version already exists; select a new release version. Nothing was overwritten.')
-
-          notes = Path(os.environ['RUNNER_TEMP']) / 'thaumcraft-release-notes.md'
-          notes.write_text('AOP: Thaumcraft 4 for Minecraft 1.21.1 / NeoForge.\n\n'
-                           + ('Development snapshot; replaces the previous nightly.\n\n' if mode == 'nightly' else '')
-                           + 'Version: `' + version + '`\n\nCommit: `' + commit + '`\n\n'
-                           + 'Curios is required. TerraBlender is optional. Install the gameplay JAR; the API and sources are for development.\n')
-          command = ['gh', 'release', 'create', tag, '--repo', repository, '--target', commit,
-                     '--title', 'Nightly' if mode == 'nightly' else 'AOP: Thaumcraft 4 ' + version,
-                     '--notes-file', str(notes), '--latest=false' if mode == 'nightly' else '--latest']
-          if mode == 'nightly':
-              command.append('--prerelease')
-          command.extend(str(path) for path in sorted(Path('dist').iterdir()))
-          subprocess.run(command, check=True)
-          PY
+        run: python3 .github/scripts/release.py publish

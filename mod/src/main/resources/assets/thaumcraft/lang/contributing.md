@@ -1,19 +1,29 @@
-* Do not post questions, ideas or suggestions unless they directly correlate to a bug you're reporting. If you want to do any of the former, do so on the [TC thread](http://www.minecraftforum.net/topic/2011841-).
-* Check the other issues first to make sure yours hasn't been reported yet.
-* Make sure you are running the latest version of Thaumcraft and Forge;
-* Do not report issues for 1.6 versions of Thaumcraft, they aren't supported any more.
-* Make sure you list your TC and Forge version at the top of any issue.
-* Issues regarding MCPC+/Cauldron are not accepted. If you find an issue in a server running MCPC+/Cauldron, try to reproduce it in a vanilla (Forge) server. If you can't, report the issue to the MCPC+/Cauldron issue tracker, not here;
-* Issues regarding running Thaumcraft in a developer environment are not accepted, this is not TC addon development hotline;
-* Render related issues with Optifine (that work fine without it) are not accepted;
-* Post the FML log (if there's a crash) on [Gist](https://gist.github.com/) or any other pastebin;
-* Refer what mods you are running, if the game didn't crash;
-* Make sure NEI block highlights are off if thaumcraft things are disappearing/changing into something else while looking at them;
-* You don't need to prefix or suffix your issue titles with [Bug] or [Idea] or anything in square brackets, put the info inside the issue text, if anything needs to be flagged, we take care of it.
-* Make sure your title is a good resume of the issue, "Research bug" or "Entity crash" are not good titles, for one.
-* Open up **one** issue for each bug, don't put various bugs in a single issue, it makes it harder to sort through.
-* If you want to add information or discuss an issue that has been closed, do not open a new one. You can comment on the closed one.
-* Don't edit en_US.lang
-* Read the FaQ in the [TC thread](http://www.minecraftforum.net/topic/2011841-).
+# Localization contribution guidelines
 
-A general, all use "good posting guide" can be found here: http://vazkii.us/br101/
+[Localization format](readme.md)
+
+## Translation changes
+
+Use `en_us.json` as the source catalog. Preserve translation keys, formatting placeholders, item and research identifiers, and supported book markup. Language files must be valid JSON encoded as UTF-8 without a byte-order mark.
+
+A translation change should identify the language and affected entries. Reference-language changes should be submitted separately from the translation. Interface text should be checked in the client for clipping, wrapping and consistent terminology.
+
+## Issue reports
+
+Before submitting a report, check existing issues for the same problem. Each report should describe one reproducible issue and include:
+
+- Minecraft, NeoForge and Thaumcraft versions, plus relevant addon versions.
+- Language, GUI scale and affected screen or book page.
+- The translation key or a screenshot locating the affected text.
+- Expected and actual behavior, with reproduction steps.
+- A relevant log or crash report when applicable, with credentials and personal information removed.
+
+Rendering problems should identify graphics modifications and state whether the problem reproduces without them. Reproduction on a supported NeoForge installation should be distinguished from behavior specific to another server platform or development environment.
+
+Additional information about an existing report belongs in that report, including after it has been closed.
+
+## Original project references
+
+The original [Thaumcraft forum thread and FAQ](http://www.minecraftforum.net/topic/2011841-) and [bug reporting guide](http://vazkii.us/br101/) are retained as historical references. Their Minecraft, Forge and legacy-tool instructions do not define the supported environment of this port.
+
+Logs can be attached through [GitHub Gist](https://gist.github.com/) or another suitable text host.

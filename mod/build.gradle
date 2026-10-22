@@ -46,6 +46,7 @@ repositories {
 }
 
 dependencies {
+    implementation files(providers.gradleProperty('aopUiJar').getOrElse('libs/aopui-1.21.1-0.7.0.jar'))
     compileOnly project(':api')
     compileOnly 'com.github.glitchfiend:TerraBlender-neoforge:1.21.1-4.1.0.8'
     if (providers.gradleProperty('withTerraBlender').getOrElse('false').toBoolean()) {
@@ -60,6 +61,17 @@ neoForge {
     addModdingDependenciesTo sourceSets.smoke
     addModdingDependenciesTo sourceSets.verification
     runs {
+        r3JarLabelsClient {
+            client()
+            sourceSet = sourceSets.productionVerification
+            gameDirectory = rootProject.file('runs/jar-labels-client')
+            programArguments.addAll('--quickPlaySingleplayer','jar-labels-qa','--width','1280','--height','720')
+            systemProperty 'thaumcraft.r3.root', rootProject.projectDir.absolutePath
+            systemProperty 'thaumcraft.r3.phase', 'jar-labels-client'
+            systemProperty 'thaumcraft.jarLabels.output', providers.gradleProperty('jarLabelsOutput').getOrElse('baseline')
+            systemProperty 'thaumcraft.jarLabels.inspectHand', providers.gradleProperty('jarLabelsInspectHand').getOrElse('false')
+            systemProperty 'fml.earlyprogresswindow', 'false'
+        }
         r3ManualWorldServer {
             server()
             sourceSet = sourceSets.productionVerification

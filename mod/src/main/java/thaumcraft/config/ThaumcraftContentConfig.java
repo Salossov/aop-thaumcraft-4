@@ -10,7 +10,7 @@ public final class ThaumcraftContentConfig {
         var builder = new ModConfigSpec.Builder();
         ALLOW_MIRRORS = builder.comment("Original TC4 allowMirrors: enable mirror research/crafting and dependent addon research.",
                 "Loaded before recipes. Restart Minecraft/the dedicated server after changing; existing items and knowledge are retained.")
-                .translation("thaumcraft.configuration.compatibility.allowMirrors").define("allowMirrors", true);
+                .translation("thaumcraft.configuration.compatibility.allowMirrors").gameRestart().define("allowMirrors", true);
         SPEC = builder.build();
     }
     private ThaumcraftContentConfig() { }
