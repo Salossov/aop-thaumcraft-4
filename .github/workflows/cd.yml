@@ -23,7 +23,7 @@ on:
   workflow_dispatch:
     inputs:
       release:
-        description: Publish an ordinary release (not a prerelease or nightly)
+        description: Publish an ordinary release (unchecked updates nightly)
         type: boolean
         required: false
         default: false
@@ -50,7 +50,7 @@ jobs:
       run:
         shell: bash
     env:
-      RELEASE_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.release && 'release' || github.event_name == 'push' && 'nightly' || 'build' }}
+      RELEASE_REQUESTED: ${{ inputs.release || false }}
       RELEASE_VERSION: ${{ inputs.version || '' }}
       RELEASE_NAME: 'AOP: Thaumcraft 4'
       RELEASE_REQUIREMENTS: 'AOP: UI 0.7.x and Curios are required. TerraBlender is optional. Install the gameplay JAR; API and sources are for development.'
