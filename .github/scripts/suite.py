@@ -34,6 +34,23 @@ NAMES = {'ui': 'AOP: UI', 'core': 'AOP: Thaumcraft 4',
          'tinkerer': 'Thaumic Tinkerer', 'compact': 'AOP:TC4 Compact'}
 
 
+def stages():
+    target = os.environ.get('SUITE_TARGET')
+    if target is None:
+        return STAGES
+    if target not in STAGES:
+        raise ValueError('Invalid standalone target: ' + target)
+    return (*DEPS[target], target)
+
+
+def source_root(stage):
+    target = os.environ.get('SUITE_TARGET')
+    default = '.' if target == stage else ROOTS[stage]
+    if target and stage == 'core' and target != 'core':
+        default = '.dependencies/thaumcraft'
+    return Path(os.environ.get('SUITE_' + stage.upper() + '_ROOT', default))
+
+
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
@@ -76,7 +93,7 @@ def source_identity(root):
 
 
 def prepare():
-    sources = {stage: source_identity(Path(ROOTS[stage])) for stage in STAGES}
+    sources = {stage: source_identity(source_root(stage)) for stage in stages()}
     for stage, source in sources.items():
         source['version'] = release.select_version('release', os.environ.get('SUITE_' + stage.upper() + '_VERSION', ''), source['version'], '')
     java = subprocess.run(['java', '-version'], capture_output=True, text=True, check=True)
@@ -282,7 +299,7 @@ def build(stage, force=False):
                 print('Cache miss for ' + stage + '/' + candidate + ': ' + str(error), flush=True)
     expected = read_json(CACHE / 'plans' / (stage + '-' + channel + '.json'))
     if not reused:
-        root = Path(ROOTS[stage])
+        root = source_root(stage)
         args = ['sh', './gradlew', '--no-daemon', '--console=plain', '--no-problems-report', 'clean', 'build']
         args.append('-Pmod_version=' + expected['version'])
         if stage == 'core':
@@ -317,7 +334,7 @@ def build(stage, force=False):
     if os.environ.get('GITHUB_OUTPUT'):
         with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
             store = os.environ.get('SUITE_' + channel.upper() + '_CACHE_HIT') != 'true'
-            output.write('built=' + str(not reused).lower() + '\nstore=' + str(store).lower()
+            output.write('version=' + expected['version'] + '\nbuilt=' + str(not reused).lower() + '\nstore=' + str(store).lower()
                          + '\nchannel=' + channel + '\nkey=' + expected['key']
                          + '\npath=' + str(CACHE / stage / channel) + '\n')
     if os.environ.get('GITHUB_STEP_SUMMARY'):
@@ -326,12 +343,12 @@ def build(stage, force=False):
                           + '`, commit `' + expected['source']['revision'][:12] + '`\n')
 
 
-def collect():
+def collect(stage=None):
     destination = Path('dist/suite')
     destination.mkdir(parents=True, exist_ok=True)
     manifests = {}
     sums = []
-    for stage in STAGES:
+    for stage in ((stage,) if stage else stages()):
         manifest = verified(stage)
         manifests[stage] = manifest
         for name, checksum in manifest['artifacts'].items():
@@ -339,12 +356,12 @@ def collect():
             sums.append(checksum + '  ' + name)
     write_json(destination / 'manifest.json', dict(lock=read_json(CACHE / 'lock.json'), stages=manifests))
     (destination / 'SHA256SUMS.txt').write_text('\n'.join(sorted(sums)) + '\n', encoding='utf-8')
-    print('Collected 10 verified JARs with source and dependency provenance.')
+    print('Collected ' + str(len(sums)) + ' verified JARs with source and dependency provenance.')
 
 
-def publish(dry_run=False):
+def publish(dry_run=False, stage=None):
     lock = read_json(CACHE / 'lock.json')
-    manifests = {stage: verified(stage) for stage in STAGES}
+    manifests = {item: verified(item) for item in ((stage,) if stage else stages())}
     if dry_run:
         print(json.dumps({stage: dict(repository=lock['repositories'][stage],
                                      version=manifest['plan']['version'],
@@ -374,7 +391,7 @@ def publish(dry_run=False):
                 print('ALREADY PUBLISHED ' + lock['repositories'][stage], flush=True)
                 continue
             os.chdir(previous)
-            source = (previous / ROOTS[stage]).resolve()
+            source = (previous / source_root(stage)).resolve()
             package = (CACHE / 'publication' / stage).resolve()
             package.mkdir(parents=True, exist_ok=True)
             for name in manifest['artifacts']:
@@ -385,7 +402,7 @@ def publish(dry_run=False):
             os.environ.update(RELEASE_MODE=lock['mode'], BUILD_VERSION=manifest['plan']['version'],
                               RELEASE_NAME=NAMES[stage], GH_REPO=lock['repositories'][stage],
                               GITHUB_SHA=manifest['plan']['source']['revision'],
-                              RELEASE_REQUIREMENTS='Java 21 and NeoForge 21.1 are required. Built and checked as part of the AOP mod suite; provenance is attached.')
+                              RELEASE_REQUIREMENTS='Java 21 and NeoForge 21.1 are required. Build and dependency provenance is attached.')
             os.chdir(source)
             release.publish(assets_directory=package)
             print('PUBLISHED ' + lock['repositories'][stage], flush=True)
@@ -412,7 +429,9 @@ if __name__ == '__main__':
         elif args.command == 'fetch':
             fetch(args.stage)
         elif args.command == 'publish':
-            publish(args.dry_run)
+            publish(args.dry_run, args.stage)
+        elif args.command == 'collect':
+            collect(args.stage)
         else:
             globals()[args.command]()
     except (OSError, ValueError, KeyError, RuntimeError, zipfile.BadZipFile) as error:

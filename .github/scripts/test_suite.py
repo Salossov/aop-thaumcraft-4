@@ -70,6 +70,57 @@ class SuiteTests(unittest.TestCase):
             suite.build('ui')
         run.assert_not_called()
 
+    def test_standalone_ui_needs_no_other_sources(self):
+        with patch.dict(os.environ, SUITE_TARGET='ui'), patch('suite.source_identity', return_value=dict(
+                version='0.7.0', revision='a' * 40, content='ui')) as source, patch('suite.subprocess.run') as java:
+            java.return_value.stdout, java.return_value.stderr = '', 'Java 21'
+            suite.prepare()
+        source.assert_called_once_with(Path('.'))
+        self.assertEqual(set(suite.read_json(suite.CACHE / 'lock.json')['sources']), {'ui'})
+
+    def test_standalone_roots_and_dependency_order(self):
+        for target in suite.STAGES:
+            with patch.dict(os.environ, SUITE_TARGET=target):
+                self.assertEqual(suite.stages(), (*suite.DEPS[target], target))
+                self.assertEqual(suite.source_root(target), Path('.'))
+                if target in ('tinkerer', 'compact'):
+                    self.assertEqual(suite.source_root('core'), Path('.dependencies/thaumcraft'))
+        with patch.dict(os.environ, SUITE_TARGET='unknown'):
+            with self.assertRaisesRegex(ValueError, 'Invalid standalone target'):
+                suite.stages()
+
+    def test_standalone_and_suite_have_identical_artifact_plans(self):
+        self.seed_all()
+        expected = {stage: suite.plan(stage) for stage in suite.STAGES}
+        for target in suite.STAGES:
+            with patch.dict(os.environ, SUITE_TARGET=target):
+                self.assertEqual(suite.plan(target), expected[target])
+
+    def test_unrelated_sources_do_not_invalidate_a_component(self):
+        first = suite.plan('ui')
+        lock = suite.read_json(suite.CACHE / 'lock.json')
+        lock['sources']['compact']['content'] = 'unrelated change'
+        suite.write_json(suite.CACHE / 'lock.json', lock)
+        self.assertEqual(suite.plan('ui'), first)
+
+    def test_standalone_collects_only_its_own_jars(self):
+        self.seed_all()
+        suite.collect('tinkerer')
+        self.assertEqual(set(suite.read_json(Path('dist/suite/manifest.json'))['stages']), {'tinkerer'})
+        self.assertEqual(len(list(Path('dist/suite').glob('*.jar'))), 2)
+
+    def test_standalone_publication_never_publishes_dependencies(self):
+        self.seed_all()
+        with patch('suite.api') as api, contextlib.redirect_stdout(io.StringIO()) as output:
+            suite.publish(dry_run=True, stage='compact')
+        api.assert_not_called()
+        self.assertEqual(set(json.loads(output.getvalue())), {'compact'})
+
+    def test_release_plan_rejects_nightly_dependency(self):
+        self.seed('ui', 'nightly')
+        with self.assertRaisesRegex(ValueError, 'cannot use nightly'):
+            suite.plan('core')
+
     def test_nightly_can_reuse_release_and_prefers_it(self):
         self.lock('nightly')
         self.seed('ui', 'release')
